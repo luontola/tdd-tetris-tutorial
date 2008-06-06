@@ -16,6 +16,7 @@ public class Board {
 
     private int width;
     private int height;
+    private Block fallingBlock;
 
     public Board(int width, int height) {
         this.width = width;
@@ -34,6 +35,6 @@ public class Board {
     }
 
     public void drop(Block block) {
-        
+        fallingBlock = block;
     }
 }
