@@ -48,6 +48,12 @@ public class FallingBlockTest {
                     "...\n", board.toString());
         }
 
+        public void testItFallsOneRowPerTick() {
+            board.tick();
+            assertEquals("" +
+                    "...\n" +
+                    ".X.\n" +
+                    "...\n", board.toString());
+        }
     }
-
 }

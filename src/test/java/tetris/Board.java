@@ -54,4 +54,8 @@ public class Board {
     private int columns() {
         return board[0].length;
     }
+
+    public void tick() {
+        
+    }
 }
