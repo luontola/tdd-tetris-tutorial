@@ -8,26 +8,31 @@
 
 package tetris;
 
+import java.util.Arrays;
+
 /**
  * @author orfjackal
  * @since Jun 6, 2008
  */
 public class Board {
 
-    private int width;
-    private int height;
-    private Block fallingBlock;
+    private static final char EMPTY = '.';
 
-    public Board(int width, int height) {
-        this.width = width;
-        this.height = height;
+    private Block fallingBlock;
+    private char[][] board;
+
+    public Board(int rows, int columns) {
+        board = new char[rows][columns];
+        for (char[] tmp : board) {
+            Arrays.fill(tmp, EMPTY);
+        }
     }
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                sb.append('.');
+        for (char[] rows : board) {
+            for (char cell : rows) {
+                sb.append(cell);
             }
             sb.append('\n');
         }
