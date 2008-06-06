@@ -30,6 +30,10 @@ public class FallingBlockTest {
                     "...\n" +
                     "...\n", board.toString());
         }
+
+        public void testHasNoFallingBlocks() {
+            assertFalse(board.isFallingBlock());            
+        }
     }
 
     public static class WhenABlockIsDropped extends TestCase {
