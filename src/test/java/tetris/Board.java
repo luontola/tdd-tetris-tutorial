@@ -32,17 +32,19 @@ public class Board {
         StringBuilder sb = new StringBuilder();
         for (int row = 0; row < board.length; row++) {
             for (int col = 0; col < board[row].length; col++) {
-                char c;
-                if (fallingBlock != null && fallingBlock.isAt(row, col)) {
-                    c = fallingBlock.style();
-                } else {
-                    c = board[row][col];
-                }
-                sb.append(c);
+                sb.append(cellAt(row, col));
             }
             sb.append('\n');
         }
         return sb.toString();
+    }
+
+    private char cellAt(int row, int col) {
+        if (fallingBlock != null && fallingBlock.isAt(row, col)) {
+            return fallingBlock.style();
+        } else {
+            return board[row][col];
+        }
     }
 
     public void drop(Block block) {
