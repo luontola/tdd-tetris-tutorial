@@ -17,6 +17,7 @@ import junit.framework.TestCase;
 public class FallingBlockTest {
 
     public static class ANewBoard extends TestCase {
+
         private Board b;
 
         protected void setUp() throws Exception {
@@ -29,6 +30,24 @@ public class FallingBlockTest {
                     "...\n" +
                     "...\n");
         }
+    }
+
+    public static class WhenABlockIsDropped extends TestCase {
+
+        private Board b;
+
+        protected void setUp() throws Exception {
+            b = new Board(3, 3);
+            b.drop(new Block(1, 1, 'X'));
+        }
+
+        public void testItStartsFromTheTopMiddle() {
+            assertEquals(b.toString(), "" +
+                    ".X.\n" +
+                    "...\n" +
+                    "...\n");
+        }
+
     }
 
 }

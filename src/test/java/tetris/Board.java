@@ -32,4 +32,8 @@ public class Board {
         }
         return sb.toString();
     }
+
+    public void drop(Block block) {
+        
+    }
 }
