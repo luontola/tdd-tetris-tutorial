@@ -34,11 +34,15 @@ public class Board {
 
     public void tick() {
         Block next = fallingBlock.moveDown();
-        if (next.row() >= rows()) { // out of board
+        if (!insideBoard(next)) {
             next = null;
             board[fallingBlock.row()][fallingBlock.col()] = fallingBlock.style();
         }
         fallingBlock = next;
+    }
+
+    private boolean insideBoard(Block block) {
+        return block.row() < rows();
     }
 
     public String toString() {
