@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project relativePaths="true" version="4">
+  <component name="AntConfiguration">
+    <defaultAnt bundledAnt="true" />
+  </component>
   <component name="BuildJarProjectSettings">
     <option name="BUILD_JARS_ON_MAKE" value="false" />
   </component>
@@ -38,9 +41,6 @@
       <entry name="?*.jpeg" />
       <entry name="?*.jpg" />
     </wildcardResourcePatterns>
-  </component>
-  <component name="CompilerWorkspaceConfiguration">
-    <option name="COMPILE_IN_BACKGROUND" value="true" />
   </component>
   <component name="DependenciesAnalyzeManager">
     <option name="myForwardDirection" value="false" />
@@ -260,7 +260,7 @@
   <component name="WebServicesPlugin" addRequiredLibraries="true" />
   <component name="copyright">
     <Base>
-      <setting name="state" value="2" />
+      <setting name="state" value="1" />
     </Base>
     <LanguageOptions name="HTML">
       <option name="templateOptions">
@@ -401,7 +401,7 @@
           <option name="filler" value=" " />
         </value>
       </option>
-      <option name="notice" value="Copyright (c) &amp;#36;today.year, Esko Luontola. All Rights Reserved." />
+      <option name="notice" value="Copyright (c) &amp;#36;today.year, Esko Luontola. All Rights Reserved.&#10;&#10;This program and its source code may be freely used for personal&#10;non-commercial educational purposes. Usage as course material&#10;is not allowed without prior permission." />
       <option name="keyword" value="Copyright" />
       <option name="fileTypeOverride" value="4" />
       <option name="relativeBefore" value="true" />
