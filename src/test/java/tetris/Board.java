@@ -60,6 +60,6 @@ public class Board {
     }
 
     public boolean isFallingBlock() {
-        return false;
+        return true;
     }
 }
