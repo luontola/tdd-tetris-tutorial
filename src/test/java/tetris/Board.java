@@ -34,7 +34,7 @@ public class Board {
 
     public void tick() {
         fallingBlock = fallingBlock.moveDown();
-        if (fallingBlock.row() >= rows()) {
+        if (fallingBlock.row() >= rows()) { // out of board
             fallingBlock = null;
         }
     }
