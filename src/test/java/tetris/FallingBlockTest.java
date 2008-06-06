@@ -56,4 +56,24 @@ public class FallingBlockTest {
                     "...\n", board.toString());
         }
     }
+
+    public static class WhenABlockReachesTheBottom extends TestCase {
+
+        private Board board;
+
+        protected void setUp() throws Exception {
+            board = new Board(3, 3);
+            board.drop(new Block('X'));
+            board.tick();
+            board.tick();
+        }
+
+        public void testItIsStillFallingOnTheLastRow() {
+            assertTrue(board.isFallingBlock());
+            assertEquals("" +
+                    "...\n" +
+                    "...\n" +
+                    ".X.\n", board.toString());
+        }
+    }
 }

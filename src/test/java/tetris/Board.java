@@ -58,4 +58,8 @@ public class Board {
     public void tick() {
         fallingBlock = fallingBlock.moveDown();
     }
+
+    public boolean isFallingBlock() {
+        return false;
+    }
 }
