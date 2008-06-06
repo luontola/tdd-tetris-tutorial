@@ -93,4 +93,32 @@ public class FallingBlockTest {
                     ".X.\n", board.toString());
         }
     }
+
+    public static class WhenABlockLandsOnAnotherBlock extends TestCase {
+
+        private Board board;
+
+        protected void setUp() throws Exception {
+            board = new Board(3, 3);
+            board.drop(new Block('X'));
+            board.tick();
+            board.tick();
+            board.tick();
+            assertFalse(board.isFallingBlock());
+            assertEquals("" +
+                    "...\n" +
+                    "...\n" +
+                    ".X.\n", board.toString());
+            board.drop(new Block('Y'));
+            board.tick();
+        }
+
+        public void testItIsStillFallingRightAboveTheOtherBlock() {
+            assertTrue(board.isFallingBlock());
+            assertEquals("" +
+                    "...\n" +
+                    ".Y.\n" +
+                    ".X.\n", board.toString());
+        }
+    }
 }
