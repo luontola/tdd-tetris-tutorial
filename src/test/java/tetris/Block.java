@@ -28,14 +28,6 @@ public class Block {
         this.style = style;
     }
 
-    public Block moveTo(int row, int col) {
-        return new Block(row, col, style);
-    }
-
-    public boolean isAt(int row, int col) {
-        return row == this.row && col == this.col;
-    }
-
     public int row() {
         return row;
     }
@@ -46,6 +38,14 @@ public class Block {
 
     public char style() {
         return style;
+    }
+
+    public boolean isAt(int row, int col) {
+        return row == this.row && col == this.col;
+    }
+
+    public Block moveTo(int row, int col) {
+        return new Block(row, col, style);
     }
 
     public Block moveDown() {

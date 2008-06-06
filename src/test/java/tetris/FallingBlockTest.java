@@ -56,7 +56,7 @@ public class FallingBlockTest {
                     "...\n", board.toString());
         }
 
-        public void testItFallsOneRowPerTick() {
+        public void testItMovesDownOneRowPerTick() {
             board.tick();
             assertEquals("" +
                     "...\n" +

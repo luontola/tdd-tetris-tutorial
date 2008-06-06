@@ -28,6 +28,14 @@ public class Board {
         }
     }
 
+    public void drop(Block block) {
+        fallingBlock = block.moveTo(0, columns() / 2);
+    }
+
+    public void tick() {
+        fallingBlock = fallingBlock.moveDown();
+    }
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int row = 0; row < board.length; row++) {
@@ -47,16 +55,8 @@ public class Board {
         }
     }
 
-    public void drop(Block block) {
-        fallingBlock = block.moveTo(0, columns() / 2);
-    }
-
     private int columns() {
         return board[0].length;
-    }
-
-    public void tick() {
-        fallingBlock = fallingBlock.moveDown();
     }
 
     public boolean isFallingBlock() {
