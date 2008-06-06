@@ -8,13 +8,19 @@
 
 package tetris;
 
+import junit.framework.Test;
 import junit.framework.TestCase;
+import junit.framework.TestSuite;
 
 /**
  * @author orfjackal
  * @since Jun 6, 2008
  */
 public class FallingBlockTest {
+
+    public static Test suite() {
+        return new TestSuite(FallingBlockTest.class.getDeclaredClasses());
+    }
 
     public static class ANewBoard extends TestCase {
 
