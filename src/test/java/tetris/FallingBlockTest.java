@@ -18,34 +18,34 @@ public class FallingBlockTest {
 
     public static class ANewBoard extends TestCase {
 
-        private Board b;
+        private Board board;
 
         protected void setUp() throws Exception {
-            b = new Board(3, 3);
+            board = new Board(3, 3);
         }
 
         public void testIsEmpty() {
-            assertEquals(b.toString(), "" +
+            assertEquals("" +
                     "...\n" +
                     "...\n" +
-                    "...\n");
+                    "...\n", board.toString());
         }
     }
 
     public static class WhenABlockIsDropped extends TestCase {
 
-        private Board b;
+        private Board board;
 
         protected void setUp() throws Exception {
-            b = new Board(3, 3);
-            b.drop(new Block('X'));
+            board = new Board(3, 3);
+            board.drop(new Block('X'));
         }
 
         public void testItStartsFromTheTopMiddle() {
-            assertEquals(b.toString(), "" +
+            assertEquals("" +
                     ".X.\n" +
                     "...\n" +
-                    "...\n");
+                    "...\n", board.toString());
         }
 
     }

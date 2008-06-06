@@ -27,16 +27,16 @@ public class Block {
         this.col = col;
     }
 
+    public boolean isAt(int row, int col) {
+        return row == this.row && col == this.col;
+    }
+
     public int row() {
         return row;
     }
 
     public int col() {
         return col;
-    }
-
-    public boolean isAt(int row, int col) {
-        return row == this.row && col == this.col;
     }
 
     public char style() {

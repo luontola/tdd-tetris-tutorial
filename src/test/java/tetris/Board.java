@@ -32,11 +32,13 @@ public class Board {
         StringBuilder sb = new StringBuilder();
         for (int row = 0; row < board.length; row++) {
             for (int col = 0; col < board[row].length; col++) {
+                char c;
                 if (fallingBlock != null && fallingBlock.isAt(row, col)) {
-                    sb.append(fallingBlock.style());
+                    c = fallingBlock.style();
                 } else {
-                    sb.append(board[row][col]);
+                    c = board[row][col];
                 }
+                sb.append(c);
             }
             sb.append('\n');
         }
