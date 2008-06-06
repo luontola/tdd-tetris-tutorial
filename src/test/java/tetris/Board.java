@@ -56,6 +56,6 @@ public class Board {
     }
 
     public void tick() {
-        
+        fallingBlock = fallingBlock.moveDown();
     }
 }

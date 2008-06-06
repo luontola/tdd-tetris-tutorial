@@ -47,4 +47,8 @@ public class Block {
     public char style() {
         return style;
     }
+
+    public Block moveDown() {
+        return new Block(row + 1, col, style);
+    }
 }
