@@ -34,6 +34,9 @@ public class Board {
 
     public void tick() {
         fallingBlock = fallingBlock.moveDown();
+        if (fallingBlock.row() >= rows()) {
+            fallingBlock = null;
+        }
     }
 
     public String toString() {
@@ -53,6 +56,10 @@ public class Board {
         } else {
             return board[row][col];
         }
+    }
+
+    private int rows() {
+        return board.length;
     }
 
     private int columns() {
