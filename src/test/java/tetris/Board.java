@@ -48,8 +48,7 @@ public class Board {
     }
 
     public void drop(Block block) {
-        fallingBlock = block;
-        fallingBlock.moveTo(0, columns() / 2);
+        fallingBlock = block.moveTo(0, columns() / 2);
     }
 
     private int columns() {

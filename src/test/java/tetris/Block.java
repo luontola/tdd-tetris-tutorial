@@ -14,17 +14,22 @@ package tetris;
  */
 public class Block {
 
-    private int row;
-    private int col;
+    private final int row;
+    private final int col;
     private final char style;
 
     public Block(char style) {
+        this(0, 0, style);
+    }
+
+    private Block(int row, int col, char style) {
+        this.row = row;
+        this.col = col;
         this.style = style;
     }
 
-    public void moveTo(int row, int col) {
-        this.row = row;
-        this.col = col;
+    public Block moveTo(int row, int col) {
+        return new Block(row, col, style);
     }
 
     public boolean isAt(int row, int col) {
