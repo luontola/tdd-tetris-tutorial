@@ -83,5 +83,14 @@ public class FallingBlockTest {
                     "...\n" +
                     ".X.\n", board.toString());
         }
+
+        public void testItStopsWhenItHitsTheBottom() {
+            board.tick();
+            assertFalse(board.isFallingBlock());
+            assertEquals("" +
+                    "...\n" +
+                    "...\n" +
+                    ".X.\n", board.toString());
+        }
     }
 }
