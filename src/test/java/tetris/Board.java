@@ -30,9 +30,13 @@ public class Board {
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (char[] rows : board) {
-            for (char cell : rows) {
-                sb.append(cell);
+        for (int row = 0; row < board.length; row++) {
+            for (int col = 0; col < board[row].length; col++) {
+                if (fallingBlock != null && fallingBlock.isAt(row, col)) {
+                    sb.append(fallingBlock.style());
+                } else {
+                    sb.append(board[row][col]);
+                }
             }
             sb.append('\n');
         }
@@ -41,5 +45,10 @@ public class Board {
 
     public void drop(Block block) {
         fallingBlock = block;
+        fallingBlock.moveTo(0, columns() / 2);
+    }
+
+    private int columns() {
+        return board[0].length;
     }
 }
