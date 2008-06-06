@@ -32,7 +32,7 @@ public class FallingBlockTest {
         }
 
         public void testHasNoFallingBlocks() {
-            assertFalse(board.isFallingBlock());            
+            assertFalse(board.isFallingBlock());
         }
     }
 
@@ -43,6 +43,10 @@ public class FallingBlockTest {
         protected void setUp() throws Exception {
             board = new Board(3, 3);
             board.drop(new Block('X'));
+        }
+
+        public void testTheBlockIsFalling() {
+            assertTrue(board.isFallingBlock());
         }
 
         public void testItStartsFromTheTopMiddle() {
