@@ -33,20 +33,25 @@ public class Board {
     }
 
     public void tick() {
-        Block next = fallingBlock.moveDown();
-        if (!insideBoard(next) || hitsAnotherBlock(next)) {
-            next = null;
+        Block test = fallingBlock.moveDown();
+        if (conflicts(test)) {
             copyToBoard(fallingBlock);
+            fallingBlock = null;
+        } else {
+            fallingBlock = test;
         }
-        fallingBlock = next;
     }
 
     private void copyToBoard(Block block) {
         board[block.row()][block.col()] = block.style();
     }
 
-    private boolean insideBoard(Block block) {
-        return block.row() < rows();
+    private boolean conflicts(Block block) {
+        return outsideBoard(block) || hitsAnotherBlock(block);
+    }
+
+    private boolean outsideBoard(Block block) {
+        return block.row() >= rows();
     }
 
     private boolean hitsAnotherBlock(Block block) {
