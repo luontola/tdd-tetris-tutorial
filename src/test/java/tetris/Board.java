@@ -36,13 +36,13 @@ public class Board {
         Block next = fallingBlock.moveDown();
         if (!insideBoard(next)) {
             next = null;
-            copyToBoard();
+            copyToBoard(fallingBlock);
         }
         fallingBlock = next;
     }
 
-    private void copyToBoard() {
-        board[fallingBlock.row()][fallingBlock.col()] = fallingBlock.style();
+    private void copyToBoard(Block block) {
+        board[block.row()][block.col()] = block.style();
     }
 
     private boolean insideBoard(Block block) {
