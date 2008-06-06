@@ -36,6 +36,7 @@ public class Board {
         Block next = fallingBlock.moveDown();
         if (next.row() >= rows()) { // out of board
             next = null;
+            board[fallingBlock.row()][fallingBlock.col()] = fallingBlock.style();
         }
         fallingBlock = next;
     }
