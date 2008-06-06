@@ -13,7 +13,23 @@ package tetris;
  * @since Jun 6, 2008
  */
 public class Board {
-    
+
+    private int width;
+    private int height;
+
     public Board(int width, int height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                sb.append('.');
+            }
+            sb.append('\n');
+        }
+        return sb.toString();
     }
 }
