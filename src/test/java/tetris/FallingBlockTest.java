@@ -120,5 +120,14 @@ public class FallingBlockTest {
                     ".Y.\n" +
                     ".X.\n", board.toString());
         }
+
+        public void testItStopsWhenItHitsTheOtherBlock() {
+            board.tick();
+            assertFalse(board.isFallingBlock());
+            assertEquals("" +
+                    "...\n" +
+                    ".Y.\n" +
+                    ".X.\n", board.toString());
+        }
     }
 }
