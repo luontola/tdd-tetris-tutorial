@@ -33,10 +33,11 @@ public class Board {
     }
 
     public void tick() {
-        fallingBlock = fallingBlock.moveDown();
-        if (fallingBlock.row() >= rows()) { // out of board
-            fallingBlock = null;
+        Block next = fallingBlock.moveDown();
+        if (next.row() >= rows()) { // out of board
+            next = null;
         }
+        fallingBlock = next;
     }
 
     public String toString() {
