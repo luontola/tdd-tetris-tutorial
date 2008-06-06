@@ -410,5 +410,8 @@
       <option name="useAlternate" value="false" />
     </LanguageOptions>
   </component>
+  <UsedPathMacros>
+    <macro name="M2_REPO" />
+  </UsedPathMacros>
 </project>
 

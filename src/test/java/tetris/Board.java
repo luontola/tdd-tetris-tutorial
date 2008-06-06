@@ -34,7 +34,7 @@ public class Board {
 
     public void tick() {
         Block next = fallingBlock.moveDown();
-        if (!insideBoard(next)) {
+        if (!insideBoard(next) || hitsAnotherBlock(next)) {
             next = null;
             copyToBoard(fallingBlock);
         }
@@ -47,6 +47,10 @@ public class Board {
 
     private boolean insideBoard(Block block) {
         return block.row() < rows();
+    }
+
+    private boolean hitsAnotherBlock(Block block) {
+        return board[block.row()][block.col()] != EMPTY;
     }
 
     public String toString() {
