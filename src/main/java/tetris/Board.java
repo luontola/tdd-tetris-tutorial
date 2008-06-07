@@ -29,7 +29,7 @@ public class Board {
     }
 
     public void drop(Block block) {
-        if (fallingBlock != null) {
+        if (isFallingBlock()) {
             throw new IllegalStateException("Another block may not be dropped when one is already falling");
         }
         fallingBlock = block.moveTo(0, columns() / 2);
@@ -37,19 +37,23 @@ public class Board {
 
     public void tick() {
         Block test = fallingBlock.moveDown();
-        if (conflicts(test)) {
-            copyToBoard(fallingBlock);
-            fallingBlock = null;
+        if (conflictsWithBoard(test)) {
+            stopFallingBlock();
         } else {
             fallingBlock = test;
         }
+    }
+
+    private void stopFallingBlock() {
+        copyToBoard(fallingBlock);
+        fallingBlock = null;
     }
 
     private void copyToBoard(Block block) {
         board[block.row()][block.col()] = block.style();
     }
 
-    private boolean conflicts(Block block) {
+    private boolean conflictsWithBoard(Block block) {
         return outsideBoard(block) || hitsAnotherBlock(block);
     }
 
