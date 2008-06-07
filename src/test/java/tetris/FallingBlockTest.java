@@ -69,6 +69,19 @@ public class FallingBlockTest {
                     ".X.\n" +
                     "...\n", board.toString());
         }
+
+        public void testAtMostOneBlockMayBeFallingAtATime() {
+            try {
+                board.drop(new Block('Y'));
+                fail();
+            } catch (IllegalStateException e) {
+                assertTrue(e.getMessage().contains("already falling"));
+            }
+            assertEquals("" +
+                    ".X.\n" +
+                    "...\n" +
+                    "...\n", board.toString());
+        }
     }
 
     public static class WhenABlockReachesTheBottom extends TestCase {
