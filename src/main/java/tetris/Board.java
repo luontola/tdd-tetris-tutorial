@@ -44,7 +44,12 @@ public class Board {
         }
     }
 
+    public boolean isFallingBlock() {
+        return fallingBlock != null;
+    }
+
     private void stopFallingBlock() {
+        assert isFallingBlock();
         copyToBoard(fallingBlock);
         fallingBlock = null;
     }
@@ -90,9 +95,5 @@ public class Board {
 
     private int columns() {
         return board[0].length;
-    }
-
-    public boolean isFallingBlock() {
-        return fallingBlock != null;
     }
 }
