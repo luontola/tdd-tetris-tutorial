@@ -29,6 +29,9 @@ public class Board {
     }
 
     public void drop(Block block) {
+        if (fallingBlock != null) {
+            throw new IllegalStateException("A block is already falling");
+        }
         fallingBlock = block.moveTo(0, columns() / 2);
     }
 
