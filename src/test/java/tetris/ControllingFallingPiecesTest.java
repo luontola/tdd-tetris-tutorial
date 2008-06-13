@@ -33,8 +33,8 @@ public class ControllingFallingPiecesTest {
 
         public void testItStartsFromTopMiddle() {
             assertEquals("" +
-                    "..TTT...\n" +
                     "...T....\n" +
+                    "..TTT...\n" +
                     "........\n" +
                     "........\n" +
                     "........\n" +
