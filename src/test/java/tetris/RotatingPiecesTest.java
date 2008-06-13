@@ -22,7 +22,7 @@ public class RotatingPiecesTest {
         return new TestSuite(RotatingPiecesTest.class.getDeclaredClasses());
     }
 
-    public static class APiece extends TestCase {
+    public static class APieceOf3x3Blocks extends TestCase {
 
         private Piece piece;
 
