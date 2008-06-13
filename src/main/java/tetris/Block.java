@@ -12,7 +12,7 @@ package tetris;
  * @author orfjackal
  * @since Jun 6, 2008
  */
-public class Block implements Grid {
+public class Block implements RotatableGrid {
 
     private final int row;
     private final int col;
@@ -62,5 +62,13 @@ public class Block implements Grid {
 
     public char cellAt(int row, int col) {
         return piece.cellAt(row - this.row, col - this.col);
+    }
+
+    public RotatableGrid rotateRight() {
+        return this;
+    }
+
+    public RotatableGrid rotateLeft() {
+        return this;
     }
 }

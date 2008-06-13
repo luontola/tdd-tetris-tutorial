@@ -16,7 +16,7 @@ import java.util.Arrays;
  */
 public class Board implements Grid {
 
-    private Block fallingBlock;
+    private MovablePiece fallingBlock;
     private char[][] blocks;
 
     public Board(int rows, int columns) {
@@ -27,7 +27,7 @@ public class Board implements Grid {
     }
 
     public void tick() {
-        Block test = fallingBlock.moveDown();
+        MovablePiece test = fallingBlock.moveDown();
         if (conflictsWithBoard(test)) {
             stopFallingBlock();
         } else {
@@ -35,27 +35,24 @@ public class Board implements Grid {
         }
     }
 
-    private boolean conflictsWithBoard(Block block) {
+    private boolean conflictsWithBoard(MovablePiece block) {
         return outsideBoard(block) || hitsAnotherBlock(block);
     }
 
-    private boolean outsideBoard(Block block) {
+    private boolean outsideBoard(MovablePiece block) {
         return block.row() >= rows();
     }
 
-    private boolean hitsAnotherBlock(Block block) {
+    private boolean hitsAnotherBlock(MovablePiece block) {
         return blocks[block.row()][block.col()] != EMPTY;
     }
 
 
     public void drop(RotatableGrid piece) {
-    }
-
-    public void drop(Block block) {
         if (hasFallingBlock()) {
             throw new IllegalStateException("Another block may not be dropped when one is already falling");
         }
-        fallingBlock = block.moveTo(0, columns() / 2);
+        fallingBlock = new MovablePiece(piece).moveTo(0, columns() / 2);
     }
 
     public boolean hasFallingBlock() {
@@ -69,7 +66,7 @@ public class Board implements Grid {
     }
 
 
-    private void copyToBoard(Block block) {
+    private void copyToBoard(MovablePiece block) {
         blocks[block.row()][block.col()] = block.cellAt(block.row(), block.col());
     }
 

@@ -44,12 +44,12 @@ public class MovablePiece implements Grid {
         return row == this.row && col == this.col;
     }
 
-    public Block moveTo(int row, int col) {
-        return new Block(row, col, piece);
+    public MovablePiece moveTo(int row, int col) {
+        return new MovablePiece(row, col, piece);
     }
 
-    public Block moveDown() {
-        return new Block(row + 1, col, piece);
+    public MovablePiece moveDown() {
+        return new MovablePiece(row + 1, col, piece);
     }
 
     public int rows() {
