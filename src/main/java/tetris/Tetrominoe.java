@@ -70,7 +70,7 @@ public class Tetrominoe implements Rotatable {
         return piece;
     }
 
-    private static Rotatable[] allRotations(Piece firstRotation, int maxRotations) {
+    private static Rotatable[] allRotations(Rotatable firstRotation, int maxRotations) {
         Rotatable[] x = new Rotatable[maxRotations];
         x[0] = firstRotation;
         for (int i = 1; i < x.length; i++) {
