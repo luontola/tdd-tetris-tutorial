@@ -36,6 +36,9 @@ public class Tetrominoe implements Rotatable {
     }
 
     private Tetrominoe(int currentRotation, Rotatable[] rotations) {
+        while (currentRotation < 0) {
+            currentRotation += rotations.length;
+        }
         this.currentRotation = currentRotation % rotations.length;
         this.rotations = rotations;
     }
