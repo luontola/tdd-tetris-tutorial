@@ -12,7 +12,7 @@ package tetris;
  * @author orfjackal
  * @since Jun 13, 2008
  */
-public class Tetrominoe implements Rotatable {
+public class Tetrominoe implements Rotatable, Grid {
 
     // For TGM's rotation rules, see http://bsixcentdouze.free.fr/tc/tgm-en/tgm.html
     public static final Tetrominoe I_SHAPE = new Tetrominoe(2, 1, "" +
@@ -46,7 +46,7 @@ public class Tetrominoe implements Rotatable {
             "ZZ.\n" +
             ".ZZ\n");
 
-    private final Rotatable[] rotations;
+    private final Grid[] rotations;
     private final int currentRotation;
 
     public Tetrominoe(int maxRotations, int currentRotation, String blocks) {
@@ -62,8 +62,8 @@ public class Tetrominoe implements Rotatable {
         return piece;
     }
 
-    private static Rotatable[] allRotations(Rotatable firstRotation, int maxRotations) {
-        Rotatable[] x = new Rotatable[maxRotations];
+    private static Grid[] allRotations(Piece firstRotation, int maxRotations) {
+        Piece[] x = new Piece[maxRotations];
         x[0] = firstRotation;
         for (int i = 1; i < x.length; i++) {
             x[i] = x[i - 1].rotateRight();
@@ -71,7 +71,7 @@ public class Tetrominoe implements Rotatable {
         return x;
     }
 
-    private Tetrominoe(Rotatable[] rotations, int currentRotation) {
+    private Tetrominoe(Grid[] rotations, int currentRotation) {
         while (currentRotation < 0) {
             currentRotation += rotations.length;
         }
@@ -87,7 +87,23 @@ public class Tetrominoe implements Rotatable {
         return new Tetrominoe(rotations, currentRotation - 1);
     }
 
+    public int rows() {
+        return self().rows();
+    }
+
+    public int columns() {
+        return self().columns();
+    }
+
+    public char cellAt(int row, int col) {
+        return self().cellAt(row, col);
+    }
+
+    private Grid self() {
+        return rotations[currentRotation];
+    }
+
     public String toString() {
-        return rotations[currentRotation].toString();
+        return new GridAsciiView(this).toString();
     }
 }
