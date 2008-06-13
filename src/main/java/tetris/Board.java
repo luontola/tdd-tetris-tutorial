@@ -14,7 +14,7 @@ import java.util.Arrays;
  * @author orfjackal
  * @since Jun 6, 2008
  */
-public class Board {
+public class Board implements Table {
 
     private static final char EMPTY = '.';
 
@@ -71,17 +71,18 @@ public class Board {
     }
 
     public String toString() {
+        Table t = this;
         StringBuilder sb = new StringBuilder();
-        for (int row = 0; row < board.length; row++) {
-            for (int col = 0; col < board[row].length; col++) {
-                sb.append(cellAt(row, col));
+        for (int row = 0; row < t.rows(); row++) {
+            for (int col = 0; col < t.columns(); col++) {
+                sb.append(t.cellAt(row, col));
             }
             sb.append('\n');
         }
         return sb.toString();
     }
 
-    private char cellAt(int row, int col) {
+    public char cellAt(int row, int col) {
         if (fallingBlock != null && fallingBlock.isAt(row, col)) {
             return fallingBlock.style();
         } else {
@@ -89,11 +90,11 @@ public class Board {
         }
     }
 
-    private int rows() {
+    public int rows() {
         return board.length;
     }
 
-    private int columns() {
+    public int columns() {
         return board[0].length;
     }
 }
