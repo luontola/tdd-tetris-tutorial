@@ -14,38 +14,10 @@ package tetris;
  */
 public class Block implements RotatableGrid {
 
-    private final int row;
-    private final int col;
-    private final char style;
+    private final char cell;
 
-    public Block(char style) {
-        this(0, 0, style);
-    }
-
-    private Block(int row, int col, char style) {
-        this.row = row;
-        this.col = col;
-        this.style = style;
-    }
-
-    public int row() {
-        return row;
-    }
-
-    public int col() {
-        return col;
-    }
-
-    public boolean isAt(int row, int col) {
-        return row == this.row && col == this.col;
-    }
-
-    public Block moveTo(int row, int col) {
-        return new Block(row, col, style);
-    }
-
-    public Block moveDown() {
-        return new Block(row + 1, col, style);
+    public Block(char cell) {
+        this.cell = cell;
     }
 
     public int rows() {
@@ -57,7 +29,7 @@ public class Block implements RotatableGrid {
     }
 
     public char cellAt(int row, int col) {
-        return style;
+        return cell;
     }
 
     public RotatableGrid rotateRight() {
