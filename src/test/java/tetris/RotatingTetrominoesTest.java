@@ -88,5 +88,15 @@ public class RotatingTetrominoesTest {
                     "..C..\n" +
                     ".....\n", shape.toString());
         }
+
+        public void testCanBeRotatedLeftOnce() {
+            shape = shape.rotateLeft();
+            assertEquals("" +
+                    "..C..\n" +
+                    "..C..\n" +
+                    "..C..\n" +
+                    "..C..\n" +
+                    ".....\n", shape.toString());
+        }
     }
 }
