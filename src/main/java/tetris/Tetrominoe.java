@@ -49,6 +49,6 @@ public class Tetrominoe implements Rotatable {
     }
 
     public Tetrominoe rotateLeft() {
-        return this;
+        return new Tetrominoe(currentRotation - 1, rotations);
     }
 }
