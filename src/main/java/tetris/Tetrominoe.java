@@ -14,44 +14,49 @@ package tetris;
  */
 public class Tetrominoe implements Rotatable {
 
-    private final int currentRotation;
     private final Rotatable[] rotations;
+    private final int currentRotation;
 
     public Tetrominoe(int maxRotations, int currentRotation, String blocks) {
+        Piece firstRotation = firstRotation(new Piece(blocks), currentRotation);
+        this.rotations = allRotations(firstRotation, maxRotations);
         this.currentRotation = currentRotation;
-        this.rotations = new Rotatable[maxRotations];
-
-        // rewind
-        Piece piece = new Piece(blocks);
-        for (int i = 0; i < currentRotation; i++) {
-            piece = piece.rotateLeft();
-        }
-
-        // precalculate rotations
-        rotations[0] = piece;
-        for (int i = 1; i < rotations.length; i++) {
-            piece = piece.rotateRight();
-            rotations[i] = piece;
-        }
     }
 
-    private Tetrominoe(int currentRotation, Rotatable[] rotations) {
+    private Tetrominoe(Rotatable[] rotations, int currentRotation) {
         while (currentRotation < 0) {
             currentRotation += rotations.length;
         }
-        this.currentRotation = currentRotation % rotations.length;
         this.rotations = rotations;
+        this.currentRotation = currentRotation % rotations.length;
+    }
+
+    private static Piece firstRotation(Piece piece, int currentRotation) {
+        for (int i = 0; i < currentRotation; i++) {
+            piece = piece.rotateLeft();
+        }
+        return piece;
+    }
+
+    private static Rotatable[] allRotations(Piece piece, int maxRotations) {
+        Rotatable[] x = new Rotatable[maxRotations];
+        x[0] = piece;
+        for (int i = 1; i < x.length; i++) {
+            piece = piece.rotateRight();
+            x[i] = piece;
+        }
+        return x;
+    }
+
+    public Tetrominoe rotateRight() {
+        return new Tetrominoe(rotations, currentRotation + 1);
+    }
+
+    public Tetrominoe rotateLeft() {
+        return new Tetrominoe(rotations, currentRotation - 1);
     }
 
     public String toString() {
         return rotations[currentRotation].toString();
-    }
-
-    public Tetrominoe rotateRight() {
-        return new Tetrominoe(currentRotation + 1, rotations);
-    }
-
-    public Tetrominoe rotateLeft() {
-        return new Tetrominoe(currentRotation - 1, rotations);
     }
 }
