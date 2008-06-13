@@ -35,12 +35,17 @@ public class Tetrominoe implements Rotatable {
         }
     }
 
+    private Tetrominoe(int currentRotation, Rotatable[] rotations) {
+        this.currentRotation = currentRotation % rotations.length;
+        this.rotations = rotations;
+    }
+
     public String toString() {
         return rotations[currentRotation].toString();
     }
 
     public Tetrominoe rotateRight() {
-        return this;
+        return new Tetrominoe(currentRotation + 1, rotations);
     }
 
     public Tetrominoe rotateLeft() {
