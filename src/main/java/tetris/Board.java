@@ -14,7 +14,7 @@ import java.util.Arrays;
  * @author orfjackal
  * @since Jun 6, 2008
  */
-public class Board implements Table {
+public class Board implements Grid {
 
     private static final char EMPTY = '.';
 
@@ -87,6 +87,6 @@ public class Board implements Table {
     }
 
     public String toString() {
-        return new TableAsciiView(this).toString();
+        return new GridAsciiView(this).toString();
     }
 }
