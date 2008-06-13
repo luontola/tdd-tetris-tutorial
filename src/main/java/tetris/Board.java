@@ -16,7 +16,7 @@ import java.util.Arrays;
  */
 public class Board implements Grid {
 
-    private MovablePiece fallingBlock;
+    private MovablePiece falling;
     private char[][] blocks;
 
     public Board(int rows, int columns) {
@@ -27,47 +27,47 @@ public class Board implements Grid {
     }
 
     public void tick() {
-        MovablePiece test = fallingBlock.moveDown();
+        MovablePiece test = falling.moveDown();
         if (conflictsWithBoard(test)) {
-            stopFallingBlock();
+            stopFalling();
         } else {
-            fallingBlock = test;
+            falling = test;
         }
     }
 
-    private boolean conflictsWithBoard(MovablePiece block) {
-        return outsideBoard(block) || hitsAnotherBlock(block);
+    private boolean conflictsWithBoard(MovablePiece p) {
+        return outsideBoard(p) || hitsStationaryBlock(p);
     }
 
-    private boolean outsideBoard(MovablePiece block) {
-        return block.relRow() >= rows();
+    private boolean outsideBoard(MovablePiece p) {
+        return p.relRow() >= rows();
     }
 
-    private boolean hitsAnotherBlock(MovablePiece block) {
-        return blocks[block.relRow()][block.relCol()] != EMPTY;
+    private boolean hitsStationaryBlock(MovablePiece p) {
+        return blocks[p.relRow()][p.relCol()] != EMPTY;
     }
 
 
     public void drop(RotatableGrid piece) {
-        if (hasFallingBlock()) {
-            throw new IllegalStateException("Another block may not be dropped when one is already falling");
+        if (hasFalling()) {
+            throw new IllegalStateException("Another piece may not be dropped when one is already falling");
         }
-        fallingBlock = new MovablePiece(piece).moveTo(0, columns() / 2);
+        falling = new MovablePiece(piece).moveTo(0, columns() / 2);
     }
 
-    public boolean hasFallingBlock() {
-        return fallingBlock != null;
+    public boolean hasFalling() {
+        return falling != null;
     }
 
-    private void stopFallingBlock() {
-        assert hasFallingBlock();
-        copyToBoard(fallingBlock);
-        fallingBlock = null;
+    private void stopFalling() {
+        assert hasFalling();
+        copyToBoard(falling);
+        falling = null;
     }
 
 
-    private void copyToBoard(MovablePiece block) {
-        blocks[block.relRow()][block.relCol()] = block.cellAt(block.relRow(), block.relCol());
+    private void copyToBoard(MovablePiece p) {
+        blocks[p.relRow()][p.relCol()] = p.cellAt(p.relRow(), p.relCol());
     }
 
     public int rows() {
@@ -79,8 +79,8 @@ public class Board implements Grid {
     }
 
     public char cellAt(int row, int col) {
-        if (fallingBlock != null && fallingBlock.isAt(row, col)) {
-            return fallingBlock.cellAt(row, col);
+        if (falling != null && falling.isAt(row, col)) {
+            return falling.cellAt(row, col);
         } else {
             return blocks[row][col];
         }
