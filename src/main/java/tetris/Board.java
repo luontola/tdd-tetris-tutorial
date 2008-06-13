@@ -19,28 +19,28 @@ public class Board implements Table {
     private static final char EMPTY = '.';
 
     private Block fallingBlock;
-    private char[][] board;
+    private char[][] blocks;
 
     public Board(int rows, int columns) {
-        board = new char[rows][columns];
-        for (char[] tmp : board) {
+        blocks = new char[rows][columns];
+        for (char[] tmp : blocks) {
             Arrays.fill(tmp, EMPTY);
         }
     }
 
     public int rows() {
-        return board.length;
+        return blocks.length;
     }
 
     public int columns() {
-        return board[0].length;
+        return blocks[0].length;
     }
 
     public char cellAt(int row, int col) {
         if (fallingBlock != null && fallingBlock.isAt(row, col)) {
             return fallingBlock.style();
         } else {
-            return board[row][col];
+            return blocks[row][col];
         }
     }
 
@@ -79,11 +79,11 @@ public class Board implements Table {
     }
 
     private boolean hitsAnotherBlock(Block block) {
-        return board[block.row()][block.col()] != EMPTY;
+        return blocks[block.row()][block.col()] != EMPTY;
     }
 
     private void copyToBoard(Block block) {
-        board[block.row()][block.col()] = block.style();
+        blocks[block.row()][block.col()] = block.style();
     }
 
     public String toString() {
