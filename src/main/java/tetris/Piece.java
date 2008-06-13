@@ -24,6 +24,22 @@ public class Piece {
         this.blocks = blocks;
     }
 
+
+    /**
+     * Coordinate changes when rotating right:
+     * <pre>
+     * before   after
+     * 0-0      0-2
+     * 0-1      1-2
+     * 0-2      2-2
+     * 1-0      0-1
+     * 1-1      1-1
+     * 1-2      2-1
+     * 2-0      0-0
+     * 2-1      1-0
+     * 2-2      2-0
+     * </pre>
+     */
     public Piece rotateRight() {
         char[][] rotated = new char[blocks.length][blocks.length];
         for (int i = 0; i < blocks.length; i++) {
