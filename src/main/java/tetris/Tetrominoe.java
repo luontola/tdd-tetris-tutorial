@@ -55,14 +55,6 @@ public class Tetrominoe implements Rotatable {
         this.currentRotation = currentRotation;
     }
 
-    private Tetrominoe(Rotatable[] rotations, int currentRotation) {
-        while (currentRotation < 0) {
-            currentRotation += rotations.length;
-        }
-        this.rotations = rotations;
-        this.currentRotation = currentRotation % rotations.length;
-    }
-
     private static Piece firstRotation(Piece piece, int currentRotation) {
         for (int i = 0; i < currentRotation; i++) {
             piece = piece.rotateLeft();
@@ -77,6 +69,14 @@ public class Tetrominoe implements Rotatable {
             x[i] = x[i - 1].rotateRight();
         }
         return x;
+    }
+
+    private Tetrominoe(Rotatable[] rotations, int currentRotation) {
+        while (currentRotation < 0) {
+            currentRotation += rotations.length;
+        }
+        this.rotations = rotations;
+        this.currentRotation = currentRotation % rotations.length;
     }
 
     public Tetrominoe rotateRight() {
