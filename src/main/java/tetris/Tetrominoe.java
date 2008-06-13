@@ -14,18 +14,29 @@ package tetris;
  */
 public class Tetrominoe implements Rotatable {
 
-    private final int maxRotations;
     private final int currentRotation;
-    private final Rotatable piece;
+    private final Rotatable[] rotations;
 
     public Tetrominoe(int maxRotations, int currentRotation, String blocks) {
-        this.maxRotations = maxRotations;
         this.currentRotation = currentRotation;
-        piece = new Piece(blocks);
+        this.rotations = new Rotatable[maxRotations];
+
+        // rewind
+        Piece piece = new Piece(blocks);
+        for (int i = 0; i < currentRotation; i++) {
+            piece = piece.rotateLeft();
+        }
+
+        // precalculate rotations
+        rotations[0] = piece;
+        for (int i = 1; i < rotations.length; i++) {
+            piece = piece.rotateRight();
+            rotations[i] = piece;
+        }
     }
 
     public String toString() {
-        return piece.toString();
+        return rotations[currentRotation].toString();
     }
 
     public Tetrominoe rotateRight() {
