@@ -40,12 +40,12 @@ public class RotatingPiecesTest {
                     "...\n", piece.toString());
         }
 
-        public void testCanBeRotatedRight() {
-            piece.rotateRight();
-            assertEquals("" +
-                    "...\n" +
-                    ".XX\n" +
-                    "...\n", piece.toString());
-        }
+//        public void testCanBeRotatedRight() {
+//            piece.rotateRight();
+//            assertEquals("" +
+//                    "...\n" +
+//                    ".XX\n" +
+//                    "...\n", piece.toString());
+//        }
     }
 }
