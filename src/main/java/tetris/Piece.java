@@ -12,7 +12,7 @@ package tetris;
  * @author orfjackal
  * @since Jun 13, 2008
  */
-public class Piece implements Rotatable, Grid {
+public class Piece implements RotatableGrid, Grid {
 
     private final char[][] blocks;
 

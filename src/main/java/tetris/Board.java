@@ -48,7 +48,7 @@ public class Board implements Grid {
     }
 
 
-    public void drop(Rotatable piece) {
+    public void drop(RotatableGrid piece) {
     }
 
     public void drop(Block block) {

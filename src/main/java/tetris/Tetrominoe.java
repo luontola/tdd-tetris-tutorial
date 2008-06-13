@@ -12,7 +12,7 @@ package tetris;
  * @author orfjackal
  * @since Jun 13, 2008
  */
-public class Tetrominoe implements Rotatable, Grid {
+public class Tetrominoe implements RotatableGrid, Grid {
 
     // For TGM's rotation rules, see http://bsixcentdouze.free.fr/tc/tgm-en/tgm.html
     public static final Tetrominoe I_SHAPE = new Tetrominoe(2, 1, "" +
