@@ -16,10 +16,10 @@ import junit.framework.TestSuite;
  * @author orfjackal
  * @since Jun 13, 2008
  */
-public class ControllingFallingPieces {
+public class ControllingFallingPiecesTest {
 
     public static Test suite() {
-        return new TestSuite(ControllingFallingPieces.class.getDeclaredClasses());
+        return new TestSuite(ControllingFallingPiecesTest.class.getDeclaredClasses());
     }
 
     public static class WhenAPieceIsDropped extends TestCase {
