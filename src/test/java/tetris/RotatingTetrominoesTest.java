@@ -161,5 +161,13 @@ public class RotatingTetrominoesTest {
                     ".TT\n" +
                     ".T.\n", shape.toString());
         }
+
+        public void testRotatingFourTimesWillReturnToTheOriginalShape() {
+            String originalShape = shape.toString();
+            shape = shape.rotateRight().rotateRight().rotateRight().rotateRight();
+            assertEquals(originalShape, shape.toString());
+            shape = shape.rotateLeft().rotateLeft().rotateLeft().rotateLeft();
+            assertEquals(originalShape, shape.toString());
+        }
     }
 }
