@@ -27,7 +27,7 @@ public class RotatingTetrominoesTest {
         private Tetrominoe shape;
 
         protected void setUp() throws Exception {
-            shape = new Tetrominoe("" +
+            shape = new Tetrominoe(1, 0, "" +
                     ".YY\n" +
                     ".YY\n" +
                     "...\n");
@@ -62,7 +62,7 @@ public class RotatingTetrominoesTest {
         private Tetrominoe shape;
 
         protected void setUp() throws Exception {
-            shape = new Tetrominoe("" +
+            shape = new Tetrominoe(2, 1, "" +
                     ".....\n" +
                     ".....\n" +
                     ".CCCC\n" +

@@ -14,9 +14,13 @@ package tetris;
  */
 public class Tetrominoe implements Rotatable {
 
+    private final int maxRotations;
+    private final int currentRotation;
     private final Rotatable piece;
 
-    public Tetrominoe(String blocks) {
+    public Tetrominoe(int maxRotations, int currentRotation, String blocks) {
+        this.maxRotations = maxRotations;
+        this.currentRotation = currentRotation;
         piece = new Piece(blocks);
     }
 
