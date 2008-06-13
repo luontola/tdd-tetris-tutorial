@@ -48,6 +48,9 @@ public class Board implements Grid {
     }
 
 
+    public void drop(Rotatable piece) {
+    }
+
     public void drop(Block block) {
         if (hasFallingBlock()) {
             throw new IllegalStateException("Another block may not be dropped when one is already falling");
@@ -65,10 +68,10 @@ public class Board implements Grid {
         fallingBlock = null;
     }
 
+
     private void copyToBoard(Block block) {
         blocks[block.row()][block.col()] = block.style();
     }
-
 
     public int rows() {
         return blocks.length;
