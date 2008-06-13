@@ -71,7 +71,7 @@ public class Board implements Table {
     }
 
     public String toString() {
-        return TableAsciiView.visualize(this);
+        return new TableAsciiView(this).toString();
     }
 
     public char cellAt(int row, int col) {

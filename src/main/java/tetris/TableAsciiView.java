@@ -14,11 +14,17 @@ package tetris;
  */
 public class TableAsciiView {
 
-    public static String visualize(Table t) {
+    private final Table table;
+
+    public TableAsciiView(Table table) {
+        this.table = table;
+    }
+
+    public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int row = 0; row < t.rows(); row++) {
-            for (int col = 0; col < t.columns(); col++) {
-                sb.append(t.cellAt(row, col));
+        for (int row = 0; row < table.rows(); row++) {
+            for (int col = 0; col < table.columns(); col++) {
+                sb.append(table.cellAt(row, col));
             }
             sb.append('\n');
         }
