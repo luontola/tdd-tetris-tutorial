@@ -17,7 +17,7 @@ public class Tetrominoe implements Rotatable {
     public static final Tetrominoe I_SHAPE = new Tetrominoe(2, 1, "" +
             ".....\n" +
             ".....\n" +
-            ".IIII\n" +
+            "IIII.\n" +
             ".....\n" +
             ".....\n");
     public static final Tetrominoe J_SHAPE = new Tetrominoe(4, 0, "" +
