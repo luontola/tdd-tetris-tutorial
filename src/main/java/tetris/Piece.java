@@ -17,6 +17,10 @@ public class Piece {
     private final char[][] blocks;
 
     public Piece(String blocks) {
+        this.blocks = linesToArrays(blocks);
+    }
+
+    private static char[][] linesToArrays(String blocks) {
         String[] lines = blocks.split("\n");
         char[][] x = new char[lines.length][lines.length];
         for (int i = 0; i < x.length; i++) {
@@ -24,7 +28,7 @@ public class Piece {
                 x[i][j] = lines[i].charAt(j);
             }
         }
-        this.blocks = x;
+        return x;
     }
 
     public String toString() {
