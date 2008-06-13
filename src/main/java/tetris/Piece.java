@@ -32,7 +32,10 @@ public class Piece {
     }
 
     public String toString() {
-        char[][] x = blocks;
+        return arraysToLines(blocks);
+    }
+
+    private static String arraysToLines(char[][] x) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < x.length; i++) {
             for (int j = 0; j < x[i].length; j++) {
