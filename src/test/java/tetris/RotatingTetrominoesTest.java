@@ -107,4 +107,23 @@ public class RotatingTetrominoesTest {
             assertEquals(originalShape, shape.toString());
         }
     }
+
+    public static class TheTShape extends TestCase {
+
+        private Tetrominoe shape;
+
+        protected void setUp() throws Exception {
+            shape = new Tetrominoe(4, 0, "" +
+                    ".T.\n" +
+                    "TTT\n" +
+                    "...\n");
+        }
+
+        public void testIsShapedLikeT() {
+            assertEquals("" +
+                    ".T.\n" +
+                    "TTT\n" +
+                    "...\n", shape.toString());
+        }
+    }
 }
