@@ -16,38 +16,20 @@ public class Piece {
 
     private final char[][] blocks;
 
+    /**
+     * A piece must have equal width and height,
+     * and the length of the edge must be odd.
+     */
     public Piece(String blocks) {
         this.blocks = linesToArrays(blocks);
     }
 
-    public Piece(char[][] blocks) {
+    private Piece(char[][] blocks) {
         this.blocks = blocks;
     }
 
-
-    /**
-     * Coordinates when rotating a 3x3 grid right:
-     * <pre>
-     * before   after
-     * 0-0      0-2
-     * 0-1      1-2
-     * 0-2      2-2
-     * 1-0      0-1
-     * 1-1      1-1
-     * 1-2      2-1
-     * 2-0      0-0
-     * 2-1      1-0
-     * 2-2      2-0
-     * </pre>
-     */
     public Piece rotateRight() {
-        char[][] rotated = new char[blocks.length][blocks.length];
-        for (int i = 0; i < blocks.length; i++) {
-            for (int j = 0; j < blocks[i].length; j++) {
-                rotated[j][2 - i] = blocks[i][j];
-            }
-        }
-        return new Piece(rotated);
+        return new Piece(rotateRight(blocks));
     }
 
     public Piece rotateLeft() {
@@ -78,5 +60,30 @@ public class Piece {
             sb.append('\n');
         }
         return sb.toString();
+    }
+
+    /**
+     * Coordinates when rotating a 3x3 grid right:
+     * <pre>
+     * before   after
+     * 0-0      0-2
+     * 0-1      1-2
+     * 0-2      2-2
+     * 1-0      0-1
+     * 1-1      1-1
+     * 1-2      2-1
+     * 2-0      0-0
+     * 2-1      1-0
+     * 2-2      2-0
+     * </pre>
+     */
+    private static char[][] rotateRight(char[][] x) {
+        char[][] rotated = new char[x.length][x.length];
+        for (int i = 0; i < x.length; i++) {
+            for (int j = 0; j < x[i].length; j++) {
+                rotated[j][2 - i] = x[i][j];
+            }
+        }
+        return rotated;
     }
 }
