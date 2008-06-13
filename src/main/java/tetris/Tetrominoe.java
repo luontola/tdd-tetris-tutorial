@@ -20,13 +20,29 @@ public class Tetrominoe implements Rotatable {
             ".IIII\n" +
             ".....\n" +
             ".....\n");
+    public static final Tetrominoe J_SHAPE = new Tetrominoe(4, 0, "" +
+            "..J\n" +
+            "JJJ\n" +
+            "...\n");
+    public static final Tetrominoe L_SHAPE = new Tetrominoe(4, 0, "" +
+            "L..\n" +
+            "LLL\n" +
+            "...\n");
     public static final Tetrominoe O_SHAPE = new Tetrominoe(1, 0, "" +
             ".OO\n" +
             ".OO\n" +
             "...\n");
+    public static final Tetrominoe S_SHAPE = new Tetrominoe(2, 0, "" +
+            ".SS\n" +
+            "SS.\n" +
+            "...\n");
     public static final Tetrominoe T_SHAPE = new Tetrominoe(4, 0, "" +
             ".T.\n" +
             "TTT\n" +
+            "...\n");
+    public static final Tetrominoe Z_SHAPE = new Tetrominoe(2, 1, "" +
+            "ZZ.\n" +
+            ".ZZ\n" +
             "...\n");
 
     private final Rotatable[] rotations;
