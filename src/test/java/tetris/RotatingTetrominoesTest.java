@@ -79,14 +79,14 @@ public class RotatingTetrominoesTest {
                     ".....\n", shape.toString());
         }
 
-        public void testCanBeRotatedRightOnce() {
-            shape = shape.rotateRight();
-            assertEquals("" +
-                    "..C..\n" +
-                    "..C..\n" +
-                    "..C..\n" +
-                    "..C..\n" +
-                    ".....\n", shape.toString());
-        }
+//        public void testCanBeRotatedRightOnce() {
+//            shape = shape.rotateRight();
+//            assertEquals("" +
+//                    "..C..\n" +
+//                    "..C..\n" +
+//                    "..C..\n" +
+//                    "..C..\n" +
+//                    ".....\n", shape.toString());
+//        }
     }
 }
