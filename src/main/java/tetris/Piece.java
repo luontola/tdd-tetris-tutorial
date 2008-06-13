@@ -20,8 +20,10 @@ public class Piece implements Rotatable {
      * A piece must have equal width and height,
      * and the length of the edge must be odd.
      */
-    public Piece(String blocks) {
-        this.blocks = linesToArrays(blocks);
+    public Piece(String shape) {
+        this.blocks = linesToArrays(shape);
+        assert blocks.length == blocks[0].length;
+        assert blocks.length % 2 == 1;
     }
 
     private Piece(char[][] blocks) {
