@@ -38,7 +38,6 @@ public class RotatingTetrominoesTest {
                     ".YY\n" +
                     ".YY\n" +
                     "...\n", shape.toString());
-
         }
     }
 }

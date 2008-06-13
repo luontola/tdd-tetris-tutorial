@@ -13,10 +13,14 @@ package tetris;
  * @since Jun 13, 2008
  */
 public class Tetrominoe {
+
+    private final Piece piece;
+
     public Tetrominoe(String blocks) {
+        piece = new Piece(blocks);
     }
 
-    public Tetrominoe rotateRight() {
-        return null;
+    public String toString() {
+        return piece.toString();
     }
 }
