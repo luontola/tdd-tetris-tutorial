@@ -23,4 +23,8 @@ public class Tetrominoe {
     public String toString() {
         return piece.toString();
     }
+
+    public Tetrominoe rotateRight() {
+        return this;
+    }
 }
