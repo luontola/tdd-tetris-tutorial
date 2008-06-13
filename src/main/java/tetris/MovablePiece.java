@@ -62,6 +62,33 @@ public class MovablePiece implements Grid {
     }
 
     public char cellAt(int absRow, int absCol) {
-        return piece.cellAt(absRow - relRow, absCol - relCol);
+        Loc loc = new Abs(absRow, absCol).toLoc();
+        return piece.cellAt(loc.locRow, loc.locCol);
+    }
+
+    private class Abs {
+
+        private final int absRow;
+        private final int absCol;
+
+        private Abs(int absRow, int absCol) {
+            this.absRow = absRow;
+            this.absCol = absCol;
+        }
+
+        public Loc toLoc() {
+            return new Loc(absRow - relRow, absCol - relCol);
+        }
+    }
+
+    private class Loc {
+
+        private final int locRow;
+        private final int locCol;
+
+        private Loc(int locRow, int locCol) {
+            this.locRow = locRow;
+            this.locCol = locCol;
+        }
     }
 }
