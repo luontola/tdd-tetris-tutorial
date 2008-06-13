@@ -28,31 +28,31 @@ public class RotatingTetrominoesTest {
 
         protected void setUp() throws Exception {
             shape = new Tetrominoe(1, 0, "" +
-                    ".YY\n" +
-                    ".YY\n" +
+                    ".OO\n" +
+                    ".OO\n" +
                     "...\n");
         }
 
         public void testIsShapedLikeO() {
             assertEquals("" +
-                    ".YY\n" +
-                    ".YY\n" +
+                    ".OO\n" +
+                    ".OO\n" +
                     "...\n", shape.toString());
         }
 
         public void testCanNotBeRotatedRight() {
             shape = shape.rotateRight();
             assertEquals("" +
-                    ".YY\n" +
-                    ".YY\n" +
+                    ".OO\n" +
+                    ".OO\n" +
                     "...\n", shape.toString());
         }
 
         public void testCanNotBeRotatedLeft() {
             shape = shape.rotateLeft();
             assertEquals("" +
-                    ".YY\n" +
-                    ".YY\n" +
+                    ".OO\n" +
+                    ".OO\n" +
                     "...\n", shape.toString());
         }
     }
@@ -65,7 +65,7 @@ public class RotatingTetrominoesTest {
             shape = new Tetrominoe(2, 1, "" +
                     ".....\n" +
                     ".....\n" +
-                    ".CCCC\n" +
+                    ".IIII\n" +
                     ".....\n" +
                     ".....\n");
         }
@@ -74,7 +74,7 @@ public class RotatingTetrominoesTest {
             assertEquals("" +
                     ".....\n" +
                     ".....\n" +
-                    ".CCCC\n" +
+                    ".IIII\n" +
                     ".....\n" +
                     ".....\n", shape.toString());
         }
@@ -82,20 +82,20 @@ public class RotatingTetrominoesTest {
         public void testCanBeRotatedRightOnce() {
             shape = shape.rotateRight();
             assertEquals("" +
-                    "..C..\n" +
-                    "..C..\n" +
-                    "..C..\n" +
-                    "..C..\n" +
+                    "..I..\n" +
+                    "..I..\n" +
+                    "..I..\n" +
+                    "..I..\n" +
                     ".....\n", shape.toString());
         }
 
         public void testCanBeRotatedLeftOnce() {
             shape = shape.rotateLeft();
             assertEquals("" +
-                    "..C..\n" +
-                    "..C..\n" +
-                    "..C..\n" +
-                    "..C..\n" +
+                    "..I..\n" +
+                    "..I..\n" +
+                    "..I..\n" +
+                    "..I..\n" +
                     ".....\n", shape.toString());
         }
 
