@@ -20,6 +20,14 @@ public class Piece {
         this.blocks = linesToArrays(blocks);
     }
 
+    public void rotateRight() {
+
+    }
+
+    public String toString() {
+        return arraysToLines(blocks);
+    }
+
     private static char[][] linesToArrays(String blocks) {
         String[] lines = blocks.split("\n");
         char[][] x = new char[lines.length][lines.length];
@@ -31,22 +39,14 @@ public class Piece {
         return x;
     }
 
-    public String toString() {
-        return arraysToLines(blocks);
-    }
-
     private static String arraysToLines(char[][] x) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < x.length; i++) {
-            for (int j = 0; j < x[i].length; j++) {
-                sb.append(x[i][j]);
+        for (char[] line : x) {
+            for (char c : line) {
+                sb.append(c);
             }
             sb.append('\n');
         }
         return sb.toString();
-    }
-
-    public void rotateRight() {
-
     }
 }
