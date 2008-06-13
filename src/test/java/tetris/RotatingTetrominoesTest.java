@@ -125,5 +125,23 @@ public class RotatingTetrominoesTest {
                     "TTT\n" +
                     "...\n", shape.toString());
         }
+
+        public void testCanBeRotatedRightThreeTimes() {
+            shape = shape.rotateRight();
+            assertEquals("" +
+                    ".T.\n" +
+                    ".TT\n" +
+                    ".T.\n", shape.toString());
+            shape = shape.rotateRight();
+            assertEquals("" +
+                    "...\n" +
+                    "TTT\n" +
+                    ".T.\n", shape.toString());
+            shape = shape.rotateRight();
+            assertEquals("" +
+                    ".T.\n" +
+                    "TT.\n" +
+                    ".T.\n", shape.toString());
+        }
     }
 }
