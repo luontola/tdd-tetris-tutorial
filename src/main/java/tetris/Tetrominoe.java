@@ -12,9 +12,9 @@ package tetris;
  * @author orfjackal
  * @since Jun 13, 2008
  */
-public class Tetrominoe {
+public class Tetrominoe implements Rotatable {
 
-    private final Piece piece;
+    private final Rotatable piece;
 
     public Tetrominoe(String blocks) {
         piece = new Piece(blocks);
@@ -25,6 +25,10 @@ public class Tetrominoe {
     }
 
     public Tetrominoe rotateRight() {
+        return this;
+    }
+
+    public Tetrominoe rotateLeft() {
         return this;
     }
 }
