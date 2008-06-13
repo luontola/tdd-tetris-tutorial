@@ -50,10 +50,6 @@ public class Piece implements Grid, Rotatable {
         return rotateRight().rotateRight().rotateRight();
     }
 
-    public String toString() {
-        return new GridAsciiView(this).toString();
-    }
-
     /**
      * Coordinates when rotating a 3x3 grid right:
      * <pre>
@@ -81,6 +77,7 @@ public class Piece implements Grid, Rotatable {
      * 1-2      2-3
      * 1-3      3-3
      * 1-4      4-3
+     * ...
      * </pre>
      */
     private static char[][] rotateRight(char[][] x) {
@@ -91,5 +88,9 @@ public class Piece implements Grid, Rotatable {
             }
         }
         return rotated;
+    }
+
+    public String toString() {
+        return new GridAsciiView(this).toString();
     }
 }
