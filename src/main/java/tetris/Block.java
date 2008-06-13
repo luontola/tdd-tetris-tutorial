@@ -12,7 +12,7 @@ package tetris;
  * @author orfjackal
  * @since Jun 6, 2008
  */
-public class Block {
+public class Block implements Grid {
 
     private final int row;
     private final int col;
@@ -50,5 +50,17 @@ public class Block {
 
     public Block moveDown() {
         return new Block(row + 1, col, style);
+    }
+
+    public int rows() {
+        return 1;
+    }
+
+    public int columns() {
+        return 1;
+    }
+
+    public char cellAt(int row, int col) {
+        return style;
     }
 }
