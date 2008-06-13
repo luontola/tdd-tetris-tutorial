@@ -32,7 +32,13 @@ public class ControllingFallingPiecesTest {
         }
 
         public void testItStartsFromTopMiddle() {
-            // TODO
+            assertEquals("" +
+                    "..TTT...\n" +
+                    "...T....\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n", board.toString());
         }
     }
 }
