@@ -78,5 +78,15 @@ public class RotatingPiecesTest {
                     ".....\n" +
                     ".....\n", piece.toString());
         }
+
+        public void testCanBeRotatedRight() {
+            piece = piece.rotateRight();
+            assertEquals("" +
+                    ".....\n" +
+                    ".....\n" +
+                    "..XXX\n" +
+                    "...XX\n" +
+                    "....X\n", piece.toString());
+        }
     }
 }
