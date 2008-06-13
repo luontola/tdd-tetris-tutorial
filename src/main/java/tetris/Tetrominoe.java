@@ -14,6 +14,7 @@ package tetris;
  */
 public class Tetrominoe implements Rotatable {
 
+    // For TGM's rotation rules, see http://bsixcentdouze.free.fr/tc/tgm-en/tgm.html
     public static final Tetrominoe I_SHAPE = new Tetrominoe(2, 1, "" +
             ".....\n" +
             ".....\n" +
@@ -33,17 +34,17 @@ public class Tetrominoe implements Rotatable {
             ".OO\n" +
             "...\n");
     public static final Tetrominoe S_SHAPE = new Tetrominoe(2, 0, "" +
+            "...\n" +
             ".SS\n" +
-            "SS.\n" +
-            "...\n");
+            "SS.\n");
     public static final Tetrominoe T_SHAPE = new Tetrominoe(4, 0, "" +
             ".T.\n" +
             "TTT\n" +
             "...\n");
     public static final Tetrominoe Z_SHAPE = new Tetrominoe(2, 1, "" +
+            "...\n" +
             "ZZ.\n" +
-            ".ZZ\n" +
-            "...\n");
+            ".ZZ\n");
 
     private final Rotatable[] rotations;
     private final int currentRotation;
