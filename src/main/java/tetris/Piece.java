@@ -26,7 +26,7 @@ public class Piece {
 
 
     /**
-     * Coordinate changes when rotating right:
+     * Coordinates when rotating a 3x3 grid right:
      * <pre>
      * before   after
      * 0-0      0-2
@@ -44,7 +44,7 @@ public class Piece {
         char[][] rotated = new char[blocks.length][blocks.length];
         for (int i = 0; i < blocks.length; i++) {
             for (int j = 0; j < blocks[i].length; j++) {
-                rotated[i][j] = blocks[i][j];
+                rotated[j][2 - i] = blocks[i][j];
             }
         }
         return new Piece(rotated);
