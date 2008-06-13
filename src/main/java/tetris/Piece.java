@@ -21,7 +21,7 @@ public class Piece implements Grid, Rotatable {
      * and the length of the edge must be odd.
      */
     public Piece(String shape) {
-        this.blocks = linesToArrays(shape);
+        this.blocks = GridAsciiView.fromString(shape);
         assert blocks.length == blocks[0].length;
         assert blocks.length % 2 == 1;
     }
@@ -52,17 +52,6 @@ public class Piece implements Grid, Rotatable {
 
     public String toString() {
         return new GridAsciiView(this).toString();
-    }
-
-    private static char[][] linesToArrays(String blocks) {
-        String[] lines = blocks.split("\n");
-        char[][] x = new char[lines.length][lines.length];
-        for (int i = 0; i < x.length; i++) {
-            for (int j = 0; j < x[i].length; j++) {
-                x[i][j] = lines[i].charAt(j);
-            }
-        }
-        return x;
     }
 
     /**
