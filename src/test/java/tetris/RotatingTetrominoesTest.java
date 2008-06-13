@@ -49,7 +49,7 @@ public class RotatingTetrominoesTest {
         }
 
         public void testCanNotBeRotatedLeft() {
-            shape = shape.rotateRight();
+            shape = shape.rotateLeft();
             assertEquals("" +
                     ".YY\n" +
                     ".YY\n" +
