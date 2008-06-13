@@ -27,10 +27,7 @@ public class RotatingTetrominoesTest {
         private Tetrominoe shape;
 
         protected void setUp() throws Exception {
-            shape = new Tetrominoe(1, 0, "" +
-                    ".OO\n" +
-                    ".OO\n" +
-                    "...\n");
+            shape = Tetrominoe.O_SHAPE;
         }
 
         public void testIsShapedLikeO() {
@@ -62,12 +59,7 @@ public class RotatingTetrominoesTest {
         private Tetrominoe shape;
 
         protected void setUp() throws Exception {
-            shape = new Tetrominoe(2, 1, "" +
-                    ".....\n" +
-                    ".....\n" +
-                    ".IIII\n" +
-                    ".....\n" +
-                    ".....\n");
+            shape = Tetrominoe.I_SHAPE;
         }
 
         public void testIsShapedLikeI() {
@@ -113,10 +105,7 @@ public class RotatingTetrominoesTest {
         private Tetrominoe shape;
 
         protected void setUp() throws Exception {
-            shape = new Tetrominoe(4, 0, "" +
-                    ".T.\n" +
-                    "TTT\n" +
-                    "...\n");
+            shape = Tetrominoe.T_SHAPE;
         }
 
         public void testIsShapedLikeT() {

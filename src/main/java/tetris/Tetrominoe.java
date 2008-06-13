@@ -14,6 +14,21 @@ package tetris;
  */
 public class Tetrominoe implements Rotatable {
 
+    public static final Tetrominoe I_SHAPE = new Tetrominoe(2, 1, "" +
+            ".....\n" +
+            ".....\n" +
+            ".IIII\n" +
+            ".....\n" +
+            ".....\n");
+    public static final Tetrominoe O_SHAPE = new Tetrominoe(1, 0, "" +
+            ".OO\n" +
+            ".OO\n" +
+            "...\n");
+    public static final Tetrominoe T_SHAPE = new Tetrominoe(4, 0, "" +
+            ".T.\n" +
+            "TTT\n" +
+            "...\n");
+
     private final Rotatable[] rotations;
     private final int currentRotation;
 
