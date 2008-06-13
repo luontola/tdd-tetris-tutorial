@@ -70,7 +70,7 @@ public class Board implements Grid {
 
 
     private void copyToBoard(Block block) {
-        blocks[block.row()][block.col()] = block.style();
+        blocks[block.row()][block.col()] = block.cellAt(block.row(), block.col());
     }
 
     public int rows() {
@@ -83,7 +83,7 @@ public class Board implements Grid {
 
     public char cellAt(int row, int col) {
         if (fallingBlock != null && fallingBlock.isAt(row, col)) {
-            return fallingBlock.style();
+            return fallingBlock.cellAt(row, col);
         } else {
             return blocks[row][col];
         }

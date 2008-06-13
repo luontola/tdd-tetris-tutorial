@@ -16,16 +16,20 @@ public class Block implements Grid {
 
     private final int row;
     private final int col;
-    private final char style;
+    private final RotatableGrid piece;
 
     public Block(char style) {
-        this(0, 0, style);
+        this(new Piece(style + "\n"));
     }
 
-    private Block(int row, int col, char style) {
+    public Block(RotatableGrid piece) {
+        this(0, 0, piece);
+    }
+
+    public Block(int row, int col, RotatableGrid piece) {
         this.row = row;
         this.col = col;
-        this.style = style;
+        this.piece = piece;
     }
 
     public int row() {
@@ -36,31 +40,27 @@ public class Block implements Grid {
         return col;
     }
 
-    public char style() {
-        return style;
-    }
-
     public boolean isAt(int row, int col) {
         return row == this.row && col == this.col;
     }
 
     public Block moveTo(int row, int col) {
-        return new Block(row, col, style);
+        return new Block(row, col, piece);
     }
 
     public Block moveDown() {
-        return new Block(row + 1, col, style);
+        return new Block(row + 1, col, piece);
     }
 
     public int rows() {
-        return 1;
+        return piece.rows();
     }
 
     public int columns() {
-        return 1;
+        return piece.columns();
     }
 
     public char cellAt(int row, int col) {
-        return style;
+        return piece.cellAt(row - this.row, col - this.col);
     }
 }
