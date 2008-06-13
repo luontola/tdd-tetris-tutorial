@@ -20,8 +20,18 @@ public class Piece {
         this.blocks = linesToArrays(blocks);
     }
 
-    public void rotateRight() {
+    public Piece(char[][] blocks) {
+        this.blocks = blocks;
+    }
 
+    public Piece rotateRight() {
+        char[][] rotated = new char[blocks.length][blocks.length];
+        for (int i = 0; i < blocks.length; i++) {
+            for (int j = 0; j < blocks[i].length; j++) {
+                rotated[i][j] = blocks[i][j];
+            }
+        }
+        return new Piece(rotated);
     }
 
     public String toString() {
