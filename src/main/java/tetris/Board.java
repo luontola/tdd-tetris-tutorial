@@ -28,11 +28,20 @@ public class Board implements Table {
         }
     }
 
-    public void drop(Block block) {
-        if (isFallingBlock()) {
-            throw new IllegalStateException("Another block may not be dropped when one is already falling");
+    public int rows() {
+        return board.length;
+    }
+
+    public int columns() {
+        return board[0].length;
+    }
+
+    public char cellAt(int row, int col) {
+        if (fallingBlock != null && fallingBlock.isAt(row, col)) {
+            return fallingBlock.style();
+        } else {
+            return board[row][col];
         }
-        fallingBlock = block.moveTo(0, columns() / 2);
     }
 
     public void tick() {
@@ -44,18 +53,21 @@ public class Board implements Table {
         }
     }
 
-    public boolean isFallingBlock() {
+    public void drop(Block block) {
+        if (hasFallingBlock()) {
+            throw new IllegalStateException("Another block may not be dropped when one is already falling");
+        }
+        fallingBlock = block.moveTo(0, columns() / 2);
+    }
+
+    public boolean hasFallingBlock() {
         return fallingBlock != null;
     }
 
     private void stopFallingBlock() {
-        assert isFallingBlock();
+        assert hasFallingBlock();
         copyToBoard(fallingBlock);
         fallingBlock = null;
-    }
-
-    private void copyToBoard(Block block) {
-        board[block.row()][block.col()] = block.style();
     }
 
     private boolean conflictsWithBoard(Block block) {
@@ -70,23 +82,11 @@ public class Board implements Table {
         return board[block.row()][block.col()] != EMPTY;
     }
 
+    private void copyToBoard(Block block) {
+        board[block.row()][block.col()] = block.style();
+    }
+
     public String toString() {
         return new TableAsciiView(this).toString();
-    }
-
-    public char cellAt(int row, int col) {
-        if (fallingBlock != null && fallingBlock.isAt(row, col)) {
-            return fallingBlock.style();
-        } else {
-            return board[row][col];
-        }
-    }
-
-    public int rows() {
-        return board.length;
-    }
-
-    public int columns() {
-        return board[0].length;
     }
 }

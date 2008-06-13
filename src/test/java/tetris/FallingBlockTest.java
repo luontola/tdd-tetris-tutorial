@@ -38,7 +38,7 @@ public class FallingBlockTest {
         }
 
         public void testHasNoFallingBlocks() {
-            assertFalse(board.isFallingBlock());
+            assertFalse(board.hasFallingBlock());
         }
     }
 
@@ -52,7 +52,7 @@ public class FallingBlockTest {
         }
 
         public void testTheBlockIsFalling() {
-            assertTrue(board.isFallingBlock());
+            assertTrue(board.hasFallingBlock());
         }
 
         public void testItStartsFromTheTopMiddle() {
@@ -96,7 +96,7 @@ public class FallingBlockTest {
         }
 
         public void testItIsStillFallingOnTheLastRow() {
-            assertTrue(board.isFallingBlock());
+            assertTrue(board.hasFallingBlock());
             assertEquals("" +
                     "...\n" +
                     "...\n" +
@@ -105,7 +105,7 @@ public class FallingBlockTest {
 
         public void testItStopsWhenItHitsTheBottom() {
             board.tick();
-            assertFalse(board.isFallingBlock());
+            assertFalse(board.hasFallingBlock());
             assertEquals("" +
                     "...\n" +
                     "...\n" +
@@ -123,7 +123,7 @@ public class FallingBlockTest {
             board.tick();
             board.tick();
             board.tick();
-            assertFalse(board.isFallingBlock());
+            assertFalse(board.hasFallingBlock());
             assertEquals("" +
                     "...\n" +
                     "...\n" +
@@ -133,7 +133,7 @@ public class FallingBlockTest {
         }
 
         public void testItIsStillFallingRightAboveTheOtherBlock() {
-            assertTrue(board.isFallingBlock());
+            assertTrue(board.hasFallingBlock());
             assertEquals("" +
                     "...\n" +
                     ".Y.\n" +
@@ -142,7 +142,7 @@ public class FallingBlockTest {
 
         public void testItStopsWhenItHitsTheOtherBlock() {
             board.tick();
-            assertFalse(board.isFallingBlock());
+            assertFalse(board.hasFallingBlock());
             assertEquals("" +
                     "...\n" +
                     ".Y.\n" +
