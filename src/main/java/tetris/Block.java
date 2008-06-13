@@ -16,20 +16,16 @@ public class Block implements RotatableGrid {
 
     private final int row;
     private final int col;
-    private final RotatableGrid piece;
+    private final char style;
 
     public Block(char style) {
-        this(new Piece(style + "\n"));
+        this(0, 0, style);
     }
 
-    public Block(RotatableGrid piece) {
-        this(0, 0, piece);
-    }
-
-    public Block(int row, int col, RotatableGrid piece) {
+    private Block(int row, int col, char style) {
         this.row = row;
         this.col = col;
-        this.piece = piece;
+        this.style = style;
     }
 
     public int row() {
@@ -45,23 +41,23 @@ public class Block implements RotatableGrid {
     }
 
     public Block moveTo(int row, int col) {
-        return new Block(row, col, piece);
+        return new Block(row, col, style);
     }
 
     public Block moveDown() {
-        return new Block(row + 1, col, piece);
+        return new Block(row + 1, col, style);
     }
 
     public int rows() {
-        return piece.rows();
+        return 1;
     }
 
     public int columns() {
-        return piece.columns();
+        return 1;
     }
 
     public char cellAt(int row, int col) {
-        return piece.cellAt(row - this.row, col - this.col);
+        return style;
     }
 
     public RotatableGrid rotateRight() {
