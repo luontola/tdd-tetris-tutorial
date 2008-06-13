@@ -95,7 +95,7 @@ public class Piece {
         char[][] rotated = new char[x.length][x.length];
         for (int i = 0; i < x.length; i++) {
             for (int j = 0; j < x[i].length; j++) {
-                rotated[j][2 - i] = x[i][j];
+                rotated[j][(x.length - 1) - i] = x[i][j];
             }
         }
         return rotated;
