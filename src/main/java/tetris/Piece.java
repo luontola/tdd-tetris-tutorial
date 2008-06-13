@@ -14,6 +14,13 @@ package tetris;
  */
 public class Piece {
 
+    private final String blocks;
+
     public Piece(String blocks) {
+        this.blocks = blocks;
+    }
+
+    public String toString() {
+        return blocks;
     }
 }
