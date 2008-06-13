@@ -98,5 +98,13 @@ public class RotatingTetrominoesTest {
                     "..C..\n" +
                     ".....\n", shape.toString());
         }
+
+        public void testRotatingTwiseWillReturnToTheOriginalShape() {
+            String originalShape = shape.toString();
+            shape = shape.rotateRight().rotateRight();
+            assertEquals(originalShape, shape.toString());
+            shape = shape.rotateLeft().rotateLeft();
+            assertEquals(originalShape, shape.toString());
+        }
     }
 }
