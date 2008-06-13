@@ -71,18 +71,7 @@ public class Board implements Table {
     }
 
     public String toString() {
-        return visualize(this);
-    }
-
-    private static String visualize(Table t) {
-        StringBuilder sb = new StringBuilder();
-        for (int row = 0; row < t.rows(); row++) {
-            for (int col = 0; col < t.columns(); col++) {
-                sb.append(t.cellAt(row, col));
-            }
-            sb.append('\n');
-        }
-        return sb.toString();
+        return TableAsciiView.visualize(this);
     }
 
     public char cellAt(int row, int col) {
