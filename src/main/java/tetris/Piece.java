@@ -50,6 +50,10 @@ public class Piece {
         return new Piece(rotated);
     }
 
+    public Piece rotateLeft() {
+        return rotateRight().rotateRight().rotateRight();
+    }
+
     public String toString() {
         return arraysToLines(blocks);
     }
@@ -74,9 +78,5 @@ public class Piece {
             sb.append('\n');
         }
         return sb.toString();
-    }
-
-    public Piece rotateLeft() {
-        return null;
     }
 }
