@@ -14,42 +14,43 @@ package tetris;
  */
 public class MovablePiece implements Grid {
 
-    private final int row;
-    private final int col;
-    private final RotatableGrid piece;
+    // Coordinates in use:
+    // 'abs' absolute = coordinate in the parent grid (game board)
+    // 'loc' local    = coordinate of the contained piece
+    // 'rel' relative = the local coordinate [0,0] in absolute coordinates
 
-    public MovablePiece(char style) {
-        this(new Piece(style + "\n"));
-    }
+    private final int relRow;
+    private final int relCol;
+    private final RotatableGrid piece;
 
     public MovablePiece(RotatableGrid piece) {
         this(0, 0, piece);
     }
 
-    public MovablePiece(int row, int col, RotatableGrid piece) {
-        this.row = row;
-        this.col = col;
+    private MovablePiece(int relRow, int relCol, RotatableGrid piece) {
+        this.relRow = relRow;
+        this.relCol = relCol;
         this.piece = piece;
     }
 
-    public int row() {
-        return row;
+    public int relRow() {
+        return relRow;
     }
 
-    public int col() {
-        return col;
+    public int relCol() {
+        return relCol;
     }
 
-    public boolean isAt(int row, int col) {
-        return row == this.row && col == this.col;
+    public boolean isAt(int absRow, int absCol) {
+        return absRow == relRow && absCol == relCol;
     }
 
-    public MovablePiece moveTo(int row, int col) {
-        return new MovablePiece(row, col, piece);
+    public MovablePiece moveTo(int relRow, int relCol) {
+        return new MovablePiece(relRow, relCol, piece);
     }
 
     public MovablePiece moveDown() {
-        return new MovablePiece(row + 1, col, piece);
+        return new MovablePiece(relRow + 1, relCol, piece);
     }
 
     public int rows() {
@@ -60,7 +61,7 @@ public class MovablePiece implements Grid {
         return piece.columns();
     }
 
-    public char cellAt(int row, int col) {
-        return piece.cellAt(row - this.row, col - this.col);
+    public char cellAt(int absRow, int absCol) {
+        return piece.cellAt(absRow - relRow, absCol - relCol);
     }
 }

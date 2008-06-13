@@ -40,11 +40,11 @@ public class Board implements Grid {
     }
 
     private boolean outsideBoard(MovablePiece block) {
-        return block.row() >= rows();
+        return block.relRow() >= rows();
     }
 
     private boolean hitsAnotherBlock(MovablePiece block) {
-        return blocks[block.row()][block.col()] != EMPTY;
+        return blocks[block.relRow()][block.relCol()] != EMPTY;
     }
 
 
@@ -67,7 +67,7 @@ public class Board implements Grid {
 
 
     private void copyToBoard(MovablePiece block) {
-        blocks[block.row()][block.col()] = block.cellAt(block.row(), block.col());
+        blocks[block.relRow()][block.relCol()] = block.cellAt(block.relRow(), block.relCol());
     }
 
     public int rows() {
