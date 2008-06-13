@@ -159,4 +159,21 @@ public class RotatingTetrominoesTest {
             assertEquals(originalShape, shape.toString());
         }
     }
+
+    public static class AllShapeInstances extends TestCase {
+
+        private Tetrominoe shape;
+
+        protected void setUp() throws Exception {
+            shape = Tetrominoe.I_SHAPE;
+        }
+
+        public void testAreImmutable() {
+            String original = shape.toString();
+            shape.rotateRight();
+            assertEquals(original, shape.toString());
+            shape.rotateLeft();
+            assertEquals(original, shape.toString());
+        }
+    }
 }
