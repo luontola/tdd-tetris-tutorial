@@ -32,10 +32,11 @@ public class Piece {
     }
 
     public String toString() {
+        char[][] x = blocks;
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < blocks.length; i++) {
-            for (int j = 0; j < blocks[i].length; j++) {
-                sb.append(blocks[i][j]);
+        for (int i = 0; i < x.length; i++) {
+            for (int j = 0; j < x[i].length; j++) {
+                sb.append(x[i][j]);
             }
             sb.append('\n');
         }
