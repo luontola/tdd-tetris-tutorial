@@ -90,7 +90,7 @@ public class RotatingTetrominoesTest {
                     ".T.\n", shape.toString());
         }
 
-        public void testRotatingFourTimesWillReturnToTheOriginalShape() {
+        public void testRotatingItFourTimesWillGoBackToTheOriginalShape() {
             String originalShape = shape.toString();
             shape = shape.rotateRight().rotateRight().rotateRight().rotateRight();
             assertEquals(originalShape, shape.toString());
@@ -136,7 +136,7 @@ public class RotatingTetrominoesTest {
                     "..I..\n", shape.toString());
         }
 
-        public void testRotatingTwiseWillReturnToTheOriginalShape() {
+        public void testRotatingItTwiseWillGetBackToTheOriginalShape() {
             String originalShape = shape.toString();
             shape = shape.rotateRight().rotateRight();
             assertEquals(originalShape, shape.toString());

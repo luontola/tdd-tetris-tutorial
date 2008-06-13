@@ -16,8 +16,6 @@ import java.util.Arrays;
  */
 public class Board implements Grid {
 
-    private static final char EMPTY = '.';
-
     private Block fallingBlock;
     private char[][] blocks;
 
@@ -25,22 +23,6 @@ public class Board implements Grid {
         blocks = new char[rows][columns];
         for (char[] tmp : blocks) {
             Arrays.fill(tmp, EMPTY);
-        }
-    }
-
-    public int rows() {
-        return blocks.length;
-    }
-
-    public int columns() {
-        return blocks[0].length;
-    }
-
-    public char cellAt(int row, int col) {
-        if (fallingBlock != null && fallingBlock.isAt(row, col)) {
-            return fallingBlock.style();
-        } else {
-            return blocks[row][col];
         }
     }
 
@@ -52,6 +34,19 @@ public class Board implements Grid {
             fallingBlock = test;
         }
     }
+
+    private boolean conflictsWithBoard(Block block) {
+        return outsideBoard(block) || hitsAnotherBlock(block);
+    }
+
+    private boolean outsideBoard(Block block) {
+        return block.row() >= rows();
+    }
+
+    private boolean hitsAnotherBlock(Block block) {
+        return blocks[block.row()][block.col()] != EMPTY;
+    }
+
 
     public void drop(Block block) {
         if (hasFallingBlock()) {
@@ -70,20 +65,25 @@ public class Board implements Grid {
         fallingBlock = null;
     }
 
-    private boolean conflictsWithBoard(Block block) {
-        return outsideBoard(block) || hitsAnotherBlock(block);
-    }
-
-    private boolean outsideBoard(Block block) {
-        return block.row() >= rows();
-    }
-
-    private boolean hitsAnotherBlock(Block block) {
-        return blocks[block.row()][block.col()] != EMPTY;
-    }
-
     private void copyToBoard(Block block) {
         blocks[block.row()][block.col()] = block.style();
+    }
+
+
+    public int rows() {
+        return blocks.length;
+    }
+
+    public int columns() {
+        return blocks[0].length;
+    }
+
+    public char cellAt(int row, int col) {
+        if (fallingBlock != null && fallingBlock.isAt(row, col)) {
+            return fallingBlock.style();
+        } else {
+            return blocks[row][col];
+        }
     }
 
     public String toString() {

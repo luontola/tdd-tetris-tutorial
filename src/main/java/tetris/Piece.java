@@ -12,7 +12,7 @@ package tetris;
  * @author orfjackal
  * @since Jun 13, 2008
  */
-public class Piece implements Grid, Rotatable {
+public class Piece implements Rotatable, Grid {
 
     private final char[][] blocks;
 
@@ -28,18 +28,6 @@ public class Piece implements Grid, Rotatable {
 
     private Piece(char[][] blocks) {
         this.blocks = blocks;
-    }
-
-    public int rows() {
-        return blocks.length;
-    }
-
-    public int columns() {
-        return blocks[0].length;
-    }
-
-    public char cellAt(int row, int col) {
-        return blocks[row][col];
     }
 
     public Piece rotateRight() {
@@ -88,6 +76,18 @@ public class Piece implements Grid, Rotatable {
             }
         }
         return rotated;
+    }
+
+    public int rows() {
+        return blocks.length;
+    }
+
+    public int columns() {
+        return blocks[0].length;
+    }
+
+    public char cellAt(int row, int col) {
+        return blocks[row][col];
     }
 
     public String toString() {
