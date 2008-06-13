@@ -18,12 +18,13 @@ public class Piece {
 
     public Piece(String blocks) {
         String[] lines = blocks.split("\n");
-        this.blocks = new char[lines.length][lines.length];
-        for (int i = 0; i < this.blocks.length; i++) {
-            for (int j = 0; j < this.blocks[i].length; j++) {
-                this.blocks[i][j] = lines[i].charAt(j);
+        char[][] x = new char[lines.length][lines.length];
+        for (int i = 0; i < x.length; i++) {
+            for (int j = 0; j < x[i].length; j++) {
+                x[i][j] = lines[i].charAt(j);
             }
         }
+        this.blocks = x;
     }
 
     public String toString() {
