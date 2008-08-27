@@ -65,5 +65,17 @@ public class FallingPiecesTest {
                     "....T...\n" +
                     "...TTT..\n", board.toString());
         }
+
+        public void testItStopsWhenItHitsTheBottom() {
+            board.tick();
+            assertFalse(board.hasFalling());
+            assertEquals("" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n" +
+                    "....T...\n" +
+                    "...TTT..\n", board.toString());
+        }
     }
 }
