@@ -44,6 +44,9 @@ public class MovablePiece implements Grid {
     public boolean outsideBoard(Board board) {
         for (int row = 0; row < piece.rows(); row++) {
             for (int col = 0; col < piece.columns(); col++) {
+                if (piece.cellAt(row, col) == EMPTY) {
+                    continue;
+                }
                 Abs abs = new Loc(row, col).toAbs();
                 if (abs.absRow >= board.rows()) {
                     return true;
