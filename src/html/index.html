@@ -28,12 +28,53 @@
 </p>
 
 <ol>
-    <li><a href="exercises/FallingBlocksTest.java"><code>FallingBlocksTest.java</code></a></li>
-    <li><a href="exercises/RotatingPiecesOfBlocksTest.java"><code>RotatingPiecesOfBlocksTest.java</code></a></li>
-    <li><a href="exercises/RotatingTetrominoesTest.java"><code>RotatingTetrominoesTest.java</code></a></li>
-    <li><a href="exercises/FallingPiecesTest.java"><code>FallingPiecesTest.java</code></a></li>
-    <li><a href="exercises/MovingAFallingPieceTest.java"><code>MovingAFallingPieceTest.java</code></a></li>
-    <li><a href="exercises/RotatingAFallingPieceTest.java"><code>RotatingAFallingPieceTest.java</code></a></li>
+    <li><a href="exercises/FallingBlocksTest.java"><code>FallingBlocksTest.java</code></a>
+
+        <p>In Tetris, the most important feature is that there are blocks which fall down, so that is the first
+            behaviour which we will specify by writing tests. It is good to start the writing of a program with a very
+            trivial test. In this case, we make sure that we have an empty game board.
+        </p>
+    </li>
+    <li><a href="exercises/RotatingPiecesOfBlocksTest.java"><code>RotatingPiecesOfBlocksTest.java</code></a>
+
+        <p>Rotating the pieces in Tetris is also very important, so let's code that next. You might need pen and paper
+            when figuring out how the shape coordinates change when the shape is rotated.
+        </p>
+
+        <p>(I decided to go for a generic method of rotating any shapes. Another option would have been to hard-code the
+            rotations of each shape. Both have their pros and cons. But even if this decision would prove to be bad when
+            the game expands beyond this tutorial, good test coverage and decoupled code will make it possible to change
+            it afterwards.)
+        </p>
+    </li>
+    <li><a href="exercises/RotatingTetrominoesTest.java"><code>RotatingTetrominoesTest.java</code></a>
+
+        <p><a href="http://en.wikipedia.org/wiki/Tetromino">Tetrominoes</a> can have 1, 2 or 4 different positions when
+            they are rotated. Now we can take advantage of the shape rotation code which we wrote just a moment ago.
+        </p>
+    </li>
+    <li><a href="exercises/FallingPiecesTest.java"><code>FallingPiecesTest.java</code></a>
+
+        <p>Next we will connect the falling blocks and the rotatable pieces. In order to make the first test pass, you
+            will probably need to refactor the code quite (for me this took 1½ hours). When refactoring, you must keep
+            the tests passing between every small change, or you will end up in <a
+                href="http://c2.c2.com/cgi/wiki?RefactoringHell">refactoring hell</a>. If more than five minutes has
+            passed since the last time all tests passed, revert your code to the last version from source control where
+            all tests passed.
+        </p>
+    </li>
+    <li><a href="exercises/MovingAFallingPieceTest.java"><code>MovingAFallingPieceTest.java</code></a>
+
+        <p>
+
+        </p>
+    </li>
+    <li><a href="exercises/RotatingAFallingPieceTest.java"><code>RotatingAFallingPieceTest.java</code></a>
+
+        <p>
+
+        </p>
+    </li>
 </ol>
 
 <p class="copyright">Copyright (c) 2008, Esko Luontola. All Rights Reserved.<br/>This material may be freely used for
