@@ -9,8 +9,8 @@
 package tetris;
 
 /**
- * @author orfjackal
- * @since Jun 13, 2008
+ * @author Esko Luontola
+ * @since 13.6.2008
  */
 public interface Grid {
 

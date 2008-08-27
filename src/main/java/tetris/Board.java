@@ -11,8 +11,8 @@ package tetris;
 import java.util.Arrays;
 
 /**
- * @author orfjackal
- * @since Jun 6, 2008
+ * @author Esko Luontola
+ * @since 6.6.2008
  */
 public class Board implements Grid {
 
