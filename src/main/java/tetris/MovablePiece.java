@@ -26,11 +26,11 @@ public class MovablePiece implements Grid {
     private final RotatableGrid piece;
 
     public MovablePiece(RotatableGrid piece) {
-        this(0, 0, piece);
+        this(new Point(0, 0), piece);
     }
 
-    private MovablePiece(int relRow, int relCol, RotatableGrid piece) {
-        this.rel = new Point(relRow, relCol);
+    private MovablePiece(Point rel, RotatableGrid piece) {
+        this.rel = rel;
         this.piece = piece;
     }
 
@@ -63,11 +63,11 @@ public class MovablePiece implements Grid {
     }
 
     public MovablePiece moveTo(Point rel) {
-        return new MovablePiece(rel.row, rel.col, piece);
+        return new MovablePiece(new Point(rel.row, rel.col), piece);
     }
 
     public MovablePiece moveDown() {
-        return new MovablePiece(rel.row + 1, rel.col, piece);
+        return new MovablePiece(new Point(rel.row + 1, rel.col), piece);
     }
 
     public int rows() {
