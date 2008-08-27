@@ -79,34 +79,4 @@ public class MovablePiece implements Grid {
     private Point locToAbs(Point loc) {
         return new Point(loc.row + rel.row, loc.col + rel.col);
     }
-
-    private class Abs {
-
-        private final int absRow;
-        private final int absCol;
-
-        private Abs(int absRow, int absCol) {
-            this.absRow = absRow;
-            this.absCol = absCol;
-        }
-
-        public Loc toLoc() {
-            return new Loc(absRow - rel.row, absCol - rel.col);
-        }
-    }
-
-    private class Loc {
-
-        private final int locRow;
-        private final int locCol;
-
-        private Loc(int locRow, int locCol) {
-            this.locRow = locRow;
-            this.locCol = locCol;
-        }
-
-        public Abs toAbs() {
-            return new Abs(locRow + rel.row, locCol + rel.col);
-        }
-    }
 }
