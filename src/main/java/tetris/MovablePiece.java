@@ -68,8 +68,8 @@ public class MovablePiece implements Grid {
         return piece.columns();
     }
 
-    public char cellAt(Point absPoint) {
-        Loc loc = new Abs(absPoint.row, absPoint.col).toLoc();
+    public char cellAt(Point abs) {
+        Loc loc = new Abs(abs.row, abs.col).toLoc();
         return piece.cellAt(new Point(loc.locRow, loc.locCol));
     }
 
