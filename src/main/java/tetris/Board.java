@@ -51,16 +51,6 @@ public class Board implements Grid {
         return false;
     }
 
-    private List<Point> allBoardPoints() {
-        List<Point> points = new ArrayList<Point>();
-        for (int row = 0; row < rows(); row++) {
-            for (int col = 0; col < columns(); col++) {
-                points.add(new Point(row, col));
-            }
-        }
-        return points;
-    }
-
     public void drop(RotatableGrid piece) {
         if (hasFalling()) {
             throw new IllegalStateException("Another piece may not be dropped when one is already falling");
@@ -79,15 +69,22 @@ public class Board implements Grid {
         falling = null;
     }
 
-    private void copyToBoard(MovablePiece p) {
-        for (int row = 0; row < rows(); row++) {
-            for (int col = 0; col < columns(); col++) {
-                Point point = new Point(row, col);
-                if (p.isAt(point) && p.cellAt(point) != EMPTY) {
-                    blocks[row][col] = p.cellAt(point);
-                }
+    private void copyToBoard(MovablePiece piece) {
+        for (Point point : allBoardPoints()) {
+            if (piece.isAt(point) && piece.cellAt(point) != EMPTY) {
+                blocks[point.row][point.col] = piece.cellAt(point);
             }
         }
+    }
+
+    private List<Point> allBoardPoints() {
+        List<Point> points = new ArrayList<Point>();
+        for (int row = 0; row < rows(); row++) {
+            for (int col = 0; col < columns(); col++) {
+                points.add(new Point(row, col));
+            }
+        }
+        return points;
     }
 
     public int rows() {
