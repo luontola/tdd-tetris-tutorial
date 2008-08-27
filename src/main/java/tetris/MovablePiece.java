@@ -59,7 +59,8 @@ public class MovablePiece implements Grid {
         // TODO: the empty cells of the moving piece may overlap stationary non-empty cells
         Loc loc = new Abs(absRow, absCol).toLoc();
         return loc.locRow >= 0 && loc.locRow < piece.rows()
-                && loc.locCol >= 0 && loc.locCol < piece.columns();
+                && loc.locCol >= 0 && loc.locCol < piece.columns()
+                && piece.cellAt(loc.locRow, loc.locCol) != EMPTY;
     }
 
     public MovablePiece moveTo(int relRow, int relCol) {
