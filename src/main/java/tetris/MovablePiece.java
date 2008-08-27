@@ -42,7 +42,15 @@ public class MovablePiece implements Grid {
     }
 
     public boolean outsideBoard(Board board) {
-        return relRow() >= board.rows();
+        for (int row = 0; row < piece.rows(); row++) {
+            for (int col = 0; col < piece.columns(); col++) {
+                Abs abs = new Loc(row, col).toAbs();
+                if (abs.absRow >= board.rows()) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public boolean isAt(int absRow, int absCol) {
@@ -96,6 +104,10 @@ public class MovablePiece implements Grid {
         private Loc(int locRow, int locCol) {
             this.locRow = locRow;
             this.locCol = locCol;
+        }
+
+        public Abs toAbs() {
+            return new Abs(locRow + relRow, locCol + relCol);
         }
     }
 }
