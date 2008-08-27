@@ -41,13 +41,13 @@ public class MovablePiece implements Grid {
         return relCol;
     }
 
-    public boolean outsideBoard(Board board) {
-        for (int row = 0; row < piece.rows(); row++) {
-            for (int col = 0; col < piece.columns(); col++) {
-                if (piece.cellAt(row, col) == EMPTY) {
+    public static boolean outsideBoard(MovablePiece p, Board board) {
+        for (int row = 0; row < p.piece.rows(); row++) {
+            for (int col = 0; col < p.piece.columns(); col++) {
+                if (p.piece.cellAt(row, col) == EMPTY) {
                     continue;
                 }
-                Abs abs = new Loc(row, col).toAbs();
+                Abs abs = p.new Loc(row, col).toAbs();
                 if (abs.absRow >= board.rows()) {
                     return true;
                 }

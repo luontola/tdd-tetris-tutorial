@@ -36,7 +36,7 @@ public class Board implements Grid {
     }
 
     private boolean conflictsWithBoard(MovablePiece p) {
-        return p.outsideBoard(this) || hitsStationaryBlock(p);
+        return MovablePiece.outsideBoard(p, this) || hitsStationaryBlock(p);
     }
 
     private boolean hitsStationaryBlock(MovablePiece p) {
