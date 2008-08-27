@@ -87,10 +87,10 @@ public class Board implements Grid {
     }
 
     public char cellAt(int row, int col, Point point) {
-        if (falling != null && falling.isAt(row, col)) {
-            return falling.cellAt(row, col, new Point(row, col));
+        if (falling != null && falling.isAt(point.row, point.col)) {
+            return falling.cellAt(point.row, point.col, point);
         } else {
-            return blocks[row][col];
+            return blocks[point.row][point.col];
         }
     }
 
