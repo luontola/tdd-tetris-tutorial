@@ -104,7 +104,7 @@ public class FallingPiecesTest {
             board.tick();
         }
 
-        public void testItIsStillFallingRightAboveTheOtherBlock() {
+        public void testItIsStillFallingRightAboveTheOtherPiece() {
             assertTrue(board.hasFalling());
             assertEquals("" +
                     "........\n" +
