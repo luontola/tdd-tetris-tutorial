@@ -20,10 +20,10 @@ public class Grids {
     private Grids() {
     }
 
-    public static List<Point> allPointsOf(Grid g) {
+    public static List<Point> allPointsOf(Grid grid) {
         List<Point> points = new ArrayList<Point>();
-        for (int row = 0; row < g.rows(); row++) {
-            for (int col = 0; col < g.columns(); col++) {
+        for (int row = 0; row < grid.rows(); row++) {
+            for (int col = 0; col < grid.columns(); col++) {
                 points.add(new Point(row, col));
             }
         }
