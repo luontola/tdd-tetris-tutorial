@@ -19,8 +19,7 @@ public class MovablePiece implements Grid {
     // 'loc' local    = coordinate of the contained piece
     // 'rel' relative = the local coordinate [0,0] in absolute coordinates
 
-    private final int relRow;
-    private final int relCol;
+    private final Point rel;
     private final RotatableGrid piece;
 
     public MovablePiece(RotatableGrid piece) {
@@ -28,17 +27,8 @@ public class MovablePiece implements Grid {
     }
 
     private MovablePiece(int relRow, int relCol, RotatableGrid piece) {
-        this.relRow = relRow;
-        this.relCol = relCol;
+        this.rel = new Point(relRow, relCol);
         this.piece = piece;
-    }
-
-    public int relRow() {
-        return relRow;
-    }
-
-    public int relCol() {
-        return relCol;
     }
 
     public boolean outsideBoard(int boardRows) {
@@ -67,7 +57,7 @@ public class MovablePiece implements Grid {
     }
 
     public MovablePiece moveDown() {
-        return new MovablePiece(relRow + 1, relCol, piece);
+        return new MovablePiece(rel.row + 1, rel.col, piece);
     }
 
     public int rows() {
@@ -94,7 +84,7 @@ public class MovablePiece implements Grid {
         }
 
         public Loc toLoc() {
-            return new Loc(absRow - relRow, absCol - relCol);
+            return new Loc(absRow - rel.row, absCol - rel.col);
         }
     }
 
@@ -109,7 +99,7 @@ public class MovablePiece implements Grid {
         }
 
         public Abs toAbs() {
-            return new Abs(locRow + relRow, locCol + relCol);
+            return new Abs(locRow + rel.row, locCol + rel.col);
         }
     }
 }
