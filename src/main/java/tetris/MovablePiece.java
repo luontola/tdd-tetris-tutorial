@@ -45,8 +45,8 @@ public class MovablePiece implements Grid {
         return false;
     }
 
-    public boolean isAt(int absRow, int absCol) {
-        Loc loc = new Abs(absRow, absCol).toLoc();
+    public boolean isAt(Point abs) {
+        Loc loc = new Abs(abs.row, abs.col).toLoc();
         return loc.locRow >= 0 && loc.locRow < piece.rows()
                 && loc.locCol >= 0 && loc.locCol < piece.columns()
                 && piece.cellAt(new Point(loc.locRow, loc.locCol)) != EMPTY;
