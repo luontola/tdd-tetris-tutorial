@@ -63,7 +63,13 @@ public class Board implements Grid {
 
 
     private void copyToBoard(MovablePiece p) {
-        blocks[p.relRow()][p.relCol()] = p.cellAt(p.relRow(), p.relCol());
+        for (int row = 0; row < rows(); row++) {
+            for (int col = 0; col < columns(); col++) {
+                if (p.isAt(row, col) && p.cellAt(row, col) != EMPTY) {
+                    blocks[row][col] = p.cellAt(row, col);
+                }
+            }
+        }
     }
 
     public int rows() {
