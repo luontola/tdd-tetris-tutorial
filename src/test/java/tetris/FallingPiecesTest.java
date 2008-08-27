@@ -41,4 +41,29 @@ public class FallingPiecesTest {
                     "........\n", board.toString());
         }
     }
+
+    public static class WhenAPieceReachesTheBottom extends TestCase {
+
+        private Board board;
+
+        protected void setUp() throws Exception {
+            board = new Board(6, 8);
+            board.drop(Tetrominoe.T_SHAPE);
+            board.tick();
+            board.tick();
+            board.tick();
+            board.tick();
+        }
+
+        public void testItIsStillFallingOnTheLastRow() {
+            assertTrue(board.hasFalling());
+            assertEquals("" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n" +
+                    "....T...\n" +
+                    "...TTT..\n", board.toString());
+        }
+    }
 }
