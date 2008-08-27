@@ -36,11 +36,11 @@ public class Board implements Grid {
     }
 
     private boolean conflictsWithBoard(MovablePiece p) {
-        return outsideBoard(p) || hitsStationaryBlock(p);
+        return outsideBoard(p, this) || hitsStationaryBlock(p);
     }
 
-    private boolean outsideBoard(MovablePiece p) {
-        return p.relRow() >= rows();
+    private static boolean outsideBoard(MovablePiece p, Board board) {
+        return p.relRow() >= board.rows();
     }
 
     private boolean hitsStationaryBlock(MovablePiece p) {
