@@ -95,8 +95,8 @@ public class Tetrominoe implements RotatableGrid, Grid {
         return self().columns();
     }
 
-    public char cellAt(int row, int col) {
-        return self().cellAt(row, col);
+    public char cellAt(int row, int col, Point point) {
+        return self().cellAt(row, col, new Point(row, col));
     }
 
     private Grid self() {

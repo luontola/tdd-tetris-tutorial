@@ -42,7 +42,7 @@ public class Board implements Grid {
     private boolean hitsStationaryBlock(MovablePiece p) {
         for (int row = 0; row < rows(); row++) {
             for (int col = 0; col < columns(); col++) {
-                if (p.isAt(row, col) && p.cellAt(row, col) != EMPTY
+                if (p.isAt(row, col) && p.cellAt(row, col, new Point(row, col)) != EMPTY
                         && blocks[row][col] != EMPTY) {
                     return true;
                 }
@@ -71,8 +71,8 @@ public class Board implements Grid {
     private void copyToBoard(MovablePiece p) {
         for (int row = 0; row < rows(); row++) {
             for (int col = 0; col < columns(); col++) {
-                if (p.isAt(row, col) && p.cellAt(row, col) != EMPTY) {
-                    blocks[row][col] = p.cellAt(row, col);
+                if (p.isAt(row, col) && p.cellAt(row, col, new Point(row, col)) != EMPTY) {
+                    blocks[row][col] = p.cellAt(row, col, new Point(row, col));
                 }
             }
         }
@@ -86,9 +86,9 @@ public class Board implements Grid {
         return blocks[0].length;
     }
 
-    public char cellAt(int row, int col) {
+    public char cellAt(int row, int col, Point point) {
         if (falling != null && falling.isAt(row, col)) {
-            return falling.cellAt(row, col);
+            return falling.cellAt(row, col, new Point(row, col));
         } else {
             return blocks[row][col];
         }

@@ -10,15 +10,15 @@ package tetris;
 
 /**
  * @author Esko Luontola
- * @since 13.6.2008
+ * @since 27.8.2008
  */
-public interface Grid {
+public class Point {
 
-    char EMPTY = '.';
+    public final int row;
+    public final int col;
 
-    int rows();
-
-    int columns();
-
-    char cellAt(int row, int col, Point point);
+    public Point(int row, int col) {
+        this.row = row;
+        this.col = col;
+    }
 }

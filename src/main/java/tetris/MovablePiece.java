@@ -44,7 +44,7 @@ public class MovablePiece implements Grid {
     public boolean outsideBoard(int boardRows) {
         for (int row = 0; row < piece.rows(); row++) {
             for (int col = 0; col < piece.columns(); col++) {
-                if (piece.cellAt(row, col) != EMPTY) {
+                if (piece.cellAt(row, col, new Point(row, col)) != EMPTY) {
                     Abs abs = new Loc(row, col).toAbs();
                     if (abs.absRow >= boardRows) {
                         return true;
@@ -59,7 +59,7 @@ public class MovablePiece implements Grid {
         Loc loc = new Abs(absRow, absCol).toLoc();
         return loc.locRow >= 0 && loc.locRow < piece.rows()
                 && loc.locCol >= 0 && loc.locCol < piece.columns()
-                && piece.cellAt(loc.locRow, loc.locCol) != EMPTY;
+                && piece.cellAt(loc.locRow, loc.locCol, new Point(loc.locRow, loc.locCol)) != EMPTY;
     }
 
     public MovablePiece moveTo(int relRow, int relCol) {
@@ -78,9 +78,9 @@ public class MovablePiece implements Grid {
         return piece.columns();
     }
 
-    public char cellAt(int absRow, int absCol) {
+    public char cellAt(int absRow, int absCol, Point point) {
         Loc loc = new Abs(absRow, absCol).toLoc();
-        return piece.cellAt(loc.locRow, loc.locCol);
+        return piece.cellAt(loc.locRow, loc.locCol, new Point(loc.locRow, loc.locCol));
     }
 
     private class Abs {
