@@ -21,12 +21,12 @@ public class MovingAFallingPieceTest {
         return new TestSuite(MovingAFallingPieceTest.class.getDeclaredClasses());
     }
 
-    // TODO: piece can be moved left
-    // TODO: piece can be moved right
-    // TODO: piece will not move left over over the board
-    // TODO: piece will not move right over over the board
-    // TODO: piece can not be moved left if another piece is in the way
-    // TODO: piece can not be moved right if another piece is in the way
+    // TODO: a falling piece can be moved left
+    // TODO: a falling piece can be moved right
+    // TODO: it will not move left over over the board
+    // TODO: it will not move right over over the board
+    // TODO: it can not be moved left if another piece is in the way
+    // TODO: it can not be moved right if another piece is in the way
 
     // P.S. Take into consideration, that part of the piece's area may be empty cells.
     // Only non-empty cells should take part in the collision checks.
