@@ -16,10 +16,10 @@ import junit.framework.TestSuite;
  * @author Esko Luontola
  * @since 6.6.2008
  */
-public class FallingBlockTest {
+public class FallingBlocksTest {
 
     public static Test suite() {
-        return new TestSuite(FallingBlockTest.class.getDeclaredClasses());
+        return new TestSuite(FallingBlocksTest.class.getDeclaredClasses());
     }
 
     public static class ANewBoard extends TestCase {
