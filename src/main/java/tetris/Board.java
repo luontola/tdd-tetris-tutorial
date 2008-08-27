@@ -40,7 +40,15 @@ public class Board implements Grid {
     }
 
     private boolean hitsStationaryBlock(MovablePiece p) {
-        return blocks[p.relRow()][p.relCol()] != EMPTY;
+        for (int row = 0; row < rows(); row++) {
+            for (int col = 0; col < columns(); col++) {
+                if (p.isAt(row, col) && p.cellAt(row, col) != EMPTY
+                        && blocks[row][col] != EMPTY) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public void drop(RotatableGrid piece) {
