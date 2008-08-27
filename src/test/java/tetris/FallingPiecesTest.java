@@ -78,4 +78,33 @@ public class FallingPiecesTest {
                     "...TTT..\n", board.toString());
         }
     }
+
+    public static class WhenAPieceLandsOnAnotherPiece extends TestCase {
+
+        private Board board;
+
+        protected void setUp() throws Exception {
+            board = new Board(6, 8);
+            board.drop(Tetrominoe.T_SHAPE);
+            board.tick();
+            board.tick();
+            board.tick();
+            board.tick();
+            board.tick();
+            assertFalse(board.hasFalling());
+            assertEquals("" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n" +
+                    "....T...\n" +
+                    "...TTT..\n", board.toString());
+            board.drop(Tetrominoe.T_SHAPE);
+            board.tick();
+            board.tick();
+        }
+
+        public void testItIsStillFallingRightAboveTheOtherBlock() {
+        }
+    }
 }
