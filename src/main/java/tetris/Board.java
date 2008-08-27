@@ -8,7 +8,9 @@
 
 package tetris;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author Esko Luontola
@@ -40,13 +42,17 @@ public class Board implements Grid {
     }
 
     private boolean hitsStationaryBlock(MovablePiece p) {
+        List<Point> points = new ArrayList<Point>();
         for (int row = 0; row < rows(); row++) {
             for (int col = 0; col < columns(); col++) {
                 Point point = new Point(row, col);
-                if (p.isAt(point) && p.cellAt(point) != EMPTY
-                        && blocks[row][col] != EMPTY) {
-                    return true;
-                }
+                points.add(point);
+            }
+        }
+        for (Point point : points) {
+            if (p.isAt(point) && p.cellAt(point) != EMPTY
+                    && blocks[point.row][point.col] != EMPTY) {
+                return true;
             }
         }
         return false;
