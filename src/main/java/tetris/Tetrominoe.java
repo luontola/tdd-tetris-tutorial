@@ -104,6 +104,6 @@ public class Tetrominoe implements RotatableGrid, Grid {
     }
 
     public String toString() {
-        return new GridAsciiView(this).toString();
+        return Grids.toString(this);
     }
 }

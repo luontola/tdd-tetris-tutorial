@@ -92,6 +92,6 @@ public class Board implements Grid {
     }
 
     public String toString() {
-        return new GridAsciiView(this).toString();
+        return Grids.toString(this);
     }
 }

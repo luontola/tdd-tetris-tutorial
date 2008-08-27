@@ -29,4 +29,26 @@ public class Grids {
         }
         return points;
     }
+
+    public static String toString(Grid grid) {
+        StringBuilder sb = new StringBuilder();
+        for (int row = 0; row < grid.rows(); row++) {
+            for (int col = 0; col < grid.columns(); col++) {
+                sb.append(grid.cellAt(new Point(row, col)));
+            }
+            sb.append('\n');
+        }
+        return sb.toString();
+    }
+
+    public static char[][] fromString(String s) {
+        String[] lines = s.split("\n");
+        char[][] grid = new char[lines.length][lines.length];
+        for (int row = 0; row < grid.length; row++) {
+            for (int col = 0; col < grid[row].length; col++) {
+                grid[row][col] = lines[row].charAt(col);
+            }
+        }
+        return grid;
+    }
 }
