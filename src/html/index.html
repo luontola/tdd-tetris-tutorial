@@ -56,8 +56,9 @@
     <li><a href="exercises/FallingPiecesTest.java"><code>FallingPiecesTest.java</code></a>
 
         <p>Next we will connect the falling blocks and the rotatable pieces. In order to make the first test pass, you
-            will probably need to refactor the code quite (for me this took 1½ hours). When refactoring, you must keep
-            the tests passing between every small change, or you will end up in <a
+            will probably need to refactor the code quite much (for me this took 1½ hours). You need to build suitable
+            abstractions, so that single-block pieces and multi-block pieces can be handled the same way. When
+            refactoring, you must keep the tests passing between every small change, or you will end up in <a
                 href="http://c2.c2.com/cgi/wiki?RefactoringHell">refactoring hell</a>. If more than five minutes has
             passed since the last time all tests passed, revert your code to the last version from source control where
             all tests passed.
