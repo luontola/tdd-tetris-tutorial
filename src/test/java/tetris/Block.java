@@ -28,7 +28,7 @@ public class Block implements RotatableGrid {
         return 1;
     }
 
-    public char cellAt(int row, int col, Point point) {
+    public char cellAt(Point point) {
         return cell;
     }
 

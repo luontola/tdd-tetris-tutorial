@@ -86,7 +86,7 @@ public class Piece implements RotatableGrid, Grid {
         return blocks[0].length;
     }
 
-    public char cellAt(int row, int col, Point point) {
+    public char cellAt(Point point) {
         return blocks[point.row][point.col];
     }
 

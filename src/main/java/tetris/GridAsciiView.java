@@ -24,7 +24,7 @@ public class GridAsciiView {
         StringBuilder sb = new StringBuilder();
         for (int row = 0; row < grid.rows(); row++) {
             for (int col = 0; col < grid.columns(); col++) {
-                sb.append(grid.cellAt(row, col, new Point(row, col)));
+                sb.append(grid.cellAt(new Point(row, col)));
             }
             sb.append('\n');
         }

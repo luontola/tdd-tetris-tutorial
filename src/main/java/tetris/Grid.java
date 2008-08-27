@@ -20,5 +20,5 @@ public interface Grid {
 
     int columns();
 
-    char cellAt(int row, int col, Point point);
+    char cellAt(Point point);
 }
