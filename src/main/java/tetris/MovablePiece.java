@@ -36,7 +36,7 @@ public class MovablePiece implements Grid {
             for (int col = 0; col < piece.columns(); col++) {
                 Point loc = new Point(row, col);
                 if (piece.cellAt(loc) != EMPTY) {
-                    if (locToAbs(loc).row >= boardRows) {
+                    if (asAbs(loc).row >= boardRows) {
                         return true;
                     }
                 }
@@ -46,7 +46,7 @@ public class MovablePiece implements Grid {
     }
 
     public boolean isAt(Point abs) {
-        Point loc = absToLoc(abs);
+        Point loc = asLoc(abs);
         return loc.row >= 0 && loc.row < piece.rows()
                 && loc.col >= 0 && loc.col < piece.columns()
                 && piece.cellAt(loc) != EMPTY;
@@ -69,14 +69,14 @@ public class MovablePiece implements Grid {
     }
 
     public char cellAt(Point abs) {
-        return piece.cellAt(absToLoc(abs));
+        return piece.cellAt(asLoc(abs));
     }
 
-    private Point absToLoc(Point abs) {
+    private Point asLoc(Point abs) {
         return new Point(abs.row - rel.row, abs.col - rel.col);
     }
 
-    private Point locToAbs(Point loc) {
+    private Point asAbs(Point loc) {
         return new Point(loc.row + rel.row, loc.col + rel.col);
     }
 }
