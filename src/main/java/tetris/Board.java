@@ -41,21 +41,24 @@ public class Board implements Grid {
         return p.outsideBoard(rows()) || hitsStationaryBlock(p);
     }
 
-    private boolean hitsStationaryBlock(MovablePiece p) {
-        List<Point> points = new ArrayList<Point>();
-        for (int row = 0; row < rows(); row++) {
-            for (int col = 0; col < columns(); col++) {
-                Point point = new Point(row, col);
-                points.add(point);
-            }
-        }
-        for (Point point : points) {
-            if (p.isAt(point) && p.cellAt(point) != EMPTY
+    private boolean hitsStationaryBlock(MovablePiece piece) {
+        for (Point point : allBoardPoints()) {
+            if (piece.isAt(point) && piece.cellAt(point) != EMPTY
                     && blocks[point.row][point.col] != EMPTY) {
                 return true;
             }
         }
         return false;
+    }
+
+    private List<Point> allBoardPoints() {
+        List<Point> points = new ArrayList<Point>();
+        for (int row = 0; row < rows(); row++) {
+            for (int col = 0; col < columns(); col++) {
+                points.add(new Point(row, col));
+            }
+        }
+        return points;
     }
 
     public void drop(RotatableGrid piece) {
