@@ -35,14 +35,7 @@ public class MovablePiece implements Grid {
     }
 
     public boolean outsideBoard(int boardRows) {
-        List<Point> localPoints = new ArrayList<Point>();
-        for (int row = 0; row < piece.rows(); row++) {
-            for (int col = 0; col < piece.columns(); col++) {
-                Point loc = new Point(row, col);
-                localPoints.add(loc);
-            }
-        }
-        for (Point loc : localPoints) {
+        for (Point loc : allLocalPoints()) {
             if (piece.cellAt(loc) != EMPTY) {
                 if (asAbs(loc).row >= boardRows) {
                     return true;
@@ -50,6 +43,16 @@ public class MovablePiece implements Grid {
             }
         }
         return false;
+    }
+
+    private List<Point> allLocalPoints() {
+        List<Point> points = new ArrayList<Point>();
+        for (int row = 0; row < piece.rows(); row++) {
+            for (int col = 0; col < piece.columns(); col++) {
+                points.add(new Point(row, col));
+            }
+        }
+        return points;
     }
 
     public boolean isAt(Point abs) {
