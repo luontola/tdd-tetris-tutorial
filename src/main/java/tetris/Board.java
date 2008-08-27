@@ -56,7 +56,8 @@ public class Board implements Grid {
         if (hasFalling()) {
             throw new IllegalStateException("Another piece may not be dropped when one is already falling");
         }
-        falling = new MovablePiece(piece).moveTo(0, columns() / 2 - piece.columns() / 2);
+        Point topCenter = new Point(0, columns() / 2 - piece.columns() / 2);
+        falling = new MovablePiece(piece).moveTo(topCenter);
     }
 
     public boolean hasFalling() {

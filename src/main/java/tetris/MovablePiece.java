@@ -52,8 +52,8 @@ public class MovablePiece implements Grid {
                 && piece.cellAt(new Point(loc.locRow, loc.locCol)) != EMPTY;
     }
 
-    public MovablePiece moveTo(int relRow, int relCol) {
-        return new MovablePiece(relRow, relCol, piece);
+    public MovablePiece moveTo(Point rel) {
+        return new MovablePiece(rel.row, rel.col, piece);
     }
 
     public MovablePiece moveDown() {
