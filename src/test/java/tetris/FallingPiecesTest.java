@@ -105,6 +105,14 @@ public class FallingPiecesTest {
         }
 
         public void testItIsStillFallingRightAboveTheOtherBlock() {
+            assertTrue(board.hasFalling());
+            assertEquals("" +
+                    "........\n" +
+                    "........\n" +
+                    "....T...\n" +
+                    "...TTT..\n" +
+                    "....T...\n" +
+                    "...TTT..\n", board.toString());
         }
     }
 }
