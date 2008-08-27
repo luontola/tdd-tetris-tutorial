@@ -26,6 +26,14 @@ public class Board implements Grid {
         }
     }
 
+    public void drop(RotatableGrid piece) {
+        if (hasFalling()) {
+            throw new IllegalStateException("Another piece may not be dropped when one is already falling");
+        }
+        Point topCenter = new Point(0, columns() / 2 - piece.columns() / 2);
+        falling = new MovablePiece(piece).moveTo(topCenter);
+    }
+
     public void tick() {
         MovablePiece test = falling.moveDown();
         if (conflictsWithBoard(test)) {
@@ -47,14 +55,6 @@ public class Board implements Grid {
             }
         }
         return false;
-    }
-
-    public void drop(RotatableGrid piece) {
-        if (hasFalling()) {
-            throw new IllegalStateException("Another piece may not be dropped when one is already falling");
-        }
-        Point topCenter = new Point(0, columns() / 2 - piece.columns() / 2);
-        falling = new MovablePiece(piece).moveTo(topCenter);
     }
 
     public boolean hasFalling() {
