@@ -41,8 +41,12 @@ public class MovablePiece implements Grid {
         return relCol;
     }
 
+    public boolean outsideBoard(Board board) {
+        return relRow() >= board.rows();
+    }
+
     public boolean isAt(int absRow, int absCol) {
-        // TODO: the empty cells of the moving piece may overlap stationary non-empty cells    
+        // TODO: the empty cells of the moving piece may overlap stationary non-empty cells
         Loc loc = new Abs(absRow, absCol).toLoc();
         return loc.locRow >= 0 && loc.locRow < piece.rows()
                 && loc.locCol >= 0 && loc.locCol < piece.columns();
