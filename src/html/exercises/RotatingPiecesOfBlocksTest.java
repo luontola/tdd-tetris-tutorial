@@ -22,7 +22,6 @@ public class RotatingPiecesOfBlocksTest {
         return new TestSuite(RotatingPiecesOfBlocksTest.class.getDeclaredClasses());
     }
 
-/*
     public static class APieceOf3x3Blocks extends TestCase {
 
         private Piece piece;
@@ -57,7 +56,6 @@ public class RotatingPiecesOfBlocksTest {
 //                    "...\n", piece.toString());
 //        }
     }
-*/
 
 /*
     public static class APieceOf5x5Blocks extends TestCase {
