@@ -8,6 +8,9 @@
 
 package tetris;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Esko Luontola
  * @since 6.6.2008
@@ -32,13 +35,17 @@ public class MovablePiece implements Grid {
     }
 
     public boolean outsideBoard(int boardRows) {
+        List<Point> localPoints = new ArrayList<Point>();
         for (int row = 0; row < piece.rows(); row++) {
             for (int col = 0; col < piece.columns(); col++) {
                 Point loc = new Point(row, col);
-                if (piece.cellAt(loc) != EMPTY) {
-                    if (asAbs(loc).row >= boardRows) {
-                        return true;
-                    }
+                localPoints.add(loc);
+            }
+        }
+        for (Point loc : localPoints) {
+            if (piece.cellAt(loc) != EMPTY) {
+                if (asAbs(loc).row >= boardRows) {
+                    return true;
                 }
             }
         }
