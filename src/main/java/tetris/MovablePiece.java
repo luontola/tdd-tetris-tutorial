@@ -42,7 +42,9 @@ public class MovablePiece implements Grid {
     }
 
     public boolean isAt(int absRow, int absCol) {
-        return absRow == relRow && absCol == relCol;
+        Loc loc = new Abs(absRow, absCol).toLoc();
+        return loc.locRow >= 0 && loc.locRow < piece.rows()
+                && loc.locCol >= 0 && loc.locCol < piece.columns();
     }
 
     public MovablePiece moveTo(int relRow, int relCol) {
