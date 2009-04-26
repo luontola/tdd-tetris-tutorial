@@ -393,17 +393,6 @@
     <find-history />
   </component>
   <component name="libraryTable">
-    <library name="Maven: junit:junit:4.4">
-      <CLASSES>
-        <root url="jar://$M2_REPO$/junit/junit/4.4/junit-4.4.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$M2_REPO$/junit/junit/4.4/junit-4.4-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$M2_REPO$/junit/junit/4.4/junit-4.4-sources.jar!/" />
-      </SOURCES>
-    </library>
     <library name="Maven: org.mockito:mockito-all:1.7">
       <CLASSES>
         <root url="jar://$M2_REPO$/org/mockito/mockito-all/1.7/mockito-all-1.7.jar!/" />
@@ -413,6 +402,17 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$M2_REPO$/org/mockito/mockito-all/1.7/mockito-all-1.7-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: junit:junit:4.5">
+      <CLASSES>
+        <root url="jar://$M2_REPO$/junit/junit/4.5/junit-4.5.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$M2_REPO$/junit/junit/4.5/junit-4.5-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$M2_REPO$/junit/junit/4.5/junit-4.5-sources.jar!/" />
       </SOURCES>
     </library>
   </component>
