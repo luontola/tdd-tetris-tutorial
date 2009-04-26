@@ -9,10 +9,6 @@ package tetris;
 
 import junit.framework.*;
 
-/**
- * @author Esko Luontola
- * @since 27.8.2008
- */
 public class RotatingAFallingPieceTest {
 
     public static Test suite() {
