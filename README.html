@@ -28,14 +28,14 @@
 </p>
 
 <ol>
-    <li><a href="exercises/FallingBlocksTest.java"><code>FallingBlocksTest.java</code></a>
+    <li><a href="src/test/java/tetris/FallingBlocksTest.java"><code>FallingBlocksTest.java</code></a>
 
         <p>In Tetris, the most important feature is that there are blocks which fall down, so that is the first
             behaviour which we will specify by writing tests. It is good to start the writing of a program with a very
             trivial test. In this case, we will first make sure that we have an empty game board.
         </p>
     </li>
-    <li><a href="exercises/RotatingPiecesOfBlocksTest.java"><code>RotatingPiecesOfBlocksTest.java</code></a>
+    <li><a href="src/test/java/tetris/RotatingPiecesOfBlocksTest.java"><code>RotatingPiecesOfBlocksTest.java</code></a>
 
         <p>Rotating the pieces in Tetris is also very important, so let's code that next. You might need pen and paper
             when figuring out how the shape coordinates change when the shape is rotated.
@@ -47,13 +47,13 @@
             it afterwards.)
         </p>
     </li>
-    <li><a href="exercises/RotatingTetrominoesTest.java"><code>RotatingTetrominoesTest.java</code></a>
+    <li><a href="src/test/java/tetris/RotatingTetrominoesTest.java"><code>RotatingTetrominoesTest.java</code></a>
 
         <p><a href="http://en.wikipedia.org/wiki/Tetromino">Tetrominoes</a> can have 1, 2 or 4 different positions when
             they are rotated. Now we can take advantage of the shape rotation code which we wrote just a moment ago.
         </p>
     </li>
-    <li><a href="exercises/FallingPiecesTest.java"><code>FallingPiecesTest.java</code></a>
+    <li><a href="src/test/java/tetris/FallingPiecesTest.java"><code>FallingPiecesTest.java</code></a>
 
         <p>Next we will connect the falling blocks and the rotatable pieces. In order to make the first test pass, you
             will probably need to refactor your code quite much (for me it took 1½ hours). You need to build suitable
@@ -64,25 +64,26 @@
             from source control where all tests passed.
         </p>
     </li>
-    <li><a href="exercises/MovingAFallingPieceTest.java"><code>MovingAFallingPieceTest.java</code></a>
+    <li><a href="src/test/java/tetris/MovingAFallingPieceTest.java"><code>MovingAFallingPieceTest.java</code></a>
 
         <p>Now it's your turn to write the tests. I've provided some TODO items which should hint you on what kind of
             tests to write.</p>
     </li>
-    <li><a href="exercises/RotatingAFallingPieceTest.java"><code>RotatingAFallingPieceTest.java</code></a>
+    <li><a href="src/test/java/tetris/RotatingAFallingPieceTest.java"><code>RotatingAFallingPieceTest.java</code></a>
 
         <p>Keep on writing your own tests. You're getting the hang of it!</p>
     </li>
     <li>Next you should probably implement the following features in a suitable order: removing full rows, counting
-        removed rows (maybe launch an even when a row is removed - <a href="http://www.jmock.org/">JMock</a> might come
+        removed rows (maybe launch an even when a row is removed - <a href="http://mockito.org/">Mockito</a> might come
         in handly for testing that), counting score, choosing the next piece by random. Soon after that you should be
         able to create an user interface which is only a thin wrapper over the already implemented functionality
         (automated testing of user interfaces is generally too hard to be worth the effort).
     </li>
 </ol>
 
-<p class="copyright">Copyright (c) 2008, Esko Luontola. All Rights Reserved.<br/>This material may be freely used for
-    personal non-commercial educational purposes. Usage as course material is not allowed without prior permission.
+<p class="copyright">Copyright (c) 2008-2009 Esko Luontola, <a href="http://www.orfjackal.net/">www.orfjackal.net</a>
+    <br/>You may use and modify this material freely for personal non-commercial use. This material may NOT be used as
+    course material without prior written agreement.
 </p>
 
 
