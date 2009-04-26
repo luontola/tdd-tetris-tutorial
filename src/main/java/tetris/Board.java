@@ -11,7 +11,6 @@ import java.util.Arrays;
 
 /**
  * @author Esko Luontola
- * @since 6.6.2008
  */
 public class Board implements Grid {
 

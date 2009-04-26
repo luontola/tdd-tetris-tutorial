@@ -9,7 +9,6 @@ package tetris;
 
 /**
  * @author Esko Luontola
- * @since 6.6.2008
  */
 public class Block implements RotatableGrid {
 

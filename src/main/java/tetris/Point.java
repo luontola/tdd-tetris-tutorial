@@ -9,7 +9,6 @@ package tetris;
 
 /**
  * @author Esko Luontola
- * @since 27.8.2008
  */
 public class Point {
 

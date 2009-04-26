@@ -11,7 +11,6 @@ import junit.framework.*;
 
 /**
  * @author Esko Luontola
- * @since 6.6.2008
  */
 public class FallingBlocksTest {
 

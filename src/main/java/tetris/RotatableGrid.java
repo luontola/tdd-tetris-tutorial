@@ -9,7 +9,6 @@ package tetris;
 
 /**
  * @author Esko Luontola
- * @since 13.6.2008
  */
 public interface RotatableGrid extends Grid {
 
