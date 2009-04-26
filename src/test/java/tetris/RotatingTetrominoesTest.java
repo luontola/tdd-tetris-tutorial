@@ -19,6 +19,7 @@ public class RotatingTetrominoesTest {
         return new TestSuite(RotatingTetrominoesTest.class.getDeclaredClasses());
     }
 
+/*
     public static class AllShapeInstances extends TestCase {
 
         private Tetrominoe shape;
@@ -35,7 +36,9 @@ public class RotatingTetrominoesTest {
             assertEquals(original, shape.toString());
         }
     }
+*/
 
+/*
     public static class TheTShape extends TestCase {
 
         private Tetrominoe shape;
@@ -51,51 +54,53 @@ public class RotatingTetrominoesTest {
                     "...\n", shape.toString());
         }
 
-        public void testCanBeRotatedRightThreeTimes() {
-            shape = shape.rotateRight();
-            assertEquals("" +
-                    ".T.\n" +
-                    ".TT\n" +
-                    ".T.\n", shape.toString());
-            shape = shape.rotateRight();
-            assertEquals("" +
-                    "...\n" +
-                    "TTT\n" +
-                    ".T.\n", shape.toString());
-            shape = shape.rotateRight();
-            assertEquals("" +
-                    ".T.\n" +
-                    "TT.\n" +
-                    ".T.\n", shape.toString());
-        }
+//        public void testCanBeRotatedRightThreeTimes() {
+//            shape = shape.rotateRight();
+//            assertEquals("" +
+//                    ".T.\n" +
+//                    ".TT\n" +
+//                    ".T.\n", shape.toString());
+//            shape = shape.rotateRight();
+//            assertEquals("" +
+//                    "...\n" +
+//                    "TTT\n" +
+//                    ".T.\n", shape.toString());
+//            shape = shape.rotateRight();
+//            assertEquals("" +
+//                    ".T.\n" +
+//                    "TT.\n" +
+//                    ".T.\n", shape.toString());
+//        }
 
-        public void testCanBeRotatedLeftThreeTimes() {
-            shape = shape.rotateLeft();
-            assertEquals("" +
-                    ".T.\n" +
-                    "TT.\n" +
-                    ".T.\n", shape.toString());
-            shape = shape.rotateLeft();
-            assertEquals("" +
-                    "...\n" +
-                    "TTT\n" +
-                    ".T.\n", shape.toString());
-            shape = shape.rotateLeft();
-            assertEquals("" +
-                    ".T.\n" +
-                    ".TT\n" +
-                    ".T.\n", shape.toString());
-        }
+//        public void testCanBeRotatedLeftThreeTimes() {
+//            shape = shape.rotateLeft();
+//            assertEquals("" +
+//                    ".T.\n" +
+//                    "TT.\n" +
+//                    ".T.\n", shape.toString());
+//            shape = shape.rotateLeft();
+//            assertEquals("" +
+//                    "...\n" +
+//                    "TTT\n" +
+//                    ".T.\n", shape.toString());
+//            shape = shape.rotateLeft();
+//            assertEquals("" +
+//                    ".T.\n" +
+//                    ".TT\n" +
+//                    ".T.\n", shape.toString());
+//        }
 
-        public void testRotatingItFourTimesWillGoBackToTheOriginalShape() {
-            String originalShape = shape.toString();
-            shape = shape.rotateRight().rotateRight().rotateRight().rotateRight();
-            assertEquals(originalShape, shape.toString());
-            shape = shape.rotateLeft().rotateLeft().rotateLeft().rotateLeft();
-            assertEquals(originalShape, shape.toString());
-        }
+//        public void testRotatingItFourTimesWillGoBackToTheOriginalShape() {
+//            String originalShape = shape.toString();
+//            shape = shape.rotateRight().rotateRight().rotateRight().rotateRight();
+//            assertEquals(originalShape, shape.toString());
+//            shape = shape.rotateLeft().rotateLeft().rotateLeft().rotateLeft();
+//            assertEquals(originalShape, shape.toString());
+//        }
     }
+*/
 
+/*
     public static class TheIShape extends TestCase {
 
         private Tetrominoe shape;
@@ -113,35 +118,37 @@ public class RotatingTetrominoesTest {
                     ".....\n", shape.toString());
         }
 
-        public void testCanBeRotatedRightOnce() {
-            shape = shape.rotateRight();
-            assertEquals("" +
-                    ".....\n" +
-                    "..I..\n" +
-                    "..I..\n" +
-                    "..I..\n" +
-                    "..I..\n", shape.toString());
-        }
+//        public void testCanBeRotatedRightOnce() {
+//            shape = shape.rotateRight();
+//            assertEquals("" +
+//                    ".....\n" +
+//                    "..I..\n" +
+//                    "..I..\n" +
+//                    "..I..\n" +
+//                    "..I..\n", shape.toString());
+//        }
 
-        public void testCanBeRotatedLeftOnce() {
-            shape = shape.rotateLeft();
-            assertEquals("" +
-                    ".....\n" +
-                    "..I..\n" +
-                    "..I..\n" +
-                    "..I..\n" +
-                    "..I..\n", shape.toString());
-        }
+//        public void testCanBeRotatedLeftOnce() {
+//            shape = shape.rotateLeft();
+//            assertEquals("" +
+//                    ".....\n" +
+//                    "..I..\n" +
+//                    "..I..\n" +
+//                    "..I..\n" +
+//                    "..I..\n", shape.toString());
+//        }
 
-        public void testRotatingItTwiseWillGetBackToTheOriginalShape() {
-            String originalShape = shape.toString();
-            shape = shape.rotateRight().rotateRight();
-            assertEquals(originalShape, shape.toString());
-            shape = shape.rotateLeft().rotateLeft();
-            assertEquals(originalShape, shape.toString());
-        }
+//        public void testRotatingItTwiseWillGetBackToTheOriginalShape() {
+//            String originalShape = shape.toString();
+//            shape = shape.rotateRight().rotateRight();
+//            assertEquals(originalShape, shape.toString());
+//            shape = shape.rotateLeft().rotateLeft();
+//            assertEquals(originalShape, shape.toString());
+//        }
     }
+*/
 
+/*
     public static class TheOShape extends TestCase {
 
         private Tetrominoe shape;
@@ -157,20 +164,21 @@ public class RotatingTetrominoesTest {
                     "...\n", shape.toString());
         }
 
-        public void testCanNotBeRotatedRight() {
-            shape = shape.rotateRight();
-            assertEquals("" +
-                    ".OO\n" +
-                    ".OO\n" +
-                    "...\n", shape.toString());
-        }
+//        public void testCanNotBeRotatedRight() {
+//            shape = shape.rotateRight();
+//            assertEquals("" +
+//                    ".OO\n" +
+//                    ".OO\n" +
+//                    "...\n", shape.toString());
+//        }
 
-        public void testCanNotBeRotatedLeft() {
-            shape = shape.rotateLeft();
-            assertEquals("" +
-                    ".OO\n" +
-                    ".OO\n" +
-                    "...\n", shape.toString());
-        }
+//        public void testCanNotBeRotatedLeft() {
+//            shape = shape.rotateLeft();
+//            assertEquals("" +
+//                    ".OO\n" +
+//                    ".OO\n" +
+//                    "...\n", shape.toString());
+//        }
     }
+*/
 }

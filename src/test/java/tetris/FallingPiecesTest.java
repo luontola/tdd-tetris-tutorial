@@ -19,6 +19,7 @@ public class FallingPiecesTest {
         return new TestSuite(FallingPiecesTest.class.getDeclaredClasses());
     }
 
+/*
     public static class WhenAPieceIsDropped extends TestCase {
 
         private Board board;
@@ -38,7 +39,9 @@ public class FallingPiecesTest {
                     "........\n", board.toString());
         }
     }
+*/
 
+/*
     public static class WhenAPieceReachesTheBottom extends TestCase {
 
         private Board board;
@@ -63,19 +66,21 @@ public class FallingPiecesTest {
                     "...TTT..\n", board.toString());
         }
 
-        public void testItStopsWhenItHitsTheBottom() {
-            board.tick();
-            assertFalse(board.hasFalling());
-            assertEquals("" +
-                    "........\n" +
-                    "........\n" +
-                    "........\n" +
-                    "........\n" +
-                    "....T...\n" +
-                    "...TTT..\n", board.toString());
-        }
+//        public void testItStopsWhenItHitsTheBottom() {
+//            board.tick();
+//            assertFalse(board.hasFalling());
+//            assertEquals("" +
+//                    "........\n" +
+//                    "........\n" +
+//                    "........\n" +
+//                    "........\n" +
+//                    "....T...\n" +
+//                    "...TTT..\n", board.toString());
+//        }
     }
+*/
 
+/*
     public static class WhenAPieceLandsOnAnotherPiece extends TestCase {
 
         private Board board;
@@ -112,16 +117,17 @@ public class FallingPiecesTest {
                     "...TTT..\n", board.toString());
         }
 
-        public void testItStopsWhenItHitsTheOtherPiece() {
-            board.tick();
-            assertFalse(board.hasFalling());
-            assertEquals("" +
-                    "........\n" +
-                    "........\n" +
-                    "....T...\n" +
-                    "...TTT..\n" +
-                    "....T...\n" +
-                    "...TTT..\n", board.toString());
-        }
+//        public void testItStopsWhenItHitsTheOtherPiece() {
+//            board.tick();
+//            assertFalse(board.hasFalling());
+//            assertEquals("" +
+//                    "........\n" +
+//                    "........\n" +
+//                    "....T...\n" +
+//                    "...TTT..\n" +
+//                    "....T...\n" +
+//                    "...TTT..\n", board.toString());
+//        }
     }
+*/
 }

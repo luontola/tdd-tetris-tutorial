@@ -34,11 +34,12 @@ public class FallingBlocksTest {
                     "...\n", board.toString());
         }
 
-        public void testHasNoFallingBlocks() {
-            assertFalse(board.hasFalling());
-        }
+//        public void testHasNoFallingBlocks() {
+//            assertFalse(board.hasFalling());
+//        }
     }
 
+/*
     public static class WhenABlockIsDropped extends TestCase {
 
         private Board board;
@@ -52,35 +53,37 @@ public class FallingBlocksTest {
             assertTrue(board.hasFalling());
         }
 
-        public void testItStartsFromTheTopMiddle() {
-            assertEquals("" +
-                    ".X.\n" +
-                    "...\n" +
-                    "...\n", board.toString());
-        }
+//        public void testItStartsFromTheTopMiddle() {
+//            assertEquals("" +
+//                    ".X.\n" +
+//                    "...\n" +
+//                    "...\n", board.toString());
+//        }
 
-        public void testItMovesDownOneRowPerTick() {
-            board.tick();
-            assertEquals("" +
-                    "...\n" +
-                    ".X.\n" +
-                    "...\n", board.toString());
-        }
+//        public void testItMovesDownOneRowPerTick() {
+//            board.tick();
+//            assertEquals("" +
+//                    "...\n" +
+//                    ".X.\n" +
+//                    "...\n", board.toString());
+//        }
 
-        public void testAtMostOneBlockMayBeFallingAtATime() {
-            try {
-                board.drop(new Block('Y'));
-                fail();
-            } catch (IllegalStateException e) {
-                assertTrue(e.getMessage().contains("already falling"));
-            }
-            assertEquals("" +
-                    ".X.\n" +
-                    "...\n" +
-                    "...\n", board.toString());
-        }
+//        public void testAtMostOneBlockMayBeFallingAtATime() {
+//            try {
+//                board.drop(new Block('Y'));
+//                fail();
+//            } catch (IllegalStateException e) {
+//                assertTrue(e.getMessage().contains("already falling"));
+//            }
+//            assertEquals("" +
+//                    ".X.\n" +
+//                    "...\n" +
+//                    "...\n", board.toString());
+//        }
     }
+*/
 
+/*
     public static class WhenABlockReachesTheBottom extends TestCase {
 
         private Board board;
@@ -100,16 +103,18 @@ public class FallingBlocksTest {
                     ".X.\n", board.toString());
         }
 
-        public void testItStopsWhenItHitsTheBottom() {
-            board.tick();
-            assertFalse(board.hasFalling());
-            assertEquals("" +
-                    "...\n" +
-                    "...\n" +
-                    ".X.\n", board.toString());
-        }
+//        public void testItStopsWhenItHitsTheBottom() {
+//            board.tick();
+//            assertFalse(board.hasFalling());
+//            assertEquals("" +
+//                    "...\n" +
+//                    "...\n" +
+//                    ".X.\n", board.toString());
+//        }
     }
+*/
 
+/*
     public static class WhenABlockLandsOnAnotherBlock extends TestCase {
 
         private Board board;
@@ -137,13 +142,14 @@ public class FallingBlocksTest {
                     ".X.\n", board.toString());
         }
 
-        public void testItStopsWhenItHitsTheOtherBlock() {
-            board.tick();
-            assertFalse(board.hasFalling());
-            assertEquals("" +
-                    "...\n" +
-                    ".Y.\n" +
-                    ".X.\n", board.toString());
-        }
+//        public void testItStopsWhenItHitsTheOtherBlock() {
+//            board.tick();
+//            assertFalse(board.hasFalling());
+//            assertEquals("" +
+//                    "...\n" +
+//                    ".Y.\n" +
+//                    ".X.\n", board.toString());
+//        }
     }
+*/
 }
