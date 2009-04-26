@@ -1,9 +1,8 @@
 /*
- * Copyright (c) 2008, Esko Luontola. All Rights Reserved.
+ * Copyright (c) 2008-2009  Esko Luontola, www.orfjackal.net
  *
- * This program and its source code may be freely used for personal
- * non-commercial educational purposes. Usage as course material
- * is not allowed without prior permission.
+ * You may use and modify this source code freely for personal non-commercial use.
+ * This source code may NOT be used as course material without prior written agreement.
  */
 
 package tetris;
