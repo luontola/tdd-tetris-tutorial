@@ -16,8 +16,22 @@
 
 <h1>TDD Tutorial</h1>
 
+<p>For information about Test-Driven Development, here are some links. It is recommendable to read them before doing
+    this tutorial, so that you would know what TDD is about.</p>
 
-<h2>The Steps Of The Tutorial</h2>
+<ul>
+    <li><a href="http://en.wikipedia.org/wiki/Test-driven_development">http://en.wikipedia.org/wiki/Test-driven_development</a></li>
+    <li><a href="http://www.butunclebob.com/ArticleS.UncleBob.TheThreeRulesOfTdd">http://www.butunclebob.com/ArticleS.UncleBob.TheThreeRulesOfTdd</a></li>
+    <li><a href="http://www.butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata">http://www.butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata</a></li>
+    <li><a href="http://www.agiledata.org/essays/tdd.html">http://www.agiledata.org/essays/tdd.html</a></li>
+    <li><a href="http://blog.briandicroce.com/2008/03/14/three-index-cards-to-easily-remember-the-essence-of-test-driven-development/">http://blog.briandicroce.com/2008/03/14/three-index-cards-to-easily-remember-the-essence-of-test-driven-development/</a></li>
+    <li><a href="http://agileinaflash.blogspot.com/2009/03/unclebobs-three-rules-of-tdd.html">http://agileinaflash.blogspot.com/2009/03/unclebobs-three-rules-of-tdd.html</a></li>
+    <li><a href="http://agileinaflash.blogspot.com/2009/02/red-green-refactor.html">http://agileinaflash.blogspot.com/2009/02/red-green-refactor.html</a></li>
+    <li><a href="http://agileinaflash.blogspot.com/2009/02/first.html">http://agileinaflash.blogspot.com/2009/02/first.html</a></li>
+</ul>
+
+
+<h2>The Steps of the Tutorial</h2>
 
 <p>Use the following tests to write a Tetris game. Copy them to your project one file at a time, in the same order as
     they are listed below, starting with <code>FallingBlocksTest.java</code>. First write code which passes the first
@@ -74,10 +88,11 @@
         <p>Keep on writing your own tests. You're getting the hang of it!</p>
     </li>
     <li>Next you should probably implement the following features in a suitable order: removing full rows, counting
-        removed rows (maybe launch an even when a row is removed - <a href="http://mockito.org/">Mockito</a> might come
+        removed rows (maybe launch an event when a row is removed - <a href="http://mockito.org/">Mockito</a> might come
         in handly for testing that), counting score, choosing the next piece by random. Soon after that you should be
-        able to create an user interface which is only a thin wrapper over the already implemented functionality
-        (automated testing of user interfaces is generally too hard to be worth the effort).
+        able to create an user interface which is only a thin wrapper over the already implemented functionality.
+        Automated testing of user interfaces is generally hard to do, but by separating the UI model from its view it is
+        possible (see <a href="http://martinfowler.com/eaaDev/ModelViewPresenter.html">these articles</a>).
     </li>
 </ol>
 
