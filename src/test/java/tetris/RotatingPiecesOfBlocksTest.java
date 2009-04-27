@@ -19,7 +19,7 @@ public class RotatingPiecesOfBlocksTest {
     }
 
 /*
-    public static class APieceOf3x3Blocks extends TestCase {
+    public static class A_piece_of_3x3_blocks extends TestCase {
 
         private Piece piece;
 
@@ -30,14 +30,14 @@ public class RotatingPiecesOfBlocksTest {
                     "...\n");
         }
 
-        public void testConsistsOfManyBlocks() {
+        public void test_Consists_of_many_blocks() {
             assertEquals("" +
                     ".X.\n" +
                     ".X.\n" +
                     "...\n", piece.toString());
         }
 
-//        public void testCanBeRotatedRight() {
+//        public void test_Can_be_rotated_right() {
 //            piece = piece.rotateRight();
 //            assertEquals("" +
 //                    "...\n" +
@@ -45,7 +45,7 @@ public class RotatingPiecesOfBlocksTest {
 //                    "...\n", piece.toString());
 //        }
 
-//        public void testCanBeRotatedLeft() {
+//        public void test_Can_be_rotated_left() {
 //            piece = piece.rotateLeft();
 //            assertEquals("" +
 //                    "...\n" +
@@ -56,7 +56,7 @@ public class RotatingPiecesOfBlocksTest {
 */
 
 /*
-    public static class APieceOf5x5Blocks extends TestCase {
+    public static class A_piece_of_5x5_blocks extends TestCase {
 
         private Piece piece;
 
@@ -69,7 +69,7 @@ public class RotatingPiecesOfBlocksTest {
                     ".....\n");
         }
 
-        public void testConsistsOfManyBlocks() {
+        public void test_Consists_of_many_blocks() {
             assertEquals("" +
                     "..XXX\n" +
                     "..XX.\n" +
@@ -78,7 +78,7 @@ public class RotatingPiecesOfBlocksTest {
                     ".....\n", piece.toString());
         }
 
-//        public void testCanBeRotatedRight() {
+//        public void test_Can_be_rotated_right() {
 //            piece = piece.rotateRight();
 //            assertEquals("" +
 //                    ".....\n" +
@@ -88,7 +88,7 @@ public class RotatingPiecesOfBlocksTest {
 //                    "....X\n", piece.toString());
 //        }
 
-//        public void testCanBeRotatedLeft() {
+//        public void test_Can_be_rotated_left() {
 //            piece = piece.rotateLeft();
 //            assertEquals("" +
 //                    "X....\n" +

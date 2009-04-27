@@ -18,7 +18,7 @@ public class FallingBlocksTest {
         return new TestSuite(FallingBlocksTest.class.getDeclaredClasses());
     }
 
-    public static class ANewBoard extends TestCase {
+    public static class A_new_board extends TestCase {
 
         private Board board;
 
@@ -26,20 +26,20 @@ public class FallingBlocksTest {
             board = new Board(3, 3);
         }
 
-        public void testIsEmpty() {
+        public void test_Is_empty() {
             assertEquals("" +
                     "...\n" +
                     "...\n" +
                     "...\n", board.toString());
         }
 
-//        public void testHasNoFallingBlocks() {
+//        public void test_Has_no_falling_blocks() {
 //            assertFalse(board.hasFalling());
 //        }
     }
 
 /*
-    public static class WhenABlockIsDropped extends TestCase {
+    public static class When_a_block_is_dropped extends TestCase {
 
         private Board board;
 
@@ -48,18 +48,18 @@ public class FallingBlocksTest {
             board.drop(new Block('X'));
         }
 
-        public void testTheBlockIsFalling() {
+        public void test_The_block_is_falling() {
             assertTrue(board.hasFalling());
         }
 
-//        public void testItStartsFromTheTopMiddle() {
+//        public void test_It_starts_from_the_top_middle() {
 //            assertEquals("" +
 //                    ".X.\n" +
 //                    "...\n" +
 //                    "...\n", board.toString());
 //        }
 
-//        public void testItMovesDownOneRowPerTick() {
+//        public void test_It_moves_down_one_row_per_tick() {
 //            board.tick();
 //            assertEquals("" +
 //                    "...\n" +
@@ -67,7 +67,7 @@ public class FallingBlocksTest {
 //                    "...\n", board.toString());
 //        }
 
-//        public void testAtMostOneBlockMayBeFallingAtATime() {
+//        public void test_At_most_one_block_may_be_falling_at_a_time() {
 //            try {
 //                board.drop(new Block('Y'));
 //                fail();
@@ -83,7 +83,7 @@ public class FallingBlocksTest {
 */
 
 /*
-    public static class WhenABlockReachesTheBottom extends TestCase {
+    public static class When_a_block_reaches_the_bottom extends TestCase {
 
         private Board board;
 
@@ -94,7 +94,7 @@ public class FallingBlocksTest {
             board.tick();
         }
 
-        public void testItIsStillFallingOnTheLastRow() {
+        public void test_It_is_still_falling_on_the_last_row() {
             assertTrue(board.hasFalling());
             assertEquals("" +
                     "...\n" +
@@ -102,7 +102,7 @@ public class FallingBlocksTest {
                     ".X.\n", board.toString());
         }
 
-//        public void testItStopsWhenItHitsTheBottom() {
+//        public void test_It_stops_when_it_hits_the_bottom() {
 //            board.tick();
 //            assertFalse(board.hasFalling());
 //            assertEquals("" +
@@ -114,7 +114,7 @@ public class FallingBlocksTest {
 */
 
 /*
-    public static class WhenABlockLandsOnAnotherBlock extends TestCase {
+    public static class When_a_block_lands_on_another_block extends TestCase {
 
         private Board board;
 
@@ -133,7 +133,7 @@ public class FallingBlocksTest {
             board.tick();
         }
 
-        public void testItIsStillFallingRightAboveTheOtherBlock() {
+        public void test_It_is_still_falling_right_above_the_other_block() {
             assertTrue(board.hasFalling());
             assertEquals("" +
                     "...\n" +
@@ -141,7 +141,7 @@ public class FallingBlocksTest {
                     ".X.\n", board.toString());
         }
 
-//        public void testItStopsWhenItHitsTheOtherBlock() {
+//        public void test_It_stops_when_it_hits_the_other_block() {
 //            board.tick();
 //            assertFalse(board.hasFalling());
 //            assertEquals("" +
