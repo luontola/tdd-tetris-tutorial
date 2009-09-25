@@ -1,11 +1,20 @@
 /*
- * Copyright (c) 2008-2009  Esko Luontola, www.orfjackal.net
+ * Copyright © 2009  Esko Luontola, www.orfjackal.net
  *
- * You may use and modify this source code freely for personal non-commercial use.
- * This source code may NOT be used as course material without prior written agreement.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
-package tetris;
+package net.orfjackal.nestedjunit;
 
 import org.junit.Test;
 import org.junit.runner.*;
@@ -17,6 +26,36 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 /**
+ * Allows organizing JUnit 4 tests into member classes. This makes it possible
+ * to write tests in a more Behaviour-Driven Development (BDD) style:
+ * <pre><code>
+ * &#64;RunWith(NestedJUnit4.class)
+ * public class WerewolfTest extends Assert {
+ *     public class Given_the_moon_is_full {
+ *         &#64;Before public void When_you_walk_in_the_woods() {
+ *             ...
+ *         }
+ *         &#64;Test public void Then_you_can_hear_werewolves_howling() {
+ *             ...
+ *         }
+ *         &#64;Test public void Then_you_wish_you_had_a_silver_bullet() {
+ *             ...
+ *         }
+ *     }
+ *     public class Given_the_moon_is_not_full {
+ *         &#64;Before public void When_you_walk_in_the_woods() {
+ *             ...
+ *         }
+ *         &#64;Test public void Then_you_do_not_hear_any_werewolves() {
+ *             ...
+ *         }
+ *         &#64;Test public void Then_you_are_not_afraid() {
+ *             ...
+ *         }
+ *     }
+ * }
+ * </code></pre>
+ *
  * @author Esko Luontola
  */
 public class NestedJUnit4 extends ParentRunner<Runner> {
