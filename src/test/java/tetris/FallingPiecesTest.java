@@ -7,27 +7,27 @@
 
 package tetris;
 
-import junit.framework.*;
+import org.junit.*;
+import org.junit.runner.RunWith;
 
 /**
  * @author Esko Luontola
  */
-public class FallingPiecesTest {
+@RunWith(NestedJUnit4.class)
+public class FallingPiecesTest extends Assert {
 
-    public static Test suite() {
-        return new TestSuite(FallingPiecesTest.class.getDeclaredClasses());
-    }
+    private final Board board = new Board(6, 8);
 
-    public static class When_a_piece_is_dropped extends TestCase {
 
-        private Board board;
+    public class When_a_piece_is_dropped {
 
-        protected void setUp() throws Exception {
-            board = new Board(6, 8);
+        @Before
+        public void dropPiece() {
             board.drop(Tetrominoe.T_SHAPE);
         }
 
-        public void test_It_starts_from_top_middle() {
+        @Test
+        public void it_starts_from_top_middle() {
             assertEquals("" +
                     "....T...\n" +
                     "...TTT..\n" +
@@ -38,12 +38,10 @@ public class FallingPiecesTest {
         }
     }
 
-    public static class When_a_piece_reaches_the_bottom extends TestCase {
+    public class When_a_piece_reaches_the_bottom {
 
-        private Board board;
-
-        protected void setUp() throws Exception {
-            board = new Board(6, 8);
+        @Before
+        public void fallToLastRow() {
             board.drop(Tetrominoe.T_SHAPE);
             board.tick();
             board.tick();
@@ -51,7 +49,8 @@ public class FallingPiecesTest {
             board.tick();
         }
 
-        public void test_It_is_still_falling_on_the_last_row() {
+        @Test
+        public void it_is_still_falling_on_the_last_row() {
             assertTrue(board.hasFalling());
             assertEquals("" +
                     "........\n" +
@@ -62,7 +61,8 @@ public class FallingPiecesTest {
                     "...TTT..\n", board.toString());
         }
 
-        public void test_It_stops_when_it_hits_the_bottom() {
+        @Test
+        public void it_stops_when_it_hits_the_bottom() {
             board.tick();
             assertFalse(board.hasFalling());
             assertEquals("" +
@@ -75,12 +75,10 @@ public class FallingPiecesTest {
         }
     }
 
-    public static class When_a_piece_lands_on_another_piece extends TestCase {
+    public class When_a_piece_lands_on_another_piece {
 
-        private Board board;
-
-        protected void setUp() throws Exception {
-            board = new Board(6, 8);
+        @Before
+        public void landOnAnother() {
             board.drop(Tetrominoe.T_SHAPE);
             board.tick();
             board.tick();
@@ -95,12 +93,14 @@ public class FallingPiecesTest {
                     "........\n" +
                     "....T...\n" +
                     "...TTT..\n", board.toString());
+
             board.drop(Tetrominoe.T_SHAPE);
             board.tick();
             board.tick();
         }
 
-        public void test_It_is_still_falling_right_above_the_other_piece() {
+        @Test
+        public void it_is_still_falling_right_above_the_other_piece() {
             assertTrue(board.hasFalling());
             assertEquals("" +
                     "........\n" +
@@ -111,7 +111,8 @@ public class FallingPiecesTest {
                     "...TTT..\n", board.toString());
         }
 
-        public void test_It_stops_when_it_hits_the_other_piece() {
+        @Test
+        public void it_stops_when_it_hits_the_other_piece() {
             board.tick();
             assertFalse(board.hasFalling());
             assertEquals("" +

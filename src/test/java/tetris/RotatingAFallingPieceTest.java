@@ -7,13 +7,11 @@
 
 package tetris;
 
-import junit.framework.*;
+import org.junit.Assert;
+import org.junit.runner.RunWith;
 
-public class RotatingAFallingPieceTest {
-
-    public static Test suite() {
-        return new TestSuite(RotatingAFallingPieceTest.class.getDeclaredClasses());
-    }
+@RunWith(NestedJUnit4.class)
+public class RotatingAFallingPieceTest extends Assert {
 
     // TODO: a falling piece can be rotated clockwise
     // TODO: a falling piece can be rotated counter-clockwise

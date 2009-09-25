@@ -7,58 +7,56 @@
 
 package tetris;
 
-import junit.framework.*;
+import org.junit.*;
+import org.junit.runner.RunWith;
 
 /**
  * @author Esko Luontola
  */
-public class FallingBlocksTest {
+@RunWith(NestedJUnit4.class)
+public class FallingBlocksTest extends Assert {
 
-    public static Test suite() {
-        return new TestSuite(FallingBlocksTest.class.getDeclaredClasses());
-    }
+    private final Board board = new Board(3, 3);
 
-    public static class A_new_board extends TestCase {
 
-        private Board board;
+    public class A_new_board {
 
-        protected void setUp() throws Exception {
-            board = new Board(3, 3);
-        }
-
-        public void test_Is_empty() {
+        @Test
+        public void is_empty() {
             assertEquals("" +
                     "...\n" +
                     "...\n" +
                     "...\n", board.toString());
         }
 
-        public void test_Has_no_falling_blocks() {
+        @Test
+        public void has_no_falling_blocks() {
             assertFalse(board.hasFalling());
         }
     }
 
-    public static class When_a_block_is_dropped extends TestCase {
+    public class When_a_block_is_dropped {
 
-        private Board board;
-
-        protected void setUp() throws Exception {
-            board = new Board(3, 3);
+        @Before
+        public void dropBlock() {
             board.drop(new Block('X'));
         }
 
-        public void test_The_block_is_falling() {
+        @Test
+        public void the_block_is_falling() {
             assertTrue(board.hasFalling());
         }
 
-        public void test_It_starts_from_the_top_middle() {
+        @Test
+        public void it_starts_from_the_top_middle() {
             assertEquals("" +
                     ".X.\n" +
                     "...\n" +
                     "...\n", board.toString());
         }
 
-        public void test_It_moves_down_one_row_per_tick() {
+        @Test
+        public void it_moves_down_one_row_per_tick() {
             board.tick();
             assertEquals("" +
                     "...\n" +
@@ -66,7 +64,8 @@ public class FallingBlocksTest {
                     "...\n", board.toString());
         }
 
-        public void test_At_most_one_block_may_be_falling_at_a_time() {
+        @Test
+        public void at_most_one_block_may_be_falling_at_a_time() {
             try {
                 board.drop(new Block('Y'));
                 fail();
@@ -80,18 +79,17 @@ public class FallingBlocksTest {
         }
     }
 
-    public static class When_a_block_reaches_the_bottom extends TestCase {
+    public class When_a_block_reaches_the_bottom {
 
-        private Board board;
-
-        protected void setUp() throws Exception {
-            board = new Board(3, 3);
+        @Before
+        public void fallToLastRow() {
             board.drop(new Block('X'));
             board.tick();
             board.tick();
         }
 
-        public void test_It_is_still_falling_on_the_last_row() {
+        @Test
+        public void it_is_still_falling_on_the_last_row() {
             assertTrue(board.hasFalling());
             assertEquals("" +
                     "...\n" +
@@ -99,7 +97,8 @@ public class FallingBlocksTest {
                     ".X.\n", board.toString());
         }
 
-        public void test_It_stops_when_it_hits_the_bottom() {
+        @Test
+        public void it_stops_when_it_hits_the_bottom() {
             board.tick();
             assertFalse(board.hasFalling());
             assertEquals("" +
@@ -109,12 +108,10 @@ public class FallingBlocksTest {
         }
     }
 
-    public static class When_a_block_lands_on_another_block extends TestCase {
+    public class When_a_block_lands_on_another_block {
 
-        private Board board;
-
-        protected void setUp() throws Exception {
-            board = new Board(3, 3);
+        @Before
+        public void landOnAnother() {
             board.drop(new Block('X'));
             board.tick();
             board.tick();
@@ -124,11 +121,13 @@ public class FallingBlocksTest {
                     "...\n" +
                     "...\n" +
                     ".X.\n", board.toString());
+
             board.drop(new Block('Y'));
             board.tick();
         }
 
-        public void test_It_is_still_falling_right_above_the_other_block() {
+        @Test
+        public void it_is_still_falling_right_above_the_other_block() {
             assertTrue(board.hasFalling());
             assertEquals("" +
                     "...\n" +
@@ -136,7 +135,8 @@ public class FallingBlocksTest {
                     ".X.\n", board.toString());
         }
 
-        public void test_It_stops_when_it_hits_the_other_block() {
+        @Test
+        public void it_stops_when_it_hits_the_other_block() {
             board.tick();
             assertFalse(board.hasFalling());
             assertEquals("" +

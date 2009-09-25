@@ -7,13 +7,11 @@
 
 package tetris;
 
-import junit.framework.*;
+import org.junit.Assert;
+import org.junit.runner.RunWith;
 
-public class MovingAFallingPieceTest {
-
-    public static Test suite() {
-        return new TestSuite(MovingAFallingPieceTest.class.getDeclaredClasses());
-    }
+@RunWith(NestedJUnit4.class)
+public class MovingAFallingPieceTest extends Assert {
 
     // TODO: a falling piece can be moved left
     // TODO: a falling piece can be moved right

@@ -7,36 +7,38 @@
 
 package tetris;
 
-import junit.framework.*;
+import org.junit.*;
+import org.junit.runner.RunWith;
 
 /**
  * @author Esko Luontola
  */
-public class RotatingPiecesOfBlocksTest {
+@RunWith(NestedJUnit4.class)
+public class RotatingPiecesOfBlocksTest extends Assert {
 
-    public static Test suite() {
-        return new TestSuite(RotatingPiecesOfBlocksTest.class.getDeclaredClasses());
-    }
+    private Piece piece;
 
-    public static class A_piece_of_3x3_blocks extends TestCase {
 
-        private Piece piece;
+    public class A_piece_of_3x3_blocks {
 
-        protected void setUp() throws Exception {
+        @Before
+        public void createPiece() {
             piece = new Piece("" +
                     ".X.\n" +
                     ".X.\n" +
                     "...\n");
         }
 
-        public void test_Consists_of_many_blocks() {
+        @Test
+        public void consists_of_many_blocks() {
             assertEquals("" +
                     ".X.\n" +
                     ".X.\n" +
                     "...\n", piece.toString());
         }
 
-        public void test_Can_be_rotated_right() {
+        @Test
+        public void can_be_rotated_right() {
             piece = piece.rotateRight();
             assertEquals("" +
                     "...\n" +
@@ -44,7 +46,8 @@ public class RotatingPiecesOfBlocksTest {
                     "...\n", piece.toString());
         }
 
-        public void test_Can_be_rotated_left() {
+        @Test
+        public void can_be_rotated_left() {
             piece = piece.rotateLeft();
             assertEquals("" +
                     "...\n" +
@@ -53,11 +56,10 @@ public class RotatingPiecesOfBlocksTest {
         }
     }
 
-    public static class A_piece_of_5x5_blocks extends TestCase {
+    public class A_piece_of_5x5_blocks {
 
-        private Piece piece;
-
-        protected void setUp() throws Exception {
+        @Before
+        public void createPiece() {
             piece = new Piece("" +
                     "..XXX\n" +
                     "..XX.\n" +
@@ -66,7 +68,8 @@ public class RotatingPiecesOfBlocksTest {
                     ".....\n");
         }
 
-        public void test_Consists_of_many_blocks() {
+        @Test
+        public void consists_of_many_blocks() {
             assertEquals("" +
                     "..XXX\n" +
                     "..XX.\n" +
@@ -75,7 +78,8 @@ public class RotatingPiecesOfBlocksTest {
                     ".....\n", piece.toString());
         }
 
-        public void test_Can_be_rotated_right() {
+        @Test
+        public void can_be_rotated_right() {
             piece = piece.rotateRight();
             assertEquals("" +
                     ".....\n" +
@@ -85,7 +89,8 @@ public class RotatingPiecesOfBlocksTest {
                     "....X\n", piece.toString());
         }
 
-        public void test_Can_be_rotated_left() {
+        @Test
+        public void can_be_rotated_left() {
             piece = piece.rotateLeft();
             assertEquals("" +
                     "X....\n" +
