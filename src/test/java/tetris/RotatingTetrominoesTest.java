@@ -7,27 +7,28 @@
 
 package tetris;
 
-import junit.framework.*;
+import org.junit.*;
+import org.junit.runner.RunWith;
 
 /**
  * @author Esko Luontola
  */
-public class RotatingTetrominoesTest {
-
-    public static Test suite() {
-        return new TestSuite(RotatingTetrominoesTest.class.getDeclaredClasses());
-    }
+@RunWith(NestedJUnit4.class)
+public class RotatingTetrominoesTest extends Assert {
 
 /*
-    public static class All_shape_instances extends TestCase {
+    private Tetrominoe shape;
 
-        private Tetrominoe shape;
 
-        protected void setUp() throws Exception {
+    public class All_shape_instances {
+
+        @Before
+        public void createAnyShape() {
             shape = Tetrominoe.T_SHAPE;
         }
 
-        public void test_Are_immutable() {
+        @Test
+        public void are_immutable() {
             String original = shape.toString();
             shape.rotateRight();
             assertEquals(original, shape.toString());
@@ -38,22 +39,23 @@ public class RotatingTetrominoesTest {
 */
 
 /*
-    public static class The_T_shape extends TestCase {
+    public class The_T_shape {
 
-        private Tetrominoe shape;
-
-        protected void setUp() throws Exception {
+        @Before
+        public void createTShape() {
             shape = Tetrominoe.T_SHAPE;
         }
 
-        public void test_Is_shaped_like_T() {
+        @Test
+        public void is_shaped_like_T() {
             assertEquals("" +
                     ".T.\n" +
                     "TTT\n" +
                     "...\n", shape.toString());
         }
 
-//        public void test_Can_be_rotated_right_3_times() {
+//        @Test
+//        public void can_be_rotated_right_3_times() {
 //            shape = shape.rotateRight();
 //            assertEquals("" +
 //                    ".T.\n" +
@@ -71,7 +73,8 @@ public class RotatingTetrominoesTest {
 //                    ".T.\n", shape.toString());
 //        }
 
-//        public void test_Can_be_rotated_left_3_times() {
+//        @Test
+//        public void can_be_rotated_left_3_times() {
 //            shape = shape.rotateLeft();
 //            assertEquals("" +
 //                    ".T.\n" +
@@ -89,7 +92,8 @@ public class RotatingTetrominoesTest {
 //                    ".T.\n", shape.toString());
 //        }
 
-//        public void test_Rotating_it_4_times_will_go_back_to_the_original_shape() {
+//        @Test
+//        public void rotating_it_4_times_will_go_back_to_the_original_shape() {
 //            String originalShape = shape.toString();
 //            shape = shape.rotateRight().rotateRight().rotateRight().rotateRight();
 //            assertEquals(originalShape, shape.toString());
@@ -100,15 +104,15 @@ public class RotatingTetrominoesTest {
 */
 
 /*
-    public static class The_I_shape extends TestCase {
+    public class The_I_shape {
 
-        private Tetrominoe shape;
-
-        protected void setUp() throws Exception {
+        @Before
+        public void createIShape() {
             shape = Tetrominoe.I_SHAPE;
         }
 
-        public void test_Is_shaped_like_I() {
+        @Test
+        public void is_shaped_like_I() {
             assertEquals("" +
                     ".....\n" +
                     ".....\n" +
@@ -117,7 +121,8 @@ public class RotatingTetrominoesTest {
                     ".....\n", shape.toString());
         }
 
-//        public void test_Can_be_rotated_right_once() {
+//        @Test
+//        public void can_be_rotated_right_once() {
 //            shape = shape.rotateRight();
 //            assertEquals("" +
 //                    ".....\n" +
@@ -127,7 +132,8 @@ public class RotatingTetrominoesTest {
 //                    "..I..\n", shape.toString());
 //        }
 
-//        public void test_Can_be_rotated_left_once() {
+//        @Test
+//        public void can_be_rotated_left_once() {
 //            shape = shape.rotateLeft();
 //            assertEquals("" +
 //                    ".....\n" +
@@ -137,7 +143,8 @@ public class RotatingTetrominoesTest {
 //                    "..I..\n", shape.toString());
 //        }
 
-//        public void test_Rotating_it_twise_will_get_back_to_the_original_shape() {
+//        @Test
+//        public void rotating_it_twise_will_get_back_to_the_original_shape() {
 //            String originalShape = shape.toString();
 //            shape = shape.rotateRight().rotateRight();
 //            assertEquals(originalShape, shape.toString());
@@ -148,22 +155,23 @@ public class RotatingTetrominoesTest {
 */
 
 /*
-    public static class The_O_shape extends TestCase {
+    public class The_O_shape {
 
-        private Tetrominoe shape;
-
-        protected void setUp() throws Exception {
+        @Before
+        public void createOShape() {
             shape = Tetrominoe.O_SHAPE;
         }
 
-        public void test_Is_shaped_like_O() {
+        @Test
+        public void is_shaped_like_O() {
             assertEquals("" +
                     ".OO\n" +
                     ".OO\n" +
                     "...\n", shape.toString());
         }
 
-//        public void test_Can_not_be_rotated_right() {
+//        @Test
+//        public void can_not_be_rotated_right() {
 //            shape = shape.rotateRight();
 //            assertEquals("" +
 //                    ".OO\n" +
@@ -171,7 +179,8 @@ public class RotatingTetrominoesTest {
 //                    "...\n", shape.toString());
 //        }
 
-//        public void test_Can_not_be_rotated_left() {
+//        @Test
+//        public void can_not_be_rotated_left() {
 //            shape = shape.rotateLeft();
 //            assertEquals("" +
 //                    ".OO\n" +

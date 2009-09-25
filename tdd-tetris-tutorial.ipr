@@ -334,6 +334,10 @@
       </method>
     </configuration>
     <configuration default="false" name="All tests with coverage" type="JUnit" factoryName="JUnit" enabled="true" merge="false" per_test_coverage_enabled="false" track_test_folders="true" runner="idea">
+      <pattern>
+        <option name="PATTERN" value="tetris.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
       <module name="tdd-tetris-tutorial" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
@@ -430,6 +434,17 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$M2_REPO$/org/mockito/mockito-all/1.8.0/mockito-all-1.8.0-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.easymock:easymock:2.5.2">
+      <CLASSES>
+        <root url="jar://$M2_REPO$/org/easymock/easymock/2.5.2/easymock-2.5.2.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$M2_REPO$/org/easymock/easymock/2.5.2/easymock-2.5.2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$M2_REPO$/org/easymock/easymock/2.5.2/easymock-2.5.2-sources.jar!/" />
       </SOURCES>
     </library>
   </component>
