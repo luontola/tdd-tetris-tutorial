@@ -25,7 +25,7 @@ public class FallingPiecesTest extends Assert {
 
         @Before
         public void dropPiece() {
-            board.drop(Tetrominoe.T_SHAPE);
+            board.drop(Tetromino.T_SHAPE);
         }
 
         @Test
@@ -46,7 +46,7 @@ public class FallingPiecesTest extends Assert {
 
         @Before
         public void fallToLastRow() {
-            board.drop(Tetrominoe.T_SHAPE);
+            board.drop(Tetromino.T_SHAPE);
             board.tick();
             board.tick();
             board.tick();
@@ -85,7 +85,7 @@ public class FallingPiecesTest extends Assert {
 
         @Before
         public void landOnAnother() {
-            board.drop(Tetrominoe.T_SHAPE);
+            board.drop(Tetromino.T_SHAPE);
             board.tick();
             board.tick();
             board.tick();
@@ -100,7 +100,7 @@ public class FallingPiecesTest extends Assert {
                     "....T...\n" +
                     "...TTT..\n", board.toString());
 
-            board.drop(Tetrominoe.T_SHAPE);
+            board.drop(Tetromino.T_SHAPE);
             board.tick();
             board.tick();
         }

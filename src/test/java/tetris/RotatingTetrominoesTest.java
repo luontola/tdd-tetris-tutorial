@@ -18,14 +18,14 @@ import org.junit.runner.RunWith;
 public class RotatingTetrominoesTest extends Assert {
 
 /*
-    private Tetrominoe shape;
+    private Tetromino shape;
 
 
     public class All_shape_instances {
 
         @Before
         public void createAnyShape() {
-            shape = Tetrominoe.T_SHAPE;
+            shape = Tetromino.T_SHAPE;
         }
 
         @Test
@@ -44,7 +44,7 @@ public class RotatingTetrominoesTest extends Assert {
 
         @Before
         public void createTShape() {
-            shape = Tetrominoe.T_SHAPE;
+            shape = Tetromino.T_SHAPE;
         }
 
         @Test
@@ -109,7 +109,7 @@ public class RotatingTetrominoesTest extends Assert {
 
         @Before
         public void createIShape() {
-            shape = Tetrominoe.I_SHAPE;
+            shape = Tetromino.I_SHAPE;
         }
 
         @Test
@@ -160,7 +160,7 @@ public class RotatingTetrominoesTest extends Assert {
 
         @Before
         public void createOShape() {
-            shape = Tetrominoe.O_SHAPE;
+            shape = Tetromino.O_SHAPE;
         }
 
         @Test
