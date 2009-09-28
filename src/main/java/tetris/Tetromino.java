@@ -10,36 +10,36 @@ package tetris;
 /**
  * @author Esko Luontola
  */
-public class Tetrominoe implements RotatableGrid, Grid {
+public class Tetromino implements RotatableGrid, Grid {
 
     // For TGM's rotation rules, see http://bsixcentdouze.free.fr/tc/tgm-en/tgm.html
-    public static final Tetrominoe I_SHAPE = new Tetrominoe(2, 1, "" +
+    public static final Tetromino I_SHAPE = new Tetromino(2, 1, "" +
             ".....\n" +
             ".....\n" +
             "IIII.\n" +
             ".....\n" +
             ".....\n");
-    public static final Tetrominoe J_SHAPE = new Tetrominoe(4, 0, "" +
+    public static final Tetromino J_SHAPE = new Tetromino(4, 0, "" +
             "..J\n" +
             "JJJ\n" +
             "...\n");
-    public static final Tetrominoe L_SHAPE = new Tetrominoe(4, 0, "" +
+    public static final Tetromino L_SHAPE = new Tetromino(4, 0, "" +
             "L..\n" +
             "LLL\n" +
             "...\n");
-    public static final Tetrominoe O_SHAPE = new Tetrominoe(1, 0, "" +
+    public static final Tetromino O_SHAPE = new Tetromino(1, 0, "" +
             ".OO\n" +
             ".OO\n" +
             "...\n");
-    public static final Tetrominoe S_SHAPE = new Tetrominoe(2, 0, "" +
+    public static final Tetromino S_SHAPE = new Tetromino(2, 0, "" +
             "...\n" +
             ".SS\n" +
             "SS.\n");
-    public static final Tetrominoe T_SHAPE = new Tetrominoe(4, 0, "" +
+    public static final Tetromino T_SHAPE = new Tetromino(4, 0, "" +
             ".T.\n" +
             "TTT\n" +
             "...\n");
-    public static final Tetrominoe Z_SHAPE = new Tetrominoe(2, 1, "" +
+    public static final Tetromino Z_SHAPE = new Tetromino(2, 1, "" +
             "...\n" +
             "ZZ.\n" +
             ".ZZ\n");
@@ -47,7 +47,7 @@ public class Tetrominoe implements RotatableGrid, Grid {
     private final Grid[] rotations;
     private final int currentRotation;
 
-    public Tetrominoe(int maxRotations, int currentRotation, String blocks) {
+    public Tetromino(int maxRotations, int currentRotation, String blocks) {
         Piece firstRotation = firstRotation(new Piece(blocks), currentRotation);
         this.rotations = allRotations(firstRotation, maxRotations);
         this.currentRotation = currentRotation;
@@ -69,7 +69,7 @@ public class Tetrominoe implements RotatableGrid, Grid {
         return x;
     }
 
-    private Tetrominoe(Grid[] rotations, int currentRotation) {
+    private Tetromino(Grid[] rotations, int currentRotation) {
         while (currentRotation < 0) {
             currentRotation += rotations.length;
         }
@@ -77,12 +77,12 @@ public class Tetrominoe implements RotatableGrid, Grid {
         this.currentRotation = currentRotation % rotations.length;
     }
 
-    public Tetrominoe rotateRight() {
-        return new Tetrominoe(rotations, currentRotation + 1);
+    public Tetromino rotateRight() {
+        return new Tetromino(rotations, currentRotation + 1);
     }
 
-    public Tetrominoe rotateLeft() {
-        return new Tetrominoe(rotations, currentRotation - 1);
+    public Tetromino rotateLeft() {
+        return new Tetromino(rotations, currentRotation - 1);
     }
 
     public int rows() {
