@@ -34,8 +34,16 @@ public class Board implements Grid {
         if (hasFalling()) {
             throw new IllegalStateException("Another piece may not be dropped when one is already falling");
         }
-        Point topCenter = new Point(0, columns() / 2 - piece.columns() / 2);
+        Point topCenter = new Point(-firstNonEmptyRow(piece), columns() / 2 - piece.columns() / 2);
         falling = new MovablePiece(piece).moveTo(topCenter);
+    }
+
+    private static int firstNonEmptyRow(RotatableGrid piece) {
+        int min = piece.rows();
+        for (Point p : Grids.allNonEmptyPointsOf(piece)) {
+            min = Math.min(min, p.row);
+        }
+        return min;
     }
 
     public void tick() {

@@ -17,11 +17,11 @@ import org.junit.runner.RunWith;
 @RunWith(NestedJUnit4.class)
 public class FallingPiecesTest extends Assert {
 
-    // TODO: move piece one row down
     private static final RotatableGrid PIECE = new Piece("" +
+            "...\n" +
             ".T.\n" +
-            "TTT\n" +
-            "...\n");
+            "TTT\n"
+    );
 
     private Board board = new Board(6, 8);
 
