@@ -10,7 +10,7 @@ package tetris;
 /**
  * @author Esko Luontola
  */
-public class MovablePiece implements Grid {
+public class MovablePiece implements RotatableGrid {
 
     // Coordinates in use:
     // 'outer'  = coordinate in the parent grid (game board)
@@ -70,11 +70,11 @@ public class MovablePiece implements Grid {
     }
 
     public MovablePiece rotateClockwise() {
-        return new MovablePiece(offset, innerPiece.rotateRight());
+        return new MovablePiece(offset, innerPiece.rotateClockwise());
     }
 
     public MovablePiece rotateCounterClockwise() {
-        return new MovablePiece(offset, innerPiece.rotateLeft());
+        return new MovablePiece(offset, innerPiece.rotateCounterClockwise());
     }
 
     public int rows() {

@@ -30,11 +30,11 @@ public class Block implements RotatableGrid {
         return cell;
     }
 
-    public RotatableGrid rotateRight() {
+    public Block rotateClockwise() {
         return this;
     }
 
-    public RotatableGrid rotateLeft() {
+    public Block rotateCounterClockwise() {
         return this;
     }
 }

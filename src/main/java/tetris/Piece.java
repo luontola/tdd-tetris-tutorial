@@ -28,12 +28,12 @@ public class Piece implements RotatableGrid, Grid {
         this.blocks = blocks;
     }
 
-    public Piece rotateRight() {
-        return new Piece(rotateRight(blocks));
+    public Piece rotateClockwise() {
+        return new Piece(rotateClockwise(blocks));
     }
 
-    public Piece rotateLeft() {
-        return rotateRight().rotateRight().rotateRight();
+    public Piece rotateCounterClockwise() {
+        return rotateClockwise().rotateClockwise().rotateClockwise();
     }
 
     /**
@@ -66,7 +66,7 @@ public class Piece implements RotatableGrid, Grid {
      * ...
      * </pre>
      */
-    private static char[][] rotateRight(char[][] x) {
+    private static char[][] rotateClockwise(char[][] x) {
         char[][] rotated = new char[x.length][x.length];
         for (int i = 0; i < x.length; i++) {
             for (int j = 0; j < x[i].length; j++) {

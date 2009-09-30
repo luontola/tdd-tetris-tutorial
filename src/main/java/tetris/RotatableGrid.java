@@ -12,7 +12,7 @@ package tetris;
  */
 public interface RotatableGrid extends Grid {
 
-    RotatableGrid rotateRight();
+    RotatableGrid rotateClockwise();
 
-    RotatableGrid rotateLeft();
+    RotatableGrid rotateCounterClockwise();
 }

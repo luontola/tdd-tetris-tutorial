@@ -55,7 +55,7 @@ public class Tetromino implements RotatableGrid, Grid {
 
     private static Piece firstRotation(Piece piece, int currentRotation) {
         for (int i = 0; i < currentRotation; i++) {
-            piece = piece.rotateLeft();
+            piece = piece.rotateCounterClockwise();
         }
         return piece;
     }
@@ -64,7 +64,7 @@ public class Tetromino implements RotatableGrid, Grid {
         Piece[] x = new Piece[maxRotations];
         x[0] = firstRotation;
         for (int i = 1; i < x.length; i++) {
-            x[i] = x[i - 1].rotateRight();
+            x[i] = x[i - 1].rotateClockwise();
         }
         return x;
     }
@@ -77,11 +77,11 @@ public class Tetromino implements RotatableGrid, Grid {
         this.currentRotation = currentRotation % rotations.length;
     }
 
-    public Tetromino rotateRight() {
+    public Tetromino rotateClockwise() {
         return new Tetromino(rotations, currentRotation + 1);
     }
 
-    public Tetromino rotateLeft() {
+    public Tetromino rotateCounterClockwise() {
         return new Tetromino(rotations, currentRotation - 1);
     }
 
