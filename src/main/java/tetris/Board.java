@@ -45,18 +45,36 @@ public class Board implements Grid {
         }
     }
 
-    private boolean conflictsWithBoard(MovablePiece p) {
-        return p.outsideBoard(this) || hitsStationaryBlock(p);
+    private boolean conflictsWithBoard(MovablePiece test) {
+        return outsideBoard(test) || hitsStationaryBlock(test);
     }
 
-    private boolean hitsStationaryBlock(MovablePiece piece) {
-        for (Point point : Grids.allPointsOf(this)) {
-            if (piece.isAt(point) && piece.cellAtOuter(point) != EMPTY
-                    && blocks[point.row][point.col] != EMPTY) {
+    private boolean outsideBoard(MovablePiece test) {
+        for (Point p : test.blocksOnBoard()) {
+            if (outsideBoard(p)) {
                 return true;
             }
         }
         return false;
+    }
+
+    private boolean outsideBoard(Point p) {
+        return p.row >= rows()
+                || p.col < 0
+                || p.col >= columns();
+    }
+
+    private boolean hitsStationaryBlock(MovablePiece test) {
+        for (Point p : test.blocksOnBoard()) {
+            if (stationaryBlockExistsAt(p)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean stationaryBlockExistsAt(Point p) {
+        return blocks[p.row][p.col] != EMPTY;
     }
 
     public void moveLeft() {
@@ -96,43 +114,25 @@ public class Board implements Grid {
     }
 
     private boolean hasRoomOnRight(MovablePiece test) {
-//        System.out.println("Board.hasRoomOnRight");
-//        System.out.println(Grids.toString(test));
-//        System.out.println(test.blocksOnBoard());
         for (Point p : test.blocksOnBoard()) {
-            Point oneStepRight = p.moveRight();
-            if (oneStepRight.col >= columns()) {
-                return false;
-            }
-            if (stationaryBlockExistsAt(oneStepRight)
-                    /* && !test.isAt(oneStepRight)*/
-                    && cellAt(oneStepRight) != EMPTY) {
+            if (conflictsWithBoard(p.moveRight())) {
                 return false;
             }
         }
         return true;
-    }
-
-    private boolean stationaryBlockExistsAt(Point p) {
-        return blocks[p.row][p.col] != EMPTY;
     }
 
     private boolean hasRoomOnLeft(MovablePiece test) {
-//        System.out.println("Board.hasRoomOnLeft");
-//        System.out.println(Grids.toString(test));
-//        System.out.println(test.blocksOnBoard());
         for (Point p : test.blocksOnBoard()) {
-            Point oneStepLeft = p.moveLeft();
-            if (oneStepLeft.col < 0) {
-                return false;
-            }
-            if (stationaryBlockExistsAt(oneStepLeft)
-                    /* && !test.isAt(oneStepRight)*/
-                    && cellAt(oneStepLeft) != EMPTY) {
+            if (conflictsWithBoard(p.moveLeft())) {
                 return false;
             }
         }
         return true;
+    }
+
+    private boolean conflictsWithBoard(Point p) {
+        return outsideBoard(p) || stationaryBlockExistsAt(p);
     }
 
     public boolean hasFalling() {
@@ -147,7 +147,7 @@ public class Board implements Grid {
 
     private void copyToBoard(MovablePiece piece) {
         for (Point point : Grids.allPointsOf(this)) {
-            if (piece.isAt(point) && piece.cellAtOuter(point) != EMPTY) {
+            if (piece.hasBlockOnBoard(point)) {
                 blocks[point.row][point.col] = piece.cellAtOuter(point);
             }
         }

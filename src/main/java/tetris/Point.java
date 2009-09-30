@@ -20,10 +20,6 @@ public class Point {
         this.col = col;
     }
 
-    public String toString() {
-        return "[" + row + "," + col + "]";
-    }
-
     public Point moveUp() {
         return new Point(row - 1, col);
     }
@@ -38,5 +34,21 @@ public class Point {
 
     public Point moveRight() {
         return new Point(row, col + 1);
+    }
+
+    public boolean equals(Object obj) {
+        if (obj instanceof Point) {
+            Point that = (Point) obj;
+            return this.row == that.row && this.col == that.col;
+        }
+        return false;
+    }
+
+    public int hashCode() {
+        return row * 3 + col * 7;
+    }
+
+    public String toString() {
+        return "[" + row + "," + col + "]";
     }
 }
