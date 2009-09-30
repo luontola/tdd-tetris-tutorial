@@ -18,6 +18,7 @@ public class MovingAFallingPieceTest extends Assert {
             ".X.\n" +
             ".X.\n" +
             ".X.\n");
+    private static final int LOTS_OF_TIMES = 10;
 
     private final Board board = new Board(5, 8);
 
@@ -65,6 +66,19 @@ public class MovingAFallingPieceTest extends Assert {
                     "....X...\n" +
                     "....X...\n" +
                     "....X...\n" +
+                    "........\n", board.toString());
+        }
+
+        @Test
+        public void it_cannot_be_moved_left_over_the_board() {
+            for (int i = 0; i < LOTS_OF_TIMES; i++) {
+                board.moveLeft();
+            }
+            assertEquals("" +
+                    "X.......\n" +
+                    "X.......\n" +
+                    "X.......\n" +
+                    "........\n" +
                     "........\n", board.toString());
         }
     }

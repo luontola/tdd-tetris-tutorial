@@ -42,7 +42,7 @@ public class Board implements Grid {
     }
 
     private boolean conflictsWithBoard(MovablePiece p) {
-        return p.outsideBoard(rows()) || hitsStationaryBlock(p);
+        return p.outsideBoard(this) || hitsStationaryBlock(p);
     }
 
     private boolean hitsStationaryBlock(MovablePiece piece) {
@@ -56,7 +56,10 @@ public class Board implements Grid {
     }
 
     public void moveLeft() {
-        falling = falling.moveLeft();
+        MovablePiece test = falling.moveLeft();
+        if (!conflictsWithBoard(test)) {
+            falling = test;
+        }
     }
 
     public void moveRight() {
