@@ -23,4 +23,20 @@ public class Point {
     public String toString() {
         return "[" + row + "," + col + "]";
     }
+
+    public Point moveUp() {
+        return new Point(row - 1, col);
+    }
+
+    public Point moveDown() {
+        return new Point(row + 1, col);
+    }
+
+    public Point moveLeft() {
+        return new Point(row, col - 1);
+    }
+
+    public Point moveRight() {
+        return new Point(row, col + 1);
+    }
 }

@@ -58,15 +58,15 @@ public class MovablePiece implements RotatableGrid {
     }
 
     public MovablePiece moveDown() {
-        return new MovablePiece(new Point(offset.row + 1, offset.col), innerPiece);
+        return new MovablePiece(offset.moveDown(), innerPiece);
     }
 
     public MovablePiece moveLeft() {
-        return new MovablePiece(new Point(offset.row, offset.col - 1), innerPiece);
+        return new MovablePiece(offset.moveLeft(), innerPiece);
     }
 
     public MovablePiece moveRight() {
-        return new MovablePiece(new Point(offset.row, offset.col + 1), innerPiece);
+        return new MovablePiece(offset.moveRight(), innerPiece);
     }
 
     public MovablePiece rotateClockwise() {

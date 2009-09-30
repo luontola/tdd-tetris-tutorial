@@ -97,7 +97,7 @@ public class Board implements Grid {
 
     private boolean hasRoomOnRight(MovablePiece test) {
         for (Point p : Grids.allNonEmptyPointsOf(test)) {
-            Point right = new Point(p.row, p.col + 1);
+            Point right = p.moveRight();
             if (!test.isAt(right) && cellAt(right) != EMPTY) {
                 return false;
             }
