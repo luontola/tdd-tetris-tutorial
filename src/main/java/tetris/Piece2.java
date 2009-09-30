@@ -34,7 +34,7 @@ public class Piece2 implements RotatableGrid {
     }
 
     public Piece2 rotateCounterClockwise() {
-        return this;
+        return new Piece2(orientations, current + orientations.length - 1);
     }
 
     public int rows() {
