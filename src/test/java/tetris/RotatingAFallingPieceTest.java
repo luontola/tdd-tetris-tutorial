@@ -8,11 +8,44 @@
 package tetris;
 
 import net.orfjackal.nestedjunit.NestedJUnit4;
-import org.junit.Assert;
+import org.junit.*;
 import org.junit.runner.RunWith;
 
 @RunWith(NestedJUnit4.class)
 public class RotatingAFallingPieceTest extends Assert {
+
+    private static final Piece PIECE = new Piece("" +
+            ".X.\n" +
+            "XX.\n" +
+            "...\n");
+
+    private Board board = new Board(5, 8);
+
+
+    public class When_a_piece_is_falling_on_an_empty_board {
+
+        @Before
+        public void dropPiece() {
+            board.drop(PIECE);
+            assertEquals("" +
+                    "....X...\n" +
+                    "...XX...\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n", board.toString());
+        }
+
+        @Test
+        public void it_can_be_rotated_clockwise() {
+            board.rotateClockwise();
+            assertEquals("" +
+                    "....X...\n" +
+                    "....XX..\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n", board.toString());
+        }
+    }
 
     // TODO: a falling piece can be rotated clockwise
     // TODO: a falling piece can be rotated counter-clockwise

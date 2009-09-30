@@ -77,6 +77,10 @@ public class Board implements Grid {
         }
     }
 
+    public void rotateClockwise() {
+        falling = falling.rotateClockwise();
+    }
+
     public boolean hasFalling() {
         return falling != null;
     }
