@@ -19,7 +19,7 @@ public class MovingAFallingPieceTest extends Assert {
             ".X.\n" +
             ".X.\n");
 
-    private final Board board = new Board(4, 8);
+    private final Board board = new Board(5, 8);
 
 
     public class When_a_piece_is_falling_on_an_empty_board {
@@ -31,6 +31,7 @@ public class MovingAFallingPieceTest extends Assert {
                     "....X...\n" +
                     "....X...\n" +
                     "....X...\n" +
+                    "........\n" +
                     "........\n", board.toString());
         }
 
@@ -41,6 +42,7 @@ public class MovingAFallingPieceTest extends Assert {
                     "...X....\n" +
                     "...X....\n" +
                     "...X....\n" +
+                    "........\n" +
                     "........\n", board.toString());
         }
 
@@ -51,6 +53,18 @@ public class MovingAFallingPieceTest extends Assert {
                     ".....X..\n" +
                     ".....X..\n" +
                     ".....X..\n" +
+                    "........\n" +
+                    "........\n", board.toString());
+        }
+
+        @Test
+        public void it_can_be_moved_down() {
+            board.moveDown();
+            assertEquals("" +
+                    "........\n" +
+                    "....X...\n" +
+                    "....X...\n" +
+                    "....X...\n" +
                     "........\n", board.toString());
         }
     }

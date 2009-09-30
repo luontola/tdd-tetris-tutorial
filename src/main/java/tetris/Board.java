@@ -63,6 +63,10 @@ public class Board implements Grid {
         falling = falling.moveRight();
     }
 
+    public void moveDown() {
+        falling = falling.moveDown();
+    }
+
     public boolean hasFalling() {
         return falling != null;
     }
