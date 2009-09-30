@@ -82,7 +82,7 @@ public class Board implements Grid {
     }
 
     public void rotateCounterClockwise() {
-        falling = falling.rotateCounterClockwise();
+        moveIfNoConflict(falling.rotateCounterClockwise());
     }
 
     public boolean hasFalling() {
