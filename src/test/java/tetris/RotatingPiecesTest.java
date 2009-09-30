@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
  * @author Esko Luontola
  */
 @RunWith(NestedJUnit4.class)
-public class RotatingPieceTest extends Assert {
+public class RotatingPiecesTest extends Assert {
 
     private Piece2 piece;
 
