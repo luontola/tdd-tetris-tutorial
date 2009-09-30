@@ -9,7 +9,6 @@ package tetris;
 
 /**
  * @author Esko Luontola
- * @since 1.10.2009
  */
 public class Piece2 implements RotatableGrid {
 
@@ -36,14 +35,6 @@ public class Piece2 implements RotatableGrid {
         return index % array.length;
     }
 
-    public Piece2 rotateClockwise() {
-        return new Piece2(orientations, current + 1);
-    }
-
-    public Piece2 rotateCounterClockwise() {
-        return new Piece2(orientations, current - 1);
-    }
-
     public int rows() {
         return self().rows();
     }
@@ -56,11 +47,19 @@ public class Piece2 implements RotatableGrid {
         return self().cellAt(point);
     }
 
+    public String toString() {
+        return self().toString();
+    }
+
     private Shape self() {
         return orientations[current];
     }
 
-    public String toString() {
-        return Grids.toString(this);
+    public Piece2 rotateClockwise() {
+        return new Piece2(orientations, current + 1);
+    }
+
+    public Piece2 rotateCounterClockwise() {
+        return new Piece2(orientations, current - 1);
     }
 }
