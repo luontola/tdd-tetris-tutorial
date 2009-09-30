@@ -20,7 +20,8 @@ public class MovingAFallingPieceTest extends Assert {
     private static final RotatableGrid PIECE = new Piece("" +
             ".X.\n" +
             ".X.\n" +
-            ".X.\n");
+            ".X.\n"
+    );
     private static final int LOTS_OF_TIMES = 10;
 
     private Board board = new Board(5, 8);

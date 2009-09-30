@@ -35,7 +35,8 @@ public class RotatingPiecesTest extends Assert {
                             "X.\n",
                     "" +
                             "XX\n" +
-                            ".X\n");
+                            ".X\n"
+            );
         }
 
         @Test
