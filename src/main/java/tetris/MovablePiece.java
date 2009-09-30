@@ -7,6 +7,8 @@
 
 package tetris;
 
+import java.util.*;
+
 /**
  * @author Esko Luontola
  */
@@ -91,6 +93,15 @@ public class MovablePiece implements RotatableGrid {
 
     public char cellAtOuter(Point outer) {
         return cellAt(asInner(outer));
+    }
+
+    public List<Point> blocksOnBoard() {
+        List<Point> innerPoints = Grids.allNonEmptyPointsOf(innerPiece);
+        List<Point> outerPoints = new ArrayList<Point>();
+        for (Point inner : innerPoints) {
+            outerPoints.add(asOuter(inner));
+        }
+        return outerPoints;
     }
 
     private Point asInner(Point outer) {

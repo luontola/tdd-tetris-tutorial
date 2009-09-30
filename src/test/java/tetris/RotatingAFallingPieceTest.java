@@ -67,41 +67,45 @@ public class RotatingAFallingPieceTest extends Assert {
         @Before
         public void dropPiece() {
             board = new Board("" +
-                    "........\n" +
-                    "...Y.Y..\n" +
-                    "...Y.Y..\n" +
-                    "...Y.Y..\n" +
-                    "...Y.Y..\n");
+                    ".........\n" +
+                    "...Y.Y...\n" +
+                    "...Y.Y...\n" +
+                    "...Y.Y...\n" +
+                    "...Y.Y...\n");
 
             board.drop(LONG_PIECE);
+
+            // In this test there is enough room both on the left and right side
+            // of the walls of Y blocks, so that a naive wallkick implementation
+            // might move the falling block over the wall.
             assertEquals("" +
-                    "....X...\n" +
-                    "...YXY..\n" +
-                    "...YXY..\n" +
-                    "...Y.Y..\n" +
-                    "...Y.Y..\n", board.toString());
+                    "....X....\n" +
+                    "...YXY...\n" +
+                    "...YXY...\n" +
+                    "...Y.Y...\n" +
+                    "...Y.Y...\n", board.toString());
         }
 
         @Test
         public void it_cannot_be_rotated_clockwise() {
             board.rotateClockwise();
             assertEquals("" +
-                    "....X...\n" +
-                    "...YXY..\n" +
-                    "...YXY..\n" +
-                    "...Y.Y..\n" +
-                    "...Y.Y..\n", board.toString());
+                    "....X....\n" +
+                    "...YXY...\n" +
+                    "...YXY...\n" +
+                    "...Y.Y...\n" +
+                    "...Y.Y...\n", board.toString());
         }
 
         @Test
         public void it_cannot_be_rotated_counterclockwise() {
             board.rotateCounterClockwise();
             assertEquals("" +
-                    "....X...\n" +
-                    "...YXY..\n" +
-                    "...YXY..\n" +
-                    "...Y.Y..\n" +
-                    "...Y.Y..\n", board.toString());
+                    "....X....\n" +
+                    "...YXY...\n" +
+                    "...YXY...\n" +
+                    "...Y.Y...\n" +
+                    "...Y.Y...\n", board.toString());
         }
     }
 
@@ -149,25 +153,15 @@ public class RotatingAFallingPieceTest extends Assert {
                     "........\n", board.toString());
         }
 
-//        @Test
-//        public void it_will_wallkick_when_rotated() {
-//            board.rotateClockwise();
-//            assertEquals("" +
-//                    "........\n" +
-//                    ".....XXX\n" +
-//                    "........\n" +
-//                    "........\n" +
-//                    "........\n", board.toString());
-//        }
+        @Test
+        public void it_will_wallkick_when_rotated() {
+            board.rotateClockwise();
+            assertEquals("" +
+                    "........\n" +
+                    ".....XXX\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n", board.toString());
+        }
     }
-
-    // TODO: a falling piece can be rotated clockwise
-    // TODO: a falling piece can be rotated counter-clockwise
-    // TODO: it can not be rotated when there is no room to rotate (left wall, right wall, other pieces...)
-
-    // TODO: when piece is up against a wall (or piece) and it is rotated (no room to rotate), move it away from the wall ("wallkick")
-    // See: http://bsixcentdouze.free.fr/tc/tgm-en/tgm.html
-    // http://bsixcentdouze.free.fr/tc/tgm-en/img/wallkick1.png
-    // http://bsixcentdouze.free.fr/tc/tgm-en/img/wallkick2.png
-    // http://bsixcentdouze.free.fr/tc/tgm-en/img/wallkick3.png
 }
