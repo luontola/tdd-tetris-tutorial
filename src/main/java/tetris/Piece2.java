@@ -24,9 +24,16 @@ public class Piece2 implements RotatableGrid {
         current = 0;
     }
 
-    public Piece2(Shape[] orientations, int current) {
+    private Piece2(Shape[] orientations, int current) {
         this.orientations = orientations;
-        this.current = current;
+        this.current = fixArrayIndex(current, orientations);
+    }
+
+    private static int fixArrayIndex(int index, Object[] array) {
+        while (index < 0) {
+            index += array.length;
+        }
+        return index % array.length;
     }
 
     public Piece2 rotateClockwise() {
@@ -34,7 +41,7 @@ public class Piece2 implements RotatableGrid {
     }
 
     public Piece2 rotateCounterClockwise() {
-        return new Piece2(orientations, current + orientations.length - 1);
+        return new Piece2(orientations, current - 1);
     }
 
     public int rows() {
