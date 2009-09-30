@@ -27,6 +27,16 @@ public class Grids {
         return points;
     }
 
+    public static List<Point> allNonEmptyPointsOf(Grid grid) {
+        List<Point> points = new ArrayList<Point>();
+        for (Point p : allPointsOf(grid)) {
+            if (grid.cellAt(p) != Grid.EMPTY) {
+                points.add(p);
+            }
+        }
+        return points;
+    }
+
     public static String toString(Grid grid) {
         StringBuilder sb = new StringBuilder();
         for (int row = 0; row < grid.rows(); row++) {

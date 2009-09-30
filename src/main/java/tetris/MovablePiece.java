@@ -85,8 +85,12 @@ public class MovablePiece implements RotatableGrid {
         return innerPiece.columns();
     }
 
-    public char cellAt(Point outer) {
-        return innerPiece.cellAt(asInner(outer));
+    public char cellAt(Point inner) {
+        return innerPiece.cellAt(inner);
+    }
+
+    public char cellAtOuter(Point outer) {
+        return cellAt(asInner(outer));
     }
 
     private Point asInner(Point outer) {

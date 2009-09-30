@@ -51,7 +51,7 @@ public class Board implements Grid {
 
     private boolean hitsStationaryBlock(MovablePiece piece) {
         for (Point point : Grids.allPointsOf(this)) {
-            if (piece.isAt(point) && piece.cellAt(point) != EMPTY
+            if (piece.isAt(point) && piece.cellAtOuter(point) != EMPTY
                     && blocks[point.row][point.col] != EMPTY) {
                 return true;
             }
@@ -96,13 +96,13 @@ public class Board implements Grid {
     }
 
     private boolean hasRoomOnRight(MovablePiece test) {
-        for (int i = 0; i < test.columns(); i++) {
-            test = test.moveRight();
-            if (!conflictsWithBoard(test)) {
-                return true;
+        for (Point p : Grids.allNonEmptyPointsOf(test)) {
+            Point right = new Point(p.row, p.col + 1);
+            if (!test.isAt(right) && cellAt(right) != EMPTY) {
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     private boolean hasRoomOnLeft(MovablePiece test) {
@@ -127,8 +127,8 @@ public class Board implements Grid {
 
     private void copyToBoard(MovablePiece piece) {
         for (Point point : Grids.allPointsOf(this)) {
-            if (piece.isAt(point) && piece.cellAt(point) != EMPTY) {
-                blocks[point.row][point.col] = piece.cellAt(point);
+            if (piece.isAt(point) && piece.cellAtOuter(point) != EMPTY) {
+                blocks[point.row][point.col] = piece.cellAtOuter(point);
             }
         }
     }
@@ -143,7 +143,7 @@ public class Board implements Grid {
 
     public char cellAt(Point point) {
         if (falling != null && falling.isAt(point)) {
-            return falling.cellAt(point);
+            return falling.cellAtOuter(point);
         } else {
             return blocks[point.row][point.col];
         }
