@@ -13,33 +13,44 @@ package tetris;
  */
 public class Piece2 implements RotatableGrid {
 
-    private final FixedPiece[] orientations;
+    private final Shape[] orientations;
+    private final int current;
 
     public Piece2(String... orientations) {
-        this.orientations = new FixedPiece[orientations.length];
+        this.orientations = new Shape[orientations.length];
         for (int i = 0; i < orientations.length; i++) {
-            this.orientations[i] = new FixedPiece(orientations[i]);
+            this.orientations[i] = new Shape(orientations[i]);
         }
+        current = 0;
     }
 
-    public RotatableGrid rotateClockwise() {
-        return this;
+    public Piece2(Shape[] orientations, int current) {
+        this.orientations = orientations;
+        this.current = current;
     }
 
-    public RotatableGrid rotateCounterClockwise() {
+    public Piece2 rotateClockwise() {
+        return new Piece2(orientations, current + 1);
+    }
+
+    public Piece2 rotateCounterClockwise() {
         return this;
     }
 
     public int rows() {
-        return orientations[0].rows();
+        return self().rows();
     }
 
     public int columns() {
-        return orientations[0].columns();
+        return self().columns();
     }
 
     public char cellAt(Point point) {
-        return orientations[0].cellAt(point);
+        return self().cellAt(point);
+    }
+
+    private Shape self() {
+        return orientations[current];
     }
 
     public String toString() {

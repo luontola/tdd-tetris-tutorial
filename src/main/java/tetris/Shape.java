@@ -10,11 +10,11 @@ package tetris;
 /**
  * @author Esko Luontola
  */
-public class FixedPiece implements Grid {
+public class Shape implements Grid {
 
     private final char[][] blocks;
 
-    public FixedPiece(String shape) {
+    public Shape(String shape) {
         blocks = Grids.fromString(shape);
     }
 

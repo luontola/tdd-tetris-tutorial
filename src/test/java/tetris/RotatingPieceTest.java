@@ -44,5 +44,13 @@ public class RotatingPieceTest extends Assert {
                     ".X\n" +
                     "XX\n", piece.toString());
         }
+
+        @Test
+        public void rotating_it_clockwise_switches_to_the_next_orientation() {
+            piece = piece.rotateClockwise();
+            assertEquals("" +
+                    "X.\n" +
+                    "XX\n", piece.toString());
+        }
     }
 }
