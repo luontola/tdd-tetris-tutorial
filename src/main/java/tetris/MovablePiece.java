@@ -73,6 +73,10 @@ public class MovablePiece implements Grid {
         return new MovablePiece(offset, innerPiece.rotateRight());
     }
 
+    public MovablePiece rotateCounterClockwise() {
+        return new MovablePiece(offset, innerPiece.rotateLeft());
+    }
+
     public int rows() {
         return innerPiece.rows();
     }

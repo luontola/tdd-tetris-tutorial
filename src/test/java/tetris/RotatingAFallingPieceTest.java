@@ -45,6 +45,17 @@ public class RotatingAFallingPieceTest extends Assert {
                     "........\n" +
                     "........\n", board.toString());
         }
+
+        @Test
+        public void it_can_be_rotated_counterclockwise() {
+            board.rotateCounterClockwise();
+            assertEquals("" +
+                    "........\n" +
+                    "...XX...\n" +
+                    "....X...\n" +
+                    "........\n" +
+                    "........\n", board.toString());
+        }
     }
 
     // TODO: a falling piece can be rotated clockwise
