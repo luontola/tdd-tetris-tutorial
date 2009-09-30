@@ -20,7 +20,7 @@ public class MovingAFallingPieceTest extends Assert {
             ".X.\n");
     private static final int LOTS_OF_TIMES = 10;
 
-    private final Board board = new Board(5, 8);
+    private Board board = new Board(5, 8);
 
 
     public class When_a_piece_is_falling_on_an_empty_board {
@@ -110,16 +110,64 @@ public class MovingAFallingPieceTest extends Assert {
         }
     }
 
-    // TODO: a falling piece can be moved left
-    // TODO: a falling piece can be moved right
-    // TODO: a falling piece can be moved down
-    // TODO: it will not move left over over the board
-    // TODO: it will not move right over over the board
-    // TODO: it will not move down over over the board (will stop falling)
-    // TODO: it can not be moved left if another piece is in the way
-    // TODO: it can not be moved right if another piece is in the way
-    // TODO: it can not be moved down if another piece is in the way (will stop falling)
+    public class When_a_piece_is_falling_and_some_blocks_are_in_its_way {
 
-    // P.S. Take into consideration, that part of the piece's area may be empty cells.
-    // Only non-empty cells should take part in the collision checks.
+        @Before
+        public void dropPiece() {
+            board = new Board("" +
+                    "........\n" +
+                    "Y......Y\n" +
+                    "Y......Y\n" +
+                    "Y......Y\n" +
+                    "YYYYY..Y\n");
+
+            board.drop(PIECE);
+            assertEquals("" +
+                    "....X...\n" +
+                    "Y...X..Y\n" +
+                    "Y...X..Y\n" +
+                    "Y......Y\n" +
+                    "YYYYY..Y\n", board.toString());
+        }
+
+        @Test
+        public void it_cannot_be_moved_left_over_the_other_blocks() {
+            for (int i = 0; i < LOTS_OF_TIMES; i++) {
+                board.moveLeft();
+            }
+            assertEquals("" +
+                    ".X......\n" +
+                    "YX.....Y\n" +
+                    "YX.....Y\n" +
+                    "Y......Y\n" +
+                    "YYYYY..Y\n", board.toString());
+        }
+
+        @Test
+        public void it_cannot_be_moved_right_over_the_other_blocks() {
+            for (int i = 0; i < LOTS_OF_TIMES; i++) {
+                board.moveRight();
+            }
+            assertEquals("" +
+                    "......X.\n" +
+                    "Y.....XY\n" +
+                    "Y.....XY\n" +
+                    "Y......Y\n" +
+                    "YYYYY..Y\n", board.toString());
+        }
+
+        @Test
+        public void it_cannot_be_moved_down_over_the_other_blocks() {
+            for (int i = 0; i < LOTS_OF_TIMES; i++) {
+                board.moveDown();
+            }
+            assertEquals("" +
+                    "........\n" +
+                    "Y...X..Y\n" +
+                    "Y...X..Y\n" +
+                    "Y...X..Y\n" +
+                    "YYYYY..Y\n", board.toString());
+            assertTrue(board.hasFalling());
+        }
+    }
 }
