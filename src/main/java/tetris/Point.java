@@ -19,4 +19,8 @@ public class Point {
         this.row = row;
         this.col = col;
     }
+
+    public String toString() {
+        return "[" + row + "," + col + "]";
+    }
 }

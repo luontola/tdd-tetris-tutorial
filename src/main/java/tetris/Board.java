@@ -78,11 +78,29 @@ public class Board implements Grid {
     }
 
     public void rotateClockwise() {
-        moveIfNoConflict(falling.rotateClockwise());
+        rotateIfNoConflict(falling.rotateClockwise());
     }
 
     public void rotateCounterClockwise() {
-        moveIfNoConflict(falling.rotateCounterClockwise());
+        rotateIfNoConflict(falling.rotateCounterClockwise());
+    }
+
+    private void rotateIfNoConflict(MovablePiece test) {
+        if (!conflictsWithBoard(test)) {
+            falling = test;
+        } else if (hasRoomOnRight(test)) {
+            rotateIfNoConflict(test.moveRight());
+        }
+    }
+
+    private boolean hasRoomOnRight(MovablePiece test) {
+        for (int i = 0; i < test.columns(); i++) {
+            test = test.moveRight();
+            if (!conflictsWithBoard(test)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean hasFalling() {

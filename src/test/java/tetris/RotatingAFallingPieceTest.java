@@ -105,6 +105,34 @@ public class RotatingAFallingPieceTest extends Assert {
         }
     }
 
+    public class When_a_piece_is_next_to_a_wall_on_the_left {
+
+        @Before
+        public void dropPiece() {
+            board.drop(LONG_PIECE);
+            for (int i = 0; i < 4; i++) {
+                board.moveLeft();
+            }
+            assertEquals("" +
+                    "X.......\n" +
+                    "X.......\n" +
+                    "X.......\n" +
+                    "........\n" +
+                    "........\n", board.toString());
+        }
+
+        @Test
+        public void it_will_wallkick_when_rotated() {
+            board.rotateClockwise();
+            assertEquals("" +
+                    "........\n" +
+                    "XXX.....\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n", board.toString());
+        }
+    }
+
     // TODO: a falling piece can be rotated clockwise
     // TODO: a falling piece can be rotated counter-clockwise
     // TODO: it can not be rotated when there is no room to rotate (left wall, right wall, other pieces...)
