@@ -17,14 +17,30 @@ import org.junit.runner.RunWith;
 @RunWith(NestedJUnit4.class)
 public class RotatingAFallingPieceTest extends Assert {
 
-    private static final Piece PIECE = new Piece("" +
-            ".X.\n" +
-            "XX.\n" +
-            "...\n");
-    private static final Piece LONG_PIECE = new Piece("" +
-            ".X.\n" +
-            ".X.\n" +
-            ".X.\n");
+    private static final Piece2 ASYMMETRIC_PIECE = new Piece2(
+            "" +
+                    ".X\n" +
+                    "XX\n",
+            "" +
+                    "X.\n" +
+                    "XX\n",
+            "" +
+                    "XX\n" +
+                    "X.\n",
+            "" +
+                    "XX\n" +
+                    ".X\n"
+    );
+    private static final Piece2 LONG_PIECE = new Piece2(
+            "" +
+                    ".X.\n" +
+                    ".X.\n" +
+                    ".X.\n",
+            "" +
+                    "...\n" +
+                    "XXX\n" +
+                    "...\n"
+    );
 
     private Board board = new Board(5, 8);
 
@@ -33,7 +49,7 @@ public class RotatingAFallingPieceTest extends Assert {
 
         @Before
         public void dropPiece() {
-            board.drop(PIECE);
+            board.drop(ASYMMETRIC_PIECE);
             assertEquals("" +
                     "....X...\n" +
                     "...XX...\n" +
@@ -46,8 +62,8 @@ public class RotatingAFallingPieceTest extends Assert {
         public void it_can_be_rotated_clockwise() {
             board.rotateClockwise();
             assertEquals("" +
-                    "....X...\n" +
-                    "....XX..\n" +
+                    "...X....\n" +
+                    "...XX...\n" +
                     "........\n" +
                     "........\n" +
                     "........\n", board.toString());
@@ -57,9 +73,9 @@ public class RotatingAFallingPieceTest extends Assert {
         public void it_can_be_rotated_counterclockwise() {
             board.rotateCounterClockwise();
             assertEquals("" +
-                    "........\n" +
                     "...XX...\n" +
                     "....X...\n" +
+                    "........\n" +
                     "........\n" +
                     "........\n", board.toString());
         }

@@ -17,6 +17,12 @@ import org.junit.runner.RunWith;
 @RunWith(NestedJUnit4.class)
 public class FallingPiecesTest extends Assert {
 
+    // TODO: move piece one row down
+    private static final RotatableGrid PIECE = new Piece2("" +
+            ".T.\n" +
+            "TTT\n" +
+            "...\n");
+
     private Board board = new Board(6, 8);
 
 
@@ -24,7 +30,7 @@ public class FallingPiecesTest extends Assert {
 
         @Before
         public void dropPiece() {
-            board.drop(Tetromino.T_SHAPE);
+            board.drop(PIECE);
         }
 
         @Test
@@ -43,7 +49,7 @@ public class FallingPiecesTest extends Assert {
 
         @Before
         public void fallToLastRow() {
-            board.drop(Tetromino.T_SHAPE);
+            board.drop(PIECE);
             board.tick();
             board.tick();
             board.tick();
@@ -88,7 +94,7 @@ public class FallingPiecesTest extends Assert {
                     "....T...\n" +
                     "...TTT..\n");
 
-            board.drop(Tetromino.T_SHAPE);
+            board.drop(PIECE);
             board.tick();
             board.tick();
         }

@@ -10,98 +10,103 @@ package tetris;
 /**
  * @author Esko Luontola
  */
-public class Tetromino implements RotatableGrid, Grid {
+public class Tetromino {
 
-    // For TGM's rotation rules, see http://bsixcentdouze.free.fr/tc/tgm-en/tgm.html
-    public static final Tetromino I_SHAPE = new Tetromino(2, 1, "" +
-            ".....\n" +
-            ".....\n" +
-            "IIII.\n" +
-            ".....\n" +
-            ".....\n");
-    public static final Tetromino J_SHAPE = new Tetromino(4, 0, "" +
-            "..J\n" +
-            "JJJ\n" +
-            "...\n");
-    public static final Tetromino L_SHAPE = new Tetromino(4, 0, "" +
-            "L..\n" +
-            "LLL\n" +
-            "...\n");
-    public static final Tetromino O_SHAPE = new Tetromino(1, 0, "" +
-            ".OO\n" +
-            ".OO\n" +
-            "...\n");
-    public static final Tetromino S_SHAPE = new Tetromino(2, 0, "" +
-            "...\n" +
-            ".SS\n" +
-            "SS.\n");
-    public static final Tetromino T_SHAPE = new Tetromino(4, 0, "" +
-            ".T.\n" +
-            "TTT\n" +
-            "...\n");
-    public static final Tetromino Z_SHAPE = new Tetromino(2, 1, "" +
-            "...\n" +
-            "ZZ.\n" +
-            ".ZZ\n");
+    // These tetrominoes follow Tetris the Grand Master's rotation rules.
+    // See http://bsixcentdouze.free.fr/tc/tgm-en/tgm.html#rotations
 
-    private final Grid[] rotations;
-    private final int currentRotation;
+    public static final RotatableGrid I_SHAPE = new Piece2(
+            "" +
+                    "....\n" +
+                    "IIII\n" +
+                    "....\n" +
+                    "....\n",
+            "" +
+                    "..I.\n" +
+                    "..I.\n" +
+                    "..I.\n" +
+                    "..I.\n"
+    );
+    public static final RotatableGrid T_SHAPE = new Piece2(
+            "" +
+                    "....\n" +
+                    "TTT.\n" +
+                    ".T..\n",
+            "" +
+                    ".T..\n" +
+                    "TT..\n" +
+                    ".T..\n",
+            "" +
+                    "....\n" +
+                    ".T..\n" +
+                    "TTT.\n",
+            "" +
+                    ".T..\n" +
+                    ".TT.\n" +
+                    ".T..\n"
+    );
+    public static final RotatableGrid L_SHAPE = new Piece2(
+            "" +
+                    "....\n" +
+                    "LLL.\n" +
+                    "L...\n",
+            "" +
+                    "LL..\n" +
+                    ".L..\n" +
+                    ".L..\n",
+            "" +
+                    "....\n" +
+                    "..L.\n" +
+                    "LLL..\n",
+            "" +
+                    ".L..\n" +
+                    ".L..\n" +
+                    ".LL.\n"
+    );
+    public static final RotatableGrid J_SHAPE = new Piece2(
+            "" +
+                    "....\n" +
+                    "JJJ.\n" +
+                    "..J.\n",
+            "" +
+                    ".J..\n" +
+                    ".J..\n" +
+                    "JJ..\n",
+            "" +
+                    "....\n" +
+                    "J...\n" +
+                    "JJJ.\n",
+            "" +
+                    ".JJ.\n" +
+                    ".J..\n" +
+                    ".J..\n"
+    );
+    public static final RotatableGrid S_SHAPE = new Piece2(
+            "" +
+                    "....\n" +
+                    ".SS.\n" +
+                    "SS..\n",
+            "" +
+                    "S...\n" +
+                    "SS..\n" +
+                    ".S..\n"
+    );
+    public static final RotatableGrid Z_SHAPE = new Piece2(
+            "" +
+                    "....\n" +
+                    "ZZ..\n" +
+                    ".ZZ.\n",
+            "" +
+                    "..Z.\n" +
+                    ".ZZ.\n" +
+                    ".Z..\n"
+    );
+    public static final RotatableGrid O_SHAPE = new Piece2(
+            "" +
+                    ".OO.\n" +
+                    ".OO.\n"
+    );
 
-    public Tetromino(int maxRotations, int currentRotation, String blocks) {
-        Piece firstRotation = firstRotation(new Piece(blocks), currentRotation);
-        this.rotations = allRotations(firstRotation, maxRotations);
-        this.currentRotation = currentRotation;
-    }
-
-    private static Piece firstRotation(Piece piece, int currentRotation) {
-        for (int i = 0; i < currentRotation; i++) {
-            piece = piece.rotateCounterClockwise();
-        }
-        return piece;
-    }
-
-    private static Grid[] allRotations(Piece firstRotation, int maxRotations) {
-        Piece[] x = new Piece[maxRotations];
-        x[0] = firstRotation;
-        for (int i = 1; i < x.length; i++) {
-            x[i] = x[i - 1].rotateClockwise();
-        }
-        return x;
-    }
-
-    private Tetromino(Grid[] rotations, int currentRotation) {
-        while (currentRotation < 0) {
-            currentRotation += rotations.length;
-        }
-        this.rotations = rotations;
-        this.currentRotation = currentRotation % rotations.length;
-    }
-
-    public Tetromino rotateClockwise() {
-        return new Tetromino(rotations, currentRotation + 1);
-    }
-
-    public Tetromino rotateCounterClockwise() {
-        return new Tetromino(rotations, currentRotation - 1);
-    }
-
-    public int rows() {
-        return self().rows();
-    }
-
-    public int columns() {
-        return self().columns();
-    }
-
-    public char cellAt(Point point) {
-        return self().cellAt(point);
-    }
-
-    private Grid self() {
-        return rotations[currentRotation];
-    }
-
-    public String toString() {
-        return Grids.toString(this);
+    private Tetromino() {
     }
 }
