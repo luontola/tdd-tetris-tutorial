@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
 @RunWith(NestedJUnit4.class)
 public class FallingBlocksTest extends Assert {
 
-    private final Board board = new Board(3, 3);
+    private Board board = new Board(3, 3);
 
 
     public class A_new_board {
@@ -113,15 +113,10 @@ public class FallingBlocksTest extends Assert {
 
         @Before
         public void landOnAnother() {
-            board.drop(new Block('X'));
-            board.tick();
-            board.tick();
-            board.tick();
-            assertFalse(board.hasFalling());
-            assertEquals("" +
+            board = new Board("" +
                     "...\n" +
                     "...\n" +
-                    ".X.\n", board.toString());
+                    ".X.\n");
 
             board.drop(new Block('Y'));
             board.tick();

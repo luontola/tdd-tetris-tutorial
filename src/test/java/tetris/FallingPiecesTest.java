@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
 @RunWith(NestedJUnit4.class)
 public class FallingPiecesTest extends Assert {
 
-    private final Board board = new Board(6, 8);
+    private Board board = new Board(6, 8);
 
 
     public class When_a_piece_is_dropped {
@@ -80,20 +80,13 @@ public class FallingPiecesTest extends Assert {
 
         @Before
         public void landOnAnother() {
-            board.drop(Tetromino.T_SHAPE);
-            board.tick();
-            board.tick();
-            board.tick();
-            board.tick();
-            board.tick();
-            assertFalse(board.hasFalling());
-            assertEquals("" +
+            board = new Board("" +
                     "........\n" +
                     "........\n" +
                     "........\n" +
                     "........\n" +
                     "....T...\n" +
-                    "...TTT..\n", board.toString());
+                    "...TTT..\n");
 
             board.drop(Tetromino.T_SHAPE);
             board.tick();

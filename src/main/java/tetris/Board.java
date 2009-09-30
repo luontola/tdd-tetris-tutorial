@@ -24,6 +24,10 @@ public class Board implements Grid {
         }
     }
 
+    public Board(String initialState) {
+        blocks = Grids.fromString(initialState);
+    }
+
     public void drop(RotatableGrid piece) {
         if (hasFalling()) {
             throw new IllegalStateException("Another piece may not be dropped when one is already falling");

@@ -39,11 +39,11 @@ public class Grids {
     }
 
     public static char[][] fromString(String s) {
-        String[] lines = s.split("\n");
-        char[][] grid = new char[lines.length][lines.length];
+        String[] rows = s.split("\n");
+        char[][] grid = new char[rows.length][rows[0].length()];
         for (int row = 0; row < grid.length; row++) {
             for (int col = 0; col < grid[row].length; col++) {
-                grid[row][col] = lines[row].charAt(col);
+                grid[row][col] = rows[row].charAt(col);
             }
         }
         return grid;
