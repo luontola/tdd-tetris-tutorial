@@ -31,13 +31,6 @@ public class MovablePiece implements RotatableGrid {
         this.innerPiece = innerPiece;
     }
 
-    public boolean isAt(Point outer) {
-        Point inner = asInner(outer);
-        return inner.row >= 0 && inner.row < innerPiece.rows()
-                && inner.col >= 0 && inner.col < innerPiece.columns()
-                && innerPiece.cellAt(inner) != EMPTY;
-    }
-
     public MovablePiece moveTo(Point offset) {
         return new MovablePiece(offset, innerPiece);
     }
@@ -74,21 +67,23 @@ public class MovablePiece implements RotatableGrid {
         return innerPiece.cellAt(inner);
     }
 
-    public char cellAtOuter(Point outer) {
+    // Board Coordinates
+
+    public char cellAtBoard(Point outer) {
         return cellAt(asInner(outer));
     }
 
-    public List<Point> blocksOnBoard() {
+    public boolean hasBlockAtBoard(Point outer) {
+        return allBlocksOnBoard().contains(outer);
+    }
+
+    public List<Point> allBlocksOnBoard() {
         List<Point> innerPoints = Grids.allNonEmptyPointsOf(innerPiece);
         List<Point> outerPoints = new ArrayList<Point>();
         for (Point inner : innerPoints) {
             outerPoints.add(asOuter(inner));
         }
         return outerPoints;
-    }
-
-    public boolean hasBlockOnBoard(Point outer) {
-        return blocksOnBoard().contains(outer);
     }
 
     private Point asInner(Point outer) {

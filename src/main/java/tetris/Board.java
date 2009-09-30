@@ -28,6 +28,8 @@ public class Board implements Grid {
         blocks = Grids.fromString(initialState);
     }
 
+    // Falling
+
     public void drop(RotatableGrid piece) {
         if (hasFalling()) {
             throw new IllegalStateException("Another piece may not be dropped when one is already falling");
@@ -45,37 +47,25 @@ public class Board implements Grid {
         }
     }
 
-    private boolean conflictsWithBoard(MovablePiece test) {
-        return outsideBoard(test) || hitsStationaryBlock(test);
+    public boolean hasFalling() {
+        return falling != null;
     }
 
-    private boolean outsideBoard(MovablePiece test) {
-        for (Point p : test.blocksOnBoard()) {
-            if (outsideBoard(p)) {
-                return true;
+    private void stopFalling() {
+        assert hasFalling();
+        copyToBoard(falling);
+        falling = null;
+    }
+
+    private void copyToBoard(MovablePiece piece) {
+        for (Point p : Grids.allPointsOf(this)) {
+            if (piece.hasBlockAtBoard(p)) {
+                blocks[p.row][p.col] = piece.cellAtBoard(p);
             }
         }
-        return false;
     }
 
-    private boolean outsideBoard(Point p) {
-        return p.row >= rows()
-                || p.col < 0
-                || p.col >= columns();
-    }
-
-    private boolean hitsStationaryBlock(MovablePiece test) {
-        for (Point p : test.blocksOnBoard()) {
-            if (stationaryBlockExistsAt(p)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private boolean stationaryBlockExistsAt(Point p) {
-        return blocks[p.row][p.col] != EMPTY;
-    }
+    // Moving
 
     public void moveLeft() {
         moveIfNoConflict(falling.moveLeft());
@@ -95,6 +85,8 @@ public class Board implements Grid {
         }
     }
 
+    // Rotating
+
     public void rotateClockwise() {
         rotateIfNoConflict(falling.rotateClockwise());
     }
@@ -113,17 +105,8 @@ public class Board implements Grid {
         }
     }
 
-    private boolean hasRoomOnRight(MovablePiece test) {
-        for (Point p : test.blocksOnBoard()) {
-            if (conflictsWithBoard(p.moveRight())) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     private boolean hasRoomOnLeft(MovablePiece test) {
-        for (Point p : test.blocksOnBoard()) {
+        for (Point p : test.allBlocksOnBoard()) {
             if (conflictsWithBoard(p.moveLeft())) {
                 return false;
             }
@@ -131,27 +114,54 @@ public class Board implements Grid {
         return true;
     }
 
-    private boolean conflictsWithBoard(Point p) {
-        return outsideBoard(p) || stationaryBlockExistsAt(p);
-    }
-
-    public boolean hasFalling() {
-        return falling != null;
-    }
-
-    private void stopFalling() {
-        assert hasFalling();
-        copyToBoard(falling);
-        falling = null;
-    }
-
-    private void copyToBoard(MovablePiece piece) {
-        for (Point point : Grids.allPointsOf(this)) {
-            if (piece.hasBlockOnBoard(point)) {
-                blocks[point.row][point.col] = piece.cellAtOuter(point);
+    private boolean hasRoomOnRight(MovablePiece test) {
+        for (Point p : test.allBlocksOnBoard()) {
+            if (conflictsWithBoard(p.moveRight())) {
+                return false;
             }
         }
+        return true;
     }
+
+    // Conflict Checks
+
+    private boolean conflictsWithBoard(MovablePiece test) {
+        return outsideBoard(test) || hitsStationaryBlock(test);
+    }
+
+    private boolean conflictsWithBoard(Point p) {
+        return outsideBoard(p) || hitsStationaryBlock(p);
+    }
+
+    private boolean outsideBoard(MovablePiece test) {
+        for (Point p : test.allBlocksOnBoard()) {
+            if (outsideBoard(p)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean outsideBoard(Point p) {
+        return p.row >= rows()
+                || p.col < 0
+                || p.col >= columns();
+    }
+
+    private boolean hitsStationaryBlock(MovablePiece test) {
+        for (Point p : test.allBlocksOnBoard()) {
+            if (hitsStationaryBlock(p)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean hitsStationaryBlock(Point p) {
+        return blocks[p.row][p.col] != EMPTY;
+    }
+
+    // Grid
 
     public int rows() {
         return blocks.length;
@@ -162,8 +172,8 @@ public class Board implements Grid {
     }
 
     public char cellAt(Point point) {
-        if (falling != null && falling.isAt(point)) {
-            return falling.cellAtOuter(point);
+        if (falling != null && falling.hasBlockAtBoard(point)) {
+            return falling.cellAtBoard(point);
         } else {
             return blocks[point.row][point.col];
         }
