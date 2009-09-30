@@ -8,11 +8,42 @@
 package tetris;
 
 import net.orfjackal.nestedjunit.NestedJUnit4;
-import org.junit.Assert;
+import org.junit.*;
 import org.junit.runner.RunWith;
 
 @RunWith(NestedJUnit4.class)
 public class MovingAFallingPieceTest extends Assert {
+
+    private static final Piece PIECE = new Piece("" +
+            ".X.\n" +
+            ".X.\n" +
+            ".X.\n");
+
+    private final Board board = new Board(4, 8);
+
+
+    public class When_a_piece_is_falling_on_an_empty_board {
+
+        @Before
+        public void dropPiece() {
+            board.drop(PIECE);
+            assertEquals("" +
+                    "....X...\n" +
+                    "....X...\n" +
+                    "....X...\n" +
+                    "........\n", board.toString());
+        }
+
+        @Test
+        public void it_can_be_moved_left() {
+            board.moveLeft();
+            assertEquals("" +
+                    "...X....\n" +
+                    "...X....\n" +
+                    "...X....\n" +
+                    "........\n", board.toString());
+        }
+    }
 
     // TODO: a falling piece can be moved left
     // TODO: a falling piece can be moved right
