@@ -90,6 +90,8 @@ public class Board implements Grid {
             falling = test;
         } else if (hasRoomOnRight(test)) {
             rotateIfNoConflict(test.moveRight());
+        } else if (hasRoomOnLeft(test)) {
+            rotateIfNoConflict(test.moveLeft());
         }
     }
 
@@ -100,6 +102,16 @@ public class Board implements Grid {
                 return true;
             }
         }
+        return false;
+    }
+
+    private boolean hasRoomOnLeft(MovablePiece test) {
+//        for (int i = 0; i < test.columns(); i++) {
+//            test = test.moveLeft();
+//            if (!conflictsWithBoard(test)) {
+//                return true;
+//            }
+//        }
         return false;
     }
 
