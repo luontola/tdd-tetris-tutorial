@@ -56,21 +56,21 @@ public class Board implements Grid {
     }
 
     public void moveLeft() {
-        MovablePiece test = falling.moveLeft();
-        if (!conflictsWithBoard(test)) {
-            falling = test;
-        }
+        moveIfNoConflict(falling.moveLeft());
     }
 
     public void moveRight() {
-        MovablePiece test = falling.moveRight();
-        if (!conflictsWithBoard(test)) {
-            falling = test;
-        }
+        moveIfNoConflict(falling.moveRight());
     }
 
     public void moveDown() {
         falling = falling.moveDown();
+    }
+
+    private void moveIfNoConflict(MovablePiece test) {
+        if (!conflictsWithBoard(test)) {
+            falling = test;
+        }
     }
 
     public boolean hasFalling() {
