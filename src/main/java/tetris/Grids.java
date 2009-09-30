@@ -12,7 +12,7 @@ import java.util.*;
 /**
  * @author Esko Luontola
  */
-public class Grids {
+public abstract class Grids {
 
     private Grids() {
     }

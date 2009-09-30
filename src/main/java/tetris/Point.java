@@ -10,7 +10,7 @@ package tetris;
 /**
  * @author Esko Luontola
  */
-public class Point {
+public final class Point {
 
     public final int row;
     public final int col;

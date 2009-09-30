@@ -10,7 +10,7 @@ package tetris;
 /**
  * @author Esko Luontola
  */
-public class Tetromino {
+public abstract class Tetromino {
 
     // These tetrominoes follow Tetris the Grand Master's rotation rules.
     // See http://bsixcentdouze.free.fr/tc/tgm-en/tgm.html#rotations
