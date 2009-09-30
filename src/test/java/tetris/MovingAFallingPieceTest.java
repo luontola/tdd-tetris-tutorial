@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
 @RunWith(NestedJUnit4.class)
 public class MovingAFallingPieceTest extends Assert {
 
-    private static final Piece2 PIECE = new Piece2("" +
+    private static final RotatableGrid PIECE = new Piece("" +
             ".X.\n" +
             ".X.\n" +
             ".X.\n");

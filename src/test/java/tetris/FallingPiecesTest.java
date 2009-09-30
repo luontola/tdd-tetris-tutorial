@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
 public class FallingPiecesTest extends Assert {
 
     // TODO: move piece one row down
-    private static final RotatableGrid PIECE = new Piece2("" +
+    private static final RotatableGrid PIECE = new Piece("" +
             ".T.\n" +
             "TTT\n" +
             "...\n");

@@ -15,7 +15,7 @@ public class Tetromino {
     // These tetrominoes follow Tetris the Grand Master's rotation rules.
     // See http://bsixcentdouze.free.fr/tc/tgm-en/tgm.html#rotations
 
-    public static final RotatableGrid I_SHAPE = new Piece2(
+    public static final RotatableGrid I_SHAPE = new Piece(
             "" +
                     "....\n" +
                     "IIII\n" +
@@ -27,7 +27,7 @@ public class Tetromino {
                     "..I.\n" +
                     "..I.\n"
     );
-    public static final RotatableGrid T_SHAPE = new Piece2(
+    public static final RotatableGrid T_SHAPE = new Piece(
             "" +
                     "....\n" +
                     "TTT.\n" +
@@ -45,7 +45,7 @@ public class Tetromino {
                     ".TT.\n" +
                     ".T..\n"
     );
-    public static final RotatableGrid L_SHAPE = new Piece2(
+    public static final RotatableGrid L_SHAPE = new Piece(
             "" +
                     "....\n" +
                     "LLL.\n" +
@@ -63,7 +63,7 @@ public class Tetromino {
                     ".L..\n" +
                     ".LL.\n"
     );
-    public static final RotatableGrid J_SHAPE = new Piece2(
+    public static final RotatableGrid J_SHAPE = new Piece(
             "" +
                     "....\n" +
                     "JJJ.\n" +
@@ -81,7 +81,7 @@ public class Tetromino {
                     ".J..\n" +
                     ".J..\n"
     );
-    public static final RotatableGrid S_SHAPE = new Piece2(
+    public static final RotatableGrid S_SHAPE = new Piece(
             "" +
                     "....\n" +
                     ".SS.\n" +
@@ -91,7 +91,7 @@ public class Tetromino {
                     "SS..\n" +
                     ".S..\n"
     );
-    public static final RotatableGrid Z_SHAPE = new Piece2(
+    public static final RotatableGrid Z_SHAPE = new Piece(
             "" +
                     "....\n" +
                     "ZZ..\n" +
@@ -101,7 +101,7 @@ public class Tetromino {
                     ".ZZ.\n" +
                     ".Z..\n"
     );
-    public static final RotatableGrid O_SHAPE = new Piece2(
+    public static final RotatableGrid O_SHAPE = new Piece(
             "" +
                     ".OO.\n" +
                     ".OO.\n"

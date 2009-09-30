@@ -10,12 +10,12 @@ package tetris;
 /**
  * @author Esko Luontola
  */
-public class Piece2 implements RotatableGrid {
+public class Piece implements RotatableGrid {
 
     private final Shape[] orientations;
     private final int current;
 
-    public Piece2(String... orientations) {
+    public Piece(String... orientations) {
         this.orientations = new Shape[orientations.length];
         for (int i = 0; i < orientations.length; i++) {
             this.orientations[i] = new Shape(orientations[i]);
@@ -23,7 +23,7 @@ public class Piece2 implements RotatableGrid {
         current = 0;
     }
 
-    private Piece2(Shape[] orientations, int current) {
+    private Piece(Shape[] orientations, int current) {
         this.orientations = orientations;
         this.current = fixArrayIndex(current, orientations);
     }
@@ -55,11 +55,11 @@ public class Piece2 implements RotatableGrid {
         return orientations[current];
     }
 
-    public Piece2 rotateClockwise() {
-        return new Piece2(orientations, current + 1);
+    public Piece rotateClockwise() {
+        return new Piece(orientations, current + 1);
     }
 
-    public Piece2 rotateCounterClockwise() {
-        return new Piece2(orientations, current - 1);
+    public Piece rotateCounterClockwise() {
+        return new Piece(orientations, current - 1);
     }
 }
