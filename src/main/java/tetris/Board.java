@@ -64,7 +64,7 @@ public class Board implements Grid {
     }
 
     public void moveDown() {
-        falling = falling.moveDown();
+        moveIfNoConflict(falling.moveDown());
     }
 
     private void moveIfNoConflict(MovablePiece test) {
