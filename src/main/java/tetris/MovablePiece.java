@@ -13,79 +13,79 @@ package tetris;
 public class MovablePiece implements Grid {
 
     // Coordinates in use:
-    // 'abs' absolute = coordinate in the parent grid (game board)
-    // 'loc' local    = coordinate of the contained piece
-    // 'rel' relative = the local coordinate [0,0] in absolute coordinates
+    // 'outer'  = coordinate in the parent grid (game board)
+    // 'inner'  = coordinate in the contained piece
+    // 'offset' = the inner coordinate [0,0] in outer coordinates
 
-    private final Point rel;
-    private final RotatableGrid piece;
+    private final Point offset;
+    private final RotatableGrid innerPiece;
 
-    public MovablePiece(RotatableGrid piece) {
-        this(new Point(0, 0), piece);
+    public MovablePiece(RotatableGrid innerPiece) {
+        this(new Point(0, 0), innerPiece);
     }
 
-    private MovablePiece(Point rel, RotatableGrid piece) {
-        this.rel = rel;
-        this.piece = piece;
+    private MovablePiece(Point offset, RotatableGrid innerPiece) {
+        this.offset = offset;
+        this.innerPiece = innerPiece;
     }
 
     public boolean outsideBoard(Grid board) {
-        for (Point loc : Grids.allPointsOf(this)) {
-            if (piece.cellAt(loc) != EMPTY
-                    && outsideBoard(loc, board)) {
+        for (Point inner : Grids.allPointsOf(this)) {
+            if (innerPiece.cellAt(inner) != EMPTY
+                    && outsideBoard(inner, board)) {
                 return true;
             }
         }
         return false;
     }
 
-    private boolean outsideBoard(Point loc, Grid board) {
-        Point abs = asAbs(loc);
-        return abs.row >= board.rows()
-                || abs.col < 0
-                || abs.col >= board.columns();
+    private boolean outsideBoard(Point inner, Grid board) {
+        Point outer = asOuter(inner);
+        return outer.row >= board.rows()
+                || outer.col < 0
+                || outer.col >= board.columns();
     }
 
-    public boolean isAt(Point abs) {
-        Point loc = asLoc(abs);
-        return loc.row >= 0 && loc.row < piece.rows()
-                && loc.col >= 0 && loc.col < piece.columns()
-                && piece.cellAt(loc) != EMPTY;
+    public boolean isAt(Point outer) {
+        Point inner = asInner(outer);
+        return inner.row >= 0 && inner.row < innerPiece.rows()
+                && inner.col >= 0 && inner.col < innerPiece.columns()
+                && innerPiece.cellAt(inner) != EMPTY;
     }
 
-    public MovablePiece moveTo(Point rel) {
-        return new MovablePiece(rel, piece);
+    public MovablePiece moveTo(Point offset) {
+        return new MovablePiece(offset, innerPiece);
     }
 
     public MovablePiece moveDown() {
-        return new MovablePiece(new Point(rel.row + 1, rel.col), piece);
+        return new MovablePiece(new Point(offset.row + 1, offset.col), innerPiece);
     }
 
     public MovablePiece moveLeft() {
-        return new MovablePiece(new Point(rel.row, rel.col - 1), piece);
+        return new MovablePiece(new Point(offset.row, offset.col - 1), innerPiece);
     }
 
     public MovablePiece moveRight() {
-        return new MovablePiece(new Point(rel.row, rel.col + 1), piece);
+        return new MovablePiece(new Point(offset.row, offset.col + 1), innerPiece);
     }
 
     public int rows() {
-        return piece.rows();
+        return innerPiece.rows();
     }
 
     public int columns() {
-        return piece.columns();
+        return innerPiece.columns();
     }
 
-    public char cellAt(Point abs) {
-        return piece.cellAt(asLoc(abs));
+    public char cellAt(Point outer) {
+        return innerPiece.cellAt(asInner(outer));
     }
 
-    private Point asLoc(Point abs) {
-        return new Point(abs.row - rel.row, abs.col - rel.col);
+    private Point asInner(Point outer) {
+        return new Point(outer.row - offset.row, outer.col - offset.col);
     }
 
-    private Point asAbs(Point loc) {
-        return new Point(loc.row + rel.row, loc.col + rel.col);
+    private Point asOuter(Point inner) {
+        return new Point(inner.row + offset.row, inner.col + offset.col);
     }
 }
