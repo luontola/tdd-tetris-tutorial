@@ -59,6 +59,10 @@ public class MovablePiece implements Grid {
         return new MovablePiece(new Point(rel.row, rel.col - 1), piece);
     }
 
+    public MovablePiece moveRight() {
+        return new MovablePiece(new Point(rel.row, rel.col + 1), piece);
+    }
+
     public int rows() {
         return piece.rows();
     }
