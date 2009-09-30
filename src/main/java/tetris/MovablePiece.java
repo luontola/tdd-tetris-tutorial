@@ -42,7 +42,8 @@ public class MovablePiece implements Grid {
     private boolean outsideBoard(Point loc, Grid board) {
         Point abs = asAbs(loc);
         return abs.row >= board.rows()
-                || abs.col < 0;
+                || abs.col < 0
+                || abs.col >= board.columns();
     }
 
     public boolean isAt(Point abs) {
