@@ -11,6 +11,9 @@ import net.orfjackal.nestedjunit.NestedJUnit4;
 import org.junit.*;
 import org.junit.runner.RunWith;
 
+/**
+ * @author Esko Luontola
+ */
 @RunWith(NestedJUnit4.class)
 public class MovingAFallingPieceTest extends Assert {
 
