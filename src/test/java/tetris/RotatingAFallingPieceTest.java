@@ -18,6 +18,10 @@ public class RotatingAFallingPieceTest extends Assert {
             ".X.\n" +
             "XX.\n" +
             "...\n");
+    private static final Piece LONG_PIECE = new Piece("" +
+            ".X.\n" +
+            ".X.\n" +
+            ".X.\n");
 
     private Board board = new Board(5, 8);
 
@@ -55,6 +59,38 @@ public class RotatingAFallingPieceTest extends Assert {
                     "....X...\n" +
                     "........\n" +
                     "........\n", board.toString());
+        }
+    }
+
+    public class When_a_piece_is_falling_in_a_narrow_place {
+
+        @Before
+        public void dropPiece() {
+            board = new Board("" +
+                    "........\n" +
+                    "...Y.Y..\n" +
+                    "...Y.Y..\n" +
+                    "...Y.Y..\n" +
+                    "...Y.Y..\n");
+
+            board.drop(LONG_PIECE);
+            assertEquals("" +
+                    "....X...\n" +
+                    "...YXY..\n" +
+                    "...YXY..\n" +
+                    "...Y.Y..\n" +
+                    "...Y.Y..\n", board.toString());
+        }
+
+        @Test
+        public void it_cannot_be_rotated_clockwise() {
+            board.rotateClockwise();
+            assertEquals("" +
+                    "....X...\n" +
+                    "...YXY..\n" +
+                    "...YXY..\n" +
+                    "...Y.Y..\n" +
+                    "...Y.Y..\n", board.toString());
         }
     }
 
