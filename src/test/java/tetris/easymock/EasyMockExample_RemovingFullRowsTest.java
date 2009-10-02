@@ -5,18 +5,19 @@
  * This source code may NOT be used as course material without prior written agreement.
  */
 
-package tetris;
+package tetris.easymock;
 
 import net.orfjackal.nestedjunit.NestedJUnit4;
 import static org.easymock.EasyMock.*;
 import org.junit.*;
 import org.junit.runner.RunWith;
+import tetris.*;
 
 /**
  * @author Esko Luontola
  */
 @RunWith(NestedJUnit4.class)
-public class RemovingFullRows_EASYMOCK_Test extends Assert {
+public class EasyMockExample_RemovingFullRowsTest extends Assert {
 
     private static final RotatableGrid PIECE = new Piece("" +
             ".X.\n" +
