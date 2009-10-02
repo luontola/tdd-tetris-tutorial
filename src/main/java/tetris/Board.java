@@ -40,9 +40,9 @@ public class Board implements Grid {
         rowRemovalListeners.add(listener);
     }
 
-    private void fireRowRemoved() {
+    private void fireRowRemoved(int removedRowsCount) {
         for (RowRemovalListener listener : rowRemovalListeners) {
-            listener.onRowsRemoved(1);
+            listener.onRowsRemoved(removedRowsCount);
         }
     }
 
@@ -93,12 +93,14 @@ public class Board implements Grid {
     }
 
     private void removeFullRows() {
+        int count = 0;
         for (int row = 0; row < blocks.length; row++) {
             if (rowIsFull(row)) {
                 removeRow(row);
-                fireRowRemoved();
+                count++;
             }
         }
+        fireRowRemoved(count);
     }
 
     private boolean rowIsFull(int row) {

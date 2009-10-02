@@ -67,7 +67,7 @@ public class RemovingFullRowsTest extends Assert {
         }
 
         @Test
-        public void the_row_removal_listener_is_notified_about_removed_rows() {
+        public void the_row_removal_listener_is_notified_about_the_removed_rows() {
             verify(listener).onRowsRemoved(1);
         }
     }
@@ -102,6 +102,11 @@ public class RemovingFullRowsTest extends Assert {
                     "........\n" +
                     "........\n" +
                     "BBBBX.BB\n", board.toString());
+        }
+
+        @Test
+        public void the_row_removal_listener_is_notified_about_the_removed_rows() {
+            verify(listener).onRowsRemoved(2);
         }
     }
 }
