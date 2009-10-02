@@ -8,9 +8,9 @@
 package tetris;
 
 import net.orfjackal.nestedjunit.NestedJUnit4;
+import static org.easymock.EasyMock.*;
 import org.junit.*;
 import org.junit.runner.RunWith;
-import static org.mockito.Mockito.*;
 
 /**
  * @author Esko Luontola
@@ -25,7 +25,7 @@ public class RemovingFullRows_EASYMOCK_Test extends Assert {
     );
 
     private Board board;
-    private final RowRemovalListener listener = mock(RowRemovalListener.class);
+    private RowRemovalListener listener;
 
     private void dropAndFallToBottom(RotatableGrid piece) {
         board.drop(piece);
@@ -45,9 +45,19 @@ public class RemovingFullRows_EASYMOCK_Test extends Assert {
                     "AA.A.AAA\n" +
                     "BBBB.BBB\n" +
                     "CCCC.CC.\n");
+
+            listener = createMock(RowRemovalListener.class);
             board.addRowRemovalListener(listener);
 
+            the_row_removal_listener_is_notified_about_the_removed_rows(listener);
+            replay(listener);
+
             dropAndFallToBottom(PIECE);
+        }
+
+        @After
+        public void verifyMocks() {
+            verify(listener);
         }
 
         @Test
@@ -66,9 +76,8 @@ public class RemovingFullRows_EASYMOCK_Test extends Assert {
                     "CCCCXCC.\n", board.toString());
         }
 
-        @Test
-        public void the_row_removal_listener_is_notified_about_the_removed_rows() {
-            verify(listener).onRowsRemoved(1);
+        private void the_row_removal_listener_is_notified_about_the_removed_rows(RowRemovalListener listener) {
+            listener.onRowsRemoved(1);
         }
     }
 
@@ -82,9 +91,19 @@ public class RemovingFullRows_EASYMOCK_Test extends Assert {
                     "AAAA.AAA\n" +
                     "BBBB..BB\n" +
                     "CCCC.CCC\n");
+
+            listener = createMock(RowRemovalListener.class);
             board.addRowRemovalListener(listener);
 
+            the_row_removal_listener_is_notified_about_the_removed_rows(listener);
+            replay(listener);
+
             dropAndFallToBottom(PIECE);
+        }
+
+        @After
+        public void verifyMocks() {
+            verify(listener);
         }
 
         @Test
@@ -104,30 +123,36 @@ public class RemovingFullRows_EASYMOCK_Test extends Assert {
                     "BBBBX.BB\n", board.toString());
         }
 
-        @Test
-        public void the_row_removal_listener_is_notified_about_the_removed_rows() {
-            verify(listener).onRowsRemoved(2);
+        private void the_row_removal_listener_is_notified_about_the_removed_rows(RowRemovalListener listener) {
+            listener.onRowsRemoved(2);
         }
     }
 
     public class When_no_rows_become_full {
 
         @Before
-        public void dropPiece() {
+        public void initBoard() {
             board = new Board("" +
                     "........\n" +
                     "........\n" +
                     "AAA..AAA\n" +
                     "BBBB..BB\n" +
                     "CCC..CCC\n");
-            board.addRowRemovalListener(listener);
 
-            dropAndFallToBottom(PIECE);
+            listener = createMock(RowRemovalListener.class);
+            board.addRowRemovalListener(listener);
+        }
+
+        @After
+        public void verifyMocks() {
+            verify(listener);
         }
 
         @Test
         public void the_row_removal_listener_is_not_notified() {
-            verifyZeroInteractions(listener);
+            replay(listener);  // zero expectations
+
+            dropAndFallToBottom(PIECE);
         }
     }
 }
