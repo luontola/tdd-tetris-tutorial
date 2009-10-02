@@ -109,4 +109,25 @@ public class RemovingFullRowsTest extends Assert {
             verify(listener).onRowsRemoved(2);
         }
     }
+
+    public class When_no_rows_become_full {
+
+        @Before
+        public void dropPiece() {
+            board = new Board("" +
+                    "........\n" +
+                    "........\n" +
+                    "AAA..AAA\n" +
+                    "BBBB..BB\n" +
+                    "CCC..CCC\n");
+            board.addRowRemovalListener(listener);
+
+            dropAndFallToBottom(PIECE);
+        }
+
+        @Test
+        public void the_row_removal_listener_is_not_notified() {
+            verifyZeroInteractions(listener);
+        }
+    }
 }

@@ -93,14 +93,16 @@ public class Board implements Grid {
     }
 
     private void removeFullRows() {
-        int count = 0;
+        int rowsRemoved = 0;
         for (int row = 0; row < blocks.length; row++) {
             if (rowIsFull(row)) {
                 removeRow(row);
-                count++;
+                rowsRemoved++;
             }
         }
-        fireRowRemoved(count);
+        if (rowsRemoved > 0) {
+            fireRowRemoved(rowsRemoved);
+        }
     }
 
     private boolean rowIsFull(int row) {
