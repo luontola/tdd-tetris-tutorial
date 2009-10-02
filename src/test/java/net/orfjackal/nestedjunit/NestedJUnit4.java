@@ -16,11 +16,12 @@
 
 package net.orfjackal.nestedjunit;
 
-import org.junit.Test;
+import org.junit.*;
+import org.junit.internal.runners.statements.*;
 import org.junit.runner.*;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.*;
-import org.junit.runners.model.InitializationError;
+import org.junit.runners.model.*;
 
 import java.lang.reflect.Method;
 import java.util.*;
@@ -60,10 +61,12 @@ import java.util.*;
  */
 public class NestedJUnit4 extends ParentRunner<Runner> {
 
+    private final TestClass parentTestClass;
     private final List<Runner> children = new ArrayList<Runner>();
 
     public NestedJUnit4(Class<?> testClass) throws InitializationError {
         super(testClass);
+        parentTestClass = new TestClass(testClass);
         addToChildrenAllNestedClassesWithTests(testClass);
     }
 
@@ -97,7 +100,9 @@ public class NestedJUnit4 extends ParentRunner<Runner> {
     }
 
 
-    private static class NestedJUnit4ClassRunner extends BlockJUnit4ClassRunner {
+    private class NestedJUnit4ClassRunner extends BlockJUnit4ClassRunner {
+
+        private Object parentOfCurrentTest;
 
         public NestedJUnit4ClassRunner(Class<?> childClass) throws InitializationError {
             super(childClass);
@@ -110,7 +115,7 @@ public class NestedJUnit4 extends ParentRunner<Runner> {
 
         private void validateNonStaticInnerClassWithDefaultConstructor(List<Throwable> errors) {
             try {
-                getTestClass().getJavaClass().getConstructor(getParentClass());
+                getTestClass().getJavaClass().getConstructor(parentTestClass.getJavaClass());
             } catch (NoSuchMethodException e) {
                 String gripe = "Nested test classes should be non-static and have a public zero-argument constructor";
                 errors.add(new Exception(gripe));
@@ -118,12 +123,25 @@ public class NestedJUnit4 extends ParentRunner<Runner> {
         }
 
         protected Object createTest() throws Exception {
-            Object parent = getParentClass().newInstance();
-            return getTestClass().getOnlyConstructor().newInstance(parent);
+            parentOfCurrentTest = parentTestClass.getJavaClass().newInstance();
+            return getTestClass().getOnlyConstructor().newInstance(parentOfCurrentTest);
         }
 
-        private Class<?> getParentClass() {
-            return getTestClass().getJavaClass().getEnclosingClass();
+        protected Statement methodBlock(FrameworkMethod method) {
+            Statement statement = super.methodBlock(method);
+            statement = withParentBefores(statement);
+            statement = withParentAfters(statement);
+            return statement;
+        }
+
+        private Statement withParentBefores(Statement statement) {
+            List<FrameworkMethod> befores = parentTestClass.getAnnotatedMethods(Before.class);
+            return befores.isEmpty() ? statement : new RunBefores(statement, befores, parentOfCurrentTest);
+        }
+
+        private Statement withParentAfters(Statement statement) {
+            List<FrameworkMethod> afters = parentTestClass.getAnnotatedMethods(After.class);
+            return afters.isEmpty() ? statement : new RunAfters(statement, afters, parentOfCurrentTest);
         }
     }
 }
