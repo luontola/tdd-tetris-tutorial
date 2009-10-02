@@ -139,9 +139,9 @@ public class Board implements Grid {
         array[0] = tmp;
     }
 
-    private void fireRowsRemoved(int removedRowsCount) {
+    private void fireRowsRemoved(int rowCount) {
         for (RowRemovalListener listener : rowRemovalListeners) {
-            listener.onRowsRemoved(removedRowsCount);
+            listener.onRowsRemoved(rowCount);
         }
     }
 

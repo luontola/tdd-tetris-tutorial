@@ -12,5 +12,5 @@ package tetris;
  */
 public interface RowRemovalListener {
 
-    void onRowsRemoved(int removedRowsCount);
+    void onRowsRemoved(int rowCount);
 }
