@@ -93,5 +93,15 @@ public class RemovingFullRowsTest extends Assert {
             assertFalse("Should not contain 'A':\n" + s, s.contains("A"));
             assertFalse("Should not contain 'C':\n" + s, s.contains("C"));
         }
+
+        @Test
+        public void the_other_rows_fall_down_to_fill_the_empty_space() {
+            assertEquals("" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n" +
+                    "BBBBX.BB\n", board.toString());
+        }
     }
 }
