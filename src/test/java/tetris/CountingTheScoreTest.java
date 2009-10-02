@@ -10,6 +10,7 @@ package tetris;
 import net.orfjackal.nestedjunit.NestedJUnit4;
 import org.junit.*;
 import org.junit.runner.RunWith;
+import static tetris.ScoreCounter.*;
 
 /**
  * @author Esko Luontola
@@ -38,13 +39,20 @@ public class CountingTheScoreTest extends Assert {
         @Test
         public void one_rows_gives_little_points() {
             counter.onRowsRemoved(1);
-            assertEquals(ScoreCounter.POINTS_1_ROW, counter.score());
+            assertEquals(POINTS_1_ROW, counter.score());
         }
 
         @Test
         public void many_rows_gives_more_points() {
             counter.onRowsRemoved(2);
-            assertEquals(ScoreCounter.POINTS_2_ROWS, counter.score());
+            assertEquals(POINTS_2_ROWS, counter.score());
+        }
+
+        @Test
+        public void the_score_accumulates() {
+            counter.onRowsRemoved(1);
+            counter.onRowsRemoved(2);
+            assertEquals(POINTS_1_ROW + POINTS_2_ROWS, counter.score());
         }
     }
 }
