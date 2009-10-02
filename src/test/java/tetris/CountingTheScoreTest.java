@@ -24,13 +24,13 @@ public class CountingTheScoreTest extends Assert {
     public class When_the_game_is_started {
 
         @Test
-        public void no_rows_have_been_removed() {
-            assertEquals(0, counter.removedRows());
+        public void the_score_is_zero() {
+            assertEquals(0, counter.score());
         }
 
         @Test
-        public void the_score_is_zero() {
-            assertEquals(0, counter.score());
+        public void no_rows_have_been_removed() {
+            assertEquals(0, counter.removedRows());
         }
     }
 
