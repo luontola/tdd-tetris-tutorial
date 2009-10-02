@@ -20,12 +20,12 @@ public class Board implements Grid {
     public Board(int rows, int columns) {
         blocks = new char[rows][columns];
         for (char[] row : blocks) {
-            resetToEmptyRow(row);
+            fillWithEmptyBlocks(row);
         }
     }
 
-    private static void resetToEmptyRow(char[] row) {
-        Arrays.fill(row, EMPTY);
+    private static void fillWithEmptyBlocks(char[] blocks) {
+        Arrays.fill(blocks, EMPTY);
     }
 
     public Board(String initialState) {
@@ -96,7 +96,14 @@ public class Board implements Grid {
     }
 
     private void removeRow(int rowToRemove) {
-        resetToEmptyRow(blocks[rowToRemove]);
+        fillWithEmptyBlocks(blocks[rowToRemove]);
+        moveToBeginning(blocks, rowToRemove);
+    }
+
+    private static void moveToBeginning(Object[] array, int indexToMove) {
+        Object tmp = array[indexToMove];
+        System.arraycopy(array, 0, array, 1, indexToMove);
+        array[0] = tmp;
     }
 
     // Moving

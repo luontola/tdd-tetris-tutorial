@@ -45,8 +45,18 @@ public class RemovingFullRowsTest extends Assert {
 
         @Test
         public void that_row_is_removed() {
-            String status = board.toString();
-            assertFalse("Should not contain 'B':\n" + status, status.contains("B"));
+            String s = board.toString();
+            assertFalse("Should not contain 'B':\n" + s, s.contains("B"));
+        }
+
+        @Test
+        public void the_other_rows_fall_down_to_fill_the_empty_space() {
+            assertEquals("" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n" +
+                    "AA.AXAAA\n" +
+                    "CCCCXCC.\n", board.toString());
         }
     }
 }
