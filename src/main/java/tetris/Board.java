@@ -7,7 +7,7 @@
 
 package tetris;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @author Esko Luontola
@@ -16,6 +16,8 @@ public class Board implements Grid {
 
     private MovablePiece falling;
     private char[][] blocks;
+
+    private final List<RowRemovalListener> rowRemovalListeners = new ArrayList<RowRemovalListener>();
 
     public Board(int rows, int columns) {
         blocks = new char[rows][columns];
@@ -30,6 +32,18 @@ public class Board implements Grid {
 
     public Board(String initialState) {
         blocks = Grids.fromString(initialState);
+    }
+
+    // Listeners
+
+    public void addRowRemovalListener(RowRemovalListener listener) {
+        rowRemovalListeners.add(listener);
+    }
+
+    private void fireRowRemoved() {
+        for (RowRemovalListener listener : rowRemovalListeners) {
+            listener.onRowsRemoved(1);
+        }
     }
 
     // Falling
@@ -82,6 +96,7 @@ public class Board implements Grid {
         for (int row = 0; row < blocks.length; row++) {
             if (rowIsFull(row)) {
                 removeRow(row);
+                fireRowRemoved();
             }
         }
     }

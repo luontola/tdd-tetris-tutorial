@@ -10,6 +10,7 @@ package tetris;
 import net.orfjackal.nestedjunit.NestedJUnit4;
 import org.junit.*;
 import org.junit.runner.RunWith;
+import static org.mockito.Mockito.*;
 
 /**
  * @author Esko Luontola
@@ -24,6 +25,7 @@ public class RemovingFullRowsTest extends Assert {
     );
 
     private Board board;
+    private RowRemovalListener listener;
 
 
     public class When_a_row_becomes_full {
@@ -36,6 +38,9 @@ public class RemovingFullRowsTest extends Assert {
                     "AA.A.AAA\n" +
                     "BBBB.BBB\n" +
                     "CCCC.CC.\n");
+            listener = mock(RowRemovalListener.class);
+            board.addRowRemovalListener(listener);
+
             board.drop(PIECE);
             board.tick();
             board.tick();
@@ -57,6 +62,11 @@ public class RemovingFullRowsTest extends Assert {
                     "........\n" +
                     "AA.AXAAA\n" +
                     "CCCCXCC.\n", board.toString());
+        }
+
+        @Test
+        public void the_row_removal_listener_is_notified_about_removed_rows() {
+            verify(listener).onRowsRemoved(1);
         }
     }
 }
