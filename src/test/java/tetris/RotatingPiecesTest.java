@@ -17,13 +17,13 @@ import org.junit.runner.RunWith;
 @RunWith(NestedJUnit4.class)
 public class RotatingPiecesTest extends Assert {
 
-    private Piece piece;
+    private RotatablePiece piece;
 
     public class A_piece_with_preconfigured_orientations {
 
         @Before
         public void createPiece() {
-            piece = new Piece(
+            piece = new RotatablePiece(
                     "" +
                             ".X\n" +
                             "XX\n",

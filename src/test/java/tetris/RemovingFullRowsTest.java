@@ -18,7 +18,7 @@ import static org.mockito.Mockito.*;
 @RunWith(NestedJUnit4.class)
 public class RemovingFullRowsTest extends Assert {
 
-    private static final RotatableGrid PIECE = new Piece("" +
+    private static final RotatableGrid PIECE = new RotatablePiece("" +
             ".X.\n" +
             ".X.\n" +
             ".X.\n"

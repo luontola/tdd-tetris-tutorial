@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
 @RunWith(NestedJUnit4.class)
 public class RotatingAFallingPieceTest extends Assert {
 
-    private static final RotatableGrid ASYMMETRIC_PIECE = new Piece(
+    private static final RotatableGrid ASYMMETRIC_PIECE = new RotatablePiece(
             "" +
                     ".X\n" +
                     "XX\n",
@@ -31,7 +31,7 @@ public class RotatingAFallingPieceTest extends Assert {
                     "XX\n" +
                     ".X\n"
     );
-    private static final RotatableGrid LONG_PIECE = new Piece(
+    private static final RotatableGrid LONG_PIECE = new RotatablePiece(
             "" +
                     ".X.\n" +
                     ".X.\n" +
