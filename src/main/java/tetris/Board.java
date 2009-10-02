@@ -19,9 +19,13 @@ public class Board implements Grid {
 
     public Board(int rows, int columns) {
         blocks = new char[rows][columns];
-        for (char[] tmp : blocks) {
-            Arrays.fill(tmp, EMPTY);
+        for (char[] row : blocks) {
+            resetToEmptyRow(row);
         }
+    }
+
+    private static void resetToEmptyRow(char[] row) {
+        Arrays.fill(row, EMPTY);
     }
 
     public Board(String initialState) {
@@ -50,6 +54,7 @@ public class Board implements Grid {
         MovablePiece test = falling.moveDown();
         if (conflictsWithBoard(test)) {
             stopFalling();
+            removeFullRows();
         } else {
             falling = test;
         }
@@ -71,6 +76,27 @@ public class Board implements Grid {
                 blocks[p.row][p.col] = piece.cellAtBoard(p);
             }
         }
+    }
+
+    private void removeFullRows() {
+        for (int row = 0; row < blocks.length; row++) {
+            if (rowIsFull(row)) {
+                removeRow(row);
+            }
+        }
+    }
+
+    private boolean rowIsFull(int row) {
+        for (char block : blocks[row]) {
+            if (block == EMPTY) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void removeRow(int rowToRemove) {
+        resetToEmptyRow(blocks[rowToRemove]);
     }
 
     // Moving
