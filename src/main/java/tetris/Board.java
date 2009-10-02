@@ -14,7 +14,7 @@ import java.util.*;
  */
 public class Board implements Grid {
 
-    private MovablePiece falling;
+    private FallingPiece falling;
     private char[][] blocks;
 
     private final List<RowRemovalListener> rowRemovalListeners = new ArrayList<RowRemovalListener>();
@@ -45,7 +45,7 @@ public class Board implements Grid {
             throw new IllegalStateException("Another piece may not be dropped when one is already falling");
         }
         Point topCenter = new Point(-firstNonEmptyRow(piece), columns() / 2 - piece.columns() / 2);
-        falling = new MovablePiece(piece).moveTo(topCenter);
+        falling = new FallingPiece(piece).moveTo(topCenter);
     }
 
     private static int firstNonEmptyRow(RotatableGrid piece) {
@@ -57,7 +57,7 @@ public class Board implements Grid {
     }
 
     public void tick() {
-        MovablePiece test = falling.moveDown();
+        FallingPiece test = falling.moveDown();
         if (conflictsWithBoard(test)) {
             stopFalling();
             removeFullRows();
@@ -76,10 +76,10 @@ public class Board implements Grid {
         falling = null;
     }
 
-    private void copyToBoard(MovablePiece piece) {
+    private void copyToBoard(FallingPiece piece) {
         for (Point p : Grids.allPointsOf(this)) {
             if (piece.hasBlockAtBoard(p)) {
-                blocks[p.row][p.col] = piece.cellAtBoard(p);
+                blocks[p.row][p.col] = piece.blockAtBoard(p);
             }
         }
     }
@@ -159,7 +159,7 @@ public class Board implements Grid {
         moveIfNoConflict(falling.moveDown());
     }
 
-    private void moveIfNoConflict(MovablePiece test) {
+    private void moveIfNoConflict(FallingPiece test) {
         if (!conflictsWithBoard(test)) {
             falling = test;
         }
@@ -175,7 +175,7 @@ public class Board implements Grid {
         rotateIfNoConflict(falling.rotateCounterClockwise());
     }
 
-    private void rotateIfNoConflict(MovablePiece test) {
+    private void rotateIfNoConflict(FallingPiece test) {
         if (!conflictsWithBoard(test)) {
             falling = test;
         } else if (hasRoomOnRight(test)) {
@@ -185,7 +185,7 @@ public class Board implements Grid {
         }
     }
 
-    private boolean hasRoomOnLeft(MovablePiece test) {
+    private boolean hasRoomOnLeft(FallingPiece test) {
         for (Point p : test.allBlocksOnBoard()) {
             if (conflictsWithBoard(p.moveLeft())) {
                 return false;
@@ -194,7 +194,7 @@ public class Board implements Grid {
         return true;
     }
 
-    private boolean hasRoomOnRight(MovablePiece test) {
+    private boolean hasRoomOnRight(FallingPiece test) {
         for (Point p : test.allBlocksOnBoard()) {
             if (conflictsWithBoard(p.moveRight())) {
                 return false;
@@ -205,7 +205,7 @@ public class Board implements Grid {
 
     // Conflict Checks
 
-    private boolean conflictsWithBoard(MovablePiece test) {
+    private boolean conflictsWithBoard(FallingPiece test) {
         return outsideBoard(test) || hitsStationaryBlock(test);
     }
 
@@ -213,7 +213,7 @@ public class Board implements Grid {
         return outsideBoard(p) || hitsStationaryBlock(p);
     }
 
-    private boolean outsideBoard(MovablePiece test) {
+    private boolean outsideBoard(FallingPiece test) {
         for (Point p : test.allBlocksOnBoard()) {
             if (outsideBoard(p)) {
                 return true;
@@ -228,7 +228,7 @@ public class Board implements Grid {
                 || p.col >= columns();
     }
 
-    private boolean hitsStationaryBlock(MovablePiece test) {
+    private boolean hitsStationaryBlock(FallingPiece test) {
         for (Point p : test.allBlocksOnBoard()) {
             if (hitsStationaryBlock(p)) {
                 return true;
@@ -253,7 +253,7 @@ public class Board implements Grid {
 
     public char cellAt(Point point) {
         if (falling != null && falling.hasBlockAtBoard(point)) {
-            return falling.cellAtBoard(point);
+            return falling.blockAtBoard(point);
         } else {
             return blocks[point.row][point.col];
         }

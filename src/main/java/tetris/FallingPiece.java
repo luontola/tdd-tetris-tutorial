@@ -12,7 +12,7 @@ import java.util.*;
 /**
  * @author Esko Luontola
  */
-public class MovablePiece implements RotatableGrid {
+public class FallingPiece {
 
     // Coordinates in use:
     // 'outer'  = coordinate in the parent grid (game board)
@@ -22,55 +22,43 @@ public class MovablePiece implements RotatableGrid {
     private final Point offset;
     private final RotatableGrid innerPiece;
 
-    public MovablePiece(RotatableGrid innerPiece) {
+    public FallingPiece(RotatableGrid innerPiece) {
         this(new Point(0, 0), innerPiece);
     }
 
-    private MovablePiece(Point offset, RotatableGrid innerPiece) {
+    private FallingPiece(Point offset, RotatableGrid innerPiece) {
         this.offset = offset;
         this.innerPiece = innerPiece;
     }
 
-    public MovablePiece moveTo(Point offset) {
-        return new MovablePiece(offset, innerPiece);
+    public FallingPiece moveTo(Point offset) {
+        return new FallingPiece(offset, innerPiece);
     }
 
-    public MovablePiece moveDown() {
-        return new MovablePiece(offset.moveDown(), innerPiece);
+    public FallingPiece moveDown() {
+        return new FallingPiece(offset.moveDown(), innerPiece);
     }
 
-    public MovablePiece moveLeft() {
-        return new MovablePiece(offset.moveLeft(), innerPiece);
+    public FallingPiece moveLeft() {
+        return new FallingPiece(offset.moveLeft(), innerPiece);
     }
 
-    public MovablePiece moveRight() {
-        return new MovablePiece(offset.moveRight(), innerPiece);
+    public FallingPiece moveRight() {
+        return new FallingPiece(offset.moveRight(), innerPiece);
     }
 
-    public MovablePiece rotateClockwise() {
-        return new MovablePiece(offset, innerPiece.rotateClockwise());
+    public FallingPiece rotateClockwise() {
+        return new FallingPiece(offset, innerPiece.rotateClockwise());
     }
 
-    public MovablePiece rotateCounterClockwise() {
-        return new MovablePiece(offset, innerPiece.rotateCounterClockwise());
-    }
-
-    public int rows() {
-        return innerPiece.rows();
-    }
-
-    public int columns() {
-        return innerPiece.columns();
-    }
-
-    public char cellAt(Point inner) {
-        return innerPiece.cellAt(inner);
+    public FallingPiece rotateCounterClockwise() {
+        return new FallingPiece(offset, innerPiece.rotateCounterClockwise());
     }
 
     // Board Coordinates
 
-    public char cellAtBoard(Point outer) {
-        return cellAt(asInner(outer));
+    public char blockAtBoard(Point outer) {
+        return innerPiece.cellAt(asInner(outer));
     }
 
     public boolean hasBlockAtBoard(Point outer) {
