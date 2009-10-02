@@ -34,16 +34,8 @@ public class Board implements Grid {
         blocks = Grids.fromString(initialState);
     }
 
-    // Listeners
-
     public void addRowRemovalListener(RowRemovalListener listener) {
         rowRemovalListeners.add(listener);
-    }
-
-    private void fireRowRemoved(int removedRowsCount) {
-        for (RowRemovalListener listener : rowRemovalListeners) {
-            listener.onRowsRemoved(removedRowsCount);
-        }
     }
 
     // Falling
@@ -92,17 +84,21 @@ public class Board implements Grid {
         }
     }
 
+    // Removing Full Rows
+
     private void removeFullRows() {
-        int rowsRemoved = 0;
-        for (int row = 0; row < blocks.length; row++) {
+        int[] rowsToRemove = findFullRows();
+        removeRows(rowsToRemove);
+    }
+
+    private int[] findFullRows() {
+        List<Integer> fullRows = new ArrayList<Integer>();
+        for (int row = 0; row < rows(); row++) {
             if (rowIsFull(row)) {
-                removeRow(row);
-                rowsRemoved++;
+                fullRows.add(row);
             }
         }
-        if (rowsRemoved > 0) {
-            fireRowRemoved(rowsRemoved);
-        }
+        return asIntArray(fullRows);
     }
 
     private boolean rowIsFull(int row) {
@@ -114,6 +110,24 @@ public class Board implements Grid {
         return true;
     }
 
+    private static int[] asIntArray(List<Integer> integers) {
+        int[] ints = new int[integers.size()];
+        for (int i = 0; i < integers.size(); i++) {
+            ints[i] = integers.get(i);
+        }
+        return ints;
+    }
+
+    private void removeRows(int[] rowsToRemove) {
+        if (rowsToRemove.length == 0) {
+            return;
+        }
+        for (int row : rowsToRemove) {
+            removeRow(row);
+        }
+        fireRowsRemoved(rowsToRemove.length);
+    }
+
     private void removeRow(int rowToRemove) {
         fillWithEmptyBlocks(blocks[rowToRemove]);
         moveToBeginning(blocks, rowToRemove);
@@ -123,6 +137,12 @@ public class Board implements Grid {
         Object tmp = array[indexToMove];
         System.arraycopy(array, 0, array, 1, indexToMove);
         array[0] = tmp;
+    }
+
+    private void fireRowsRemoved(int removedRowsCount) {
+        for (RowRemovalListener listener : rowRemovalListeners) {
+            listener.onRowsRemoved(removedRowsCount);
+        }
     }
 
     // Moving
