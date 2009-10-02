@@ -32,4 +32,13 @@ public class CountingTheScoreTest extends Assert {
             assertEquals(0, counter.score());
         }
     }
+
+    public class When_rows_are_removed {
+
+        @Test
+        public void one_rows_gives_little_points() {
+            counter.onRowsRemoved(1);
+            assertEquals(100, counter.score());
+        }
+    }
 }

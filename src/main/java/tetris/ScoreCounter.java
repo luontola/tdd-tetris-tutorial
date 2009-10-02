@@ -10,13 +10,19 @@ package tetris;
 /**
  * @author Esko Luontola
  */
-public class ScoreCounter {
+public class ScoreCounter implements RowRemovalListener {
+
+    private int score = 0;
+
+    public void onRowsRemoved(int removedRowsCount) {
+        score += removedRowsCount * 100;
+    }
 
     public int removedRows() {
         return 0;
     }
 
     public int score() {
-        return 0;
+        return score;
     }
 }
