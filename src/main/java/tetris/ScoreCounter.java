@@ -25,14 +25,16 @@ public class ScoreCounter implements RowRemovalListener {
             POINTS_4_ROWS
     };
 
+    private int removedRows = 0;
     private int score = 0;
 
     public void onRowsRemoved(int removedRowsCount) {
+        removedRows += removedRowsCount;
         score += scoringRules[removedRowsCount];
     }
 
     public int removedRows() {
-        return 0;
+        return removedRows;
     }
 
     public int score() {

@@ -54,5 +54,12 @@ public class CountingTheScoreTest extends Assert {
             counter.onRowsRemoved(2);
             assertEquals(POINTS_1_ROW + POINTS_2_ROWS, counter.score());
         }
+
+        @Test
+        public void the_number_of_removed_rows_accumulates() {
+            counter.onRowsRemoved(1);
+            counter.onRowsRemoved(2);
+            assertEquals(1 + 2, counter.removedRows());
+        }
     }
 }
