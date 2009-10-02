@@ -25,7 +25,14 @@ public class RemovingFullRowsTest extends Assert {
     );
 
     private Board board;
-    private RowRemovalListener listener;
+    private final RowRemovalListener listener = mock(RowRemovalListener.class);
+
+    private void dropAndFallToBottom(RotatableGrid piece) {
+        board.drop(piece);
+        while (board.hasFalling()) {
+            board.tick();
+        }
+    }
 
 
     public class When_a_row_becomes_full {
@@ -38,14 +45,9 @@ public class RemovingFullRowsTest extends Assert {
                     "AA.A.AAA\n" +
                     "BBBB.BBB\n" +
                     "CCCC.CC.\n");
-            listener = mock(RowRemovalListener.class);
             board.addRowRemovalListener(listener);
 
-            board.drop(PIECE);
-            board.tick();
-            board.tick();
-            board.tick();
-            assertFalse(board.hasFalling());
+            dropAndFallToBottom(PIECE);
         }
 
         @Test
@@ -67,6 +69,29 @@ public class RemovingFullRowsTest extends Assert {
         @Test
         public void the_row_removal_listener_is_notified_about_removed_rows() {
             verify(listener).onRowsRemoved(1);
+        }
+    }
+
+    public class When_many_rows_become_full_at_the_same_time {
+
+        @Before
+        public void dropPiece() {
+            board = new Board("" +
+                    "........\n" +
+                    "........\n" +
+                    "AAAA.AAA\n" +
+                    "BBBB..BB\n" +
+                    "CCCC.CCC\n");
+            board.addRowRemovalListener(listener);
+
+            dropAndFallToBottom(PIECE);
+        }
+
+        @Test
+        public void all_of_those_rows_are_removed() {
+            String s = board.toString();
+            assertFalse("Should not contain 'A':\n" + s, s.contains("A"));
+            assertFalse("Should not contain 'C':\n" + s, s.contains("C"));
         }
     }
 }
