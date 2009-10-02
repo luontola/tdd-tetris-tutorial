@@ -25,7 +25,12 @@ public class RemovingFullRows_EASYMOCK_Test extends Assert {
     );
 
     private Board board;
-    private RowRemovalListener listener;
+    private final RowRemovalListener listener = createMock(RowRemovalListener.class);
+
+    @After
+    public void verifyMocks() {
+        verify(listener);
+    }
 
     private void dropAndFallToBottom(RotatableGrid piece) {
         board.drop(piece);
@@ -45,19 +50,12 @@ public class RemovingFullRows_EASYMOCK_Test extends Assert {
                     "AA.A.AAA\n" +
                     "BBBB.BBB\n" +
                     "CCCC.CC.\n");
-
-            listener = createMock(RowRemovalListener.class);
             board.addRowRemovalListener(listener);
 
             the_row_removal_listener_is_notified_about_the_removed_rows(listener);
             replay(listener);
 
             dropAndFallToBottom(PIECE);
-        }
-
-        @After
-        public void verifyMocks() {
-            verify(listener);
         }
 
         @Test
@@ -91,19 +89,12 @@ public class RemovingFullRows_EASYMOCK_Test extends Assert {
                     "AAAA.AAA\n" +
                     "BBBB..BB\n" +
                     "CCCC.CCC\n");
-
-            listener = createMock(RowRemovalListener.class);
             board.addRowRemovalListener(listener);
 
             the_row_removal_listener_is_notified_about_the_removed_rows(listener);
             replay(listener);
 
             dropAndFallToBottom(PIECE);
-        }
-
-        @After
-        public void verifyMocks() {
-            verify(listener);
         }
 
         @Test
@@ -138,14 +129,7 @@ public class RemovingFullRows_EASYMOCK_Test extends Assert {
                     "AAA..AAA\n" +
                     "BBBB..BB\n" +
                     "CCC..CCC\n");
-
-            listener = createMock(RowRemovalListener.class);
             board.addRowRemovalListener(listener);
-        }
-
-        @After
-        public void verifyMocks() {
-            verify(listener);
         }
 
         @Test
