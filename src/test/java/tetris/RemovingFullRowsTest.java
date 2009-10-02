@@ -35,7 +35,7 @@ public class RemovingFullRowsTest extends Assert {
     }
 
 
-    public class When_a_row_becomes_full {
+    public class When_one_row_becomes_full {
 
         @Before
         public void dropPiece() {
@@ -57,7 +57,7 @@ public class RemovingFullRowsTest extends Assert {
         }
 
         @Test
-        public void the_other_rows_fall_down_to_fill_the_empty_space() {
+        public void the_other_rows_move_down_to_fill_the_empty_space() {
             assertEquals("" +
                     "........\n" +
                     "........\n" +
@@ -67,7 +67,7 @@ public class RemovingFullRowsTest extends Assert {
         }
 
         @Test
-        public void the_row_removal_listener_is_notified_about_the_removed_rows() {
+        public void the_row_removal_listener_is_notified_about_the_removed_row() {
             verify(listener).onRowsRemoved(1);
         }
     }
@@ -95,7 +95,7 @@ public class RemovingFullRowsTest extends Assert {
         }
 
         @Test
-        public void the_other_rows_fall_down_to_fill_the_empty_space() {
+        public void the_other_rows_move_down_to_fill_the_empty_space() {
             assertEquals("" +
                     "........\n" +
                     "........\n" +
