@@ -16,14 +16,23 @@
 
 <h1>TDD Tutorial</h1>
 
+<p>In this tutorial you will be implementing a Tetris game using TDD. Some 30 of the first test have been provided, so
+    that you just need to write code to pass them. The purpose of working with these pre-written test cases is to get
+    accustomed to the TDD cycle, and to get some ideas on what kind of tests to write. After doing that for some while,
+    it will be easier when it's time to begin writing your own tests towards the end of this tutorial.
+</p>
+
 <p>For information about Test-Driven Development, here are some links. It is recommendable to read them before doing
-    this tutorial, so that you would know what TDD is about.</p>
+    this tutorial, so that you would know what TDD is about.
+</p>
 
 <ul>
     <li><a href="http://en.wikipedia.org/wiki/Test-driven_development">http://en.wikipedia.org/wiki/Test-driven_development</a></li>
     <li><a href="http://www.butunclebob.com/ArticleS.UncleBob.TheThreeRulesOfTdd">http://www.butunclebob.com/ArticleS.UncleBob.TheThreeRulesOfTdd</a></li>
     <li><a href="http://www.butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata">http://www.butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata</a></li>
     <li><a href="http://www.agiledata.org/essays/tdd.html">http://www.agiledata.org/essays/tdd.html</a></li>
+    <li><a href="http://dannorth.net/introducing-bdd">http://dannorth.net/introducing-bdd</a></li>
+    <li><a href="http://blog.daveastels.com/files/BDD_Intro.pdf">http://blog.daveastels.com/files/BDD_Intro.pdf</a></li>
     <li><a href="http://blog.briandicroce.com/2008/03/14/three-index-cards-to-easily-remember-the-essence-of-test-driven-development/">http://blog.briandicroce.com/2008/03/14/three-index-cards-to-easily-remember-the-essence-of-test-driven-development/</a></li>
     <li><a href="http://agileinaflash.blogspot.com/2009/03/unclebobs-three-rules-of-tdd.html">http://agileinaflash.blogspot.com/2009/03/unclebobs-three-rules-of-tdd.html</a></li>
     <li><a href="http://agileinaflash.blogspot.com/2009/02/red-green-refactor.html">http://agileinaflash.blogspot.com/2009/02/red-green-refactor.html</a></li>
@@ -33,12 +42,20 @@
 
 <h2>The Steps of the Tutorial</h2>
 
-<p>Use the following tests to write a Tetris game. Copy them to your project one file at a time, in the same order as
-    they are listed below, starting with <code>FallingBlocksTest.java</code>. First write code which passes the first
-    test (<code>A_new_board.test_Is_empty</code>) and then uncomment the following test (<code>A_new_board.test_Has_no_falling_blocks</code>).
-    When that test passes, uncomment the next one (<code>When_a_block_is_dropped.test_The_block_is_falling</code>) until
-    finally you have written code which passes all tests in that class. Then copy the next test class to your project
-    and keep on continuing in the same fashion.
+<p>Use the following tests to write a Tetris game. Implement code to pass the tests, one file and test at a time, in the
+    same order as they are listed below, starting with <code>FallingBlocksTest.java</code>. First write code which
+    passes the first test (<code>A_new_board.is_empty</code>) and then uncomment the following test (<code>A_new_board.has_no_falling_blocks</code>).
+    When that test passes, uncomment the next one (<code>When_a_block_is_dropped.the_block_is_falling</code>) until
+    finally you have written code which passes all tests in that class. Then open the next test class and keep on
+    continuing in the same fashion.
+</p>
+
+<p>Reference implementations for the steps of this tutorial have been provided at
+    <a href="http://github.com/orfjackal/tdd-tetris-tutorial/downloads">this tutorial's repository</a>. It might be
+    helpful to have a look at them <em>after</em> you have yourself implemented this tutorial that far. The reference
+    implementation may teach you something about writing clean code (reading the
+    <a href="http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">Clean Code</a> book is also
+    recommendable).
 </p>
 
 <ol>
@@ -77,20 +94,31 @@
             more than five minutes has passed since the last time all tests passed, revert your code to the last version
             from source control where all tests passed.
         </p>
+
+        <p>The difficulty of this refactoring depends on how well factored the code is. You could even say that the
+            difficulty of this refactoring is inversely proportional to the length of the <code>Board.tick()</code>
+            method (if most of the logic is in that one method, and not using
+            <a href="http://www.infoq.com/presentations/10-Ways-to-Better-Code-Neal-Ford">Composed Method</a>,
+            then you're in trouble). If you get stuck, you may get some hints from
+            <a href="http://www.cs.helsinki.fi/u/luontola/tdd-2009/kalvot/04.1-Refactoring-Example.pdf">this example
+                refactoring</a>.
+        </p>
     </li>
     <li><a href="src/test/java/tetris/MovingAFallingPieceTest.java"><code>MovingAFallingPieceTest.java</code></a>
 
         <p>Now it's your turn to write the tests. I've provided some TODO items which should hint you on what kind of
-            tests to write.</p>
+            tests to write.
+        </p>
     </li>
     <li><a href="src/test/java/tetris/RotatingAFallingPieceTest.java"><code>RotatingAFallingPieceTest.java</code></a>
 
-        <p>Keep on writing your own tests. You're getting the hang of it!</p>
+        <p>Keep on writing your own tests. You're getting the hang of it!
+        </p>
     </li>
     <li>Next you should probably implement the following features in a suitable order: removing full rows, counting
         removed rows (maybe launch an event when a row is removed - <a href="http://mockito.org/">Mockito</a> might come
         in handly for testing that), counting score, choosing the next piece by random. Soon after that you should be
-        able to create an user interface which is only a thin wrapper over the already implemented functionality.
+        able to create a user interface which is only a thin wrapper over the already implemented functionality.
         Automated testing of user interfaces is generally hard to do, but by separating the UI model from its view it is
         possible (see <a href="http://martinfowler.com/eaaDev/ModelViewPresenter.html">these articles</a>).
     </li>
