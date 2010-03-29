@@ -14,6 +14,8 @@ import java.util.*;
  */
 public class Board implements Grid {
 
+    // TODO: This class is getting rather big. Consider extracting some functionality to another class.
+
     private FallingPiece falling;
     private char[][] blocks;
 
