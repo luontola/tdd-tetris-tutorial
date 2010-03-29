@@ -2,8 +2,7 @@
 TDD Tetris Tutorial
 ===================
 
-In this tutorial you will be implementing a Tetris game using [Test-Driven Development](http://en.wikipedia.org/wiki/Test-driven_development
-) (TDD). Some 30 of the first tests have been provided, so that you just need to write code to pass them. The purpose of working with these pre-written test cases is to get accustomed to the TDD cycle, and to get some ideas on what kind of tests to write. After doing that for some while, it will be easier when it's time to begin writing your own tests towards the end of this tutorial.
+In this tutorial you will be implementing a Tetris game using [Test-Driven Development](http://en.wikipedia.org/wiki/Test-driven_development) (TDD). Some 30 of the first tests have been provided, so that you just need to write code to pass them. The purpose of working with these pre-written test cases is to get accustomed to the TDD cycle, and to get some ideas on what kind of tests to write. After doing that for some while, it will be easier when it's time to begin writing your own tests towards the end of this tutorial.
 
 For information about Test-Driven Development, here are some links. It is recommendable to read them before doing this tutorial, so that you would know what TDD is about.
 
@@ -33,7 +32,7 @@ The Steps of the Tutorial
 
 Use the following tests to write a Tetris game. Implement code to pass the tests, one file and test at a time, in the same order as they are listed below, starting with `FallingBlocksTest.java`. First write code which passes the first test (`A_new_board.is_empty`) and then uncomment the following test (`A_new_board.has_no_falling_blocks`). When that test passes, uncomment the next one (`When_a_block_is_dropped.the_block_is_falling`) until finally you have written code which passes all tests in that class. Then open the next test class and keep on continuing in the same fashion.
 
-Reference implementations for the steps of this tutorial have been provided at this tutorial's [Git repository](http://github.com/orfjackal/tdd-tetris-tutorial/downloads) (the [beyond branch](http://github.com/orfjackal/tdd-tetris-tutorial/tree/beyond) contains the most complete implementation). It might be helpful to have a look at them *after* you have yourself implemented this tutorial that far. The reference implementation may teach you something about writing clean code. It's also recommendable to read the books [Clean Code](http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882) and [Growing Object-Oriented Software, Guided by Tests](http://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627).
+Reference implementations for the steps of this tutorial have been provided at this tutorial's [Git repository](http://github.com/orfjackal/tdd-tetris-tutorial/downloads) (the [beyond branch](http://github.com/orfjackal/tdd-tetris-tutorial/tree/beyond) contains the most complete implementation). It might be helpful to have a look at them *after* you have yourself implemented this tutorial that far. The reference implementation may teach you something about writing clean code.
 
 This material has been used on the [TDD programming technique and designing code](http://www.cs.helsinki.fi/u/luontola/tdd-2009/) course in the University of Helsinki. The [lecture slides](http://www.cs.helsinki.fi/u/luontola/tdd-2009/luennot) and [exercises](http://www.cs.helsinki.fi/u/luontola/tdd-2009/harjoitukset) of that course can also be helpful (the material is in English, but for the rest of the site you can use [Google Translate](http://translate.google.com/)).
 
@@ -58,7 +57,7 @@ This material has been used on the [TDD programming technique and designing code
 
     Next we will connect the falling blocks and the rotatable pieces. In order to make the first test pass, you will probably need to refactor your code quite much (for me it took 1½ hours). You need to build suitable abstractions, so that single-block pieces and multi-block pieces can be handled the same way (changing the test code should not be necessary). When refactoring, you must keep the tests passing between every small change, or you will end up in <a href="http://c2.c2.com/cgi/wiki?RefactoringHell">refactoring hell</a>. If more than five minutes has passed since the last time all tests passed, revert your code to the last version from source control where all tests passed.
 
-    The difficulty of this refactoring depends on how well factored the code is. You could even say that the difficulty of this refactoring is inversely proportional to the length of the `Board.tick()` method (if most of the logic is in that one method, and not using [Composed Method](http://www.infoq.com/presentations/10-Ways-to-Better-Code-Neal-Ford), then you're in trouble). If you get stuck, you may get some hints from [this example refactoring](http://www.cs.helsinki.fi/u/luontola/tdd-2009/kalvot/04.1-Refactoring-Example.pdf).
+    The difficulty of this refactoring depends on how well factored the code is. You could even say that the difficulty of this refactoring is inversely proportional to the length of the `Board.tick()` method (if most of the logic is in that one method, instead of using [Composed Method](http://www.infoq.com/presentations/10-Ways-to-Better-Code-Neal-Ford), then you're in trouble). If you get stuck, you may get some hints from [this example refactoring](http://www.cs.helsinki.fi/u/luontola/tdd-2009/kalvot/04.1-Refactoring-Example.pdf).
 
 5. **MovingAFallingPieceTest.java**
 
@@ -73,6 +72,13 @@ This material has been used on the [TDD programming technique and designing code
     Next you should probably implement the following features in a suitable order: removing full rows, counting removed rows (maybe launch an event when a row is removed - <a href="http://mockito.org/">Mockito</a> might come in handly for testing that), counting score, choosing the next piece by random. It would also be good to replace the earlier algorithmic shape rotation (which was done in step 2) with one where each orientation of a shape is hardcoded, because that will simplify the code considerably.
 
     Soon after that you should be able to create a user interface which is only a thin wrapper over the already implemented functionality. Automated testing of user interfaces is generally hard to do, but by separating the UI model from its view it is possible (see [these articles](http://martinfowler.com/eaaDev/ModelViewPresenter.html)).
+
+
+### What Next? ###
+
+After you have completed this tutorial, you should have a rough understanding of how to use TDD - you should be at the [Practicing](http://sites.google.com/site/agileskillsprojectwiki/skill-levels) or [Shu](http://martinfowler.com/bliki/ShuHaRi.html) level. You will probably still struggle with things like always following the TDD cycle, using small enough steps, writing self-documenting tests, writing clean code etc. Also most of the tests in this tutorial are perhaps confusingly similar (verify all game board state using `toString()`) so you should practice writing tests for different kinds of situations.
+
+You should continue practicing by writing lots of small applications using TDD, until TDD becomes second nature to you and you can use it ["when you have to get it done"](http://www.vimeo.com/groups/7657/videos/3756344). Learning that will take many months. It's also recommendable to read the books [Clean Code](http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882) and [Growing Object-Oriented Software, Guided by Tests](http://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627).
 
 
 License
