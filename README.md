@@ -26,7 +26,7 @@ Summary:
 - <http://agileinaflash.blogspot.com/2009/02/red-green-refactor.html>
 - <http://agileinaflash.blogspot.com/2009/02/first.html>
 
-This tutorial has been used on the [TDD programming technique and designing code](http://www.cs.helsinki.fi/u/luontola/tdd-2009/) course in the University of Helsinki. The [lecture slides](http://www.cs.helsinki.fi/u/luontola/tdd-2009/luennot) and [exercises](http://www.cs.helsinki.fi/u/luontola/tdd-2009/harjoitukset) of that course can also be helpful (the material is in English, but for the rest of the site you can use [Google Translate](http://translate.google.com/)).
+This tutorial has been used in the [TDD programming technique and designing code](http://www.cs.helsinki.fi/u/luontola/tdd-2009/) course in the University of Helsinki. The [lecture slides](http://www.cs.helsinki.fi/u/luontola/tdd-2009/luennot) and [exercises](http://www.cs.helsinki.fi/u/luontola/tdd-2009/harjoitukset) of that course can also be helpful (the material is in English, but for the rest of the site you can use [Google Translate](http://translate.google.com/)).
 
 
 The Steps of the Tutorial
@@ -72,7 +72,7 @@ Reference implementations for the steps of this tutorial have been provided at t
 
 7. **And beyond...**
 
-    Next you should probably implement the following features in a suitable order: removing full rows, counting removed rows, counting score, choosing the next piece by random (using a [shuffle bag](http://kaioa.com/node/53)). For counting the removed rows, you could launch an event (call a listener's method) when a row is removed - [Mockito](http://mockito.org/) might come in handly for testing that.
+    Next you should implement the following features in suitable order: removing full rows, counting removed rows, counting score, choosing the next piece by random (using a [shuffle bag](http://kaioa.com/node/53)). For counting the removed rows, you could launch an event (call a listener's method) when a row is removed - [Mockito](http://mockito.org/) might come in handly for testing that.
 
     Also change the game to use the [rotation rules of TGM](http://bsixcentdouze.free.fr/tc/tgm-en/tgm.html#rotations). In order to do that, it would be good to replace the earlier generic algorithmic shape rotation (which was done in step 2) with one where each orientation of a shape is hardcoded, because that will probably simplify the code considerably. When you have made the change, evaluate that which of the implementations is better, and remove all code that relates to the worse implementation - [deleting code](http://objectmentor.com/resources/articles/craftsman4.pdf) is a good thing.
 
@@ -81,9 +81,9 @@ Reference implementations for the steps of this tutorial have been provided at t
 
 ### What Next? ###
 
-After you have completed this tutorial, you should have a rough understanding of how to use TDD - you should be at the [Practicing](http://sites.google.com/site/agileskillsprojectwiki/skill-levels) or [Shu](http://martinfowler.com/bliki/ShuHaRi.html) level. You will probably still struggle with things like always following the TDD cycle, using small enough steps, writing self-documenting tests, writing clean code etc. Also most of the tests in this tutorial are perhaps confusingly similar (verify all game board state using `toString()`) so you should practice writing tests for different kinds of situations.
+After you have completed this tutorial, you should have a rough understanding of how to use TDD - you should be at the [Practicing](http://sites.google.com/site/agileskillsprojectwiki/skill-levels) or [Shu](http://martinfowler.com/bliki/ShuHaRi.html) level. You will probably still struggle with things like always writing a test first, using small enough steps, writing self-documenting tests, keeping the code clean etc. Also most of the tests in this tutorial are perhaps confusingly similar (they verify all game state using `toString()`) so you should practice writing tests for different kinds of situations.
 
-You should continue practicing by writing lots of small applications using TDD, until TDD becomes second nature to you and you can use it ["when you have to get it done"](http://www.vimeo.com/groups/7657/videos/3756344). Learning that will take many months. It's also recommendable to read the books [Clean Code](http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882) and [Growing Object-Oriented Software, Guided by Tests](http://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627).
+You should continue practicing by writing lots of small applications using TDD, until TDD becomes second nature to you and you can use it ["when you have to get it done"](http://www.vimeo.com/groups/7657/videos/3756344). Learning that will take many months. It's also recommendable to read the books [Clean Code: A Handbook of Agile Software Craftsmanship](http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882) and [Growing Object-Oriented Software, Guided by Tests](http://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627). The former book teaches how to write good code. The latter book teaches how to use TDD to drive the design.
 
 
 License
