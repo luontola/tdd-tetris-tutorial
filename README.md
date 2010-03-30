@@ -64,7 +64,9 @@ Reference implementations for the steps of this tutorial have been provided at t
 
 5. **MovingAFallingPieceTest.java**
 
-    Now it's your turn to write the tests. I've provided some TODO items which should hint you on what kind of tests to write.
+    Now it's your turn to write the tests. I've provided some TODO items which should hint you on what tests to write.
+
+    Feel free to refactor the test code and change any of the previosly used class or method names to be more descriptive, because there are no more predefined tests which might become incompatible with your code. Both production code and test code need to be taken care of, so you should regularly see if there is something to improve and then refactor it.
 
 6. **RotatingAFallingPieceTest.java**
 
