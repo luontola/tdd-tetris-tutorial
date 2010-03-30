@@ -54,6 +54,8 @@ Reference implementations for the steps of this tutorial have been provided at t
 
     Notice that the first test specifies the Tetromino objects to be immutable. Check the Wikipedia article about [immutable objects](http://en.wikipedia.org/wiki/Immutable_object) if that concept is new to you. Defaulting to immutability is a good thing.
 
+    If you are thinking of making the Tetromino class extend the Piece class, first read about the [Liskov Substitution Principle](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod) to know when it's right for a class to inherit another.
+
 4. **FallingPiecesTest.java**
 
     Next we will connect the falling blocks and the rotatable pieces. In order to make the first test pass, you will probably need to refactor your code quite much (for me it took 1½ hours). You need to build suitable abstractions, so that single-block pieces and multi-block pieces can be handled the same way (changing the test code should not be necessary). When refactoring, you must keep the tests passing between every small change, or you will end up in [refactoring hell](http://c2.c2.com/cgi/wiki?RefactoringHell). If more than five minutes has passed since the last time all tests passed, revert your code to the last version from source control where all tests passed.
