@@ -54,7 +54,7 @@ Reference implementations for the steps of this tutorial have been provided at t
 
     Notice that the first test specifies the Tetromino objects to be immutable. Check the Wikipedia article about [immutable objects](http://en.wikipedia.org/wiki/Immutable_object) if that concept is new to you. Defaulting to immutability is a good thing.
 
-    If you are thinking of making the Tetromino class extend the Piece class, first read about the [Liskov Substitution Principle](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod) to know when it's right for a class to inherit another.
+    If you are thinking of making the Tetromino class extend the Piece class, first read about the [Liskov Substitution Principle](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod) to know when it's right for a class to inherit another. In general, it's best to [favor composition over inheritance](http://www.artima.com/lejava/articles/designprinciples4.html).
 
 4. **FallingPiecesTest.java**
 
