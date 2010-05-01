@@ -42,6 +42,8 @@ Reference implementations for the steps of this tutorial have been provided at t
 
     In Tetris, the most important feature is that there are blocks which fall down, so that is the first behaviour which we will specify by writing tests. It is good to start the writing of a program with a very trivial test. In this case, we will first make sure that we have an empty game board.
 
+    We'll use the [Simplification strategy](http://www.infoq.com/presentations/responsive-design) and first deal with just falling 1x1 blocks. We can expand that later to handle more complex multi-block pieces. It's best to avoid taking too big steps.
+
 2. **RotatingPiecesOfBlocksTest.java**
 
     Rotating the pieces in Tetris is also very important, so let's code that next. You might need pen and paper when figuring out how the shape coordinates change when the shape is rotated.
@@ -83,7 +85,7 @@ Reference implementations for the steps of this tutorial have been provided at t
 
 ### What Next? ###
 
-After you have completed this tutorial, you should have a rough understanding of how to use TDD - you should be at the [Practicing](http://sites.google.com/site/agileskillsprojectwiki/skill-levels) or [Shu](http://martinfowler.com/bliki/ShuHaRi.html) level. You will probably still struggle with things like always writing a test first, using small enough steps, writing self-documenting tests, keeping the code clean etc. Also most of the tests in this tutorial are perhaps confusingly similar (they verify all game state using `toString()`) so you should practice writing tests for different kinds of situations.
+After you have completed this tutorial, you should have a rough understanding of how to use TDD - you should be at the [Practicing](http://www.agileskillsproject.com/skill-levels) or [Shu](http://martinfowler.com/bliki/ShuHaRi.html) level. You will probably still struggle with things like always writing a test first, using small enough steps, writing self-documenting tests, keeping the code clean etc. Also most of the tests in this tutorial are perhaps confusingly similar (they verify all game state using `toString()`) so you should practice writing tests for different kinds of situations.
 
 You should continue practicing by writing lots of small applications using TDD, until TDD becomes second nature to you and you can use it ["when you have to get it done"](http://www.vimeo.com/groups/7657/videos/3756344). Learning that will take many months. It's also recommendable to read the books [Clean Code: A Handbook of Agile Software Craftsmanship](http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882) and [Growing Object-Oriented Software, Guided by Tests](http://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627). The former book teaches how to write good code. The latter book teaches how to use TDD to drive the design.
 
