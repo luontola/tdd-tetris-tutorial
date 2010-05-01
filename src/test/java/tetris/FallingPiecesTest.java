@@ -1,9 +1,6 @@
-/*
- * Copyright (c) 2008-2009  Esko Luontola, www.orfjackal.net
- *
- * You may use and modify this source code freely for personal non-commercial use.
- * This source code may NOT be used as course material without prior written agreement.
- */
+// Copyright (c) 2008-2010  Esko Luontola <www.orfjackal.net>
+// You may use and modify this source code freely for personal non-commercial use.
+// This source code may NOT be used as course material without prior written agreement.
 
 package tetris;
 
@@ -58,7 +55,6 @@ public class FallingPiecesTest extends Assert {
 
         @Test
         public void it_is_still_falling_on_the_last_row() {
-            assertTrue(board.hasFalling());
             assertEquals("" +
                     "........\n" +
                     "........\n" +
@@ -66,12 +62,12 @@ public class FallingPiecesTest extends Assert {
                     "........\n" +
                     "....T...\n" +
                     "...TTT..\n", board.toString());
+            assertTrue(board.hasFalling());
         }
 
         @Test
         public void it_stops_when_it_hits_the_bottom() {
             board.tick();
-            assertFalse(board.hasFalling());
             assertEquals("" +
                     "........\n" +
                     "........\n" +
@@ -79,6 +75,7 @@ public class FallingPiecesTest extends Assert {
                     "........\n" +
                     "....T...\n" +
                     "...TTT..\n", board.toString());
+            assertFalse(board.hasFalling());
         }
     }
 
@@ -101,7 +98,6 @@ public class FallingPiecesTest extends Assert {
 
         @Test
         public void it_is_still_falling_right_above_the_other_piece() {
-            assertTrue(board.hasFalling());
             assertEquals("" +
                     "........\n" +
                     "........\n" +
@@ -109,12 +105,12 @@ public class FallingPiecesTest extends Assert {
                     "...TTT..\n" +
                     "....T...\n" +
                     "...TTT..\n", board.toString());
+            assertTrue(board.hasFalling());
         }
 
         @Test
         public void it_stops_when_it_hits_the_other_piece() {
             board.tick();
-            assertFalse(board.hasFalling());
             assertEquals("" +
                     "........\n" +
                     "........\n" +
@@ -122,6 +118,7 @@ public class FallingPiecesTest extends Assert {
                     "...TTT..\n" +
                     "....T...\n" +
                     "...TTT..\n", board.toString());
+            assertFalse(board.hasFalling());
         }
     }
 }

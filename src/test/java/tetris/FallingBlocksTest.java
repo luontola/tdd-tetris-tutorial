@@ -1,9 +1,6 @@
-/*
- * Copyright (c) 2008-2009  Esko Luontola, www.orfjackal.net
- *
- * You may use and modify this source code freely for personal non-commercial use.
- * This source code may NOT be used as course material without prior written agreement.
- */
+// Copyright (c) 2008-2010  Esko Luontola <www.orfjackal.net>
+// You may use and modify this source code freely for personal non-commercial use.
+// This source code may NOT be used as course material without prior written agreement.
 
 package tetris;
 
@@ -91,21 +88,21 @@ public class FallingBlocksTest extends Assert {
 
         @Test
         public void it_is_still_falling_on_the_last_row() {
-            assertTrue(board.hasFalling());
             assertEquals("" +
                     "...\n" +
                     "...\n" +
                     ".X.\n", board.toString());
+            assertTrue("the player should still be able to move the block", board.hasFalling());
         }
 
         @Test
         public void it_stops_when_it_hits_the_bottom() {
             board.tick();
-            assertFalse(board.hasFalling());
             assertEquals("" +
                     "...\n" +
                     "...\n" +
                     ".X.\n", board.toString());
+            assertFalse("the block should stop moving", board.hasFalling());
         }
     }
 
@@ -124,21 +121,21 @@ public class FallingBlocksTest extends Assert {
 
         @Test
         public void it_is_still_falling_right_above_the_other_block() {
-            assertTrue(board.hasFalling());
             assertEquals("" +
                     "...\n" +
                     ".Y.\n" +
                     ".X.\n", board.toString());
+            assertTrue("the player should still be able to avoid landing on the other block", board.hasFalling());
         }
 
         @Test
         public void it_stops_when_it_hits_the_other_block() {
             board.tick();
-            assertFalse(board.hasFalling());
             assertEquals("" +
                     "...\n" +
                     ".Y.\n" +
                     ".X.\n", board.toString());
+            assertFalse("the block should stop moving when it lands on the other block", board.hasFalling());
         }
     }
 }
