@@ -92,7 +92,7 @@ public class FallingBlocksTest extends Assert {
                     "...\n" +
                     "...\n" +
                     ".X.\n", board.toString());
-            assertTrue(board.hasFalling());
+            assertTrue("the player should still be able to move the block", board.hasFalling());
         }
 
         @Test
@@ -102,7 +102,7 @@ public class FallingBlocksTest extends Assert {
                     "...\n" +
                     "...\n" +
                     ".X.\n", board.toString());
-            assertFalse(board.hasFalling());
+            assertFalse("the block should stop moving", board.hasFalling());
         }
     }
 
@@ -130,7 +130,7 @@ public class FallingBlocksTest extends Assert {
                     "...\n" +
                     ".Y.\n" +
                     ".X.\n", board.toString());
-            assertTrue(board.hasFalling());
+            assertTrue("the player should still be able to avoid landing on the other block", board.hasFalling());
         }
 
         @Test
@@ -140,7 +140,7 @@ public class FallingBlocksTest extends Assert {
                     "...\n" +
                     ".Y.\n" +
                     ".X.\n", board.toString());
-            assertFalse(board.hasFalling());
+            assertFalse("the block should stop moving when it lands on the other block", board.hasFalling());
         }
     }
 }
