@@ -5,10 +5,11 @@
 package tetris.easymock;
 
 import net.orfjackal.nestedjunit.NestedJUnit4;
-import static org.easymock.EasyMock.*;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import tetris.*;
+
+import static org.easymock.EasyMock.*;
 
 /**
  * @author Esko Luontola
