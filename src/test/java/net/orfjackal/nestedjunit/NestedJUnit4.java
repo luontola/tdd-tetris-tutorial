@@ -68,10 +68,16 @@ public class NestedJUnit4 extends ParentRunner<Runner> {
         super(testClass);
         parentTestClass = new TestClass(testClass);
         addToChildrenAllNestedClassesWithTests(testClass);
+
+        // If there are no children, then IntelliJ IDEA's test runner will get confused
+        // and report the tests as still being executed and the progress bar will be buggy.
+        if (children.size() == 0) {
+            children.add(new NoTestsRunner(testClass));
+        }
     }
 
     private void addToChildrenAllNestedClassesWithTests(Class<?> testClass) throws InitializationError {
-        for (Class<?> child : (Class<?>[]) testClass.getDeclaredClasses()) {
+        for (Class<?> child : testClass.getDeclaredClasses()) {
             if (containsTests(child)) {
                 children.add(new NestedJUnit4ClassRunner(child));
             }
@@ -142,6 +148,22 @@ public class NestedJUnit4 extends ParentRunner<Runner> {
         private Statement withParentAfters(Statement statement) {
             List<FrameworkMethod> afters = parentTestClass.getAnnotatedMethods(After.class);
             return afters.isEmpty() ? statement : new RunAfters(statement, afters, parentOfCurrentTest);
+        }
+    }
+
+    private static class NoTestsRunner extends Runner {
+        private final Description description;
+
+        public NoTestsRunner(Class<?> testClass) {
+            description = Description.createTestDescription(testClass, "<no tests>");
+        }
+
+        public Description getDescription() {
+            return description;
+        }
+
+        public void run(RunNotifier notifier) {
+            notifier.fireTestIgnored(description);
         }
     }
 }
