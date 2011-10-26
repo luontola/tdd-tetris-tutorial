@@ -137,7 +137,7 @@ public class RotatingTetrominoesTest extends Assert {
         }
 
         @Test
-        public void rotating_it_twise_will_get_back_to_the_original_shape() {
+        public void rotating_it_twice_will_get_back_to_the_original_shape() {
             String originalShape = shape.toString();
             shape = shape.rotateRight().rotateRight();
             assertEquals(originalShape, shape.toString());
