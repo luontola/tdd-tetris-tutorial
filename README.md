@@ -36,7 +36,7 @@ Use the tests in the [src/test/java/tetris](http://github.com/orfjackal/tdd-tetr
 
 When you first run the tests, you should see the first test (`A_new_board.is_empty`) failing. Fix the code and run the tests to see it pass. Then uncomment the following test (`A_new_board.has_no_falling_blocks`). When that test passes, uncomment the next one (`When_a_block_is_dropped.the_block_is_falling`) and make it pass, until finally you have written code which passes all tests in that class. Then open the next test class and keep on continuing in the same fashion.
 
-Reference implementations for the steps of this tutorial have been provided at this tutorial's [Git repository](http://github.com/orfjackal/tdd-tetris-tutorial/downloads) (the [beyond branch](http://github.com/orfjackal/tdd-tetris-tutorial/tree/beyond) contains the most complete implementation). It might be helpful to have a look at them *after* you have yourself implemented this tutorial that far. The reference implementation may teach you something about writing clean code.
+Reference implementations for the steps of this tutorial have been [tagged in its Git repository](https://github.com/orfjackal/tdd-tetris-tutorial/tags) (the [beyond branch](http://github.com/orfjackal/tdd-tetris-tutorial/tree/beyond) contains the most complete implementation). It might be helpful to have a look at them *after* you have yourself implemented this tutorial that far. The reference implementation may teach you something about writing clean code.
 
 1. **FallingBlocksTest.java**
 
