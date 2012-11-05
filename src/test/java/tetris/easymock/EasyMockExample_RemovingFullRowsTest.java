@@ -1,10 +1,10 @@
-// Copyright (c) 2008-2010  Esko Luontola <www.orfjackal.net>
+// Copyright (c) 2008-2012  Esko Luontola <www.orfjackal.net>
 // You may use and modify this source code freely for personal non-commercial use.
 // This source code may NOT be used as course material without prior written agreement.
 
 package tetris.easymock;
 
-import net.orfjackal.nestedjunit.NestedJUnit4;
+import net.orfjackal.nestedjunit.NestedJUnit;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import tetris.*;
@@ -14,7 +14,7 @@ import static org.easymock.EasyMock.*;
 /**
  * @author Esko Luontola
  */
-@RunWith(NestedJUnit4.class)
+@RunWith(NestedJUnit.class)
 public class EasyMockExample_RemovingFullRowsTest extends Assert {
 
     private static final RotatableGrid PIECE = new RotatablePiece("" +

@@ -36,7 +36,7 @@ Use the tests in the [src/test/java/tetris](http://github.com/orfjackal/tdd-tetr
 
 When you first run the tests, you should see the first test (`A_new_board.is_empty`) failing. Fix the code and run the tests to see it pass. Then uncomment the following test (`A_new_board.has_no_falling_blocks`). When that test passes, uncomment the next one (`When_a_block_is_dropped.the_block_is_falling`) and make it pass, until finally you have written code which passes all tests in that class. Then open the next test class and keep on continuing in the same fashion.
 
-Reference implementations for the steps of this tutorial have been provided at this tutorial's [Git repository](http://github.com/orfjackal/tdd-tetris-tutorial/downloads) (the [beyond branch](http://github.com/orfjackal/tdd-tetris-tutorial/tree/beyond) contains the most complete implementation). It might be helpful to have a look at them *after* you have yourself implemented this tutorial that far. The reference implementation may teach you something about writing clean code.
+Reference implementations for the steps of this tutorial have been [tagged in its Git repository](https://github.com/orfjackal/tdd-tetris-tutorial/tags) (the [beyond branch](http://github.com/orfjackal/tdd-tetris-tutorial/tree/beyond) contains the most complete implementation). It might be helpful to have a look at them *after* you have yourself implemented this tutorial that far. The reference implementation may teach you something about writing clean code.
 
 1. **FallingBlocksTest.java**
 
@@ -55,6 +55,8 @@ Reference implementations for the steps of this tutorial have been provided at t
     [Tetrominoes](http://en.wikipedia.org/wiki/Tetromino) can have 1, 2 or 4 different positions when they are rotated. Now we can take advantage of the shape rotation code which we wrote just a moment ago.
 
     Notice that the first test specifies the `Tetromino` objects to be immutable. Check the Wikipedia article about [immutable objects](http://en.wikipedia.org/wiki/Immutable_object) if that concept is new to you. Defaulting to immutability is a good thing.
+
+    Also notice that the I shape has only two possible orientations and the O shape has only one orientation. The tests are the way they are by design. Did you know that Tetris has many alternative [rotation systems](http://tetris.wikia.com/wiki/Category:Rotation_Systems)? 
 
     If you are thinking of making the `Tetromino` class extend the `Piece` class, first read about the [Liskov Substitution Principle](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod) to know when it's right for a class to inherit another. In general, it's best to [favor composition over inheritance](http://www.artima.com/lejava/articles/designprinciples4.html).
 
@@ -85,7 +87,7 @@ Reference implementations for the steps of this tutorial have been provided at t
 
 ### What Next? ###
 
-After you have completed this tutorial, you should have a rough understanding of how to use TDD - you should be at the [Practicing](http://www.agileskillsproject.com/skill-levels) or [Shu](http://martinfowler.com/bliki/ShuHaRi.html) level. You will probably still struggle with things like always writing a test first, using small enough steps, writing self-documenting tests, keeping the code clean etc. Also most of the tests in this tutorial are perhaps confusingly similar (they verify all game state using `toString()`) so you should practice writing tests for different kinds of situations.
+After you have completed this tutorial, you should have a rough understanding of how to use TDD - you should be at the [Practicing](http://www.agileskillsproject.com/skill-levels)/[Shu](http://martinfowler.com/bliki/ShuHaRi.html)/[Advanced Beginner](http://en.wikipedia.org/wiki/Dreyfus_model_of_skill_acquisition) level. You will probably still struggle with things like always writing a test first, using small enough steps, writing self-documenting tests, keeping the code clean etc. Also most of the tests in this tutorial are perhaps confusingly similar (they verify all game state using `toString()`) so you should practice writing tests for different kinds of situations. Likewise, this tutorial uses a bottom-up approach to TDD, which has the risk of producing something that is not needed, so learning also [a top-down approach](http://blog.orfjackal.net/2010/07/design-for-integrability.html) would be beneficial.
 
 You should continue practicing by writing lots of small applications using TDD, until TDD becomes second nature to you and you can use it ["when you have to get it done"](http://www.vimeo.com/groups/7657/videos/3756344). Learning that will take many months. It's also recommendable to read the books [Clean Code: A Handbook of Agile Software Craftsmanship](http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882) and [Growing Object-Oriented Software, Guided by Tests](http://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627). The former book teaches how to write good code. The latter book teaches how to use TDD to drive the design.
 
