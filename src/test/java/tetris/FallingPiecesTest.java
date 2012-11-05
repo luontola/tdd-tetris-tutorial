@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 /**
  * @author Esko Luontola
  */
+@Ignore("contains no test")
 @RunWith(NestedJUnit.class)
 public class FallingPiecesTest extends Assert {
 

@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 /**
  * @author Esko Luontola
  */
+@Ignore("contains no test") // TODO: uncomment me when you start doing these tests
 @RunWith(NestedJUnit.class)
 public class RotatingPiecesOfBlocksTest extends Assert {
 
