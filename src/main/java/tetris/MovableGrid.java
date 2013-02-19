@@ -43,7 +43,8 @@ public class MovableGrid implements Grid {
                 if (inner.colorAt(rowInner, colInner) != EMPTY) {
                     int rowOuter = rowInner + rowOffset;
                     int colOuter = colInner + colOffset;
-                    if (rowOuter >= outer.rows() || outer.colorAt(rowOuter, colOuter) != EMPTY) {
+                    if (!Grids.isInside(outer, rowOuter, colOuter)
+                            || outer.colorAt(rowOuter, colOuter) != EMPTY) {
                         return true;
                     }
                 }
