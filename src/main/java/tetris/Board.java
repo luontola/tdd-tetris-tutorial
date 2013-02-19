@@ -6,6 +6,8 @@ public class Board {
     private final int columns;
 
     private Block falling;
+    private int fallingRow = 0;
+    private int fallingCol = 1;
 
     public Board(int rows, int columns) {
         this.rows = rows;
@@ -16,7 +18,11 @@ public class Board {
         String s = "";
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < columns; col++) {
-                s += ".";
+                if (hasFalling() && row == fallingRow && col == fallingCol) {
+                    s += falling.getColor();
+                } else {
+                    s += ".";
+                }
             }
             s += "\n";
         }
