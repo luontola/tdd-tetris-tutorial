@@ -40,7 +40,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="tdd-tetris-tutorial" target="1.6" />
+      <module name="tdd-tetris-tutorial" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
