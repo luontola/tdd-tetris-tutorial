@@ -29,18 +29,13 @@ public class Board implements Grid {
     }
 
     public char colorAt(int row, int col) {
-        if (hasFallingAt(row, col)) {
-            return falling.colorAt(row, col);
-        } else {
-            return stationary[row][col];
+        if (hasFalling()) {
+            char color = falling.colorAt(row, col);
+            if (color != EMPTY) {
+                return color;
+            }
         }
-    }
-
-    private boolean hasFallingAt(int row, int col) {
-        if (!hasFalling()) {
-            return false;
-        }
-        return falling.isInside(row, col);
+        return stationary[row][col];
     }
 
     public boolean hasFalling() {
@@ -75,7 +70,11 @@ public class Board implements Grid {
     }
 
     private void stopFalling() {
-        stationary[falling.rowOffset][falling.colOffset] = falling.colorAt(0, 0);
+        for (int row = 0; row < rows(); row++) {
+            for (int col = 0; col < columns(); col++) {
+                stationary[row][col] = colorAt(row, col);
+            }
+        }
         falling = null;
     }
 }

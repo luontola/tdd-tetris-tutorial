@@ -25,14 +25,16 @@ public class MovableGrid implements Grid {
     }
 
     @Override
-    public char colorAt(int row, int col) {
-        return grid.colorAt(row - rowOffset, col - colOffset);
-    }
-
-    boolean isInside(int row, int col) {
-        return row >= rowOffset
-                && row < rowOffset + rows()
-                && col >= colOffset
-                && col < colOffset + columns();
+    public char colorAt(int rowOuter, int colOuter) {
+        int rowInner = rowOuter - rowOffset;
+        int colInner = colOuter - colOffset;
+        if (rowInner >= 0
+                && rowInner < grid.rows()
+                && colInner >= 0
+                && colInner < grid.columns()) {
+            return grid.colorAt(rowInner, colInner);
+        } else {
+            return EMPTY;
+        }
     }
 }
