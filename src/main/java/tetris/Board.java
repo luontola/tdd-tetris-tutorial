@@ -74,20 +74,20 @@ public class Board implements Grid {
     }
 
     public void moveLeft() {
-        MovableGrid test = falling.moveLeft();
-        if (!test.collidesWith(stationaryBlocks())) {
-            falling = test;
-        }
+        updateIfPossible(falling.moveLeft());
     }
 
     public void moveRight() {
-        MovableGrid test = falling.moveRight();
-        if (!test.collidesWith(stationaryBlocks())) {
-            falling = test;
-        }
+        updateIfPossible(falling.moveRight());
     }
 
     public void moveDown() {
         falling = falling.moveDown();
+    }
+
+    private void updateIfPossible(MovableGrid test) {
+        if (!test.collidesWith(stationaryBlocks())) {
+            falling = test;
+        }
     }
 }
