@@ -37,19 +37,19 @@ public class Tetromino {
     private Tetromino(Piece shape, Piece[] rotations, int currentRotation) {
         this.shape = shape;
         this.rotations = rotations;
-        this.currentRotation = currentRotation;
+        this.currentRotation = (currentRotation + rotations.length) % rotations.length;
     }
 
     @Override
     public String toString() {
-        return shape.toString();
+        return rotations[currentRotation].toString();
     }
 
     public Tetromino rotateRight() {
-        return new Tetromino(shape.rotateRight(), rotations, currentRotation);
+        return new Tetromino(shape.rotateRight(), rotations, currentRotation + 1);
     }
 
     public Tetromino rotateLeft() {
-        return new Tetromino(shape.rotateLeft(), rotations, currentRotation);
+        return new Tetromino(shape.rotateLeft(), rotations, currentRotation - 1);
     }
 }
