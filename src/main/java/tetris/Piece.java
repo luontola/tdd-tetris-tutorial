@@ -41,7 +41,9 @@ public class Piece {
         char[][] rotated = new char[3][3];
         for (int row = 0; row < blocks.length; row++) {
             for (int col = 0; col < blocks[row].length; col++) {
-                rotated[row][col] = blocks[row][col];
+                int newRow = col;
+                int newCol = 2 - row;
+                rotated[newRow][newCol] = blocks[row][col];
             }
         }
         return new Piece(rotated);
