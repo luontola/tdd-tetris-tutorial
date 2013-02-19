@@ -9,20 +9,11 @@ public class Piece implements Grid {
     private final char[][] blocks;
 
     public Piece(String blocks) {
-        this(explode(blocks));
+        this(Grids.parse(blocks));
     }
 
     private Piece(char[][] blocks) {
         this.blocks = blocks;
-    }
-
-    private static char[][] explode(String shape) {
-        String[] rows = shape.split("\n");
-        char[][] blocks = new char[rows.length][];
-        for (int i = 0; i < rows.length; i++) {
-            blocks[i] = rows[i].toCharArray();
-        }
-        return blocks;
     }
 
     @Override
@@ -42,18 +33,7 @@ public class Piece implements Grid {
 
     @Override
     public String toString() {
-        return format(this);
-    }
-
-    private static String format(Piece piece) {
-        String s = "";
-        for (int row = 0; row < piece.rows(); row++) {
-            for (int col = 0; col < piece.columns(); col++) {
-                s += piece.colorAt(row, col);
-            }
-            s += '\n';
-        }
-        return s;
+        return Grids.format(this);
     }
 
     public Piece rotateRight() {
