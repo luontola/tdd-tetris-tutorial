@@ -46,16 +46,15 @@ public class Board implements Grid {
         if (hasFalling()) {
             throw new IllegalStateException("The board has an already falling piece");
         }
-        this.falling = new MovableGrid(piece);
-        this.falling.rowOffset = 0;
-        this.falling.colOffset = piece.columns();
+        this.falling = new MovableGrid(piece, 0, piece.columns());
     }
 
     public void tick() {
-        int nextRow = falling.rowOffset + 1;
-        int nextCol = falling.colOffset;
+        MovableGrid test = falling.moveDown();
+        int nextRow = test.rowOffset;
+        int nextCol = test.colOffset;
         if (isInsideBoard(nextRow) && isEmpty(nextRow, nextCol)) {
-            falling.rowOffset = nextRow;
+            falling = test;
         } else {
             stopFalling();
         }

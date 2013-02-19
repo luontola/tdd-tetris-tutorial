@@ -7,11 +7,13 @@ package tetris;
 public class MovableGrid implements Grid {
 
     private final Grid grid;
-    public int rowOffset;
-    public int colOffset;
+    public final int rowOffset; // TODO: make private
+    public final int colOffset; // TODO: make private
 
-    public MovableGrid(Grid grid) {
+    public MovableGrid(Grid grid, int rowOffset, int colOffset) {
         this.grid = grid;
+        this.rowOffset = rowOffset;
+        this.colOffset = colOffset;
     }
 
     @Override
@@ -36,5 +38,9 @@ public class MovableGrid implements Grid {
         } else {
             return EMPTY;
         }
+    }
+
+    public MovableGrid moveDown() {
+        return new MovableGrid(grid, rowOffset + 1, colOffset);
     }
 }
