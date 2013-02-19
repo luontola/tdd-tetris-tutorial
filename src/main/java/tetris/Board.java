@@ -18,7 +18,7 @@ public class Board {
         String s = "";
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < columns; col++) {
-                if (hasFalling() && row == fallingRow && col == fallingCol) {
+                if (hasFallingAt(row, col)) {
                     s += falling.getColor();
                 } else {
                     s += ".";
@@ -27,6 +27,10 @@ public class Board {
             s += "\n";
         }
         return s;
+    }
+
+    private boolean hasFallingAt(int row, int col) {
+        return hasFalling() && row == fallingRow && col == fallingCol;
     }
 
     public boolean hasFalling() {
