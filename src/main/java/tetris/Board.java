@@ -1,5 +1,7 @@
 package tetris;
 
+import static tetris.Grids.asGrid;
+
 public class Board implements Grid {
 
     private final int rows;
@@ -51,11 +53,10 @@ public class Board implements Grid {
 
     public void tick() {
         MovableGrid test = falling.moveDown();
-        Grid stationary = Grids.asGrid(this.stationary);
-        if (test.isInside(stationary) && stationary.colorAt(test.rowOffset, test.colOffset) == Grid.EMPTY) {
-            falling = test;
-        } else {
+        if (test.collidesWith(asGrid(stationary))) {
             stopFalling();
+        } else {
+            falling = test;
         }
     }
 

@@ -40,7 +40,11 @@ public class MovableGrid implements Grid {
         }
     }
 
-    public boolean isInside(Grid board) {
+    public boolean collidesWith(Grid board) {
+        return !(isInside(board) && board.colorAt(rowOffset, colOffset) == Grid.EMPTY);
+    }
+
+    private boolean isInside(Grid board) {
         return rowOffset < board.rows();
     }
 
