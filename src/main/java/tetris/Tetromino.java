@@ -19,7 +19,7 @@ public class Tetromino {
     public static final Tetromino O_SHAPE = new Tetromino("" +
             ".OO\n" +
             ".OO\n" +
-            "...\n", 4, 0);
+            "...\n", 1, 0);
 
     private final Piece[] rotations;
     private final int currentRotation;
