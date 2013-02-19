@@ -21,7 +21,7 @@ public class Board {
     private static char[][] createEmptyBoard(int rows, int columns) {
         char[][] board = new char[rows][columns];
         for (char[] row : board) {
-            Arrays.fill(row, Block.EMPTY);
+            Arrays.fill(row, Grid.EMPTY);
         }
         return board;
     }
@@ -39,7 +39,7 @@ public class Board {
 
     private char colorAt(int row, int col) {
         if (hasFallingAt(row, col)) {
-            return falling.getColor();
+            return falling.colorAt(0, 0);
         } else {
             return stationary[row][col];
         }
@@ -80,11 +80,11 @@ public class Board {
     }
 
     private boolean isEmpty(int row, int col) {
-        return colorAt(row, col) == Block.EMPTY;
+        return colorAt(row, col) == Grid.EMPTY;
     }
 
     private void stopFalling() {
-        stationary[fallingRow][fallingCol] = falling.getColor();
+        stationary[fallingRow][fallingCol] = falling.colorAt(0, 0);
         falling = null;
     }
 }

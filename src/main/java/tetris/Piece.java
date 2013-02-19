@@ -4,7 +4,7 @@
 
 package tetris;
 
-public class Piece {
+public class Piece implements Grid {
 
     private final char[][] blocks;
 
@@ -23,6 +23,21 @@ public class Piece {
             blocks[i] = rows[i].toCharArray();
         }
         return blocks;
+    }
+
+    @Override
+    public int rows() {
+        return blocks.length;
+    }
+
+    @Override
+    public int columns() {
+        return blocks.length;
+    }
+
+    @Override
+    public char colorAt(int row, int col) {
+        return EMPTY;
     }
 
     @Override
