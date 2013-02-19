@@ -1,9 +1,12 @@
 package tetris;
 
+import java.util.Arrays;
+
 public class Board {
 
     private final int rows;
     private final int columns;
+    private final char[][] stationary;
 
     private Block falling;
     private int fallingRow = 0;
@@ -12,6 +15,10 @@ public class Board {
     public Board(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
+        this.stationary = new char[rows][columns];
+        for (char[] row : stationary) {
+            Arrays.fill(row, '.');
+        }
     }
 
     public String toString() {
@@ -21,10 +28,10 @@ public class Board {
                 if (hasFallingAt(row, col)) {
                     s += falling.getColor();
                 } else {
-                    s += ".";
+                    s += stationary[row][col];
                 }
             }
-            s += "\n";
+            s += '\n';
         }
         return s;
     }
@@ -45,6 +52,11 @@ public class Board {
     }
 
     public void tick() {
-        fallingRow++;
+        if (fallingRow + 1 < rows) {
+            fallingRow++;
+        } else {
+            stationary[fallingRow][fallingCol] = falling.getColor();
+            falling = null;
+        }
     }
 }
