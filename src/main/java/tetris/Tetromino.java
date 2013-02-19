@@ -14,7 +14,11 @@ public class Tetromino {
     private final Piece shape;
 
     public Tetromino(String shape) {
-        this.shape = new Piece(shape);
+        this(new Piece(shape));
+    }
+
+    private Tetromino(Piece shape) {
+        this.shape = shape;
     }
 
     @Override
@@ -22,7 +26,8 @@ public class Tetromino {
         return shape.toString();
     }
 
-    public void rotateRight() {
+    public Tetromino rotateRight() {
+        return new Tetromino(shape.rotateRight());
     }
 
     public void rotateLeft() {
