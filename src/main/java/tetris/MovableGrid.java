@@ -30,10 +30,7 @@ public class MovableGrid implements Grid {
     public char colorAt(int rowOuter, int colOuter) {
         int rowInner = rowOuter - rowOffset;
         int colInner = colOuter - colOffset;
-        if (rowInner >= 0
-                && rowInner < inner.rows()
-                && colInner >= 0
-                && colInner < inner.columns()) {
+        if (Grids.isInside(inner, rowInner, colInner)) {
             return inner.colorAt(rowInner, colInner);
         } else {
             return EMPTY;

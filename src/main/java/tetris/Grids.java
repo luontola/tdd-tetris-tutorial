@@ -36,6 +36,13 @@ public class Grids {
         return s;
     }
 
+    public static boolean isInside(Grid grid, int row, int col) {
+        return row >= 0
+                && row < grid.rows()
+                && col >= 0
+                && col < grid.columns();
+    }
+
     public static Grid asGrid(char[][] blocks) {
         return new ArrayGrid(blocks);
     }
