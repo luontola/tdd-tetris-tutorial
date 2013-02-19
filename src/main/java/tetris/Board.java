@@ -63,7 +63,7 @@ public class Board {
 
     public void tick() {
         int nextRow = fallingRow + 1;
-        if (nextRow < rows) {
+        if (nextRow < rows && colorAt(nextRow, fallingCol) == '.') {
             fallingRow = nextRow;
         } else {
             stopFalling();
