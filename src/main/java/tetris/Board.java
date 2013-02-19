@@ -44,6 +44,10 @@ public class Board implements Grid {
         return falling != null;
     }
 
+    private Grid stationaryBlocks() {
+        return asGrid(stationary);
+    }
+
     public void drop(Grid piece) {
         if (hasFalling()) {
             throw new IllegalStateException("The board has an already falling piece");
@@ -53,7 +57,7 @@ public class Board implements Grid {
 
     public void tick() {
         MovableGrid test = falling.moveDown();
-        if (test.collidesWith(asGrid(stationary))) {
+        if (test.collidesWith(stationaryBlocks())) {
             stopFalling();
         } else {
             falling = test;
@@ -71,7 +75,7 @@ public class Board implements Grid {
 
     public void moveLeft() {
         MovableGrid test = falling.moveLeft();
-        if (!test.collidesWith(asGrid(stationary))) {
+        if (!test.collidesWith(stationaryBlocks())) {
             falling = test;
         }
     }
