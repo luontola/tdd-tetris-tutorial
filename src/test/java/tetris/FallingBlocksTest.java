@@ -27,10 +27,10 @@ public class FallingBlocksTest extends Assert {
                     "...\n", board.toString());
         }
 
-//        @Test
-//        public void has_no_falling_blocks() {
-//            assertFalse(board.hasFalling());
-//        }
+        @Test
+        public void has_no_falling_blocks() {
+            assertFalse(board.hasFalling());
+        }
     }
 
 /*
