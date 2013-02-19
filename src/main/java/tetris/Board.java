@@ -15,25 +15,34 @@ public class Board {
     public Board(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
-        this.stationary = new char[rows][columns];
-        for (char[] row : stationary) {
+        this.stationary = createEmptyBoard(rows, columns);
+    }
+
+    private static char[][] createEmptyBoard(int rows, int columns) {
+        char[][] board = new char[rows][columns];
+        for (char[] row : board) {
             Arrays.fill(row, '.');
         }
+        return board;
     }
 
     public String toString() {
         String s = "";
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < columns; col++) {
-                if (hasFallingAt(row, col)) {
-                    s += falling.getColor();
-                } else {
-                    s += stationary[row][col];
-                }
+                s += colorAt(row, col);
             }
             s += '\n';
         }
         return s;
+    }
+
+    private char colorAt(int row, int col) {
+        if (hasFallingAt(row, col)) {
+            return falling.getColor();
+        } else {
+            return stationary[row][col];
+        }
     }
 
     private boolean hasFallingAt(int row, int col) {
@@ -52,11 +61,16 @@ public class Board {
     }
 
     public void tick() {
-        if (fallingRow + 1 < rows) {
-            fallingRow++;
+        int nextRow = fallingRow + 1;
+        if (nextRow < rows) {
+            fallingRow = nextRow;
         } else {
-            stationary[fallingRow][fallingCol] = falling.getColor();
-            falling = null;
+            stopFalling();
         }
+    }
+
+    private void stopFalling() {
+        stationary[fallingRow][fallingCol] = falling.getColor();
+        falling = null;
     }
 }
