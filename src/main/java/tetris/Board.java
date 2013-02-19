@@ -2,7 +2,7 @@ package tetris;
 
 import java.util.Arrays;
 
-public class Board {
+public class Board implements Grid {
 
     private final int rows;
     private final int columns;
@@ -27,17 +27,20 @@ public class Board {
     }
 
     public String toString() {
-        String s = "";
-        for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < columns; col++) {
-                s += colorAt(row, col);
-            }
-            s += '\n';
-        }
-        return s;
+        return Grids.format(this);
     }
 
-    private char colorAt(int row, int col) {
+    @Override
+    public int rows() {
+        return rows;
+    }
+
+    @Override
+    public int columns() {
+        return columns;
+    }
+
+    public char colorAt(int row, int col) {
         if (hasFallingAt(row, col)) {
             return falling.colorAt(0, 0);
         } else {
