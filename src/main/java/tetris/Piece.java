@@ -37,15 +37,15 @@ public class Piece implements Grid {
 
     @Override
     public char colorAt(int row, int col) {
-        return EMPTY;
+        return blocks[row][col];
     }
 
     @Override
     public String toString() {
         String s = "";
-        for (char[] rows : blocks) {
-            for (char cell : rows) {
-                s += cell;
+        for (int row = 0; row < blocks.length; row++) {
+            for (int col = 0; col < blocks[row].length; col++) {
+                s += colorAt(row, col);
             }
             s += '\n';
         }
