@@ -8,7 +8,7 @@ public class Board implements Grid {
 
     private Grid falling;
     private int fallingRow;
-    private int fallingCol = 1;
+    private int fallingCol;
 
     public Board(int rows, int columns) {
         this.rows = rows;
@@ -52,12 +52,13 @@ public class Board implements Grid {
         return falling != null;
     }
 
-    public void drop(Grid block) {
+    public void drop(Grid piece) {
         if (hasFalling()) {
-            throw new IllegalStateException("The board has an already falling block");
+            throw new IllegalStateException("The board has an already falling piece");
         }
-        this.falling = block;
+        this.falling = piece;
         this.fallingRow = 0;
+        this.fallingCol = piece.columns();
     }
 
     public void tick() {
