@@ -40,4 +40,8 @@ public class Board {
     public void drop(Block block) {
         this.falling = block;
     }
+
+    public void tick() {
+        fallingRow++;
+    }
 }
