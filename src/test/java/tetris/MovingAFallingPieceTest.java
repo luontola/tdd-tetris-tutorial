@@ -13,40 +13,39 @@ public class MovingAFallingPieceTest extends Assert {
 
     private final Board board = new Board(4, 8);
 
-    @Test
-    public void a_falling_piece_can_be_moved_left() {
-        board.drop(Tetromino.T_SHAPE);
-        assertEquals("" +
-                "....T...\n" +
-                "...TTT..\n" +
-                "........\n" +
-                "........\n", board.toString());
+    public class A_falling_piece {
 
-        board.moveLeft();
+        @Before
+        public void dropPiece() {
+            board.drop(Tetromino.T_SHAPE);
+            assertEquals("" +
+                    "....T...\n" +
+                    "...TTT..\n" +
+                    "........\n" +
+                    "........\n", board.toString());
+        }
 
-        assertEquals("" +
-                "...T....\n" +
-                "..TTT...\n" +
-                "........\n" +
-                "........\n", board.toString());
-    }
+        @Test
+        public void can_be_moved_left() {
+            board.moveLeft();
 
-    @Test
-    public void a_falling_piece_can_be_moved_right() {
-        board.drop(Tetromino.T_SHAPE);
-        assertEquals("" +
-                "....T...\n" +
-                "...TTT..\n" +
-                "........\n" +
-                "........\n", board.toString());
+            assertEquals("" +
+                    "...T....\n" +
+                    "..TTT...\n" +
+                    "........\n" +
+                    "........\n", board.toString());
+        }
 
-        board.moveRight();
+        @Test
+        public void can_be_moved_right() {
+            board.moveRight();
 
-        assertEquals("" +
-                ".....T..\n" +
-                "....TTT.\n" +
-                "........\n" +
-                "........\n", board.toString());
+            assertEquals("" +
+                    ".....T..\n" +
+                    "....TTT.\n" +
+                    "........\n" +
+                    "........\n", board.toString());
+        }
     }
 
 
