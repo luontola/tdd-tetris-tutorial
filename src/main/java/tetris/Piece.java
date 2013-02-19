@@ -38,11 +38,12 @@ public class Piece {
     }
 
     public Piece rotateRight() {
-        char[][] rotated = new char[3][3];
-        for (int row = 0; row < blocks.length; row++) {
-            for (int col = 0; col < blocks[row].length; col++) {
+        int dimension = blocks.length;
+        char[][] rotated = new char[dimension][dimension];
+        for (int row = 0; row < dimension; row++) {
+            for (int col = 0; col < dimension; col++) {
                 int newRow = col;
-                int newCol = 2 - row;
+                int newCol = dimension - 1 - row;
                 rotated[newRow][newCol] = blocks[row][col];
             }
         }
