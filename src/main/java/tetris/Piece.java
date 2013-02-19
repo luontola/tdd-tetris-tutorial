@@ -16,4 +16,8 @@ public class Piece {
     public String toString() {
         return blocks;
     }
+
+    public Piece rotateRight() {
+        return this;
+    }
 }
