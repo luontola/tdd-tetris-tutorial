@@ -9,7 +9,7 @@ public class Board {
     private final char[][] stationary;
 
     private Block falling;
-    private int fallingRow = 0;
+    private int fallingRow;
     private int fallingCol = 1;
 
     public Board(int rows, int columns) {
@@ -58,6 +58,7 @@ public class Board {
             throw new IllegalStateException("The board has an already falling block");
         }
         this.falling = block;
+        this.fallingRow = 0;
     }
 
     public void tick() {
