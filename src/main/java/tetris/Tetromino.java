@@ -10,6 +10,12 @@ public class Tetromino {
             ".T.\n" +
             "TTT\n" +
             "...\n");
+    public static final Tetromino I_SHAPE = new Tetromino("" +
+            ".....\n" +
+            ".....\n" +
+            "IIII.\n" +
+            ".....\n" +
+            ".....\n");
 
     private final Piece shape;
 
