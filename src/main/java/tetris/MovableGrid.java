@@ -6,24 +6,24 @@ package tetris;
 
 public class MovableGrid implements Grid {
 
-    private final Grid grid;
+    private final Grid inner;
     private final int rowOffset;
     private final int colOffset;
 
-    public MovableGrid(Grid grid, int rowOffset, int colOffset) {
-        this.grid = grid;
+    public MovableGrid(Grid inner, int rowOffset, int colOffset) {
+        this.inner = inner;
         this.rowOffset = rowOffset;
         this.colOffset = colOffset;
     }
 
     @Override
     public int rows() {
-        return grid.rows();
+        return inner.rows();
     }
 
     @Override
     public int columns() {
-        return grid.columns();
+        return inner.columns();
     }
 
     @Override
@@ -31,22 +31,22 @@ public class MovableGrid implements Grid {
         int rowInner = rowOuter - rowOffset;
         int colInner = colOuter - colOffset;
         if (rowInner >= 0
-                && rowInner < grid.rows()
+                && rowInner < inner.rows()
                 && colInner >= 0
-                && colInner < grid.columns()) {
-            return grid.colorAt(rowInner, colInner);
+                && colInner < inner.columns()) {
+            return inner.colorAt(rowInner, colInner);
         } else {
             return EMPTY;
         }
     }
 
-    public boolean collidesWith(Grid board) {
-        for (int rowInner = 0; rowInner < grid.rows(); rowInner++) {
-            for (int colInner = 0; colInner < grid.columns(); colInner++) {
-                if (grid.colorAt(rowInner, colInner) != EMPTY) {
+    public boolean collidesWith(Grid outer) {
+        for (int rowInner = 0; rowInner < inner.rows(); rowInner++) {
+            for (int colInner = 0; colInner < inner.columns(); colInner++) {
+                if (inner.colorAt(rowInner, colInner) != EMPTY) {
                     int rowOuter = rowInner + rowOffset;
                     int colOuter = colInner + colOffset;
-                    if (rowOuter >= board.rows() || board.colorAt(rowOuter, colOuter) != EMPTY) {
+                    if (rowOuter >= outer.rows() || outer.colorAt(rowOuter, colOuter) != EMPTY) {
                         return true;
                     }
                 }
@@ -56,6 +56,6 @@ public class MovableGrid implements Grid {
     }
 
     public MovableGrid moveDown() {
-        return new MovableGrid(grid, rowOffset + 1, colOffset);
+        return new MovableGrid(inner, rowOffset + 1, colOffset);
     }
 }
