@@ -76,4 +76,8 @@ public class Board implements Grid {
     public void moveRight() {
         falling = falling.moveRight();
     }
+
+    public void moveDown() {
+        falling = falling.moveDown();
+    }
 }
