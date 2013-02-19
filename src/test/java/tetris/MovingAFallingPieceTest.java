@@ -31,8 +31,25 @@ public class MovingAFallingPieceTest extends Assert {
                 "........\n", board.toString());
     }
 
+    @Test
+    public void a_falling_piece_can_be_moved_right() {
+        board.drop(Tetromino.T_SHAPE);
+        assertEquals("" +
+                "....T...\n" +
+                "...TTT..\n" +
+                "........\n" +
+                "........\n", board.toString());
 
-    // TODO: a falling piece can be moved right
+        board.moveRight();
+
+        assertEquals("" +
+                ".....T..\n" +
+                "....TTT.\n" +
+                "........\n" +
+                "........\n", board.toString());
+    }
+
+
     // TODO: a falling piece can be moved down
     // TODO: it will not move left over over the board
     // TODO: it will not move right over over the board

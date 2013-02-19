@@ -62,4 +62,8 @@ public class MovableGrid implements Grid {
     public MovableGrid moveLeft() {
         return new MovableGrid(inner, rowOffset, colOffset - 1);
     }
+
+    public MovableGrid moveRight() {
+        return new MovableGrid(inner, rowOffset, colOffset + 1);
+    }
 }
