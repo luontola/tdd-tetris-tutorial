@@ -8,7 +8,7 @@ public class Board {
     private final int columns;
     private final char[][] stationary;
 
-    private Block falling;
+    private Grid falling;
     private int fallingRow;
     private int fallingCol = 1;
 
@@ -53,11 +53,7 @@ public class Board {
         return falling != null;
     }
 
-    public void drop(Tetromino tetromino) {
-        // TODO
-    }
-
-    public void drop(Block block) {
+    public void drop(Grid block) {
         if (hasFalling()) {
             throw new IllegalStateException("The board has an already falling block");
         }
