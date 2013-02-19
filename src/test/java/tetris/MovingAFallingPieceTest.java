@@ -8,11 +8,30 @@ import net.orfjackal.nestedjunit.NestedJUnit;
 import org.junit.*;
 import org.junit.runner.RunWith;
 
-@Ignore("contains no test")
 @RunWith(NestedJUnit.class)
 public class MovingAFallingPieceTest extends Assert {
 
-    // TODO: a falling piece can be moved left
+    private final Board board = new Board(4, 8);
+
+    @Test
+    public void a_falling_piece_can_be_moved_left() {
+        board.drop(Tetromino.T_SHAPE);
+        assertEquals("" +
+                "....T...\n" +
+                "...TTT..\n" +
+                "........\n" +
+                "........\n", board.toString());
+
+        board.moveLeft();
+
+        assertEquals("" +
+                "...T....\n" +
+                "..TTT...\n" +
+                "........\n" +
+                "........\n", board.toString());
+    }
+
+
     // TODO: a falling piece can be moved right
     // TODO: a falling piece can be moved down
     // TODO: it will not move left over over the board

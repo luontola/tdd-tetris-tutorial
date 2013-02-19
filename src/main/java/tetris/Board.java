@@ -68,4 +68,8 @@ public class Board implements Grid {
         }
         falling = null;
     }
+
+    public void moveLeft() {
+        falling = falling.moveLeft();
+    }
 }
