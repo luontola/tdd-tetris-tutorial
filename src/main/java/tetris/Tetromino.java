@@ -12,10 +12,10 @@ public class Tetromino {
             "...\n", 4, 0);
     public static final Tetromino I_SHAPE = new Tetromino("" +
             ".....\n" +
-            ".....\n" +
-            "IIII.\n" +
-            ".....\n" +
-            ".....\n", 4, 0);
+            "..I..\n" +
+            "..I..\n" +
+            "..I..\n" +
+            "..I..\n", 2, 1);
 
     private final Piece[] rotations;
     private final int currentRotation;

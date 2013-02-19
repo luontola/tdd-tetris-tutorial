@@ -114,7 +114,6 @@ public class RotatingTetrominoesTest extends Assert {
                     ".....\n", shape.toString());
         }
 
-        @Ignore
         @Test
         public void can_be_rotated_right_once() {
             shape = shape.rotateRight();
