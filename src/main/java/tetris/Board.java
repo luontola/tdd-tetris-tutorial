@@ -39,7 +39,13 @@ public class Board implements Grid {
     }
 
     private boolean hasFallingAt(int row, int col) {
-        return hasFalling() && row == fallingRow && col == fallingCol;
+        if (!hasFalling()) {
+            return false;
+        }
+        return row >= fallingRow
+                && row < fallingRow + falling.rows()
+                && col >= fallingCol
+                && col < fallingCol + falling.columns();
     }
 
     public boolean hasFalling() {
