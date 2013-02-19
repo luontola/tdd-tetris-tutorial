@@ -32,7 +32,7 @@ public class Board implements Grid {
 
     public char colorAt(int row, int col) {
         if (hasFallingAt(row, col)) {
-            return falling.colorAt(0, 0);
+            return falling.colorAt(row - fallingRow, col - fallingCol);
         } else {
             return stationary[row][col];
         }
