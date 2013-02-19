@@ -6,6 +6,8 @@ package tetris;
 
 public class Block {
 
+    public static final char EMPTY = '.';
+
     private final char color;
 
     public Block(char color) {

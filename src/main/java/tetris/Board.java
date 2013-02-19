@@ -21,7 +21,7 @@ public class Board {
     private static char[][] createEmptyBoard(int rows, int columns) {
         char[][] board = new char[rows][columns];
         for (char[] row : board) {
-            Arrays.fill(row, '.');
+            Arrays.fill(row, Block.EMPTY);
         }
         return board;
     }
@@ -63,11 +63,20 @@ public class Board {
 
     public void tick() {
         int nextRow = fallingRow + 1;
-        if (nextRow < rows && colorAt(nextRow, fallingCol) == '.') {
+        int nextCol = fallingCol;
+        if (isInsideBoard(nextRow) && isEmpty(nextRow, nextCol)) {
             fallingRow = nextRow;
         } else {
             stopFalling();
         }
+    }
+
+    private boolean isInsideBoard(int row) {
+        return row < rows;
+    }
+
+    private boolean isEmpty(int row, int col) {
+        return colorAt(row, col) == Block.EMPTY;
     }
 
     private void stopFalling() {
