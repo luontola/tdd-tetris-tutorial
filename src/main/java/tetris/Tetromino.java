@@ -6,7 +6,21 @@ package tetris;
 
 public class Tetromino {
 
-    public static final Tetromino T_SHAPE = new Tetromino();
+    public static final Tetromino T_SHAPE = new Tetromino("" +
+            ".T.\n" +
+            "TTT\n" +
+            "...\n");
+
+    private final Piece shape;
+
+    public Tetromino(String shape) {
+        this.shape = new Piece(shape);
+    }
+
+    @Override
+    public String toString() {
+        return shape.toString();
+    }
 
     public void rotateRight() {
     }
