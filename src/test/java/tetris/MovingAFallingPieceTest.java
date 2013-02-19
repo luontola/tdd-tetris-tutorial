@@ -11,7 +11,10 @@ import org.junit.runner.RunWith;
 @RunWith(NestedJUnit.class)
 public class MovingAFallingPieceTest extends Assert {
 
+    private static final int LOTS_OF_TIMES = 10;
+
     private final Board board = new Board(4, 8);
+
 
     public class A_falling_piece {
 
@@ -57,10 +60,22 @@ public class MovingAFallingPieceTest extends Assert {
                     "...TTT..\n" +
                     "........\n", board.toString());
         }
+
+        @Test
+        public void will_not_move_left_over_the_board() {
+            for (int i = 0; i < LOTS_OF_TIMES; i++) {
+                board.moveLeft();
+            }
+
+            assertEquals("" +
+                    ".T......\n" +
+                    "TTT.....\n" +
+                    "........\n" +
+                    "........\n", board.toString());
+        }
     }
 
 
-    // TODO: it will not move left over over the board
     // TODO: it will not move right over over the board
     // TODO: it will not move down over over the board (will stop falling)
     // TODO: it can not be moved left if another piece is in the way

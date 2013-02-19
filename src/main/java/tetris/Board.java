@@ -70,7 +70,10 @@ public class Board implements Grid {
     }
 
     public void moveLeft() {
-        falling = falling.moveLeft();
+        MovableGrid test = falling.moveLeft();
+        if (!test.collidesWith(asGrid(stationary))) {
+            falling = test;
+        }
     }
 
     public void moveRight() {
