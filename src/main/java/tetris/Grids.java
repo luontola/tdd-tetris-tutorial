@@ -35,4 +35,32 @@ public class Grids {
         }
         return s;
     }
+
+    public static Grid asGrid(char[][] blocks) {
+        return new ArrayGrid(blocks);
+    }
+
+    private static class ArrayGrid implements Grid {
+
+        private final char[][] blocks;
+
+        public ArrayGrid(char[][] blocks) {
+            this.blocks = blocks;
+        }
+
+        @Override
+        public int rows() {
+            return blocks.length;
+        }
+
+        @Override
+        public int columns() {
+            return blocks[0].length;
+        }
+
+        @Override
+        public char colorAt(int row, int col) {
+            return blocks[row][col];
+        }
+    }
 }

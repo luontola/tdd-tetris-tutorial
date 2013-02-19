@@ -59,7 +59,7 @@ public class Board implements Grid {
     }
 
     private boolean isEmpty(int row, int col) {
-        return stationary[row][col] == Grid.EMPTY;
+        return Grids.asGrid(stationary).colorAt(row, col) == Grid.EMPTY;
     }
 
     private void stopFalling() {
