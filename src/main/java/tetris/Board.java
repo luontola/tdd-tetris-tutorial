@@ -40,10 +40,7 @@ public class Board implements Grid {
         if (!hasFalling()) {
             return false;
         }
-        return row >= falling.rowOffset
-                && row < falling.rowOffset + falling.rows()
-                && col >= falling.colOffset
-                && col < falling.colOffset + falling.columns();
+        return falling.isInside(row, col);
     }
 
     public boolean hasFalling() {
