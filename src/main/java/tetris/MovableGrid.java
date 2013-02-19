@@ -40,6 +40,10 @@ public class MovableGrid implements Grid {
         }
     }
 
+    public boolean isInside(Grid board) {
+        return rowOffset < board.rows();
+    }
+
     public MovableGrid moveDown() {
         return new MovableGrid(grid, rowOffset + 1, colOffset);
     }
