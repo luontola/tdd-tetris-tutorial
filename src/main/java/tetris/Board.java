@@ -38,6 +38,9 @@ public class Board {
     }
 
     public void drop(Block block) {
+        if (hasFalling()) {
+            throw new IllegalStateException("The board has an already falling block");
+        }
         this.falling = block;
     }
 

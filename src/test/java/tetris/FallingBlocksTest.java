@@ -62,19 +62,19 @@ public class FallingBlocksTest extends Assert {
                     "...\n", board.toString());
         }
 
-//        @Test
-//        public void at_most_one_block_may_be_falling_at_a_time() {
-//            try {
-//                board.drop(new Block('Y'));
-//                fail();
-//            } catch (IllegalStateException e) {
-//                assertTrue(e.getMessage().contains("already falling"));
-//            }
-//            assertEquals("" +
-//                    ".X.\n" +
-//                    "...\n" +
-//                    "...\n", board.toString());
-//        }
+        @Test
+        public void at_most_one_block_may_be_falling_at_a_time() {
+            try {
+                board.drop(new Block('Y'));
+                fail();
+            } catch (IllegalStateException e) {
+                assertTrue(e.getMessage().contains("already falling"));
+            }
+            assertEquals("" +
+                    ".X.\n" +
+                    "...\n" +
+                    "...\n", board.toString());
+        }
     }
 
 /*
