@@ -6,7 +6,7 @@ public class Board implements Grid {
     private final int columns;
     private final char[][] stationary;
 
-    private Grid falling;
+    private MovableGrid falling;
     private int fallingRow;
     private int fallingCol;
 
@@ -56,7 +56,7 @@ public class Board implements Grid {
         if (hasFalling()) {
             throw new IllegalStateException("The board has an already falling piece");
         }
-        this.falling = piece;
+        this.falling = new MovableGrid(piece);
         this.fallingRow = 0;
         this.fallingCol = piece.columns();
     }
