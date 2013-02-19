@@ -4,7 +4,17 @@
 
 package tetris;
 
+import java.util.Arrays;
+
 public class Grids {
+
+    public static char[][] createEmpty(int rows, int columns) {
+        char[][] blocks = new char[rows][columns];
+        for (char[] row : blocks) {
+            Arrays.fill(row, Grid.EMPTY);
+        }
+        return blocks;
+    }
 
     public static char[][] parse(String shape) {
         String[] rows = shape.split("\n");

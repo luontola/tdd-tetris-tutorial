@@ -1,7 +1,5 @@
 package tetris;
 
-import java.util.Arrays;
-
 public class Board implements Grid {
 
     private final int rows;
@@ -15,15 +13,7 @@ public class Board implements Grid {
     public Board(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
-        this.stationary = createEmptyBoard(rows, columns);
-    }
-
-    private static char[][] createEmptyBoard(int rows, int columns) {
-        char[][] board = new char[rows][columns];
-        for (char[] row : board) {
-            Arrays.fill(row, Grid.EMPTY);
-        }
-        return board;
+        this.stationary = Grids.createEmpty(rows, columns);
     }
 
     public String toString() {
