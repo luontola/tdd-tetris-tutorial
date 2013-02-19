@@ -41,11 +41,18 @@ public class MovableGrid implements Grid {
     }
 
     public boolean collidesWith(Grid board) {
-        return !(isInside(board) && board.colorAt(rowOffset, colOffset) == Grid.EMPTY);
-    }
-
-    private boolean isInside(Grid board) {
-        return rowOffset < board.rows();
+        for (int rowInner = 0; rowInner < grid.rows(); rowInner++) {
+            for (int colInner = 0; colInner < grid.columns(); colInner++) {
+                if (grid.colorAt(rowInner, colInner) != EMPTY) {
+                    int rowOuter = rowInner + rowOffset;
+                    int colOuter = colInner + colOffset;
+                    if (rowOuter >= board.rows() || board.colorAt(rowOuter, colOuter) != EMPTY) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
     public MovableGrid moveDown() {
