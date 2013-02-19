@@ -17,8 +17,8 @@ public class Piece {
     }
 
     private static char[][] explode(String shape) {
-        char[][] blocks = new char[3][];
         String[] rows = shape.split("\n");
+        char[][] blocks = new char[rows.length][];
         for (int i = 0; i < rows.length; i++) {
             blocks[i] = rows[i].toCharArray();
         }

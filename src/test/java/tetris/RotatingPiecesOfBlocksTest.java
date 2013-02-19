@@ -54,7 +54,6 @@ public class RotatingPiecesOfBlocksTest extends Assert {
         }
     }
 
-/*
     public class A_piece_of_5x5_blocks {
 
         @Before
@@ -99,5 +98,4 @@ public class RotatingPiecesOfBlocksTest extends Assert {
 //                    ".....\n", piece.toString());
 //        }
     }
-*/
 }
