@@ -30,6 +30,7 @@ public class Tetromino {
         return new Tetromino(shape.rotateRight());
     }
 
-    public void rotateLeft() {
+    public Tetromino rotateLeft() {
+        return new Tetromino(shape.rotateLeft());
     }
 }
