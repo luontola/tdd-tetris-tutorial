@@ -9,7 +9,11 @@ public class Piece {
     private final char[][] blocks;
 
     public Piece(String blocks) {
-        this.blocks = explode(blocks);
+        this(explode(blocks));
+    }
+
+    private Piece(char[][] blocks) {
+        this.blocks = blocks;
     }
 
     private static char[][] explode(String shape) {
@@ -34,6 +38,12 @@ public class Piece {
     }
 
     public Piece rotateRight() {
-        return this;
+        char[][] rotated = new char[3][3];
+        for (int row = 0; row < blocks.length; row++) {
+            for (int col = 0; col < blocks[row].length; col++) {
+                rotated[row][col] = blocks[row][col];
+            }
+        }
+        return new Piece(rotated);
     }
 }
