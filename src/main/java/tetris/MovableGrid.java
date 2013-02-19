@@ -40,13 +40,15 @@ public class MovableGrid implements Grid {
     public boolean collidesWith(Grid outer) {
         for (int rowInner = 0; rowInner < inner.rows(); rowInner++) {
             for (int colInner = 0; colInner < inner.columns(); colInner++) {
-                if (inner.colorAt(rowInner, colInner) != EMPTY) {
-                    int rowOuter = rowInner + rowOffset;
-                    int colOuter = colInner + colOffset;
-                    if (!Grids.isInside(outer, rowOuter, colOuter)
-                            || outer.colorAt(rowOuter, colOuter) != EMPTY) {
-                        return true;
-                    }
+                if (inner.colorAt(rowInner, colInner) == EMPTY) {
+                    continue;
+                }
+
+                int rowOuter = rowInner + rowOffset;
+                int colOuter = colInner + colOffset;
+                if (!Grids.isInside(outer, rowOuter, colOuter)
+                        || outer.colorAt(rowOuter, colOuter) != EMPTY) {
+                    return true;
                 }
             }
         }
