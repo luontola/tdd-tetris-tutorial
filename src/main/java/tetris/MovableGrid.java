@@ -7,6 +7,8 @@ package tetris;
 public class MovableGrid implements Grid {
 
     private final Grid grid;
+    public int row;
+    public int col;
 
     public MovableGrid(Grid grid) {
         this.grid = grid;

@@ -7,8 +7,6 @@ public class Board implements Grid {
     private final char[][] stationary;
 
     private MovableGrid falling;
-    private int fallingRow;
-    private int fallingCol;
 
     public Board(int rows, int columns) {
         this.rows = rows;
@@ -32,7 +30,7 @@ public class Board implements Grid {
 
     public char colorAt(int row, int col) {
         if (hasFallingAt(row, col)) {
-            return falling.colorAt(row - fallingRow, col - fallingCol);
+            return falling.colorAt(row - falling.row, col - falling.col);
         } else {
             return stationary[row][col];
         }
@@ -42,10 +40,10 @@ public class Board implements Grid {
         if (!hasFalling()) {
             return false;
         }
-        return row >= fallingRow
-                && row < fallingRow + falling.rows()
-                && col >= fallingCol
-                && col < fallingCol + falling.columns();
+        return row >= falling.row
+                && row < falling.row + falling.rows()
+                && col >= falling.col
+                && col < falling.col + falling.columns();
     }
 
     public boolean hasFalling() {
@@ -57,15 +55,15 @@ public class Board implements Grid {
             throw new IllegalStateException("The board has an already falling piece");
         }
         this.falling = new MovableGrid(piece);
-        this.fallingRow = 0;
-        this.fallingCol = piece.columns();
+        this.falling.row = 0;
+        this.falling.col = piece.columns();
     }
 
     public void tick() {
-        int nextRow = fallingRow + 1;
-        int nextCol = fallingCol;
+        int nextRow = falling.row + 1;
+        int nextCol = falling.col;
         if (isInsideBoard(nextRow) && isEmpty(nextRow, nextCol)) {
-            fallingRow = nextRow;
+            falling.row = nextRow;
         } else {
             stopFalling();
         }
@@ -80,7 +78,7 @@ public class Board implements Grid {
     }
 
     private void stopFalling() {
-        stationary[fallingRow][fallingCol] = falling.colorAt(0, 0);
+        stationary[falling.row][falling.col] = falling.colorAt(0, 0);
         falling = null;
     }
 }
