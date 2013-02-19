@@ -5,6 +5,8 @@ public class Board {
     private final int rows;
     private final int columns;
 
+    private Block falling;
+
     public Board(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
@@ -22,6 +24,10 @@ public class Board {
     }
 
     public boolean hasFalling() {
-        return false;
+        return falling != null;
+    }
+
+    public void drop(Block block) {
+        this.falling = block;
     }
 }
