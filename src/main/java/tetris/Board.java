@@ -51,15 +51,12 @@ public class Board implements Grid {
 
     public void tick() {
         MovableGrid test = falling.moveDown();
-        if (test.isInside(this) && isEmpty(test.rowOffset, test.colOffset)) {
+        Grid stationary = Grids.asGrid(this.stationary);
+        if (test.isInside(stationary) && stationary.colorAt(test.rowOffset, test.colOffset) == Grid.EMPTY) {
             falling = test;
         } else {
             stopFalling();
         }
-    }
-
-    private boolean isEmpty(int row, int col) {
-        return Grids.asGrid(stationary).colorAt(row, col) == Grid.EMPTY;
     }
 
     private void stopFalling() {
