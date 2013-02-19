@@ -7,8 +7,8 @@ package tetris;
 public class MovableGrid implements Grid {
 
     private final Grid grid;
-    public int row;
-    public int col;
+    public int rowOffset;
+    public int colOffset;
 
     public MovableGrid(Grid grid) {
         this.grid = grid;
@@ -26,6 +26,6 @@ public class MovableGrid implements Grid {
 
     @Override
     public char colorAt(int row, int col) {
-        return grid.colorAt(row, col);
+        return grid.colorAt(row - rowOffset, col - colOffset);
     }
 }

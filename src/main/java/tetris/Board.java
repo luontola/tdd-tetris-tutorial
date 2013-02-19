@@ -30,7 +30,7 @@ public class Board implements Grid {
 
     public char colorAt(int row, int col) {
         if (hasFallingAt(row, col)) {
-            return falling.colorAt(row - falling.row, col - falling.col);
+            return falling.colorAt(row, col);
         } else {
             return stationary[row][col];
         }
@@ -40,10 +40,10 @@ public class Board implements Grid {
         if (!hasFalling()) {
             return false;
         }
-        return row >= falling.row
-                && row < falling.row + falling.rows()
-                && col >= falling.col
-                && col < falling.col + falling.columns();
+        return row >= falling.rowOffset
+                && row < falling.rowOffset + falling.rows()
+                && col >= falling.colOffset
+                && col < falling.colOffset + falling.columns();
     }
 
     public boolean hasFalling() {
@@ -55,15 +55,15 @@ public class Board implements Grid {
             throw new IllegalStateException("The board has an already falling piece");
         }
         this.falling = new MovableGrid(piece);
-        this.falling.row = 0;
-        this.falling.col = piece.columns();
+        this.falling.rowOffset = 0;
+        this.falling.colOffset = piece.columns();
     }
 
     public void tick() {
-        int nextRow = falling.row + 1;
-        int nextCol = falling.col;
+        int nextRow = falling.rowOffset + 1;
+        int nextCol = falling.colOffset;
         if (isInsideBoard(nextRow) && isEmpty(nextRow, nextCol)) {
-            falling.row = nextRow;
+            falling.rowOffset = nextRow;
         } else {
             stopFalling();
         }
@@ -78,7 +78,7 @@ public class Board implements Grid {
     }
 
     private void stopFalling() {
-        stationary[falling.row][falling.col] = falling.colorAt(0, 0);
+        stationary[falling.rowOffset][falling.colOffset] = falling.colorAt(0, 0);
         falling = null;
     }
 }
