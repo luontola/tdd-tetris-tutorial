@@ -42,10 +42,14 @@ public class Piece implements Grid {
 
     @Override
     public String toString() {
+        return format(this);
+    }
+
+    private static String format(Piece piece) {
         String s = "";
-        for (int row = 0; row < blocks.length; row++) {
-            for (int col = 0; col < blocks[row].length; col++) {
-                s += colorAt(row, col);
+        for (int row = 0; row < piece.rows(); row++) {
+            for (int col = 0; col < piece.columns(); col++) {
+                s += piece.colorAt(row, col);
             }
             s += '\n';
         }
