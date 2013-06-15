@@ -109,7 +109,7 @@ public class RotatingTetrominoesTest extends Assert {
             assertEquals("" +
                     ".....\n" +
                     ".....\n" +
-                    ".IIII\n" +
+                    "IIII.\n" +
                     ".....\n" +
                     ".....\n", shape.toString());
         }
@@ -118,22 +118,22 @@ public class RotatingTetrominoesTest extends Assert {
         public void can_be_rotated_right_once() {
             shape = shape.rotateRight();
             assertEquals("" +
-                    ".....\n" +
                     "..I..\n" +
                     "..I..\n" +
                     "..I..\n" +
-                    "..I..\n", shape.toString());
+                    "..I..\n" +
+                    ".....\n", shape.toString());
         }
 
         @Test
         public void can_be_rotated_left_once() {
             shape = shape.rotateLeft();
             assertEquals("" +
-                    ".....\n" +
                     "..I..\n" +
                     "..I..\n" +
                     "..I..\n" +
-                    "..I..\n", shape.toString());
+                    "..I..\n" +
+                    ".....\n", shape.toString());
         }
 
         @Test

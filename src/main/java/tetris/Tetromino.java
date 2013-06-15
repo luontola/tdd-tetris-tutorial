@@ -13,7 +13,7 @@ public class Tetromino implements RotatableGrid, Grid {
     public static final Tetromino I_SHAPE = new Tetromino(2, 0, "" +
             ".....\n" +
             ".....\n" +
-            ".IIII\n" +
+            "IIII.\n" +
             ".....\n" +
             ".....\n");
     public static final Tetromino J_SHAPE = new Tetromino(4, 0, "" +
