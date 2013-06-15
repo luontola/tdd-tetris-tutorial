@@ -21,7 +21,6 @@ TDD is more about specifying behaviour than about testing:
 
 Summary:
 
-- <http://blog.briandicroce.com/2008/03/14/three-index-cards-to-easily-remember-the-essence-of-test-driven-development/>
 - <http://agileinaflash.blogspot.com/2009/03/unclebobs-three-rules-of-tdd.html>
 - <http://agileinaflash.blogspot.com/2009/02/red-green-refactor.html>
 - <http://agileinaflash.blogspot.com/2009/02/first.html>
@@ -52,7 +51,7 @@ Reference implementations for the steps of this tutorial have been [tagged in it
 
 3. **RotatingTetrominoesTest.java**
 
-    [Tetrominoes](http://en.wikipedia.org/wiki/Tetromino) can have 1, 2 or 4 different positions when they are rotated. Now we can take advantage of the shape rotation code which we wrote just a moment ago.
+    [Tetrominoes](http://en.wikipedia.org/wiki/Tetromino) can have 1, 2 or 4 different orientations when they are rotated. Now we can take advantage of the shape rotation code which we wrote just a moment ago.
 
     Notice that the first test specifies the `Tetromino` objects to be immutable. Check the Wikipedia article about [immutable objects](http://en.wikipedia.org/wiki/Immutable_object) if that concept is new to you. Defaulting to immutability is a good thing.
 
@@ -95,6 +94,6 @@ You should continue practicing by writing lots of small applications using TDD, 
 License
 -------
 
-Copyright © 2008-2010 Esko Luontola <<http://www.orfjackal.net>>  
+Copyright © 2008-2013 Esko Luontola <<http://www.orfjackal.net>>  
 You may use and modify this material freely for personal non-commercial use.  
 This material may NOT be used as course material without prior written agreement.
