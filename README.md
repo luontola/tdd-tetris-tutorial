@@ -21,7 +21,6 @@ TDD is more about specifying behaviour than about testing:
 
 Summary:
 
-- <http://blog.briandicroce.com/2008/03/14/three-index-cards-to-easily-remember-the-essence-of-test-driven-development/>
 - <http://agileinaflash.blogspot.com/2009/03/unclebobs-three-rules-of-tdd.html>
 - <http://agileinaflash.blogspot.com/2009/02/red-green-refactor.html>
 - <http://agileinaflash.blogspot.com/2009/02/first.html>
