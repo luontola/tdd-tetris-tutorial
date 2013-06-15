@@ -51,7 +51,7 @@ Reference implementations for the steps of this tutorial have been [tagged in it
 
 3. **RotatingTetrominoesTest.java**
 
-    [Tetrominoes](http://en.wikipedia.org/wiki/Tetromino) can have 1, 2 or 4 different positions when they are rotated. Now we can take advantage of the shape rotation code which we wrote just a moment ago.
+    [Tetrominoes](http://en.wikipedia.org/wiki/Tetromino) can have 1, 2 or 4 different orientations when they are rotated. Now we can take advantage of the shape rotation code which we wrote just a moment ago.
 
     Notice that the first test specifies the `Tetromino` objects to be immutable. Check the Wikipedia article about [immutable objects](http://en.wikipedia.org/wiki/Immutable_object) if that concept is new to you. Defaulting to immutability is a good thing.
 
