@@ -95,6 +95,6 @@ You should continue practicing by writing lots of small applications using TDD, 
 License
 -------
 
-Copyright © 2008-2010 Esko Luontola <<http://www.orfjackal.net>>  
+Copyright © 2008-2013 Esko Luontola <<http://www.orfjackal.net>>  
 You may use and modify this material freely for personal non-commercial use.  
 This material may NOT be used as course material without prior written agreement.

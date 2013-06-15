@@ -1,4 +1,4 @@
-// Copyright (c) 2008-2010  Esko Luontola <www.orfjackal.net>
+// Copyright (c) 2008-2013  Esko Luontola <www.orfjackal.net>
 // You may use and modify this source code freely for personal non-commercial use.
 // This source code may NOT be used as course material without prior written agreement.
 
@@ -10,10 +10,10 @@ package tetris;
 public class Tetromino implements RotatableGrid, Grid {
 
     // For TGM's rotation rules, see http://bsixcentdouze.free.fr/tc/tgm-en/tgm.html
-    public static final Tetromino I_SHAPE = new Tetromino(2, 1, "" +
+    public static final Tetromino I_SHAPE = new Tetromino(2, 0, "" +
             ".....\n" +
             ".....\n" +
-            "IIII.\n" +
+            ".IIII\n" +
             ".....\n" +
             ".....\n");
     public static final Tetromino J_SHAPE = new Tetromino(4, 0, "" +
