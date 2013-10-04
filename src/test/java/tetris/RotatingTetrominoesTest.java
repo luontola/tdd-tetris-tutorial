@@ -15,6 +15,11 @@ import org.junit.runner.RunWith;
 @RunWith(NestedJUnit.class)
 public class RotatingTetrominoesTest extends Assert {
 
+    // Step 3: The actual rotation algorithms
+    // - Remove the @Ignore annotation from this class
+    // - See README for how "Tetromino" is different from "Piece"
+    // - Next step: FallingPiecesTest
+
 /*
     private Tetromino shape;
 

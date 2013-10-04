@@ -15,6 +15,11 @@ import org.junit.runner.RunWith;
 @RunWith(NestedJUnit.class)
 public class RotatingPiecesOfBlocksTest extends Assert {
 
+    // Step 2: Stepping stone for rotation algorithms
+    // - Remove the @Ignore annotation from this class
+    // - See README for motivation
+    // - Next step: RotatingTetrominoesTest
+
 /*
     private Piece piece;
 

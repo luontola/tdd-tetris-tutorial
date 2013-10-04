@@ -15,6 +15,11 @@ import org.junit.runner.RunWith;
 @RunWith(NestedJUnit.class)
 public class FallingPiecesTest extends Assert {
 
+    // Step 4: Safe steps
+    // - Remove the @Ignore annotation from this class
+    // - See the README for how to proceed with this refactoring in safe steps
+    // - Next step: MovingAFallingPieceTest
+
 /*
     private final Board board = new Board(6, 8);
 
