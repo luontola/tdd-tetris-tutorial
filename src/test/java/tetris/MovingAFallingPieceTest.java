@@ -12,6 +12,11 @@ import org.junit.runner.RunWith;
 @RunWith(NestedJUnit.class)
 public class MovingAFallingPieceTest extends Assert {
 
+    // Step 5: It's your turn now
+    // - Remove the @Ignore annotation from this class
+    // - The test names have been provided, you just need to fill in the test body
+    // - Next step: RotatingAFallingPieceTest
+
     // TODO: a falling piece can be moved left
     // TODO: a falling piece can be moved right
     // TODO: a falling piece can be moved down

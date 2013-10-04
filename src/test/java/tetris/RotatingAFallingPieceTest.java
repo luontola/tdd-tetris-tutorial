@@ -12,6 +12,11 @@ import org.junit.runner.RunWith;
 @RunWith(NestedJUnit.class)
 public class RotatingAFallingPieceTest extends Assert {
 
+    // Step 6: Training wheels off
+    // - Remove the @Ignore annotation from this class
+    // - You're now responsible for covering all corner cases
+    // - Next step: see the README for details
+
     // TODO: a falling piece can be rotated clockwise
     // TODO: a falling piece can be rotated counter-clockwise
     // TODO: it can not be rotated when there is no room to rotate (left wall, right wall, other pieces...)
