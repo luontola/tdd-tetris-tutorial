@@ -16,6 +16,10 @@ public class Piece {
         }
     }
 
+    private Piece(char[][] blocks) {
+        this.blocks = blocks;
+    }
+
     @Override
     public String toString() {
         String s = "";
@@ -30,6 +34,12 @@ public class Piece {
     }
 
     public Piece rotateRight() {
-        return this;
+        char[][] rotated = new char[blocks.length][blocks.length];
+        for (int row = 0; row < blocks.length; row++) {
+            for (int col = 0; col < blocks[row].length; col++) {
+                rotated[col][2 - row] = blocks[row][col];
+            }
+        }
+        return new Piece(rotated);
     }
 }

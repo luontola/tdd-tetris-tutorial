@@ -35,7 +35,6 @@ public class RotatingPiecesOfBlocksTest extends Assert {
                     "...\n", piece.toString());
         }
 
-        @Ignore
         @Test
         public void can_be_rotated_right() {
             piece = piece.rotateRight();
