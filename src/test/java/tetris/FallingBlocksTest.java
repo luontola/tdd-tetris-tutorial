@@ -8,6 +8,9 @@ import net.orfjackal.nestedjunit.NestedJUnit;
 import org.junit.*;
 import org.junit.runner.RunWith;
 
+import static org.hamcrest.Matchers.*;
+import static tetris.TestUtils.thrownException;
+
 /**
  * @author Esko Luontola
  */
@@ -62,22 +65,21 @@ public class FallingBlocksTest extends Assert {
                     "...\n", board.toString());
         }
 
-//        @Test
-//        public void at_most_one_block_may_be_falling_at_a_time() {
-//            try {
-//                board.drop(new Block('Y'));
-//                fail();
-//            } catch (IllegalStateException e) {
-//                assertTrue(e.getMessage().contains("already falling"));
-//            }
-//            assertEquals("" +
-//                    ".X.\n" +
-//                    "...\n" +
-//                    "...\n", board.toString());
-//        }
+        @Test
+        public void at_most_one_block_may_be_falling_at_a_time() {
+            Throwable t = thrownException(() ->
+                            board.drop(new Block('Y'))
+            );
+            assertThat(t, is(instanceOf(IllegalStateException.class)));
+            assertThat(t.getMessage(), containsString("already falling"));
+            assertEquals("" +
+                    ".X.\n" +
+                    "...\n" +
+                    "...\n", board.toString());
+        }
     }
 
-/*
+    /*
     public class When_a_block_reaches_the_bottom {
 
         @Before
