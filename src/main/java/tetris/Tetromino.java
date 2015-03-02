@@ -4,7 +4,7 @@
 
 package tetris;
 
-public class Tetromino {
+public class Tetromino implements Grid {
 
     public static final Tetromino T_SHAPE = new Tetromino(4, "" +
             ".T.\n" +
@@ -64,7 +64,26 @@ public class Tetromino {
     }
 
     @Override
+    public int rows() {
+        return current().rows();
+    }
+
+    @Override
+    public int columns() {
+        return current().columns();
+    }
+
+    @Override
+    public char cellAt(int row, int col) {
+        return current().cellAt(row, col);
+    }
+
+    @Override
     public String toString() {
-        return orientations[currentOrientation].toString();
+        return current().toString();
+    }
+
+    private Piece current() {
+        return orientations[currentOrientation];
     }
 }

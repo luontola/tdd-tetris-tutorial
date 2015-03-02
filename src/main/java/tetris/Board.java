@@ -14,7 +14,7 @@ public class Board implements Grid {
     private final int columns;
     private final char[][] stationary;
 
-    private Block falling;
+    private Grid falling;
     private int fallingBlockRow;
     private int fallingBlockColumn;
 
@@ -49,7 +49,7 @@ public class Board implements Grid {
     @Override
     public char cellAt(int row, int col) {
         if (hasFallingAt(row, col)) {
-            return falling.getColor();
+            return falling.cellAt(0, 0);
         } else {
             return stationary[row][col];
         }
@@ -59,7 +59,7 @@ public class Board implements Grid {
         return hasFalling() && row == fallingBlockRow && col == fallingBlockColumn;
     }
 
-    public void drop(Block block) {
+    public void drop(Grid block) {
         if (hasFalling()) {
             throw new IllegalStateException("a block is already falling");
         }
@@ -78,14 +78,14 @@ public class Board implements Grid {
         return falling != null;
     }
 
-    private void startFalling(Block block) {
+    private void startFalling(Grid block) {
         this.falling = block;
         this.fallingBlockRow = 0;
         this.fallingBlockColumn = 1;
     }
 
     private void stopFalling() {
-        stationary[fallingBlockRow][fallingBlockColumn] = falling.getColor();
+        stationary[fallingBlockRow][fallingBlockColumn] = falling.cellAt(0, 0);
         falling = null;
     }
 

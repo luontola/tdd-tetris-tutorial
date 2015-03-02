@@ -4,7 +4,7 @@
 
 package tetris;
 
-public class Block {
+public class Block implements Grid {
 
     private final char color;
 
@@ -12,7 +12,18 @@ public class Block {
         this.color = color;
     }
 
-    public char getColor() {
+    @Override
+    public int rows() {
+        return 1;
+    }
+
+    @Override
+    public int columns() {
+        return 1;
+    }
+
+    @Override
+    public char cellAt(int row, int col) {
         return color;
     }
 }
