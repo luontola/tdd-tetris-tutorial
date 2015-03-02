@@ -134,7 +134,36 @@ public class MovingAFallingPieceTest {
         }
     }
 
-    // TODO: it cannot be moved left if another piece is in the way
+    public class Piece_stops_when_another_piece_is_in_the_way {
+
+        @Before
+        public void dropPiece() {
+            board = new Board("" +
+                    "Z......Z\n" +
+                    "Z......Z\n" +
+                    "Z......Z\n" +
+                    "Z......Z\n" +
+                    "Z......Z\n" +
+                    "Z.ZZZZZZ\n");
+            board.drop(PIECE);
+        }
+
+        @Test
+        public void when_moving_left() {
+            for (int i = 0; i < LOTS_OF_TIMES; i++) {
+                board.moveLeft();
+            }
+
+            assertThat(board.toString(), is("" +
+                    "Z.X....Z\n" +
+                    "ZXXX...Z\n" +
+                    "Z.X....Z\n" +
+                    "Z......Z\n" +
+                    "Z......Z\n" +
+                    "Z.ZZZZZZ\n"));
+        }
+    }
+
     // TODO: it cannot be moved right if another piece is in the way
     // TODO: it cannot be moved down if another piece is in the way (will stop falling)
 }
