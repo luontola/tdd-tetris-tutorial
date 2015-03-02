@@ -48,7 +48,7 @@ public class MovingAFallingPieceTest {
         }
 
         @Test
-        public void a_falling_piece_can_be_moved_left() {
+        public void can_be_moved_left() {
             board.moveLeft();
 
             assertThat(board.toString(), is("" +
@@ -59,9 +59,21 @@ public class MovingAFallingPieceTest {
                     "........\n" +
                     "........\n"));
         }
+
+        @Test
+        public void can_be_moved_right() {
+            board.moveRight();
+
+            assertThat(board.toString(), is("" +
+                    ".....X..\n" +
+                    "....XXX.\n" +
+                    ".....X..\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n"));
+        }
     }
 
-    // TODO: a falling piece can be moved right
     // TODO: a falling piece can be moved down
     // TODO: it will not move left over over the board
     // TODO: it will not move right over over the board

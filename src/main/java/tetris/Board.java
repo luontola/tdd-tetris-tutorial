@@ -149,4 +149,8 @@ public class Board implements Grid {
     public void moveLeft() {
         fallingBlockColumn--;
     }
+
+    public void moveRight() {
+        fallingBlockColumn++;
+    }
 }
