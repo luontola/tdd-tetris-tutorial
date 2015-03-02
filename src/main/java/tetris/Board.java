@@ -6,9 +6,11 @@ package tetris;
 
 public class Board {
 
+    private static final char EMPTY = '.';
+
     private final int rows;
     private final int columns;
-    private boolean falling = false;
+    private Block falling;
 
     public Board(int rows, int columns) {
         this.rows = rows;
@@ -19,22 +21,22 @@ public class Board {
         String s = "";
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < columns; col++) {
-                if (row == 0 && col == 1 && falling) {
-                    s += "X";
-                } else {
-                    s += ".";
-                }
+                s += hasFallingAt(row, col) ? falling.getColor() : EMPTY;
             }
-            s += "\n";
+            s += '\n';
         }
         return s;
     }
 
+    private boolean hasFallingAt(int row, int col) {
+        return hasFalling() && row == 0 && col == 1;
+    }
+
     public boolean hasFalling() {
-        return falling;
+        return falling != null;
     }
 
     public void drop(Block block) {
-        falling = true;
+        this.falling = block;
     }
 }
