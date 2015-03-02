@@ -55,30 +55,45 @@ public class Board {
         return hasFalling() && row == fallingBlockRow && col == fallingBlockColumn;
     }
 
-    public boolean hasFalling() {
-        return falling != null;
-    }
-
     public void drop(Block block) {
         if (hasFalling()) {
             throw new IllegalStateException("a block is already falling");
         }
+        startFalling(block);
+    }
+
+    public void tick() {
+        if (fallingHitsFloor() || fallingHitsStationary()) {
+            stopFalling();
+        } else {
+            fallOneRow();
+        }
+    }
+
+    public boolean hasFalling() {
+        return falling != null;
+    }
+
+    private void startFalling(Block block) {
         this.falling = block;
         this.fallingBlockRow = 0;
         this.fallingBlockColumn = 1;
     }
 
-    public void tick() {
-        if (fallingBlockRow == rows - 1) {
-            stationary[fallingBlockRow][fallingBlockColumn] = falling.getColor();
-            falling = null;
-        } else {
-            if (stationary[fallingBlockRow + 1][fallingBlockColumn] == EMPTY) {
-                fallingBlockRow++;
-            } else {
-                stationary[fallingBlockRow][fallingBlockColumn] = falling.getColor();
-                falling = null;
-            }
-        }
+    private void stopFalling() {
+        stationary[fallingBlockRow][fallingBlockColumn] = falling.getColor();
+        falling = null;
+    }
+
+    private boolean fallingHitsFloor() {
+        return fallingBlockRow == rows - 1;
+    }
+
+    private boolean fallingHitsStationary() {
+        return stationary[fallingBlockRow + 1][fallingBlockColumn] != EMPTY;
+    }
+
+    private void fallOneRow() {
+        fallingBlockRow++;
     }
 }
