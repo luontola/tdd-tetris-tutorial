@@ -20,10 +20,9 @@ public class MovableGrid implements Grid {
         for (int row = 0; row < rows(); row++) {
             for (int col = 0; col < columns(); col++) {
                 if (hasCellAt(row, col)) {
-                    if (colOffset + col < 0) {
-                        return true;
-                    }
-                    if (rowOffset + row >= board.rows()) {
+                    if (colOffset + col < 0
+                            || colOffset + col >= board.columns()
+                            || rowOffset + row >= board.rows()) {
                         return true;
                     }
                 }

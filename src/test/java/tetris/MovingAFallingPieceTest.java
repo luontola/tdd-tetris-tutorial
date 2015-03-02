@@ -101,9 +101,23 @@ public class MovingAFallingPieceTest {
                     "........\n" +
                     "........\n"));
         }
+
+        @Test
+        public void cannot_be_moved_right_over_the_board() {
+            for (int i = 0; i < LOTS_OF_TIMES; i++) {
+                board.moveRight();
+            }
+
+            assertThat(board.toString(), is("" +
+                    "......X.\n" +
+                    ".....XXX\n" +
+                    "......X.\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n"));
+        }
     }
 
-    // TODO: it cannot be moved right over the board
     // TODO: it cannot be moved down over the board (will stop falling)
     // TODO: it cannot be moved left if another piece is in the way
     // TODO: it cannot be moved right if another piece is in the way
