@@ -177,7 +177,21 @@ public class MovingAFallingPieceTest {
                     "Z......Z\n" +
                     "Z.ZZZZZZ\n"));
         }
-    }
 
-    // TODO: it cannot be moved down if another piece is in the way (will stop falling)
+        @Test
+        public void when_moving_down() {
+            for (int i = 0; i < LOTS_OF_TIMES; i++) {
+                board.moveDown();
+            }
+
+            assertThat(board.toString(), is("" +
+                    "Z......Z\n" +
+                    "Z......Z\n" +
+                    "Z...X..Z\n" +
+                    "Z..XXX.Z\n" +
+                    "Z...X..Z\n" +
+                    "Z.ZZZZZZ\n"));
+            assertThat("should stop falling", board.hasFalling(), is(false));
+        }
+    }
 }
