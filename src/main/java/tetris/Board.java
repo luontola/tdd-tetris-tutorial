@@ -12,9 +12,7 @@ public class Board implements Grid {
     private final int columns;
     private char[][] stationary;
 
-    private Grid falling;
-    private int fallingBlockRow;
-    private int fallingBlockColumn;
+    private MovableGrid falling;
 
     public Board(int rows, int columns) {
         this.rows = rows;
@@ -54,17 +52,17 @@ public class Board implements Grid {
     }
 
     private char fallingCellAt(int row, int col) {
-        int pieceRow = row - fallingBlockRow;
-        int pieceCol = col - fallingBlockColumn;
-        if (hasFalling()
-                && pieceRow >= 0
-                && pieceRow < falling.rows()
-                && pieceCol >= 0
-                && pieceCol < falling.columns()) {
-            return falling.cellAt(pieceRow, pieceCol);
-        } else {
-            return EMPTY;
+        if (hasFalling()) {
+            int pieceRow = row - falling.row;
+            int pieceCol = col - falling.column;
+            if (pieceRow >= 0
+                    && pieceRow < falling.rows()
+                    && pieceCol >= 0
+                    && pieceCol < falling.columns()) {
+                return falling.cellAt(pieceRow, pieceCol);
+            }
         }
+        return EMPTY;
     }
 
     public void drop(Grid piece) {
@@ -87,20 +85,7 @@ public class Board implements Grid {
     }
 
     private void startFalling(Grid piece) {
-        this.falling = new MovableGrid(piece);
-        this.fallingBlockRow = startingRowOffset(piece);
-        this.fallingBlockColumn = this.columns() / 2 - piece.columns() / 2;
-    }
-
-    private static int startingRowOffset(Grid piece) {
-        for (int row = 0; row < piece.rows(); row++) {
-            for (int col = 0; col < piece.columns(); col++) {
-                if (piece.hasCellAt(row, col)) {
-                    return -row;
-                }
-            }
-        }
-        throw new IllegalArgumentException("empty piece: " + piece);
+        this.falling = new MovableGrid(this, piece);
     }
 
     private void stopFalling() {
@@ -118,7 +103,7 @@ public class Board implements Grid {
         for (int row = 0; row < falling.rows(); row++) {
             for (int col = 0; col < falling.columns(); col++) {
                 if (falling.hasCellAt(row, col)) {
-                    if (fallingBlockRow + row >= this.rows() - 1) {
+                    if (falling.row + row >= this.rows() - 1) {
                         return true;
                     }
                 }
@@ -131,8 +116,8 @@ public class Board implements Grid {
         for (int row = 0; row < falling.rows(); row++) {
             for (int col = 0; col < falling.columns(); col++) {
                 if (falling.hasCellAt(row, col)) {
-                    int boardRow = fallingBlockRow + row;
-                    int boardCol = fallingBlockColumn + col;
+                    int boardRow = falling.row + row;
+                    int boardCol = falling.column + col;
                     if (stationary[boardRow + 1][boardCol] != EMPTY) {
                         return true;
                     }
@@ -143,18 +128,18 @@ public class Board implements Grid {
     }
 
     private void fallOneRow() {
-        fallingBlockRow++;
+        falling.row++;
     }
 
     public void moveLeft() {
-        fallingBlockColumn--;
+        falling.column--;
     }
 
     public void moveRight() {
-        fallingBlockColumn++;
+        falling.column++;
     }
 
     public void moveDown() {
-        fallingBlockRow++;
+        falling.row++;
     }
 }

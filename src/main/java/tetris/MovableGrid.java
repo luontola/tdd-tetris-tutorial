@@ -6,10 +6,27 @@ package tetris;
 
 public class MovableGrid implements Grid {
 
+    private final Board board;
     private final Grid shape;
+    public int row; // TODO: make final
+    public int column; // TODO: make final
 
-    public MovableGrid(Grid shape) {
+    public MovableGrid(Board board, Grid shape) {
+        this.board = board;
         this.shape = shape;
+        this.row = startingRowOffset(shape);
+        this.column = board.columns() / 2 - shape.columns() / 2;
+    }
+
+    private static int startingRowOffset(Grid shape) {
+        for (int row = 0; row < shape.rows(); row++) {
+            for (int col = 0; col < shape.columns(); col++) {
+                if (shape.hasCellAt(row, col)) {
+                    return -row;
+                }
+            }
+        }
+        throw new IllegalArgumentException("empty shape: " + shape);
     }
 
     @Override
