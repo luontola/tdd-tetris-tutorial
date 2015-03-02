@@ -53,8 +53,8 @@ public class Board implements Grid {
 
     private char fallingCellAt(int row, int col) {
         if (hasFalling()) {
-            int pieceRow = row - falling.row;
-            int pieceCol = col - falling.column;
+            int pieceRow = row - falling.rowOffset;
+            int pieceCol = col - falling.colOffset;
             if (pieceRow >= 0
                     && pieceRow < falling.rows()
                     && pieceCol >= 0
@@ -73,10 +73,11 @@ public class Board implements Grid {
     }
 
     public void tick() {
-        if (fallingHitsFloor() || fallingHitsStationary()) {
+        MovableGrid test = falling.moveDown();
+        if (test.isOutside(this) || test.collidesWith(stationary)) {
             stopFalling();
         } else {
-            moveDown();
+            falling = test;
         }
     }
 
@@ -110,24 +111,6 @@ public class Board implements Grid {
         }
         stationary = newStationary;
         falling = null;
-    }
-
-    private boolean fallingHitsFloor() {
-        for (int row = 0; row < falling.rows(); row++) {
-            for (int col = 0; col < falling.columns(); col++) {
-                if (falling.hasCellAt(row, col)) {
-                    if (falling.row + row >= this.rows() - 1) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
-    private boolean fallingHitsStationary() {
-        MovableGrid test = falling.moveDown();
-        return test.collides(stationary);
     }
 
     public void moveDown() {

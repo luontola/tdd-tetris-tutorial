@@ -7,21 +7,34 @@ package tetris;
 public class MovableGrid implements Grid {
 
     private final Grid shape;
-    public final int row;
-    public final int column;
+    public final int rowOffset;
+    public final int colOffset;
 
-    public MovableGrid(Grid shape, int row, int column) {
+    public MovableGrid(Grid shape, int rowOffset, int colOffset) {
         this.shape = shape;
-        this.row = row;
-        this.column = column;
+        this.rowOffset = rowOffset;
+        this.colOffset = colOffset;
     }
 
-    public boolean collides(char[][] board) {
+    public boolean isOutside(Board board) {
         for (int row = 0; row < rows(); row++) {
             for (int col = 0; col < columns(); col++) {
                 if (hasCellAt(row, col)) {
-                    int boardRow = this.row + row;
-                    int boardCol = this.column + col;
+                    if (rowOffset + row >= board.rows()) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean collidesWith(char[][] board) {
+        for (int row = 0; row < rows(); row++) {
+            for (int col = 0; col < columns(); col++) {
+                if (hasCellAt(row, col)) {
+                    int boardRow = rowOffset + row;
+                    int boardCol = colOffset + col;
                     if (board[boardRow][boardCol] != EMPTY) {
                         return true;
                     }
@@ -47,14 +60,14 @@ public class MovableGrid implements Grid {
     }
 
     public MovableGrid moveDown() {
-        return new MovableGrid(shape, row + 1, column);
+        return new MovableGrid(shape, rowOffset + 1, colOffset);
     }
 
     public MovableGrid moveLeft() {
-        return new MovableGrid(shape, row, column - 1);
+        return new MovableGrid(shape, rowOffset, colOffset - 1);
     }
 
     public MovableGrid moveRight() {
-        return new MovableGrid(shape, row, column + 1);
+        return new MovableGrid(shape, rowOffset, colOffset + 1);
     }
 }
