@@ -8,8 +8,6 @@ import java.util.Arrays;
 
 public class Board implements Grid {
 
-    private static final char EMPTY = '.';
-
     private final int rows;
     private final int columns;
     private final char[][] stationary;
@@ -56,26 +54,24 @@ public class Board implements Grid {
     }
 
     private char fallingCellAt(int row, int col) {
-        if (!hasFalling()) {
-            return EMPTY;
-        }
-        if (row >= fallingBlockRow
-                && row < falling.rows() + fallingBlockRow
-                && col >= fallingBlockColumn
-                && col < falling.columns() + fallingBlockColumn) {
-            return falling.cellAt(
-                    row - fallingBlockRow,
-                    col - fallingBlockColumn);
+        int pieceRow = row - fallingBlockRow;
+        int pieceCol = col - fallingBlockColumn;
+        if (hasFalling()
+                && pieceRow >= 0
+                && pieceRow < falling.rows()
+                && pieceCol >= 0
+                && pieceCol < falling.columns()) {
+            return falling.cellAt(pieceRow, pieceCol);
         } else {
             return EMPTY;
         }
     }
 
-    public void drop(Grid block) {
+    public void drop(Grid piece) {
         if (hasFalling()) {
             throw new IllegalStateException("a block is already falling");
         }
-        startFalling(block);
+        startFalling(piece);
     }
 
     public void tick() {
@@ -90,10 +86,10 @@ public class Board implements Grid {
         return falling != null;
     }
 
-    private void startFalling(Grid block) {
-        this.falling = block;
+    private void startFalling(Grid piece) {
+        this.falling = piece;
         this.fallingBlockRow = 0;
-        this.fallingBlockColumn = this.columns() / 2 - block.columns() / 2;
+        this.fallingBlockColumn = this.columns() / 2 - piece.columns() / 2;
     }
 
     private void stopFalling() {

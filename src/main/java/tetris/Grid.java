@@ -6,6 +6,8 @@ package tetris;
 
 public interface Grid {
 
+    char EMPTY = '.';
+
     int rows();
 
     int columns();
