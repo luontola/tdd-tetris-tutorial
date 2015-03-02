@@ -95,10 +95,11 @@ public class Board implements Grid {
     private void stopFalling() {
         for (int row = 0; row < falling.rows(); row++) {
             for (int col = 0; col < falling.columns(); col++) {
+                char cell = falling.cellAt(row, col);
                 int boardRow = fallingBlockRow + row;
                 int boardCol = fallingBlockColumn + col;
-                if (boardRow < this.rows()) {
-                    stationary[boardRow][boardCol] = falling.cellAt(row, col);
+                if (cell != EMPTY && boardRow < this.rows()) {
+                    stationary[boardRow][boardCol] = cell;
                 }
             }
         }
@@ -106,9 +107,6 @@ public class Board implements Grid {
     }
 
     private boolean fallingHitsFloor() {
-        if (!hasFalling()) {
-            return false;
-        }
         for (int row = 0; row < falling.rows(); row++) {
             for (int col = 0; col < falling.columns(); col++) {
                 char cell = falling.cellAt(row, col);
@@ -123,6 +121,18 @@ public class Board implements Grid {
     }
 
     private boolean fallingHitsStationary() {
+        for (int row = 0; row < falling.rows(); row++) {
+            for (int col = 0; col < falling.columns(); col++) {
+                char cell = falling.cellAt(row, col);
+                if (cell != EMPTY) {
+                    int boardRow = fallingBlockRow + row;
+                    int boardCol = fallingBlockColumn + col;
+                    if (stationary[boardRow + 1][boardCol] != EMPTY) {
+                        return true;
+                    }
+                }
+            }
+        }
         return stationary[fallingBlockRow + 1][fallingBlockColumn] != EMPTY;
     }
 
