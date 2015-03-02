@@ -36,7 +36,6 @@ public class FallingPiecesTest extends Assert {
         }
     }
 
-/*
     public class When_a_piece_reaches_the_bottom {
 
         @Before
@@ -73,7 +72,6 @@ public class FallingPiecesTest extends Assert {
 //            assertFalse(board.hasFalling());
 //        }
     }
-*/
 
 /*
     public class When_a_piece_lands_on_another_piece {
