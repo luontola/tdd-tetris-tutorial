@@ -48,15 +48,27 @@ public class Board implements Grid {
 
     @Override
     public char cellAt(int row, int col) {
-        if (hasFallingAt(row, col)) {
-            return falling.cellAt(0, 0);
-        } else {
-            return stationary[row][col];
+        char cell = fallingCellAt(row, col);
+        if (cell != EMPTY) {
+            return cell;
         }
+        return stationary[row][col];
     }
 
-    private boolean hasFallingAt(int row, int col) {
-        return hasFalling() && row == fallingBlockRow && col == fallingBlockColumn;
+    private char fallingCellAt(int row, int col) {
+        if (!hasFalling()) {
+            return EMPTY;
+        }
+        if (row >= fallingBlockRow
+                && row < falling.rows() + fallingBlockRow
+                && col >= fallingBlockColumn
+                && col < falling.columns() + fallingBlockColumn) {
+            return falling.cellAt(
+                    row - fallingBlockRow,
+                    col - fallingBlockColumn);
+        } else {
+            return EMPTY;
+        }
     }
 
     public void drop(Grid block) {
@@ -81,7 +93,7 @@ public class Board implements Grid {
     private void startFalling(Grid block) {
         this.falling = block;
         this.fallingBlockRow = 0;
-        this.fallingBlockColumn = 1;
+        this.fallingBlockColumn = this.columns() / 2 - block.columns() / 2;
     }
 
     private void stopFalling() {

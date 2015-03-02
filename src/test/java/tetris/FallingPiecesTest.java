@@ -24,7 +24,6 @@ public class FallingPiecesTest extends Assert {
             board.drop(Tetromino.T_SHAPE);
         }
 
-        @Ignore
         @Test
         public void it_starts_from_top_middle() {
             assertEquals("" +
