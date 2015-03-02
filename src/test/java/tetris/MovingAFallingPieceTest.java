@@ -87,7 +87,6 @@ public class MovingAFallingPieceTest {
                     "........\n"));
         }
 
-        @Ignore
         @Test
         public void cannot_be_moved_left_over_the_board() {
             for (int i = 0; i < LOTS_OF_TIMES; i++) {

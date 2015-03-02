@@ -73,12 +73,7 @@ public class Board implements Grid {
     }
 
     public void tick() {
-        MovableGrid test = falling.moveDown();
-        if (test.isOutside(this) || test.collidesWith(stationary)) {
-            stopFalling();
-        } else {
-            falling = test;
-        }
+        moveDown();
     }
 
     public boolean hasFalling() {
@@ -114,11 +109,19 @@ public class Board implements Grid {
     }
 
     public void moveDown() {
-        falling = falling.moveDown();
+        MovableGrid test = falling.moveDown();
+        if (test.isOutside(this) || test.collidesWith(stationary)) {
+            stopFalling();
+        } else {
+            falling = test;
+        }
     }
 
     public void moveLeft() {
-        falling = falling.moveLeft();
+        MovableGrid test = falling.moveLeft();
+        if (!test.isOutside(this)) {
+            falling = test;
+        }
     }
 
     public void moveRight() {
