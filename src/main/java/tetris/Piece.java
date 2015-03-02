@@ -6,15 +6,27 @@ package tetris;
 
 public class Piece {
 
-    private final String shape;
+    private final char[][] blocks;
 
     public Piece(String shape) {
-        this.shape = shape;
+        String[] rows = shape.split("\n");
+        this.blocks = new char[rows.length][rows.length];
+        for (int i = 0; i < rows.length; i++) {
+            this.blocks[i] = rows[i].toCharArray();
+        }
     }
 
     @Override
     public String toString() {
-        return shape;
+        String s = "";
+        for (int row = 0; row < blocks.length; row++) {
+            for (int col = 0; col < blocks[row].length; col++) {
+                char c = blocks[row][col];
+                s += c;
+            }
+            s += '\n';
+        }
+        return s;
     }
 
     public Piece rotateRight() {
