@@ -109,6 +109,9 @@ public class Board implements Grid {
     }
 
     public void moveDown() {
+        if (!hasFalling()) {
+            return;
+        }
         MovableGrid test = falling.moveDown();
         if (test.isOutside(this) || test.collidesWith(stationary)) {
             stopFalling();
