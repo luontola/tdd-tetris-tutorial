@@ -6,7 +6,16 @@ package tetris;
 
 public class Tetromino {
 
-    public static final Tetromino T_SHAPE = new Tetromino();
+    public static final Tetromino T_SHAPE = new Tetromino("" +
+            ".T.\n" +
+            "TTT\n" +
+            "...\n");
+
+    private final String shape;
+
+    public Tetromino(String shape) {
+        this.shape = shape;
+    }
 
     public Tetromino rotateRight() {
         return null;
@@ -14,5 +23,10 @@ public class Tetromino {
 
     public Tetromino rotateLeft() {
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return shape;
     }
 }
