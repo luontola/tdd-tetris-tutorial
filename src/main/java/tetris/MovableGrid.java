@@ -6,34 +6,29 @@ package tetris;
 
 public class MovableGrid implements Grid {
 
-    private final Board board;
     private final Grid shape;
     public final int row;
     public final int column;
 
-    public MovableGrid(Board board, Grid shape) {
-        this.board = board;
-        this.shape = shape;
-        this.row = startingRowOffset(shape);
-        this.column = board.columns() / 2 - shape.columns() / 2;
-    }
-
-    private MovableGrid(Board board, Grid shape, int row, int column) {
-        this.board = board;
+    public MovableGrid(Grid shape, int row, int column) {
         this.shape = shape;
         this.row = row;
         this.column = column;
     }
 
-    private static int startingRowOffset(Grid shape) {
-        for (int row = 0; row < shape.rows(); row++) {
-            for (int col = 0; col < shape.columns(); col++) {
-                if (shape.hasCellAt(row, col)) {
-                    return -row;
+    public boolean collides(char[][] board) {
+        for (int row = 0; row < rows(); row++) {
+            for (int col = 0; col < columns(); col++) {
+                if (hasCellAt(row, col)) {
+                    int boardRow = this.row + row;
+                    int boardCol = this.column + col;
+                    if (board[boardRow][boardCol] != EMPTY) {
+                        return true;
+                    }
                 }
             }
         }
-        throw new IllegalArgumentException("empty shape: " + shape);
+        return false;
     }
 
     @Override
@@ -52,14 +47,14 @@ public class MovableGrid implements Grid {
     }
 
     public MovableGrid moveDown() {
-        return new MovableGrid(board, shape, row + 1, column);
+        return new MovableGrid(shape, row + 1, column);
     }
 
     public MovableGrid moveLeft() {
-        return new MovableGrid(board, shape, row, column - 1);
+        return new MovableGrid(shape, row, column - 1);
     }
 
     public MovableGrid moveRight() {
-        return new MovableGrid(board, shape, row, column + 1);
+        return new MovableGrid(shape, row, column + 1);
     }
 }

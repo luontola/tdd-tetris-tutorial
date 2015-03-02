@@ -85,7 +85,20 @@ public class Board implements Grid {
     }
 
     private void startFalling(Grid piece) {
-        this.falling = new MovableGrid(this, piece);
+        int row = startingRowOffset(piece);
+        int column = this.columns() / 2 - piece.columns() / 2;
+        this.falling = new MovableGrid(piece, row, column);
+    }
+
+    private static int startingRowOffset(Grid shape) {
+        for (int row = 0; row < shape.rows(); row++) {
+            for (int col = 0; col < shape.columns(); col++) {
+                if (shape.hasCellAt(row, col)) {
+                    return -row;
+                }
+            }
+        }
+        throw new IllegalArgumentException("empty shape: " + shape);
     }
 
     private void stopFalling() {
@@ -113,18 +126,8 @@ public class Board implements Grid {
     }
 
     private boolean fallingHitsStationary() {
-        for (int row = 0; row < falling.rows(); row++) {
-            for (int col = 0; col < falling.columns(); col++) {
-                if (falling.hasCellAt(row, col)) {
-                    int boardRow = falling.row + row;
-                    int boardCol = falling.column + col;
-                    if (stationary[boardRow + 1][boardCol] != EMPTY) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
+        MovableGrid test = falling.moveDown();
+        return test.collides(stationary);
     }
 
     public void moveDown() {
