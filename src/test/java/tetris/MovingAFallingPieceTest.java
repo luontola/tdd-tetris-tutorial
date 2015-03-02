@@ -24,6 +24,7 @@ public class MovingAFallingPieceTest {
             ".XXX.\n" +
             "..X..\n" +
             ".....\n");
+    private static final int LOTS_OF_TIMES = 10;
 
     private Board board;
 
@@ -85,12 +86,27 @@ public class MovingAFallingPieceTest {
                     "........\n" +
                     "........\n"));
         }
+
+        @Ignore
+        @Test
+        public void cannot_be_moved_left_over_the_board() {
+            for (int i = 0; i < LOTS_OF_TIMES; i++) {
+                board.moveLeft();
+            }
+
+            assertThat(board.toString(), is("" +
+                    ".X......\n" +
+                    "XXX.....\n" +
+                    ".X......\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n"));
+        }
     }
 
-    // TODO: it will not move left over over the board
-    // TODO: it will not move right over over the board
-    // TODO: it will not move down over over the board (will stop falling)
-    // TODO: it can not be moved left if another piece is in the way
-    // TODO: it can not be moved right if another piece is in the way
-    // TODO: it can not be moved down if another piece is in the way (will stop falling)
+    // TODO: it cannot be moved right over the board
+    // TODO: it cannot be moved down over the board (will stop falling)
+    // TODO: it cannot be moved left if another piece is in the way
+    // TODO: it cannot be moved right if another piece is in the way
+    // TODO: it cannot be moved down if another piece is in the way (will stop falling)
 }
