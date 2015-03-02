@@ -4,29 +4,49 @@
 
 package tetris;
 
+import java.util.Arrays;
+
 public class Board {
 
     private static final char EMPTY = '.';
 
     private final int rows;
     private final int columns;
+    private final char[][] stationary;
     private Block falling;
     private int fallingBlockRow = 0;
 
     public Board(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
+        this.stationary = emptyBoard(rows, columns);
+    }
+
+    private static char[][] emptyBoard(int rows, int columns) {
+        char[][] board = new char[rows][columns];
+        for (char[] row : board) {
+            Arrays.fill(row, EMPTY);
+        }
+        return board;
     }
 
     public String toString() {
         String s = "";
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < columns; col++) {
-                s += hasFallingAt(row, col) ? falling.getColor() : EMPTY;
+                s += getColorAt(row, col);
             }
             s += '\n';
         }
         return s;
+    }
+
+    private char getColorAt(int row, int col) {
+        if (hasFallingAt(row, col)) {
+            return falling.getColor();
+        } else {
+            return stationary[row][col];
+        }
     }
 
     private boolean hasFallingAt(int row, int col) {
@@ -45,6 +65,11 @@ public class Board {
     }
 
     public void tick() {
-        fallingBlockRow++;
+        if (fallingBlockRow == rows - 1) {
+            stationary[fallingBlockRow][1] = falling.getColor();
+            falling = null;
+        } else {
+            fallingBlockRow++;
+        }
     }
 }

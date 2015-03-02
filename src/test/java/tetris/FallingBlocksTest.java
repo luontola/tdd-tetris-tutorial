@@ -79,7 +79,6 @@ public class FallingBlocksTest extends Assert {
         }
     }
 
-    /*
     public class When_a_block_reaches_the_bottom {
 
         @Before
@@ -98,17 +97,16 @@ public class FallingBlocksTest extends Assert {
             assertTrue("the player should still be able to move the block", board.hasFalling());
         }
 
-//        @Test
-//        public void it_stops_when_it_hits_the_bottom() {
-//            board.tick();
-//            assertEquals("" +
-//                    "...\n" +
-//                    "...\n" +
-//                    ".X.\n", board.toString());
-//            assertFalse("the block should stop moving", board.hasFalling());
-//        }
+        @Test
+        public void it_stops_when_it_hits_the_bottom() {
+            board.tick();
+            assertEquals("" +
+                    "...\n" +
+                    "...\n" +
+                    ".X.\n", board.toString());
+            assertFalse("the block should stop moving", board.hasFalling());
+        }
     }
-*/
 
 /*
     public class When_a_block_lands_on_another_block {
