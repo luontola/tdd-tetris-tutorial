@@ -76,7 +76,7 @@ public class Board implements Grid {
         if (fallingHitsFloor() || fallingHitsStationary()) {
             stopFalling();
         } else {
-            fallOneRow();
+            moveDown();
         }
     }
 
@@ -127,19 +127,15 @@ public class Board implements Grid {
         return false;
     }
 
-    private void fallOneRow() {
-        falling.row++;
+    public void moveDown() {
+        falling = falling.moveDown();
     }
 
     public void moveLeft() {
-        falling.column--;
+        falling = falling.moveLeft();
     }
 
     public void moveRight() {
-        falling.column++;
-    }
-
-    public void moveDown() {
-        falling.row++;
+        falling = falling.moveRight();
     }
 }

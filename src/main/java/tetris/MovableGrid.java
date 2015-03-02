@@ -8,14 +8,21 @@ public class MovableGrid implements Grid {
 
     private final Board board;
     private final Grid shape;
-    public int row; // TODO: make final
-    public int column; // TODO: make final
+    public final int row;
+    public final int column;
 
     public MovableGrid(Board board, Grid shape) {
         this.board = board;
         this.shape = shape;
         this.row = startingRowOffset(shape);
         this.column = board.columns() / 2 - shape.columns() / 2;
+    }
+
+    private MovableGrid(Board board, Grid shape, int row, int column) {
+        this.board = board;
+        this.shape = shape;
+        this.row = row;
+        this.column = column;
     }
 
     private static int startingRowOffset(Grid shape) {
@@ -42,5 +49,17 @@ public class MovableGrid implements Grid {
     @Override
     public char cellAt(int row, int col) {
         return shape.cellAt(row, col);
+    }
+
+    public MovableGrid moveDown() {
+        return new MovableGrid(board, shape, row + 1, column);
+    }
+
+    public MovableGrid moveLeft() {
+        return new MovableGrid(board, shape, row, column - 1);
+    }
+
+    public MovableGrid moveRight() {
+        return new MovableGrid(board, shape, row, column + 1);
     }
 }
