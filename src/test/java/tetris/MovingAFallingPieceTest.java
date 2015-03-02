@@ -8,8 +8,11 @@ import net.orfjackal.nestedjunit.NestedJUnit;
 import org.junit.*;
 import org.junit.runner.RunWith;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+
 @RunWith(NestedJUnit.class)
-public class MovingAFallingPieceTest extends Assert {
+public class MovingAFallingPieceTest {
 
     /**
      * Test-only piece with empty cells in every direction.
@@ -35,26 +38,26 @@ public class MovingAFallingPieceTest extends Assert {
 
         @Test
         public void starts_at_top_middle_even_when_the_piece_has_empty_rows_at_the_top() {
-            assertEquals("" +
+            assertThat(board.toString(), is("" +
                     "....X...\n" +
                     "...XXX..\n" +
                     "....X...\n" +
                     "........\n" +
                     "........\n" +
-                    "........\n", board.toString());
+                    "........\n"));
         }
 
         @Test
         public void a_falling_piece_can_be_moved_left() {
             board.moveLeft();
 
-            assertEquals("" +
+            assertThat(board.toString(), is("" +
                     "...X....\n" +
                     "..XXX...\n" +
                     "...X....\n" +
                     "........\n" +
                     "........\n" +
-                    "........\n", board.toString());
+                    "........\n"));
         }
     }
 

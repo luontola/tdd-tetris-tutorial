@@ -8,14 +8,16 @@ import net.orfjackal.nestedjunit.NestedJUnit;
 import org.junit.*;
 import org.junit.runner.RunWith;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
 import static tetris.TestUtils.thrownException;
 
 /**
  * @author Esko Luontola
  */
 @RunWith(NestedJUnit.class)
-public class FallingBlocksTest extends Assert {
+public class FallingBlocksTest {
 
     private final Board board = new Board(3, 3);
 
@@ -24,15 +26,15 @@ public class FallingBlocksTest extends Assert {
 
         @Test
         public void is_empty() {
-            assertEquals("" +
+            assertThat(board.toString(), is("" +
                     "...\n" +
                     "...\n" +
-                    "...\n", board.toString());
+                    "...\n"));
         }
 
         @Test
         public void has_no_falling_blocks() {
-            assertFalse(board.hasFalling());
+            assertThat("falling", board.hasFalling(), is(false));
         }
     }
 
@@ -45,24 +47,24 @@ public class FallingBlocksTest extends Assert {
 
         @Test
         public void the_block_is_falling() {
-            assertTrue(board.hasFalling());
+            assertThat("falling", board.hasFalling(), is(true));
         }
 
         @Test
         public void it_starts_from_the_top_middle() {
-            assertEquals("" +
+            assertThat(board.toString(), is("" +
                     ".X.\n" +
                     "...\n" +
-                    "...\n", board.toString());
+                    "...\n"));
         }
 
         @Test
         public void it_moves_down_one_row_per_tick() {
             board.tick();
-            assertEquals("" +
+            assertThat(board.toString(), is("" +
                     "...\n" +
                     ".X.\n" +
-                    "...\n", board.toString());
+                    "...\n"));
         }
 
         @Test
@@ -72,10 +74,10 @@ public class FallingBlocksTest extends Assert {
             );
             assertThat(t, is(instanceOf(IllegalStateException.class)));
             assertThat(t.getMessage(), containsString("already falling"));
-            assertEquals("" +
+            assertThat(board.toString(), is("" +
                     ".X.\n" +
                     "...\n" +
-                    "...\n", board.toString());
+                    "...\n"));
         }
     }
 
@@ -90,20 +92,20 @@ public class FallingBlocksTest extends Assert {
 
         @Test
         public void it_is_still_falling_on_the_last_row() {
-            assertEquals("" +
+            assertThat(board.toString(), is("" +
                     "...\n" +
                     "...\n" +
-                    ".X.\n", board.toString());
+                    ".X.\n"));
             assertTrue("the player should still be able to move the block", board.hasFalling());
         }
 
         @Test
         public void it_stops_when_it_hits_the_bottom() {
             board.tick();
-            assertEquals("" +
+            assertThat(board.toString(), is("" +
                     "...\n" +
                     "...\n" +
-                    ".X.\n", board.toString());
+                    ".X.\n"));
             assertFalse("the block should stop moving", board.hasFalling());
         }
     }
@@ -116,11 +118,11 @@ public class FallingBlocksTest extends Assert {
             board.tick();
             board.tick();
             board.tick();
-            assertEquals("" +
+            assertThat(board.toString(), is("" +
                     "...\n" +
                     "...\n" +
-                    ".X.\n", board.toString());
-            assertFalse(board.hasFalling());
+                    ".X.\n"));
+            assertThat("falling", board.hasFalling(), is(false));
 
             board.drop(new Block('Y'));
             board.tick();
@@ -128,20 +130,20 @@ public class FallingBlocksTest extends Assert {
 
         @Test
         public void it_is_still_falling_right_above_the_other_block() {
-            assertEquals("" +
+            assertThat(board.toString(), is("" +
                     "...\n" +
                     ".Y.\n" +
-                    ".X.\n", board.toString());
+                    ".X.\n"));
             assertTrue("the player should still be able to avoid landing on the other block", board.hasFalling());
         }
 
         @Test
         public void it_stops_when_it_hits_the_other_block() {
             board.tick();
-            assertEquals("" +
+            assertThat(board.toString(), is("" +
                     "...\n" +
                     ".Y.\n" +
-                    ".X.\n", board.toString());
+                    ".X.\n"));
             assertFalse("the block should stop moving when it lands on the other block", board.hasFalling());
         }
     }

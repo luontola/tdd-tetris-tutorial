@@ -8,11 +8,14 @@ import net.orfjackal.nestedjunit.NestedJUnit;
 import org.junit.*;
 import org.junit.runner.RunWith;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+
 /**
  * @author Esko Luontola
  */
 @RunWith(NestedJUnit.class)
-public class FallingPiecesTest extends Assert {
+public class FallingPiecesTest {
 
     private final Board board = new Board(6, 8);
 
@@ -26,13 +29,13 @@ public class FallingPiecesTest extends Assert {
 
         @Test
         public void it_starts_from_top_middle() {
-            assertEquals("" +
+            assertThat(board.toString(), is("" +
                     "....T...\n" +
                     "...TTT..\n" +
                     "........\n" +
                     "........\n" +
                     "........\n" +
-                    "........\n", board.toString());
+                    "........\n"));
         }
     }
 
@@ -49,27 +52,27 @@ public class FallingPiecesTest extends Assert {
 
         @Test
         public void it_is_still_falling_on_the_last_row() {
-            assertEquals("" +
+            assertThat(board.toString(), is("" +
                     "........\n" +
                     "........\n" +
                     "........\n" +
                     "........\n" +
                     "....T...\n" +
-                    "...TTT..\n", board.toString());
-            assertTrue(board.hasFalling());
+                    "...TTT..\n"));
+            assertThat("falling", board.hasFalling(), is(true));
         }
 
         @Test
         public void it_stops_when_it_hits_the_bottom() {
             board.tick();
-            assertEquals("" +
+            assertThat(board.toString(), is("" +
                     "........\n" +
                     "........\n" +
                     "........\n" +
                     "........\n" +
                     "....T...\n" +
-                    "...TTT..\n", board.toString());
-            assertFalse(board.hasFalling());
+                    "...TTT..\n"));
+            assertThat("falling", board.hasFalling(), is(false));
         }
     }
 
@@ -83,14 +86,14 @@ public class FallingPiecesTest extends Assert {
             board.tick();
             board.tick();
             board.tick();
-            assertEquals("" +
+            assertThat(board.toString(), is("" +
                     "........\n" +
                     "........\n" +
                     "........\n" +
                     "........\n" +
                     "....T...\n" +
-                    "...TTT..\n", board.toString());
-            assertFalse(board.hasFalling());
+                    "...TTT..\n"));
+            assertThat("falling", board.hasFalling(), is(false));
 
             board.drop(Tetromino.T_SHAPE);
             board.tick();
@@ -99,27 +102,27 @@ public class FallingPiecesTest extends Assert {
 
         @Test
         public void it_is_still_falling_right_above_the_other_piece() {
-            assertEquals("" +
+            assertThat(board.toString(), is("" +
                     "........\n" +
                     "........\n" +
                     "....T...\n" +
                     "...TTT..\n" +
                     "....T...\n" +
-                    "...TTT..\n", board.toString());
-            assertTrue(board.hasFalling());
+                    "...TTT..\n"));
+            assertThat("falling", board.hasFalling(), is(true));
         }
 
         @Test
         public void it_stops_when_it_hits_the_other_piece() {
             board.tick();
-            assertEquals("" +
+            assertThat(board.toString(), is("" +
                     "........\n" +
                     "........\n" +
                     "....T...\n" +
                     "...TTT..\n" +
                     "....T...\n" +
-                    "...TTT..\n", board.toString());
-            assertFalse(board.hasFalling());
+                    "...TTT..\n"));
+            assertThat("falling", board.hasFalling(), is(false));
         }
     }
 }

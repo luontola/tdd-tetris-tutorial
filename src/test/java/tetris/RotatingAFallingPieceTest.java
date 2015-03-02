@@ -5,12 +5,12 @@
 package tetris;
 
 import net.orfjackal.nestedjunit.NestedJUnit;
-import org.junit.*;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 
 @Ignore("contains no test")
 @RunWith(NestedJUnit.class)
-public class RotatingAFallingPieceTest extends Assert {
+public class RotatingAFallingPieceTest {
 
     // Step 6: Training wheels off
     // - Remove the @Ignore annotation from this class

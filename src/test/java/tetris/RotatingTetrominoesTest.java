@@ -8,11 +8,14 @@ import net.orfjackal.nestedjunit.NestedJUnit;
 import org.junit.*;
 import org.junit.runner.RunWith;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+
 /**
  * @author Esko Luontola
  */
 @RunWith(NestedJUnit.class)
-public class RotatingTetrominoesTest extends Assert {
+public class RotatingTetrominoesTest {
 
     private Tetromino shape;
 
@@ -28,9 +31,9 @@ public class RotatingTetrominoesTest extends Assert {
         public void are_immutable() {
             String original = shape.toString();
             shape.rotateRight();
-            assertEquals(original, shape.toString());
+            assertThat(shape.toString(), is(original));
             shape.rotateLeft();
-            assertEquals(original, shape.toString());
+            assertThat(shape.toString(), is(original));
         }
     }
 
@@ -43,57 +46,57 @@ public class RotatingTetrominoesTest extends Assert {
 
         @Test
         public void is_shaped_like_T() {
-            assertEquals("" +
+            assertThat(shape.toString(), is("" +
                     ".T.\n" +
                     "TTT\n" +
-                    "...\n", shape.toString());
+                    "...\n"));
         }
 
         @Test
         public void can_be_rotated_right_3_times() {
             shape = shape.rotateRight();
-            assertEquals("" +
+            assertThat(shape.toString(), is("" +
                     ".T.\n" +
                     ".TT\n" +
-                    ".T.\n", shape.toString());
+                    ".T.\n"));
             shape = shape.rotateRight();
-            assertEquals("" +
+            assertThat(shape.toString(), is("" +
                     "...\n" +
                     "TTT\n" +
-                    ".T.\n", shape.toString());
+                    ".T.\n"));
             shape = shape.rotateRight();
-            assertEquals("" +
+            assertThat(shape.toString(), is("" +
                     ".T.\n" +
                     "TT.\n" +
-                    ".T.\n", shape.toString());
+                    ".T.\n"));
         }
 
         @Test
         public void can_be_rotated_left_3_times() {
             shape = shape.rotateLeft();
-            assertEquals("" +
+            assertThat(shape.toString(), is("" +
                     ".T.\n" +
                     "TT.\n" +
-                    ".T.\n", shape.toString());
+                    ".T.\n"));
             shape = shape.rotateLeft();
-            assertEquals("" +
+            assertThat(shape.toString(), is("" +
                     "...\n" +
                     "TTT\n" +
-                    ".T.\n", shape.toString());
+                    ".T.\n"));
             shape = shape.rotateLeft();
-            assertEquals("" +
+            assertThat(shape.toString(), is("" +
                     ".T.\n" +
                     ".TT\n" +
-                    ".T.\n", shape.toString());
+                    ".T.\n"));
         }
 
         @Test
         public void rotating_it_4_times_will_go_back_to_the_original_shape() {
             String originalShape = shape.toString();
             shape = shape.rotateRight().rotateRight().rotateRight().rotateRight();
-            assertEquals(originalShape, shape.toString());
+            assertThat(shape.toString(), is(originalShape));
             shape = shape.rotateLeft().rotateLeft().rotateLeft().rotateLeft();
-            assertEquals(originalShape, shape.toString());
+            assertThat(shape.toString(), is(originalShape));
         }
     }
 
@@ -106,43 +109,43 @@ public class RotatingTetrominoesTest extends Assert {
 
         @Test
         public void is_shaped_like_I() {
-            assertEquals("" +
+            assertThat(shape.toString(), is("" +
                     ".....\n" +
                     ".....\n" +
                     "IIII.\n" +
                     ".....\n" +
-                    ".....\n", shape.toString());
+                    ".....\n"));
         }
 
         @Test
         public void can_be_rotated_right_once() {
             shape = shape.rotateRight();
-            assertEquals("" +
+            assertThat(shape.toString(), is("" +
                     "..I..\n" +
                     "..I..\n" +
                     "..I..\n" +
                     "..I..\n" +
-                    ".....\n", shape.toString());
+                    ".....\n"));
         }
 
         @Test
         public void can_be_rotated_left_once() {
             shape = shape.rotateLeft();
-            assertEquals("" +
+            assertThat(shape.toString(), is("" +
                     "..I..\n" +
                     "..I..\n" +
                     "..I..\n" +
                     "..I..\n" +
-                    ".....\n", shape.toString());
+                    ".....\n"));
         }
 
         @Test
         public void rotating_it_twice_will_get_back_to_the_original_shape() {
             String originalShape = shape.toString();
             shape = shape.rotateRight().rotateRight();
-            assertEquals(originalShape, shape.toString());
+            assertThat(shape.toString(), is(originalShape));
             shape = shape.rotateLeft().rotateLeft();
-            assertEquals(originalShape, shape.toString());
+            assertThat(shape.toString(), is(originalShape));
         }
     }
 
@@ -155,28 +158,28 @@ public class RotatingTetrominoesTest extends Assert {
 
         @Test
         public void is_shaped_like_O() {
-            assertEquals("" +
+            assertThat(shape.toString(), is("" +
                     ".OO\n" +
                     ".OO\n" +
-                    "...\n", shape.toString());
+                    "...\n"));
         }
 
         @Test
         public void can_not_be_rotated_right() {
             shape = shape.rotateRight();
-            assertEquals("" +
+            assertThat(shape.toString(), is("" +
                     ".OO\n" +
                     ".OO\n" +
-                    "...\n", shape.toString());
+                    "...\n"));
         }
 
         @Test
         public void can_not_be_rotated_left() {
             shape = shape.rotateLeft();
-            assertEquals("" +
+            assertThat(shape.toString(), is("" +
                     ".OO\n" +
                     ".OO\n" +
-                    "...\n", shape.toString());
+                    "...\n"));
         }
     }
 }
