@@ -13,8 +13,10 @@ public class Board {
     private final int rows;
     private final int columns;
     private final char[][] stationary;
+
     private Block falling;
     private int fallingBlockRow = 0;
+    private int fallingBlockColumn = 1;
 
     public Board(int rows, int columns) {
         this.rows = rows;
@@ -50,7 +52,7 @@ public class Board {
     }
 
     private boolean hasFallingAt(int row, int col) {
-        return hasFalling() && row == fallingBlockRow && col == 1;
+        return hasFalling() && row == fallingBlockRow && col == fallingBlockColumn;
     }
 
     public boolean hasFalling() {
@@ -66,7 +68,7 @@ public class Board {
 
     public void tick() {
         if (fallingBlockRow == rows - 1) {
-            stationary[fallingBlockRow][1] = falling.getColor();
+            stationary[fallingBlockRow][fallingBlockColumn] = falling.getColor();
             falling = null;
         } else {
             fallingBlockRow++;
