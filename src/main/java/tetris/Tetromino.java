@@ -10,12 +10,28 @@ public class Tetromino {
             ".T.\n" +
             "TTT\n" +
             "...\n");
+    public static final Tetromino L_SHAPE = new Tetromino(4, "" +
+            "...\n" +
+            "LLL\n" +
+            "L..\n");
+    public static final Tetromino J_SHAPE = new Tetromino(4, "" +
+            "...\n" +
+            "JJJ\n" +
+            "..J\n");
     public static final Tetromino I_SHAPE = new Tetromino(2, "" +
             ".....\n" +
             ".....\n" +
             "IIII.\n" +
             ".....\n" +
             ".....\n");
+    public static final Tetromino S_SHAPE = new Tetromino(2, "" +
+            "...\n" +
+            ".SS\n" +
+            "SS.\n");
+    public static final Tetromino Z_SHAPE = new Tetromino(2, "" +
+            "...\n" +
+            "ZZ.\n" +
+            ".ZZ\n");
     public static final Tetromino O_SHAPE = new Tetromino(1, "" +
             ".OO\n" +
             ".OO\n" +
