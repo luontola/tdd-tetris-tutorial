@@ -42,4 +42,8 @@ public class Piece {
         }
         return new Piece(rotated);
     }
+
+    public Piece rotateLeft() {
+        return this.rotateRight().rotateRight().rotateRight();
+    }
 }
