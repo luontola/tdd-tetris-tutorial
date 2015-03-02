@@ -24,4 +24,8 @@ public class Board {
         }
         return s;
     }
+
+    public boolean hasFalling() {
+        return false;
+    }
 }
