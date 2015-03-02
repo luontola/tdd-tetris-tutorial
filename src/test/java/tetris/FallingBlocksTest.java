@@ -14,10 +14,6 @@ import org.junit.runner.RunWith;
 @RunWith(NestedJUnit.class)
 public class FallingBlocksTest extends Assert {
 
-    // Step 1: Starting small
-    // - See the README for motivation
-    // - Next step: RotatingPiecesOfBlocksTest
-
     private final Board board = new Board(3, 3);
 
 
