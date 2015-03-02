@@ -88,8 +88,19 @@ public class Board implements Grid {
 
     private void startFalling(Grid piece) {
         this.falling = piece;
-        this.fallingBlockRow = 0;
+        this.fallingBlockRow = startingRowOffset(piece);
         this.fallingBlockColumn = this.columns() / 2 - piece.columns() / 2;
+    }
+
+    private static int startingRowOffset(Grid piece) {
+        for (int row = 0; row < piece.rows(); row++) {
+            for (int col = 0; col < piece.columns(); col++) {
+                if (piece.hasCellAt(row, col)) {
+                    return -row;
+                }
+            }
+        }
+        throw new IllegalArgumentException("empty piece: " + piece);
     }
 
     private void stopFalling() {
@@ -133,5 +144,9 @@ public class Board implements Grid {
 
     private void fallOneRow() {
         fallingBlockRow++;
+    }
+
+    public void moveLeft() {
+        fallingBlockColumn--;
     }
 }
