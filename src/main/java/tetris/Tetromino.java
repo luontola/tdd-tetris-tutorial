@@ -16,7 +16,7 @@ public class Tetromino {
             "IIII.\n" +
             ".....\n" +
             ".....\n");
-    public static final Tetromino O_SHAPE = new Tetromino(4, "" +
+    public static final Tetromino O_SHAPE = new Tetromino(1, "" +
             ".OO\n" +
             ".OO\n" +
             "...\n");
