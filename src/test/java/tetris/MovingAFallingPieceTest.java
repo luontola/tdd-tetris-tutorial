@@ -22,37 +22,40 @@ public class MovingAFallingPieceTest extends Assert {
             "..X..\n" +
             ".....\n");
 
+    private Board board;
 
-    @Test
-    public void a_falling_piece_starts_at_top_middle_even_when_the_piece_has_empty_rows_at_the_top() {
-        Board board = new Board(6, 8);
 
-        board.drop(PIECE);
+    public class A_falling_piece {
 
-        assertEquals("" +
-                "....X...\n" +
-                "...XXX..\n" +
-                "....X...\n" +
-                "........\n" +
-                "........\n" +
-                "........\n", board.toString());
-    }
+        @Before
+        public void dropPiece() {
+            board = new Board(6, 8);
+            board.drop(PIECE);
+        }
 
-    @Test
-    public void a_falling_piece_can_be_moved_left() {
-        Board board = new Board(6, 8);
+        @Test
+        public void starts_at_top_middle_even_when_the_piece_has_empty_rows_at_the_top() {
+            assertEquals("" +
+                    "....X...\n" +
+                    "...XXX..\n" +
+                    "....X...\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n", board.toString());
+        }
 
-        board.drop(PIECE);
+        @Test
+        public void a_falling_piece_can_be_moved_left() {
+            board.moveLeft();
 
-        board.moveLeft();
-
-        assertEquals("" +
-                "...X....\n" +
-                "..XXX...\n" +
-                "...X....\n" +
-                "........\n" +
-                "........\n" +
-                "........\n", board.toString());
+            assertEquals("" +
+                    "...X....\n" +
+                    "..XXX...\n" +
+                    "...X....\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n", board.toString());
+        }
     }
 
     // TODO: a falling piece can be moved right
