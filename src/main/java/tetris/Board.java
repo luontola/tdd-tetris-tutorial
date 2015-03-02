@@ -142,8 +142,9 @@ public class Board implements Grid {
 
     public void moveRight() {
         MovableGrid test = falling.moveRight();
-        if (!test.isOutside(this)) {
-            falling = test;
+        if (test.isOutside(this) || test.collidesWith(stationary)) {
+            return;
         }
+        falling = test;
     }
 }

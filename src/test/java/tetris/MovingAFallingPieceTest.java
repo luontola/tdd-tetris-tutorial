@@ -162,8 +162,22 @@ public class MovingAFallingPieceTest {
                     "Z......Z\n" +
                     "Z.ZZZZZZ\n"));
         }
+
+        @Test
+        public void when_moving_right() {
+            for (int i = 0; i < LOTS_OF_TIMES; i++) {
+                board.moveRight();
+            }
+
+            assertThat(board.toString(), is("" +
+                    "Z....X.Z\n" +
+                    "Z...XXXZ\n" +
+                    "Z....X.Z\n" +
+                    "Z......Z\n" +
+                    "Z......Z\n" +
+                    "Z.ZZZZZZ\n"));
+        }
     }
 
-    // TODO: it cannot be moved right if another piece is in the way
     // TODO: it cannot be moved down if another piece is in the way (will stop falling)
 }
