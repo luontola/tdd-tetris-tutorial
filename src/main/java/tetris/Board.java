@@ -10,7 +10,7 @@ public class Board implements Grid {
 
     private final int rows;
     private final int columns;
-    private final char[][] stationary;
+    private char[][] stationary;
 
     private Grid falling;
     private int fallingBlockRow;
@@ -93,16 +93,13 @@ public class Board implements Grid {
     }
 
     private void stopFalling() {
-        for (int row = 0; row < falling.rows(); row++) {
-            for (int col = 0; col < falling.columns(); col++) {
-                char cell = falling.cellAt(row, col);
-                int boardRow = fallingBlockRow + row;
-                int boardCol = fallingBlockColumn + col;
-                if (cell != EMPTY && boardRow < this.rows()) {
-                    stationary[boardRow][boardCol] = cell;
-                }
+        char[][] newStationary = new char[rows()][columns()];
+        for (int row = 0; row < rows(); row++) {
+            for (int col = 0; col < columns(); col++) {
+                newStationary[row][col] = cellAt(row, col);
             }
         }
+        stationary = newStationary;
         falling = null;
     }
 
