@@ -11,6 +11,7 @@ public class Board {
     private final int rows;
     private final int columns;
     private Block falling;
+    private int fallingBlockRow = 0;
 
     public Board(int rows, int columns) {
         this.rows = rows;
@@ -29,7 +30,7 @@ public class Board {
     }
 
     private boolean hasFallingAt(int row, int col) {
-        return hasFalling() && row == 0 && col == 1;
+        return hasFalling() && row == fallingBlockRow && col == 1;
     }
 
     public boolean hasFalling() {
@@ -38,5 +39,9 @@ public class Board {
 
     public void drop(Block block) {
         this.falling = block;
+    }
+
+    public void tick() {
+        fallingBlockRow++;
     }
 }
