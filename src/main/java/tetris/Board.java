@@ -1,4 +1,4 @@
-// Copyright (c) 2008-2010  Esko Luontola <www.orfjackal.net>
+// Copyright (c) 2008-2015  Esko Luontola <www.orfjackal.net>
 // You may use and modify this source code freely for personal non-commercial use.
 // This source code may NOT be used as course material without prior written agreement.
 
@@ -63,11 +63,9 @@ public class Board implements Grid {
     }
 
     private void copyToBoard(MovablePiece piece) {
-        for (Point point : Grids.allPointsOf(this)) {
-            if (piece.isAt(point) && piece.cellAt(point) != EMPTY) {
-                blocks[point.row][point.col] = piece.cellAt(point);
-            }
-        }
+        Grids.allPointsOf(this).stream()
+                .filter(point -> piece.isAt(point) && piece.cellAt(point) != EMPTY)
+                .forEach(point -> blocks[point.row][point.col] = piece.cellAt(point));
     }
 
     public int rows() {
