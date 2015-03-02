@@ -68,24 +68,24 @@ public class RotatingTetrominoesTest extends Assert {
                     ".T.\n", shape.toString());
         }
 
-//        @Test
-//        public void can_be_rotated_left_3_times() {
-//            shape = shape.rotateLeft();
-//            assertEquals("" +
-//                    ".T.\n" +
-//                    "TT.\n" +
-//                    ".T.\n", shape.toString());
-//            shape = shape.rotateLeft();
-//            assertEquals("" +
-//                    "...\n" +
-//                    "TTT\n" +
-//                    ".T.\n", shape.toString());
-//            shape = shape.rotateLeft();
-//            assertEquals("" +
-//                    ".T.\n" +
-//                    ".TT\n" +
-//                    ".T.\n", shape.toString());
-//        }
+        @Test
+        public void can_be_rotated_left_3_times() {
+            shape = shape.rotateLeft();
+            assertEquals("" +
+                    ".T.\n" +
+                    "TT.\n" +
+                    ".T.\n", shape.toString());
+            shape = shape.rotateLeft();
+            assertEquals("" +
+                    "...\n" +
+                    "TTT\n" +
+                    ".T.\n", shape.toString());
+            shape = shape.rotateLeft();
+            assertEquals("" +
+                    ".T.\n" +
+                    ".TT\n" +
+                    ".T.\n", shape.toString());
+        }
 
 //        @Test
 //        public void rotating_it_4_times_will_go_back_to_the_original_shape() {

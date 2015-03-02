@@ -26,7 +26,7 @@ public class Tetromino {
     }
 
     public Tetromino rotateLeft() {
-        return null;
+        return new Tetromino(piece.rotateLeft());
     }
 
     @Override
