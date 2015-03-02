@@ -6,37 +6,45 @@ package tetris;
 
 public class Tetromino {
 
-    public static final Tetromino T_SHAPE = new Tetromino("" +
+    public static final Tetromino T_SHAPE = new Tetromino(4, "" +
             ".T.\n" +
             "TTT\n" +
             "...\n");
-    public static final Tetromino I_SHAPE = new Tetromino("" +
+    public static final Tetromino I_SHAPE = new Tetromino(2, "" +
             ".....\n" +
             ".....\n" +
             "IIII.\n" +
             ".....\n" +
             ".....\n");
 
-    private final Piece piece;
+    private final int currentOrientation;
+    private final Piece[] orientations;
 
-    public Tetromino(String shape) {
-        this.piece = new Piece(shape);
+    public Tetromino(int orientationCount, String shape) {
+        this.currentOrientation = 0;
+        this.orientations = new Piece[orientationCount];
+        Piece orientation = new Piece(shape);
+        for (int i = 0; i < this.orientations.length; i++) {
+            this.orientations[i] = orientation;
+            orientation = orientation.rotateRight();
+        }
     }
 
-    private Tetromino(Piece piece) {
-        this.piece = piece;
+    private Tetromino(int currentOrientation, Piece[] orientations) {
+        this.currentOrientation = (currentOrientation + orientations.length) % orientations.length;
+        this.orientations = orientations;
     }
 
     public Tetromino rotateRight() {
-        return new Tetromino(piece.rotateRight());
+        return new Tetromino(currentOrientation + 1, orientations);
     }
 
     public Tetromino rotateLeft() {
-        return new Tetromino(piece.rotateLeft());
+        return new Tetromino(currentOrientation - 1, orientations);
     }
 
     @Override
     public String toString() {
-        return piece.toString();
+        return orientations[currentOrientation].toString();
     }
 }
