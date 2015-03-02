@@ -15,8 +15,8 @@ public class Board {
     private final char[][] stationary;
 
     private Block falling;
-    private int fallingBlockRow = 0;
-    private int fallingBlockColumn = 1;
+    private int fallingBlockRow;
+    private int fallingBlockColumn;
 
     public Board(int rows, int columns) {
         this.rows = rows;
@@ -64,6 +64,8 @@ public class Board {
             throw new IllegalStateException("a block is already falling");
         }
         this.falling = block;
+        this.fallingBlockRow = 0;
+        this.fallingBlockColumn = 1;
     }
 
     public void tick() {
