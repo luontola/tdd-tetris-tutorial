@@ -87,7 +87,7 @@ public class Board implements Grid {
     }
 
     private void startFalling(Grid piece) {
-        this.falling = piece;
+        this.falling = new MovableGrid(piece);
         this.fallingBlockRow = startingRowOffset(piece);
         this.fallingBlockColumn = this.columns() / 2 - piece.columns() / 2;
     }
