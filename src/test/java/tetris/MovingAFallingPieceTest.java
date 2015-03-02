@@ -134,7 +134,7 @@ public class MovingAFallingPieceTest {
         }
     }
 
-    public class Piece_stops_when_another_piece_is_in_the_way {
+    public class When_there_are_blocks_in_the_way {
 
         @Before
         public void dropPiece() {
@@ -149,7 +149,7 @@ public class MovingAFallingPieceTest {
         }
 
         @Test
-        public void when_moving_left() {
+        public void piece_cannot_be_moved_left_over_them() {
             for (int i = 0; i < LOTS_OF_TIMES; i++) {
                 board.moveLeft();
             }
@@ -164,7 +164,7 @@ public class MovingAFallingPieceTest {
         }
 
         @Test
-        public void when_moving_right() {
+        public void piece_cannot_be_moved_right_over_them() {
             for (int i = 0; i < LOTS_OF_TIMES; i++) {
                 board.moveRight();
             }
@@ -179,7 +179,7 @@ public class MovingAFallingPieceTest {
         }
 
         @Test
-        public void when_moving_down() {
+        public void piece_cannot_be_moved_down_over_them() {
             for (int i = 0; i < LOTS_OF_TIMES; i++) {
                 board.moveDown();
             }
