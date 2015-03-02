@@ -34,10 +34,11 @@ public class Piece {
     }
 
     public Piece rotateRight() {
-        char[][] rotated = new char[blocks.length][blocks.length];
+        int dimensions = blocks.length;
+        char[][] rotated = new char[dimensions][dimensions];
         for (int row = 0; row < blocks.length; row++) {
             for (int col = 0; col < blocks[row].length; col++) {
-                rotated[col][2 - row] = blocks[row][col];
+                rotated[col][dimensions - 1 - row] = blocks[row][col];
             }
         }
         return new Piece(rotated);
