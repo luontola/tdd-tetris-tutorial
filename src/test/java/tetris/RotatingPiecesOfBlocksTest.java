@@ -1,4 +1,4 @@
-// Copyright (c) 2008-2012  Esko Luontola <www.orfjackal.net>
+// Copyright (c) 2008-2015  Esko Luontola <www.orfjackal.net>
 // You may use and modify this source code freely for personal non-commercial use.
 // This source code may NOT be used as course material without prior written agreement.
 
@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 /**
  * @author Esko Luontola
  */
-@Ignore("contains no test") // TODO: uncomment me when you start doing these tests
+@Ignore("contains no test")
 @RunWith(NestedJUnit.class)
 public class RotatingPiecesOfBlocksTest extends Assert {
 
