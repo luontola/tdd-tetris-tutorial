@@ -59,14 +59,7 @@ public class Board implements Grid {
 
     private char fallingCellAt(int row, int col) {
         if (hasFalling()) {
-            int pieceRow = row - falling.rowOffset;
-            int pieceCol = col - falling.colOffset;
-            if (pieceRow >= 0
-                    && pieceRow < falling.rows()
-                    && pieceCol >= 0
-                    && pieceCol < falling.columns()) {
-                return falling.cellAt(pieceRow, pieceCol);
-            }
+            return falling.boardCellAt(row, col);
         }
         return EMPTY;
     }

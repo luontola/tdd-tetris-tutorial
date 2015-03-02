@@ -17,12 +17,14 @@ public class MovableGrid implements Grid {
     }
 
     public boolean isOutside(Board board) {
-        for (int row = 0; row < rows(); row++) {
-            for (int col = 0; col < columns(); col++) {
-                if (hasCellAt(row, col)) {
-                    if (colOffset + col < 0
-                            || colOffset + col >= board.columns()
-                            || rowOffset + row >= board.rows()) {
+        for (int myRow = 0; myRow < rows(); myRow++) {
+            for (int myCol = 0; myCol < columns(); myCol++) {
+                if (hasCellAt(myRow, myCol)) {
+                    int boardRow = rowOffset + myRow;
+                    int boardCol = colOffset + myCol;
+                    if (boardCol < 0
+                            || boardCol >= board.columns()
+                            || boardRow >= board.rows()) {
                         return true;
                     }
                 }
@@ -32,11 +34,11 @@ public class MovableGrid implements Grid {
     }
 
     public boolean collidesWith(char[][] board) {
-        for (int row = 0; row < rows(); row++) {
-            for (int col = 0; col < columns(); col++) {
-                if (hasCellAt(row, col)) {
-                    int boardRow = rowOffset + row;
-                    int boardCol = colOffset + col;
+        for (int myRow = 0; myRow < rows(); myRow++) {
+            for (int myCol = 0; myCol < columns(); myCol++) {
+                if (hasCellAt(myRow, myCol)) {
+                    int boardRow = rowOffset + myRow;
+                    int boardCol = colOffset + myCol;
                     if (board[boardRow][boardCol] != EMPTY) {
                         return true;
                     }
@@ -44,6 +46,23 @@ public class MovableGrid implements Grid {
             }
         }
         return false;
+    }
+
+    public char boardCellAt(int boardRow, int boardCol) {
+        int myRow = boardRow - rowOffset;
+        int myCol = boardCol - colOffset;
+        if (myRow >= 0
+                && myRow < rows()
+                && myCol >= 0
+                && myCol < columns()) {
+            return cellAt(myRow, myCol);
+        }
+        return EMPTY;
+    }
+
+    @Override
+    public char cellAt(int row, int col) {
+        return shape.cellAt(row, col);
     }
 
     @Override
@@ -54,11 +73,6 @@ public class MovableGrid implements Grid {
     @Override
     public int columns() {
         return shape.columns();
-    }
-
-    @Override
-    public char cellAt(int row, int col) {
-        return shape.cellAt(row, col);
     }
 
     public MovableGrid moveDown() {
