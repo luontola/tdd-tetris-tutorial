@@ -15,15 +15,9 @@ public class Board implements Grid {
     private MovableGrid falling;
 
     public Board(String board) {
-        String[] rows = board.split("\n");
-        this.rows = rows.length;
-        this.columns = rows[0].length();
-        this.stationary = new char[this.rows][this.columns];
-        for (int i = 0; i < rows.length; i++) {
-            char[] row = rows[i].toCharArray();
-            assert row.length == this.columns;
-            this.stationary[i] = row;
-        }
+        this.stationary = Grid.parse(board);
+        this.rows = stationary.length;
+        this.columns = stationary[0].length;
     }
 
     public Board(int rows, int columns) {

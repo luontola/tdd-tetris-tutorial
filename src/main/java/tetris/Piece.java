@@ -9,13 +9,8 @@ public class Piece implements Grid {
     private final char[][] blocks;
 
     public Piece(String shape) {
-        String[] rows = shape.split("\n");
-        this.blocks = new char[rows.length][rows.length];
-        for (int i = 0; i < rows.length; i++) {
-            char[] row = rows[i].toCharArray();
-            assert row.length == rows.length;
-            this.blocks[i] = row;
-        }
+        this.blocks = Grid.parse(shape);
+        assert blocks.length == blocks[0].length;
     }
 
     private Piece(char[][] blocks) {

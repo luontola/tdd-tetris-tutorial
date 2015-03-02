@@ -28,4 +28,18 @@ public interface Grid {
         }
         return sb.toString();
     }
+
+    static char[][] parse(String shape) {
+        String[] lines = shape.split("\n");
+        int rows = lines.length;
+        int columns = lines[0].length();
+        char[][] grid = new char[rows][columns];
+
+        for (int i = 0; i < rows; i++) {
+            char[] row = lines[i].toCharArray();
+            assert row.length == columns;
+            grid[i] = row;
+        }
+        return grid;
+    }
 }
