@@ -11,14 +11,18 @@ public class Tetromino {
             "TTT\n" +
             "...\n");
 
-    private final String shape;
+    private final Piece piece;
 
     public Tetromino(String shape) {
-        this.shape = shape;
+        this.piece = new Piece(shape);
+    }
+
+    private Tetromino(Piece piece) {
+        this.piece = piece;
     }
 
     public Tetromino rotateRight() {
-        return null;
+        return new Tetromino(piece.rotateRight());
     }
 
     public Tetromino rotateLeft() {
@@ -27,6 +31,6 @@ public class Tetromino {
 
     @Override
     public String toString() {
-        return shape;
+        return piece.toString();
     }
 }
