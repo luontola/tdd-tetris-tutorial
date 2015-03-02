@@ -4,7 +4,7 @@
 
 package tetris;
 
-public class Piece {
+public class Piece implements Grid {
 
     private final char[][] blocks;
 
@@ -12,7 +12,9 @@ public class Piece {
         String[] rows = shape.split("\n");
         this.blocks = new char[rows.length][rows.length];
         for (int i = 0; i < rows.length; i++) {
-            this.blocks[i] = rows[i].toCharArray();
+            char[] row = rows[i].toCharArray();
+            assert row.length == rows.length;
+            this.blocks[i] = row;
         }
     }
 
@@ -20,25 +22,12 @@ public class Piece {
         this.blocks = blocks;
     }
 
-    @Override
-    public String toString() {
-        String s = "";
-        for (int row = 0; row < blocks.length; row++) {
-            for (int col = 0; col < blocks[row].length; col++) {
-                char c = blocks[row][col];
-                s += c;
-            }
-            s += '\n';
-        }
-        return s;
-    }
-
     public Piece rotateRight() {
-        int dimensions = blocks.length;
-        char[][] rotated = new char[dimensions][dimensions];
+        int dimension = blocks.length;
+        char[][] rotated = new char[dimension][dimension];
         for (int row = 0; row < blocks.length; row++) {
             for (int col = 0; col < blocks[row].length; col++) {
-                rotated[col][dimensions - 1 - row] = blocks[row][col];
+                rotated[col][dimension - 1 - row] = blocks[row][col];
             }
         }
         return new Piece(rotated);
@@ -46,5 +35,25 @@ public class Piece {
 
     public Piece rotateLeft() {
         return this.rotateRight().rotateRight().rotateRight();
+    }
+
+    @Override
+    public int rows() {
+        return blocks.length;
+    }
+
+    @Override
+    public int columns() {
+        return blocks[0].length;
+    }
+
+    @Override
+    public char cellAt(int row, int col) {
+        return blocks[row][col];
+    }
+
+    @Override
+    public String toString() {
+        return Grid.toString(this);
     }
 }

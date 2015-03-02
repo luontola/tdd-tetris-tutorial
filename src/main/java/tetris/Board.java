@@ -6,7 +6,7 @@ package tetris;
 
 import java.util.Arrays;
 
-public class Board {
+public class Board implements Grid {
 
     private static final char EMPTY = '.';
 
@@ -33,17 +33,21 @@ public class Board {
     }
 
     public String toString() {
-        String s = "";
-        for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < columns; col++) {
-                s += getColorAt(row, col);
-            }
-            s += '\n';
-        }
-        return s;
+        return Grid.toString(this);
     }
 
-    private char getColorAt(int row, int col) {
+    @Override
+    public int rows() {
+        return rows;
+    }
+
+    @Override
+    public int columns() {
+        return columns;
+    }
+
+    @Override
+    public char cellAt(int row, int col) {
         if (hasFallingAt(row, col)) {
             return falling.getColor();
         } else {
