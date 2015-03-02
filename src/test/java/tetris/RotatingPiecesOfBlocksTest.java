@@ -87,15 +87,15 @@ public class RotatingPiecesOfBlocksTest extends Assert {
                     "....X\n", piece.toString());
         }
 
-//        @Test
-//        public void can_be_rotated_left() {
-//            piece = piece.rotateLeft();
-//            assertEquals("" +
-//                    "X....\n" +
-//                    "XX...\n" +
-//                    "XXX..\n" +
-//                    ".....\n" +
-//                    ".....\n", piece.toString());
-//        }
+        @Test
+        public void can_be_rotated_left() {
+            piece = piece.rotateLeft();
+            assertEquals("" +
+                    "X....\n" +
+                    "XX...\n" +
+                    "XXX..\n" +
+                    ".....\n" +
+                    ".....\n", piece.toString());
+        }
     }
 }
