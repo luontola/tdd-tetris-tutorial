@@ -93,12 +93,33 @@ public class Board implements Grid {
     }
 
     private void stopFalling() {
-        stationary[fallingBlockRow][fallingBlockColumn] = falling.cellAt(0, 0);
+        for (int row = 0; row < falling.rows(); row++) {
+            for (int col = 0; col < falling.columns(); col++) {
+                int boardRow = fallingBlockRow + row;
+                int boardCol = fallingBlockColumn + col;
+                if (boardRow < this.rows()) {
+                    stationary[boardRow][boardCol] = falling.cellAt(row, col);
+                }
+            }
+        }
         falling = null;
     }
 
     private boolean fallingHitsFloor() {
-        return fallingBlockRow == rows - 1;
+        if (!hasFalling()) {
+            return false;
+        }
+        for (int row = 0; row < falling.rows(); row++) {
+            for (int col = 0; col < falling.columns(); col++) {
+                char cell = falling.cellAt(row, col);
+                if (cell != EMPTY) {
+                    if (fallingBlockRow + row >= this.rows() - 1) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
     private boolean fallingHitsStationary() {
