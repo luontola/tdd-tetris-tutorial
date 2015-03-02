@@ -73,7 +73,12 @@ public class Board {
             stationary[fallingBlockRow][fallingBlockColumn] = falling.getColor();
             falling = null;
         } else {
-            fallingBlockRow++;
+            if (stationary[fallingBlockRow + 1][fallingBlockColumn] == EMPTY) {
+                fallingBlockRow++;
+            } else {
+                stationary[fallingBlockRow][fallingBlockColumn] = falling.getColor();
+                falling = null;
+            }
         }
     }
 }
