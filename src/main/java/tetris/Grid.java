@@ -14,6 +14,10 @@ public interface Grid {
 
     char cellAt(int row, int col);
 
+    default boolean hasCellAt(int row, int col) {
+        return cellAt(row, col) != EMPTY;
+    }
+
     static String toString(Grid grid) {
         StringBuilder sb = new StringBuilder();
         for (int row = 0; row < grid.rows(); row++) {

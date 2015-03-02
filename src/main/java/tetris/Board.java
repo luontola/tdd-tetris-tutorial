@@ -109,8 +109,7 @@ public class Board implements Grid {
     private boolean fallingHitsFloor() {
         for (int row = 0; row < falling.rows(); row++) {
             for (int col = 0; col < falling.columns(); col++) {
-                char cell = falling.cellAt(row, col);
-                if (cell != EMPTY) {
+                if (falling.hasCellAt(row, col)) {
                     if (fallingBlockRow + row >= this.rows() - 1) {
                         return true;
                     }
@@ -123,8 +122,7 @@ public class Board implements Grid {
     private boolean fallingHitsStationary() {
         for (int row = 0; row < falling.rows(); row++) {
             for (int col = 0; col < falling.columns(); col++) {
-                char cell = falling.cellAt(row, col);
-                if (cell != EMPTY) {
+                if (falling.hasCellAt(row, col)) {
                     int boardRow = fallingBlockRow + row;
                     int boardCol = fallingBlockColumn + col;
                     if (stationary[boardRow + 1][boardCol] != EMPTY) {
@@ -133,7 +131,7 @@ public class Board implements Grid {
                 }
             }
         }
-        return stationary[fallingBlockRow + 1][fallingBlockColumn] != EMPTY;
+        return false;
     }
 
     private void fallOneRow() {
