@@ -125,26 +125,28 @@ public class Board implements Grid {
             return;
         }
         MovableGrid test = falling.moveDown();
-        if (test.isOutside(this) || test.collidesWith(stationary)) {
-            stopFalling();
-        } else {
+        if (isAllowedMove(test)) {
             falling = test;
+        } else {
+            stopFalling();
         }
     }
 
     public void moveLeft() {
         MovableGrid test = falling.moveLeft();
-        if (test.isOutside(this) || test.collidesWith(stationary)) {
-            return;
+        if (isAllowedMove(test)) {
+            falling = test;
         }
-        falling = test;
     }
 
     public void moveRight() {
         MovableGrid test = falling.moveRight();
-        if (test.isOutside(this) || test.collidesWith(stationary)) {
-            return;
+        if (isAllowedMove(test)) {
+            falling = test;
         }
-        falling = test;
+    }
+
+    private boolean isAllowedMove(MovableGrid test) {
+        return !test.isOutside(this) && !test.collidesWith(stationary);
     }
 }
