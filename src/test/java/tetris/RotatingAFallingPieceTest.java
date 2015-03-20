@@ -117,9 +117,23 @@ public class RotatingAFallingPieceTest {
                     "..Z..Z.X\n" +
                     "..Z..Z..\n"));
         }
-    }
 
-    // TODO: it can not be rotated when there is no room to rotate (left wall, right wall, other pieces...)
+        @Test
+        public void next_to_stationary_pieces() {
+            board.moveDown();
+            board.moveDown();
+
+            board.rotateCCW();
+
+            assertThat(board.toString(), is("" +
+                    "........\n" +
+                    "........\n" +
+                    "....X...\n" +
+                    "..Z.XZ..\n" +
+                    "..Z.XZ..\n" +
+                    "..Z..Z..\n"));
+        }
+    }
 
     // TODO: when piece is up against a wall (or piece) and it is rotated (no room to rotate), move it away from the wall ("wallkick")
     // See: http://bsixcentdouze.free.fr/tc/tgm-en/tgm.html
