@@ -23,7 +23,7 @@ public class RotatingAFallingPieceTest {
         @Before
         public void dropPiece() {
             board = new Board(6, 8);
-            board.drop(new RotatableShape(
+            board.drop(new RotatablePiece(
                     "" +
                             "X..\n" +
                             "XXX\n" +
@@ -87,7 +87,7 @@ public class RotatingAFallingPieceTest {
                     "..Z..Z..\n" +
                     "..Z..Z..\n" +
                     "..Z..Z..\n");
-            board.drop(new RotatableShape(
+            board.drop(new RotatablePiece(
                     "" +
                             ".X.\n" +
                             ".X.\n" +
@@ -158,7 +158,7 @@ public class RotatingAFallingPieceTest {
         @Before
         public void dropPiece() {
             board = new Board(6, 8);
-            board.drop(new RotatableShape(
+            board.drop(new RotatablePiece(
                     "" +
                             "..X..\n" +
                             "..X..\n" +

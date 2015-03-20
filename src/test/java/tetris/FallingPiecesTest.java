@@ -17,7 +17,7 @@ import static org.hamcrest.Matchers.is;
 @RunWith(NestedJUnit.class)
 public class FallingPiecesTest {
 
-    private static final RotatableShape SHAPE = new RotatableShape("" +
+    private static final RotatablePiece PIECE = new RotatablePiece("" +
             ".T.\n" +
             "TTT\n" +
             "...\n");
@@ -29,7 +29,7 @@ public class FallingPiecesTest {
 
         @Before
         public void dropPiece() {
-            board.drop(SHAPE);
+            board.drop(PIECE);
         }
 
         @Test
@@ -48,7 +48,7 @@ public class FallingPiecesTest {
 
         @Before
         public void fallToLastRow() {
-            board.drop(SHAPE);
+            board.drop(PIECE);
             board.tick();
             board.tick();
             board.tick();
@@ -85,7 +85,7 @@ public class FallingPiecesTest {
 
         @Before
         public void landOnAnother() {
-            board.drop(SHAPE);
+            board.drop(PIECE);
             board.tick();
             board.tick();
             board.tick();
@@ -100,7 +100,7 @@ public class FallingPiecesTest {
                     "...TTT..\n"));
             assertThat("falling", board.hasFalling(), is(false));
 
-            board.drop(SHAPE);
+            board.drop(PIECE);
             board.tick();
             board.tick();
         }

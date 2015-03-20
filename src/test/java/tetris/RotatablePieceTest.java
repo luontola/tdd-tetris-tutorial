@@ -12,9 +12,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 @RunWith(NestedJUnit.class)
-public class RotatableShapeTest {
+public class RotatablePieceTest {
 
-    private RotatableShape shape = new RotatableShape(
+    private RotatablePiece piece = new RotatablePiece(
             "" +
                     ".T.\n" +
                     "TTT\n" +
@@ -34,8 +34,8 @@ public class RotatableShapeTest {
     );
 
     @Test
-    public void starts_with_first_shape() {
-        assertThat(shape.toString(), is("" +
+    public void starts_with_first_orientation() {
+        assertThat(piece.toString(), is("" +
                 ".T.\n" +
                 "TTT\n" +
                 "...\n"));
@@ -43,9 +43,9 @@ public class RotatableShapeTest {
 
     @Test
     public void can_be_rotated_clockwise() {
-        shape = shape.rotateCW();
+        piece = piece.rotateCW();
 
-        assertThat(shape.toString(), is("" +
+        assertThat(piece.toString(), is("" +
                 ".T.\n" +
                 ".TT\n" +
                 ".T.\n"));
@@ -53,9 +53,9 @@ public class RotatableShapeTest {
 
     @Test
     public void can_be_rotated_counterclockwise() {
-        shape = shape.rotateCCW();
+        piece = piece.rotateCCW();
 
-        assertThat(shape.toString(), is("" +
+        assertThat(piece.toString(), is("" +
                 ".T.\n" +
                 "TT.\n" +
                 ".T.\n"));
@@ -63,23 +63,23 @@ public class RotatableShapeTest {
 
     @Test
     public void loops_around_clockwise() {
-        String original = shape.toString();
+        String original = piece.toString();
 
         for (int i = 0; i < 4; i++) {
-            shape = shape.rotateCW();
+            piece = piece.rotateCW();
         }
 
-        assertThat(shape.toString(), is(original));
+        assertThat(piece.toString(), is(original));
     }
 
     @Test
     public void loops_around_counterclockwise() {
-        String original = shape.toString();
+        String original = piece.toString();
 
         for (int i = 0; i < 4; i++) {
-            shape = shape.rotateCCW();
+            piece = piece.rotateCCW();
         }
 
-        assertThat(shape.toString(), is(original));
+        assertThat(piece.toString(), is(original));
     }
 }

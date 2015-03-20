@@ -12,7 +12,7 @@ public class Board implements Grid {
     private final int columns;
     private char[][] stationary;
 
-    private MovableGrid falling;
+    private MovablePiece falling;
 
     public Board(String board) {
         this.stationary = Grid.parse(board);
@@ -83,7 +83,7 @@ public class Board implements Grid {
     private void startFalling(RotatableGrid piece) {
         int row = startingRowOffset(piece);
         int column = this.columns() / 2 - piece.columns() / 2;
-        this.falling = new MovableGrid(piece, row, column);
+        this.falling = new MovablePiece(piece, row, column);
     }
 
     private static int startingRowOffset(Grid shape) {
@@ -116,8 +116,8 @@ public class Board implements Grid {
         tryRotate(falling.rotateCCW());
     }
 
-    private void tryRotate(MovableGrid test) {
-        MovableGrid[] moves = {
+    private void tryRotate(MovablePiece test) {
+        MovablePiece[] moves = {
                 test,
                 // wallkick moves:
                 test.moveLeft(),
@@ -125,7 +125,7 @@ public class Board implements Grid {
                 test.moveLeft().moveLeft(),
                 test.moveRight().moveRight(),
         };
-        for (MovableGrid move : moves) {
+        for (MovablePiece move : moves) {
             if (isAllowedMove(move)) {
                 falling = move;
                 return;
@@ -141,7 +141,7 @@ public class Board implements Grid {
         tryMove(falling.moveRight());
     }
 
-    private void tryMove(MovableGrid test) {
+    private void tryMove(MovablePiece test) {
         if (isAllowedMove(test)) {
             falling = test;
         }
@@ -151,7 +151,7 @@ public class Board implements Grid {
         if (!hasFalling()) {
             return;
         }
-        MovableGrid test = falling.moveDown();
+        MovablePiece test = falling.moveDown();
         if (isAllowedMove(test)) {
             falling = test;
         } else {
@@ -159,7 +159,7 @@ public class Board implements Grid {
         }
     }
 
-    private boolean isAllowedMove(MovableGrid test) {
+    private boolean isAllowedMove(MovablePiece test) {
         return !test.isOutside(this) && !test.collidesWith(stationary);
     }
 }

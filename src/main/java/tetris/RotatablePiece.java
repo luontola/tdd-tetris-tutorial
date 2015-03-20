@@ -6,35 +6,35 @@ package tetris;
 
 import java.util.stream.Stream;
 
-public class RotatableShape implements RotatableGrid {
+public class RotatablePiece implements RotatableGrid {
 
-    private final Shape[] orientations;
+    private final Piece[] orientations;
     private final int current;
 
-    public RotatableShape(String... orientations) {
+    public RotatablePiece(String... orientations) {
         this.current = 0;
         this.orientations = Stream.of(orientations)
-                .map(Shape::new)
-                .toArray(Shape[]::new);
+                .map(Piece::new)
+                .toArray(Piece[]::new);
     }
 
-    private RotatableShape(int current, Shape[] orientations) {
+    private RotatablePiece(int current, Piece[] orientations) {
         this.current = (current + orientations.length) % orientations.length;
         this.orientations = orientations;
     }
 
-    private Shape current() {
+    private Piece current() {
         return orientations[current];
     }
 
     @Override
-    public RotatableShape rotateCW() {
-        return new RotatableShape(current + 1, orientations);
+    public RotatablePiece rotateCW() {
+        return new RotatablePiece(current + 1, orientations);
     }
 
     @Override
-    public RotatableShape rotateCCW() {
-        return new RotatableShape(current - 1, orientations);
+    public RotatablePiece rotateCCW() {
+        return new RotatablePiece(current - 1, orientations);
     }
 
     @Override

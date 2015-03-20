@@ -4,14 +4,14 @@
 
 package tetris;
 
-public class MovableGrid implements Grid {
+public class MovablePiece implements Grid {
 
-    private final RotatableGrid shape;
+    private final RotatableGrid piece;
     public final int rowOffset;
     public final int colOffset;
 
-    public MovableGrid(RotatableGrid shape, int rowOffset, int colOffset) {
-        this.shape = shape;
+    public MovablePiece(RotatableGrid piece, int rowOffset, int colOffset) {
+        this.piece = piece;
         this.rowOffset = rowOffset;
         this.colOffset = colOffset;
     }
@@ -62,36 +62,36 @@ public class MovableGrid implements Grid {
 
     @Override
     public char cellAt(int row, int col) {
-        return shape.cellAt(row, col);
+        return piece.cellAt(row, col);
     }
 
     @Override
     public int rows() {
-        return shape.rows();
+        return piece.rows();
     }
 
     @Override
     public int columns() {
-        return shape.columns();
+        return piece.columns();
     }
 
-    public MovableGrid rotateCW() {
-        return new MovableGrid(shape.rotateCW(), rowOffset, colOffset);
+    public MovablePiece rotateCW() {
+        return new MovablePiece(piece.rotateCW(), rowOffset, colOffset);
     }
 
-    public MovableGrid rotateCCW() {
-        return new MovableGrid(shape.rotateCCW(), rowOffset, colOffset);
+    public MovablePiece rotateCCW() {
+        return new MovablePiece(piece.rotateCCW(), rowOffset, colOffset);
     }
 
-    public MovableGrid moveDown() {
-        return new MovableGrid(shape, rowOffset + 1, colOffset);
+    public MovablePiece moveDown() {
+        return new MovablePiece(piece, rowOffset + 1, colOffset);
     }
 
-    public MovableGrid moveLeft() {
-        return new MovableGrid(shape, rowOffset, colOffset - 1);
+    public MovablePiece moveLeft() {
+        return new MovablePiece(piece, rowOffset, colOffset - 1);
     }
 
-    public MovableGrid moveRight() {
-        return new MovableGrid(shape, rowOffset, colOffset + 1);
+    public MovablePiece moveRight() {
+        return new MovablePiece(piece, rowOffset, colOffset + 1);
     }
 }

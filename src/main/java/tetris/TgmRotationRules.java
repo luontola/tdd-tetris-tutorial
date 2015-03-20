@@ -10,7 +10,7 @@ package tetris;
  */
 public class TgmRotationRules {
 
-    public static final RotatableShape T_SHAPE = new RotatableShape(
+    public static final RotatablePiece T_SHAPE = new RotatablePiece(
             "" +
                     "....\n" +
                     "TTT.\n" +
@@ -28,7 +28,7 @@ public class TgmRotationRules {
                     ".TT.\n" +
                     ".T..\n"
     );
-    public static final RotatableShape L_SHAPE = new RotatableShape(
+    public static final RotatablePiece L_SHAPE = new RotatablePiece(
             "" +
                     "....\n" +
                     "LLL.\n" +
@@ -45,7 +45,7 @@ public class TgmRotationRules {
                     ".L..\n" +
                     ".L..\n" +
                     ".LL.\n");
-    public static final RotatableShape J_SHAPE = new RotatableShape(
+    public static final RotatablePiece J_SHAPE = new RotatablePiece(
             "" +
                     "....\n" +
                     "JJJ.\n" +
@@ -62,7 +62,7 @@ public class TgmRotationRules {
                     ".JJ.\n" +
                     ".J..\n" +
                     ".J..\n");
-    public static final RotatableShape I_SHAPE = new RotatableShape(
+    public static final RotatablePiece I_SHAPE = new RotatablePiece(
             "" +
                     "....\n" +
                     "IIII\n" +
@@ -74,7 +74,7 @@ public class TgmRotationRules {
                     "..I.\n" +
                     "..I.\n"
     );
-    public static final RotatableShape S_SHAPE = new RotatableShape(
+    public static final RotatablePiece S_SHAPE = new RotatablePiece(
             "" +
                     "....\n" +
                     ".SS.\n" +
@@ -84,7 +84,7 @@ public class TgmRotationRules {
                     "SS..\n" +
                     ".S..\n"
     );
-    public static final RotatableShape Z_SHAPE = new RotatableShape(
+    public static final RotatablePiece Z_SHAPE = new RotatablePiece(
             "" +
                     "....\n" +
                     "ZZ..\n" +
@@ -94,7 +94,7 @@ public class TgmRotationRules {
                     ".ZZ.\n" +
                     ".Z..\n"
     );
-    public static final RotatableShape O_SHAPE = new RotatableShape(
+    public static final RotatablePiece O_SHAPE = new RotatablePiece(
             "" +
                     ".OO.\n" +
                     ".OO.\n"

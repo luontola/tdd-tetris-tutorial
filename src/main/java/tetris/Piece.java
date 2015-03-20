@@ -4,11 +4,11 @@
 
 package tetris;
 
-public class Shape implements Grid {
+public class Piece implements Grid {
 
     private final char[][] blocks;
 
-    public Shape(String shape) {
+    public Piece(String shape) {
         this.blocks = Grid.parse(shape);
     }
 
