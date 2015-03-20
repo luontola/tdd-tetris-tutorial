@@ -9,15 +9,22 @@ import java.util.stream.Stream;
 public class RotatableShape implements RotatableGrid {
 
     private final Shape[] orientations;
+    private final int current;
 
     public RotatableShape(String... orientations) {
+        this.current = 0;
         this.orientations = Stream.of(orientations)
                 .map(Shape::new)
                 .toArray(Shape[]::new);
     }
 
+    private RotatableShape(int current, Shape[] orientations) {
+        this.current = current;
+        this.orientations = orientations;
+    }
+
     private Shape current() {
-        return orientations[0];
+        return orientations[current];
     }
 
     @Override
@@ -41,12 +48,12 @@ public class RotatableShape implements RotatableGrid {
     }
 
     @Override
-    public RotatableGrid rotateCW() {
-        return null;
+    public RotatableShape rotateCW() {
+        return new RotatableShape(current + 1, orientations);
     }
 
     @Override
-    public RotatableGrid rotateCCW() {
+    public RotatableShape rotateCCW() {
         return null;
     }
 }
