@@ -18,7 +18,7 @@ public class MovingAFallingPieceTest {
      * Test-only piece with empty cells in every direction.
      * Only non-empty cells should take part in the collision checks.
      */
-    private static final Piece PIECE = new Piece("" +
+    private static final RotatableShape PIECE = new RotatableShape("" +
             ".....\n" +
             "..X..\n" +
             ".XXX.\n" +

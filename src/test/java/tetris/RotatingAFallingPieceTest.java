@@ -23,10 +23,23 @@ public class RotatingAFallingPieceTest {
         @Before
         public void dropPiece() {
             board = new Board(6, 8);
-            board.drop(new Piece("" +
-                    "X..\n" +
-                    "XXX\n" +
-                    "...\n"));
+            board.drop(new RotatableShape(
+                    "" +
+                            "X..\n" +
+                            "XXX\n" +
+                            "...\n",
+                    "" +
+                            ".XX\n" +
+                            ".X.\n" +
+                            ".X.\n",
+                    "" +
+                            "...\n" +
+                            "XXX\n" +
+                            "..X\n",
+                    "" +
+                            ".X.\n" +
+                            ".X.\n" +
+                            "XX.\n"));
             assertThat(board.toString(), is("" +
                     "...X....\n" +
                     "...XXX..\n" +
@@ -74,10 +87,15 @@ public class RotatingAFallingPieceTest {
                     "..Z..Z..\n" +
                     "..Z..Z..\n" +
                     "..Z..Z..\n");
-            board.drop(new Piece("" +
-                    ".X.\n" +
-                    ".X.\n" +
-                    ".X.\n"));
+            board.drop(new RotatableShape(
+                    "" +
+                            ".X.\n" +
+                            ".X.\n" +
+                            ".X.\n",
+                    "" +
+                            "...\n" +
+                            "XXX\n" +
+                            "...\n"));
         }
 
         @Test
@@ -140,12 +158,19 @@ public class RotatingAFallingPieceTest {
         @Before
         public void dropPiece() {
             board = new Board(6, 8);
-            board.drop(new Piece("" +
-                    "..X..\n" +
-                    "..X..\n" +
-                    "..X..\n" +
-                    "..X..\n" +
-                    "..X..\n"));
+            board.drop(new RotatableShape(
+                    "" +
+                            "..X..\n" +
+                            "..X..\n" +
+                            "..X..\n" +
+                            "..X..\n" +
+                            "..X..\n",
+                    "" +
+                            ".....\n" +
+                            ".....\n" +
+                            "XXXXX\n" +
+                            ".....\n" +
+                            ".....\n"));
         }
 
         @Test
