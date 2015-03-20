@@ -5,7 +5,7 @@
 package tetris;
 
 import net.orfjackal.nestedjunit.NestedJUnit;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.runner.RunWith;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -21,8 +21,8 @@ public class RotatingAFallingPieceTest {
 
     private Board board;
 
-    @Test
-    public void can_rotate_clockwise() {
+    @Before
+    public void dropPiece() {
         board = new Board(6, 8);
         board.drop(PIECE);
         assertThat(board.toString(), is("" +
@@ -32,7 +32,10 @@ public class RotatingAFallingPieceTest {
                 "........\n" +
                 "........\n" +
                 "........\n"));
+    }
 
+    @Test
+    public void can_rotate_clockwise() {
         board.rotateCW();
 
         assertThat(board.toString(), is("" +
@@ -44,7 +47,19 @@ public class RotatingAFallingPieceTest {
                 "........\n"));
     }
 
-    // TODO: a falling piece can be rotated counter-clockwise
+    @Test
+    public void can_rotate_counterclockwise() {
+        board.rotateCCW();
+
+        assertThat(board.toString(), is("" +
+                "....X...\n" +
+                "....X...\n" +
+                "...XX...\n" +
+                "........\n" +
+                "........\n" +
+                "........\n"));
+    }
+
     // TODO: it can not be rotated when there is no room to rotate (left wall, right wall, other pieces...)
 
     // TODO: when piece is up against a wall (or piece) and it is rotated (no room to rotate), move it away from the wall ("wallkick")

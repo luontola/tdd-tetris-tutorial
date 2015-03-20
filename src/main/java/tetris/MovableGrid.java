@@ -79,6 +79,10 @@ public class MovableGrid implements Grid {
         return new MovableGrid(shape.rotateCW(), rowOffset, colOffset);
     }
 
+    public MovableGrid rotateCCW() {
+        return new MovableGrid(shape.rotateCCW(), rowOffset, colOffset);
+    }
+
     public MovableGrid moveDown() {
         return new MovableGrid(shape, rowOffset + 1, colOffset);
     }
