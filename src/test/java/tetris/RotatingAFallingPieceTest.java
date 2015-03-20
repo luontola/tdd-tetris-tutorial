@@ -5,19 +5,45 @@
 package tetris;
 
 import net.orfjackal.nestedjunit.NestedJUnit;
-import org.junit.Ignore;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@Ignore("contains no test")
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+
 @RunWith(NestedJUnit.class)
 public class RotatingAFallingPieceTest {
 
-    // Step 6: Training wheels off
-    // - Remove the @Ignore annotation from this class
-    // - You're now responsible for covering all corner cases
-    // - Next step: see the README for details
+    private static final Piece PIECE = new Piece("" +
+            "X..\n" +
+            "XXX\n" +
+            "...\n");
 
-    // TODO: a falling piece can be rotated clockwise
+    private Board board;
+
+    @Test
+    public void can_rotate_clockwise() {
+        board = new Board(6, 8);
+        board.drop(PIECE);
+        assertThat(board.toString(), is("" +
+                "...X....\n" +
+                "...XXX..\n" +
+                "........\n" +
+                "........\n" +
+                "........\n" +
+                "........\n"));
+
+        board.rotateCW();
+
+        assertThat(board.toString(), is("" +
+                "....XX..\n" +
+                "....X...\n" +
+                "....X...\n" +
+                "........\n" +
+                "........\n" +
+                "........\n"));
+    }
+
     // TODO: a falling piece can be rotated counter-clockwise
     // TODO: it can not be rotated when there is no room to rotate (left wall, right wall, other pieces...)
 

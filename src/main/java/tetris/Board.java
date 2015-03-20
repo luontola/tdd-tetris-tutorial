@@ -107,6 +107,10 @@ public class Board implements Grid {
         falling = null;
     }
 
+    public void rotateCW() {
+        falling = falling.rotateCW();
+    }
+
     public void moveDown() {
         if (!hasFalling()) {
             return;
