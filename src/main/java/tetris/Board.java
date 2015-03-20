@@ -108,17 +108,19 @@ public class Board implements Grid {
     }
 
     public void rotateCW() {
-        MovableGrid test = falling.rotateCW();
-        if (isAllowedMove(test)) {
-            falling = test;
-        }
+        tryMove(falling.rotateCW());
     }
 
     public void rotateCCW() {
-        MovableGrid test = falling.rotateCCW();
-        if (isAllowedMove(test)) {
-            falling = test;
-        }
+        tryMove(falling.rotateCCW());
+    }
+
+    public void moveLeft() {
+        tryMove(falling.moveLeft());
+    }
+
+    public void moveRight() {
+        tryMove(falling.moveRight());
     }
 
     public void moveDown() {
@@ -133,15 +135,7 @@ public class Board implements Grid {
         }
     }
 
-    public void moveLeft() {
-        MovableGrid test = falling.moveLeft();
-        if (isAllowedMove(test)) {
-            falling = test;
-        }
-    }
-
-    public void moveRight() {
-        MovableGrid test = falling.moveRight();
+    private void tryMove(MovableGrid test) {
         if (isAllowedMove(test)) {
             falling = test;
         }
