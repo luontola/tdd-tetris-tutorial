@@ -28,6 +28,16 @@ public class RotatableShape implements RotatableGrid {
     }
 
     @Override
+    public RotatableShape rotateCW() {
+        return new RotatableShape(current + 1, orientations);
+    }
+
+    @Override
+    public RotatableShape rotateCCW() {
+        return new RotatableShape(current - 1, orientations);
+    }
+
+    @Override
     public String toString() {
         return current().toString();
     }
@@ -45,15 +55,5 @@ public class RotatableShape implements RotatableGrid {
     @Override
     public char cellAt(int row, int col) {
         return current().cellAt(row, col);
-    }
-
-    @Override
-    public RotatableShape rotateCW() {
-        return new RotatableShape(current + 1, orientations);
-    }
-
-    @Override
-    public RotatableShape rotateCCW() {
-        return new RotatableShape(current - 1, orientations);
     }
 }
