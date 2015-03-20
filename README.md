@@ -77,7 +77,7 @@ Reference implementations for the steps of this tutorial have been [tagged in it
 
 7. **And beyond...**
 
-    Next you should implement the following features in suitable order: removing full rows, counting removed rows, counting score, choosing the next piece by random (using a [shuffle bag](http://kaioa.com/node/53)). For counting the removed rows, you could launch an event (call a listener's method) when a row is removed - [Mockito](http://mockito.org/) might come in handly for testing that.
+    Next you should implement the following features in suitable order: removing full rows, counting removed rows, counting score, game over, choosing the next piece by random (using a [shuffle bag](http://kaioa.com/node/53)). For counting the removed rows, you could launch an event (call a listener's method) when a row is removed - [Mockito](http://mockito.org/) might come in handly for testing that.
 
     Also change the game to use the [rotation rules of TGM](http://bsixcentdouze.free.fr/tc/tgm-en/tgm.html#rotations). In order to do that, it would be good to replace the earlier generic algorithmic shape rotation (which was done in step 2) with one where each orientation of a shape is hardcoded, because that will probably simplify the code considerably. When you have made the change, evaluate that which of the implementations is better, and remove all code that relates to the worse implementation - [deleting code](http://objectmentor.com/resources/articles/craftsman4.pdf) is a good thing.
 
