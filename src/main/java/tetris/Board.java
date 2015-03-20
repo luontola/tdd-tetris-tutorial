@@ -108,7 +108,10 @@ public class Board implements Grid {
     }
 
     public void rotateCW() {
-        falling = falling.rotateCW();
+        MovableGrid test = falling.rotateCW();
+        if (isAllowedMove(test)) {
+            falling = test;
+        }
     }
 
     public void rotateCCW() {

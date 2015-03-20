@@ -14,20 +14,19 @@ import static org.hamcrest.Matchers.is;
 @RunWith(NestedJUnit.class)
 public class RotatingAFallingPieceTest {
 
-    private static final Piece PIECE = new Piece("" +
-            "X..\n" +
-            "XXX\n" +
-            "...\n");
+    private static final int LOTS_OF_TIMES = 10;
 
     private Board board;
-
 
     public class When_there_is_adequate_space {
 
         @Before
         public void dropPiece() {
             board = new Board(6, 8);
-            board.drop(PIECE);
+            board.drop(new Piece("" +
+                    "X..\n" +
+                    "XXX\n" +
+                    "...\n"));
             assertThat(board.toString(), is("" +
                     "...X....\n" +
                     "...XXX..\n" +
@@ -61,6 +60,43 @@ public class RotatingAFallingPieceTest {
                     "........\n" +
                     "........\n" +
                     "........\n"));
+        }
+    }
+
+    public class When_there_is_no_room_to_rotate {
+
+        @Before
+        public void dropPiece() {
+            board = new Board("" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n" +
+                    "..ZZZZZZ\n" +
+                    "..ZZZZZZ\n" +
+                    "..ZZZZZZ\n");
+            board.drop(new Piece("" +
+                    ".X.\n" +
+                    ".X.\n" +
+                    ".X.\n"));
+        }
+
+        @Test
+        public void next_to_left_wall() {
+            for (int i = 0; i < LOTS_OF_TIMES; i++) {
+                board.moveLeft();
+            }
+            board.moveDown();
+            board.moveDown();
+
+            board.rotateCW();
+
+            assertThat(board.toString(), is("" +
+                    "........\n" +
+                    "........\n" +
+                    "X.......\n" +
+                    "X.ZZZZZZ\n" +
+                    "X.ZZZZZZ\n" +
+                    "..ZZZZZZ\n"));
         }
     }
 
