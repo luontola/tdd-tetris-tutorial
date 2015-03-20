@@ -19,10 +19,7 @@ public class RotatableShape implements RotatableGrid {
     }
 
     private RotatableShape(int current, Shape[] orientations) {
-        if (current < 0) {
-            current += orientations.length;
-        }
-        this.current = current;
+        this.current = (current + orientations.length) % orientations.length;
         this.orientations = orientations;
     }
 

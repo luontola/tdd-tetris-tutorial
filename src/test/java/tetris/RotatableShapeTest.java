@@ -62,7 +62,24 @@ public class RotatableShapeTest {
     }
 
     @Test
-    public void loops_around() {
+    public void loops_around_clockwise() {
+        String original = shape.toString();
 
+        for (int i = 0; i < 4; i++) {
+            shape = shape.rotateCW();
+        }
+
+        assertThat(shape.toString(), is(original));
+    }
+
+    @Test
+    public void loops_around_counterclockwise() {
+        String original = shape.toString();
+
+        for (int i = 0; i < 4; i++) {
+            shape = shape.rotateCCW();
+        }
+
+        assertThat(shape.toString(), is(original));
     }
 }
