@@ -167,6 +167,23 @@ public class RotatingAFallingPieceTest {
         }
 
         @Test
+        public void two_steps_to_right() {
+            for (int i = 0; i < LOTS_OF_TIMES; i++) {
+                board.moveLeft();
+            }
+
+            board.rotateCW();
+
+            assertThat(board.toString(), is("" +
+                    "........\n" +
+                    "........\n" +
+                    "XXXXX...\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n"));
+        }
+
+        @Test
         public void one_step_to_left() {
             for (int i = 0; i < LOTS_OF_TIMES; i++) {
                 board.moveRight();
