@@ -19,6 +19,9 @@ public class RotatableShape implements RotatableGrid {
     }
 
     private RotatableShape(int current, Shape[] orientations) {
+        if (current < 0) {
+            current += orientations.length;
+        }
         this.current = current;
         this.orientations = orientations;
     }
@@ -54,6 +57,6 @@ public class RotatableShape implements RotatableGrid {
 
     @Override
     public RotatableShape rotateCCW() {
-        return null;
+        return new RotatableShape(current - 1, orientations);
     }
 }

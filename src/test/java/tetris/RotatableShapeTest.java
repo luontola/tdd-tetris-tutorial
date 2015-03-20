@@ -53,7 +53,12 @@ public class RotatableShapeTest {
 
     @Test
     public void can_be_rotated_counterclockwise() {
+        shape = shape.rotateCCW();
 
+        assertThat(shape.toString(), is("" +
+                ".T.\n" +
+                "TT.\n" +
+                ".T.\n"));
     }
 
     @Test
