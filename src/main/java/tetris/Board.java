@@ -116,12 +116,17 @@ public class Board implements Grid {
     }
 
     private void tryRotate(MovableGrid test) {
-        if (isAllowedMove(test)) {
-            falling = test;
-        } else if (isAllowedMove(test.moveRight())) {
-            falling = test.moveRight();
-        } else if (isAllowedMove(test.moveLeft())) {
-            falling = test.moveLeft();
+        MovableGrid[] moves = {
+                test,
+                // wallkick moves:
+                test.moveLeft(),
+                test.moveRight(),
+        };
+        for (MovableGrid move : moves) {
+            if (isAllowedMove(move)) {
+                falling = move;
+                return;
+            }
         }
     }
 
