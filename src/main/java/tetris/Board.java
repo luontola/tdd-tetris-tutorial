@@ -34,6 +34,7 @@ public class Board implements Grid {
         return board;
     }
 
+    @Override
     public String toString() {
         return Grid.toString(this);
     }
