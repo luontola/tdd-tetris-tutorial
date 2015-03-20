@@ -4,16 +4,49 @@
 
 package tetris;
 
-public class RotatableShape {
+import java.util.stream.Stream;
 
-    private final String[] orientations;
+public class RotatableShape implements RotatableGrid {
+
+    private final Shape[] orientations;
 
     public RotatableShape(String... orientations) {
-        this.orientations = orientations;
+        this.orientations = Stream.of(orientations)
+                .map(Shape::new)
+                .toArray(Shape[]::new);
+    }
+
+    private Shape current() {
+        return orientations[0];
     }
 
     @Override
     public String toString() {
-        return orientations[0];
+        return current().toString();
+    }
+
+    @Override
+    public int rows() {
+        return current().rows();
+    }
+
+    @Override
+    public int columns() {
+        return current().columns();
+    }
+
+    @Override
+    public char cellAt(int row, int col) {
+        return current().cellAt(row, col);
+    }
+
+    @Override
+    public RotatableGrid rotateCW() {
+        return null;
+    }
+
+    @Override
+    public RotatableGrid rotateCCW() {
+        return null;
     }
 }
