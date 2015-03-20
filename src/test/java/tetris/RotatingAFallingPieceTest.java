@@ -165,6 +165,24 @@ public class RotatingAFallingPieceTest {
                     "........\n" +
                     "........\n"));
         }
+
+        @Test
+        public void one_step_to_left() {
+            for (int i = 0; i < LOTS_OF_TIMES; i++) {
+                board.moveRight();
+            }
+            board.moveLeft();
+
+            board.rotateCCW();
+
+            assertThat(board.toString(), is("" +
+                    "........\n" +
+                    "........\n" +
+                    "...XXXXX\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n"));
+        }
     }
 
     // TODO: when piece is up against a wall (or piece) and it is rotated (no room to rotate), move it away from the wall ("wallkick")
