@@ -21,43 +21,47 @@ public class RotatingAFallingPieceTest {
 
     private Board board;
 
-    @Before
-    public void dropPiece() {
-        board = new Board(6, 8);
-        board.drop(PIECE);
-        assertThat(board.toString(), is("" +
-                "...X....\n" +
-                "...XXX..\n" +
-                "........\n" +
-                "........\n" +
-                "........\n" +
-                "........\n"));
-    }
 
-    @Test
-    public void can_rotate_clockwise() {
-        board.rotateCW();
+    public class When_there_is_adequate_space {
 
-        assertThat(board.toString(), is("" +
-                "....XX..\n" +
-                "....X...\n" +
-                "....X...\n" +
-                "........\n" +
-                "........\n" +
-                "........\n"));
-    }
+        @Before
+        public void dropPiece() {
+            board = new Board(6, 8);
+            board.drop(PIECE);
+            assertThat(board.toString(), is("" +
+                    "...X....\n" +
+                    "...XXX..\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n"));
+        }
 
-    @Test
-    public void can_rotate_counterclockwise() {
-        board.rotateCCW();
+        @Test
+        public void can_rotate_clockwise() {
+            board.rotateCW();
 
-        assertThat(board.toString(), is("" +
-                "....X...\n" +
-                "....X...\n" +
-                "...XX...\n" +
-                "........\n" +
-                "........\n" +
-                "........\n"));
+            assertThat(board.toString(), is("" +
+                    "....XX..\n" +
+                    "....X...\n" +
+                    "....X...\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n"));
+        }
+
+        @Test
+        public void can_rotate_counterclockwise() {
+            board.rotateCCW();
+
+            assertThat(board.toString(), is("" +
+                    "....X...\n" +
+                    "....X...\n" +
+                    "...XX...\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n"));
+        }
     }
 
     // TODO: it can not be rotated when there is no room to rotate (left wall, right wall, other pieces...)
