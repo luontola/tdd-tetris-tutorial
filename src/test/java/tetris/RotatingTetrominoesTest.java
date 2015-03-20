@@ -30,9 +30,9 @@ public class RotatingTetrominoesTest {
         @Test
         public void are_immutable() {
             String original = shape.toString();
-            shape.rotateRight();
+            shape.rotateCW();
             assertThat(shape.toString(), is(original));
-            shape.rotateLeft();
+            shape.rotateCCW();
             assertThat(shape.toString(), is(original));
         }
     }
@@ -53,18 +53,18 @@ public class RotatingTetrominoesTest {
         }
 
         @Test
-        public void can_be_rotated_right_3_times() {
-            shape = shape.rotateRight();
+        public void can_be_rotated_clockwise_3_times() {
+            shape = shape.rotateCW();
             assertThat(shape.toString(), is("" +
                     ".T.\n" +
                     ".TT\n" +
                     ".T.\n"));
-            shape = shape.rotateRight();
+            shape = shape.rotateCW();
             assertThat(shape.toString(), is("" +
                     "...\n" +
                     "TTT\n" +
                     ".T.\n"));
-            shape = shape.rotateRight();
+            shape = shape.rotateCW();
             assertThat(shape.toString(), is("" +
                     ".T.\n" +
                     "TT.\n" +
@@ -72,18 +72,18 @@ public class RotatingTetrominoesTest {
         }
 
         @Test
-        public void can_be_rotated_left_3_times() {
-            shape = shape.rotateLeft();
+        public void can_be_rotated_counterclockwise_3_times() {
+            shape = shape.rotateCCW();
             assertThat(shape.toString(), is("" +
                     ".T.\n" +
                     "TT.\n" +
                     ".T.\n"));
-            shape = shape.rotateLeft();
+            shape = shape.rotateCCW();
             assertThat(shape.toString(), is("" +
                     "...\n" +
                     "TTT\n" +
                     ".T.\n"));
-            shape = shape.rotateLeft();
+            shape = shape.rotateCCW();
             assertThat(shape.toString(), is("" +
                     ".T.\n" +
                     ".TT\n" +
@@ -93,9 +93,9 @@ public class RotatingTetrominoesTest {
         @Test
         public void rotating_it_4_times_will_go_back_to_the_original_shape() {
             String originalShape = shape.toString();
-            shape = shape.rotateRight().rotateRight().rotateRight().rotateRight();
+            shape = shape.rotateCW().rotateCW().rotateCW().rotateCW();
             assertThat(shape.toString(), is(originalShape));
-            shape = shape.rotateLeft().rotateLeft().rotateLeft().rotateLeft();
+            shape = shape.rotateCCW().rotateCCW().rotateCCW().rotateCCW();
             assertThat(shape.toString(), is(originalShape));
         }
     }
@@ -118,8 +118,8 @@ public class RotatingTetrominoesTest {
         }
 
         @Test
-        public void can_be_rotated_right_once() {
-            shape = shape.rotateRight();
+        public void can_be_rotated_clockwise_once() {
+            shape = shape.rotateCW();
             assertThat(shape.toString(), is("" +
                     "..I..\n" +
                     "..I..\n" +
@@ -129,8 +129,8 @@ public class RotatingTetrominoesTest {
         }
 
         @Test
-        public void can_be_rotated_left_once() {
-            shape = shape.rotateLeft();
+        public void can_be_rotated_counterclockwise_once() {
+            shape = shape.rotateCCW();
             assertThat(shape.toString(), is("" +
                     "..I..\n" +
                     "..I..\n" +
@@ -142,9 +142,9 @@ public class RotatingTetrominoesTest {
         @Test
         public void rotating_it_twice_will_get_back_to_the_original_shape() {
             String originalShape = shape.toString();
-            shape = shape.rotateRight().rotateRight();
+            shape = shape.rotateCW().rotateCW();
             assertThat(shape.toString(), is(originalShape));
-            shape = shape.rotateLeft().rotateLeft();
+            shape = shape.rotateCCW().rotateCCW();
             assertThat(shape.toString(), is(originalShape));
         }
     }
@@ -165,8 +165,8 @@ public class RotatingTetrominoesTest {
         }
 
         @Test
-        public void can_not_be_rotated_right() {
-            shape = shape.rotateRight();
+        public void can_not_be_rotated_clockwise() {
+            shape = shape.rotateCW();
             assertThat(shape.toString(), is("" +
                     ".OO\n" +
                     ".OO\n" +
@@ -174,8 +174,8 @@ public class RotatingTetrominoesTest {
         }
 
         @Test
-        public void can_not_be_rotated_left() {
-            shape = shape.rotateLeft();
+        public void can_not_be_rotated_counterclockwise() {
+            shape = shape.rotateCCW();
             assertThat(shape.toString(), is("" +
                     ".OO\n" +
                     ".OO\n" +

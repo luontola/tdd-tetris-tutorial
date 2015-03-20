@@ -55,11 +55,11 @@ public class Tetromino implements Grid {
         this.orientations = orientations;
     }
 
-    public Tetromino rotateRight() {
+    public Tetromino rotateCW() {
         return new Tetromino(currentOrientation + 1, orientations);
     }
 
-    public Tetromino rotateLeft() {
+    public Tetromino rotateCCW() {
         return new Tetromino(currentOrientation - 1, orientations);
     }
 
