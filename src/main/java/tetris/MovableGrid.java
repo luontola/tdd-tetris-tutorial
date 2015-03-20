@@ -6,11 +6,11 @@ package tetris;
 
 public class MovableGrid implements Grid {
 
-    private final Grid shape;
+    private final RotatableGrid shape;
     public final int rowOffset;
     public final int colOffset;
 
-    public MovableGrid(Grid shape, int rowOffset, int colOffset) {
+    public MovableGrid(RotatableGrid shape, int rowOffset, int colOffset) {
         this.shape = shape;
         this.rowOffset = rowOffset;
         this.colOffset = colOffset;
@@ -73,6 +73,10 @@ public class MovableGrid implements Grid {
     @Override
     public int columns() {
         return shape.columns();
+    }
+
+    public MovableGrid rotateCW() {
+        return new MovableGrid(shape, rowOffset, colOffset);
     }
 
     public MovableGrid moveDown() {

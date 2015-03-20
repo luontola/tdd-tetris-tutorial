@@ -4,7 +4,7 @@
 
 package tetris;
 
-public class Block implements Grid {
+public class Block implements RotatableGrid {
 
     private final char color;
 
@@ -25,5 +25,15 @@ public class Block implements Grid {
     @Override
     public char cellAt(int row, int col) {
         return color;
+    }
+
+    @Override
+    public RotatableGrid rotateCW() {
+        return this;
+    }
+
+    @Override
+    public RotatableGrid rotateCCW() {
+        return this;
     }
 }

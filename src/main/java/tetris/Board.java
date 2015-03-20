@@ -64,7 +64,7 @@ public class Board implements Grid {
         return EMPTY;
     }
 
-    public void drop(Grid piece) {
+    public void drop(RotatableGrid piece) {
         if (hasFalling()) {
             throw new IllegalStateException("a block is already falling");
         }
@@ -79,7 +79,7 @@ public class Board implements Grid {
         return falling != null;
     }
 
-    private void startFalling(Grid piece) {
+    private void startFalling(RotatableGrid piece) {
         int row = startingRowOffset(piece);
         int column = this.columns() / 2 - piece.columns() / 2;
         this.falling = new MovableGrid(piece, row, column);

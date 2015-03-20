@@ -4,7 +4,7 @@
 
 package tetris;
 
-public class Tetromino implements Grid {
+public class Tetromino implements RotatableGrid {
 
     public static final Tetromino T_SHAPE = new Tetromino(4, "" +
             ".T.\n" +
@@ -55,10 +55,12 @@ public class Tetromino implements Grid {
         this.orientations = orientations;
     }
 
+    @Override
     public Tetromino rotateCW() {
         return new Tetromino(currentOrientation + 1, orientations);
     }
 
+    @Override
     public Tetromino rotateCCW() {
         return new Tetromino(currentOrientation - 1, orientations);
     }

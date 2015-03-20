@@ -4,7 +4,7 @@
 
 package tetris;
 
-public class Piece implements Grid {
+public class Piece implements RotatableGrid {
 
     private final char[][] blocks;
 
@@ -17,6 +17,7 @@ public class Piece implements Grid {
         this.blocks = blocks;
     }
 
+    @Override
     public Piece rotateCW() {
         int dimension = blocks.length;
         char[][] rotated = new char[dimension][dimension];
@@ -28,6 +29,7 @@ public class Piece implements Grid {
         return new Piece(rotated);
     }
 
+    @Override
     public Piece rotateCCW() {
         return this.rotateCW().rotateCW().rotateCW();
     }
