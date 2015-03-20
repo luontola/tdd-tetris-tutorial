@@ -135,6 +135,38 @@ public class RotatingAFallingPieceTest {
         }
     }
 
+    public class Can_wallkick {
+
+        @Before
+        public void dropPiece() {
+            board = new Board(6, 8);
+            board.drop(new Piece("" +
+                    "..X..\n" +
+                    "..X..\n" +
+                    "..X..\n" +
+                    "..X..\n" +
+                    "..X..\n"));
+        }
+
+        @Test
+        public void one_step_to_right() {
+            for (int i = 0; i < LOTS_OF_TIMES; i++) {
+                board.moveLeft();
+            }
+            board.moveRight();
+
+            board.rotateCW();
+
+            assertThat(board.toString(), is("" +
+                    "........\n" +
+                    "........\n" +
+                    "XXXXX...\n" +
+                    "........\n" +
+                    "........\n" +
+                    "........\n"));
+        }
+    }
+
     // TODO: when piece is up against a wall (or piece) and it is rotated (no room to rotate), move it away from the wall ("wallkick")
     // See: http://bsixcentdouze.free.fr/tc/tgm-en/tgm.html
     // http://bsixcentdouze.free.fr/tc/tgm-en/img/wallkick1.png
