@@ -71,9 +71,9 @@ public class RotatingAFallingPieceTest {
                     "........\n" +
                     "........\n" +
                     "........\n" +
-                    "..ZZZZZZ\n" +
-                    "..ZZZZZZ\n" +
-                    "..ZZZZZZ\n");
+                    "..Z..Z..\n" +
+                    "..Z..Z..\n" +
+                    "..Z..Z..\n");
             board.drop(new Piece("" +
                     ".X.\n" +
                     ".X.\n" +
@@ -94,9 +94,28 @@ public class RotatingAFallingPieceTest {
                     "........\n" +
                     "........\n" +
                     "X.......\n" +
-                    "X.ZZZZZZ\n" +
-                    "X.ZZZZZZ\n" +
-                    "..ZZZZZZ\n"));
+                    "X.Z..Z..\n" +
+                    "X.Z..Z..\n" +
+                    "..Z..Z..\n"));
+        }
+
+        @Test
+        public void next_to_right_wall() {
+            for (int i = 0; i < LOTS_OF_TIMES; i++) {
+                board.moveRight();
+            }
+            board.moveDown();
+            board.moveDown();
+
+            board.rotateCCW();
+
+            assertThat(board.toString(), is("" +
+                    "........\n" +
+                    "........\n" +
+                    ".......X\n" +
+                    "..Z..Z.X\n" +
+                    "..Z..Z.X\n" +
+                    "..Z..Z..\n"));
         }
     }
 
