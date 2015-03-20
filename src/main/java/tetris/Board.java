@@ -121,6 +121,7 @@ public class Board implements Grid {
                 // wallkick moves:
                 test.moveLeft(),
                 test.moveRight(),
+                test.moveLeft().moveLeft(),
                 test.moveRight().moveRight(),
         };
         for (MovableGrid move : moves) {
