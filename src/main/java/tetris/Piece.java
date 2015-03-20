@@ -17,7 +17,7 @@ public class Piece implements Grid {
         this.blocks = blocks;
     }
 
-    public Piece rotateRight() {
+    public Piece rotateCW() {
         int dimension = blocks.length;
         char[][] rotated = new char[dimension][dimension];
         for (int row = 0; row < blocks.length; row++) {
@@ -28,8 +28,8 @@ public class Piece implements Grid {
         return new Piece(rotated);
     }
 
-    public Piece rotateLeft() {
-        return this.rotateRight().rotateRight().rotateRight();
+    public Piece rotateCCW() {
+        return this.rotateCW().rotateCW().rotateCW();
     }
 
     @Override

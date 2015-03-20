@@ -46,7 +46,7 @@ public class Tetromino implements Grid {
         Piece orientation = new Piece(shape);
         for (int i = 0; i < this.orientations.length; i++) {
             this.orientations[i] = orientation;
-            orientation = orientation.rotateRight();
+            orientation = orientation.rotateCW();
         }
     }
 

@@ -39,8 +39,8 @@ public class RotatingPiecesOfBlocksTest {
         }
 
         @Test
-        public void can_be_rotated_right() {
-            piece = piece.rotateRight();
+        public void can_be_rotated_clockwise() {
+            piece = piece.rotateCW();
             assertThat(piece.toString(), is("" +
                     "...\n" +
                     ".XX\n" +
@@ -48,8 +48,8 @@ public class RotatingPiecesOfBlocksTest {
         }
 
         @Test
-        public void can_be_rotated_left() {
-            piece = piece.rotateLeft();
+        public void can_be_rotated_counterclockwise() {
+            piece = piece.rotateCCW();
             assertThat(piece.toString(), is("" +
                     "...\n" +
                     "XX.\n" +
@@ -80,8 +80,8 @@ public class RotatingPiecesOfBlocksTest {
         }
 
         @Test
-        public void can_be_rotated_right() {
-            piece = piece.rotateRight();
+        public void can_be_rotated_clockwise() {
+            piece = piece.rotateCW();
             assertThat(piece.toString(), is("" +
                     ".....\n" +
                     ".....\n" +
@@ -91,8 +91,8 @@ public class RotatingPiecesOfBlocksTest {
         }
 
         @Test
-        public void can_be_rotated_left() {
-            piece = piece.rotateLeft();
+        public void can_be_rotated_counterclockwise() {
+            piece = piece.rotateCCW();
             assertThat(piece.toString(), is("" +
                     "X....\n" +
                     "XX...\n" +
