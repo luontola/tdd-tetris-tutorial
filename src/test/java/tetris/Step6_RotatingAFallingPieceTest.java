@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 
 @Ignore("contains no test")
 @RunWith(NestedJUnit.class)
-public class RotatingAFallingPieceTest extends Assert {
+public class Step6_RotatingAFallingPieceTest extends Assert {
 
     // Step 6: Training wheels off
     // - Remove the @Ignore annotation from this class

@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
  * @author Esko Luontola
  */
 @RunWith(NestedJUnit.class)
-public class FallingBlocksTest extends Assert {
+public class Step1_FallingBlocksTest extends Assert {
 
     // Step 1: Starting small
     // - See the README for motivation
@@ -69,12 +69,8 @@ public class FallingBlocksTest extends Assert {
 
 //        @Test
 //        public void at_most_one_block_may_be_falling_at_a_time() {
-//            try {
-//                board.drop(new Block('Y'));
-//                fail();
-//            } catch (IllegalStateException e) {
-//                assertTrue(e.getMessage().contains("already falling"));
-//            }
+//            MyAsserts.assertThrows(IllegalStateException.class, "already falling",
+//                    () -> board.drop(new Block('Y')));
 //            assertEquals("" +
 //                    ".X.\n" +
 //                    "...\n" +

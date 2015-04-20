@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
  */
 @Ignore("contains no test")
 @RunWith(NestedJUnit.class)
-public class RotatingTetrominoesTest extends Assert {
+public class Step3_RotatingTetrominoesTest extends Assert {
 
     // Step 3: The actual rotation algorithms
     // - Remove the @Ignore annotation from this class
