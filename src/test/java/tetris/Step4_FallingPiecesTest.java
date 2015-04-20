@@ -5,14 +5,16 @@
 package tetris;
 
 import net.orfjackal.nestedjunit.NestedJUnit;
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
  * @author Esko Luontola
  */
 @RunWith(NestedJUnit.class)
-public class FallingPiecesTest extends Assert {
+public class Step4_FallingPiecesTest extends Assert {
 
     // Step 4: Safe steps
     // - Remove the @Ignore annotation from this class

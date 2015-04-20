@@ -41,8 +41,6 @@
     <RunnerSettings RunnerId="Run" />
     <ConfigurationWrapper RunnerId="Cover" />
     <ConfigurationWrapper RunnerId="Run" />
-    <method>
-      <option name="Make" enabled="true" />
-    </method>
+    <method />
   </configuration>
 </component>

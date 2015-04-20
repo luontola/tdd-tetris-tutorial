@@ -5,14 +5,16 @@
 package tetris;
 
 import net.orfjackal.nestedjunit.NestedJUnit;
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
  * @author Esko Luontola
  */
 @RunWith(NestedJUnit.class)
-public class RotatingPiecesOfBlocksTest extends Assert {
+public class Step2_RotatingPiecesOfBlocksTest extends Assert {
 
     // Step 2: Stepping stone for rotation algorithms
     // - Remove the @Ignore annotation from this class

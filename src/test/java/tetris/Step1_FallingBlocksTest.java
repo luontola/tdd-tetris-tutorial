@@ -5,14 +5,16 @@
 package tetris;
 
 import net.orfjackal.nestedjunit.NestedJUnit;
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
  * @author Esko Luontola
  */
 @RunWith(NestedJUnit.class)
-public class FallingBlocksTest extends Assert {
+public class Step1_FallingBlocksTest extends Assert {
 
     // Step 1: Starting small
     // - See the README for motivation
