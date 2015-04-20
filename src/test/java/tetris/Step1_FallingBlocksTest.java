@@ -68,12 +68,8 @@ public class Step1_FallingBlocksTest extends Assert {
 
         @Test
         public void at_most_one_block_may_be_falling_at_a_time() {
-            try {
-                board.drop(new Block('Y'));
-                fail();
-            } catch (IllegalStateException e) {
-                assertTrue(e.getMessage().contains("already falling"));
-            }
+            MyAsserts.assertThrows(IllegalStateException.class, "already falling",
+                    () -> board.drop(new Block('Y')));
             assertEquals("" +
                     ".X.\n" +
                     "...\n" +
