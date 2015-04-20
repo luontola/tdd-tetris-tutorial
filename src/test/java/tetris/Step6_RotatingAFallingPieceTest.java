@@ -5,8 +5,7 @@
 package tetris;
 
 import net.orfjackal.nestedjunit.NestedJUnit;
-import org.junit.Assert;
-import org.junit.Ignore;
+import org.junit.*;
 import org.junit.runner.RunWith;
 
 @Ignore("contains no test")
