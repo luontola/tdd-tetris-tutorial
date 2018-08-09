@@ -11,7 +11,7 @@
     <description>
         Tutorial for learning TDD. You make a Tetris game by writing code to pass the test cases.
     </description>
-    <url>http://github.com/orfjackal/tdd-tetris-tutorial</url>
+    <url>https://github.com/luontola/tdd-tetris-tutorial</url>
     <inceptionYear>2008</inceptionYear>
 
     <properties>

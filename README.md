@@ -31,11 +31,11 @@ This tutorial has been used in the [TDD programming technique and designing code
 The Steps of the Tutorial
 -------------------------
 
-Use the tests in the [src/test/java/tetris](http://github.com/orfjackal/tdd-tetris-tutorial/tree/tutorial/src/test/java/tetris/) directory to write a Tetris game. Implement code to pass the tests, one file and one test at a time, in the same order as they are listed below, starting with `FallingBlocksTest`.
+Use the tests in the [src/test/java/tetris](https://github.com/luontola/tdd-tetris-tutorial/tree/tutorial/src/test/java/tetris/) directory to write a Tetris game. Implement code to pass the tests, one file and one test at a time, in the same order as they are listed below, starting with `FallingBlocksTest`.
 
 When you first run the tests, you should see the first test (`A_new_board.is_empty`) failing. Fix the code (a one-line change) and run the tests to see it pass. Then uncomment the following test (`A_new_board.has_no_falling_blocks`). When that test passes, uncomment the next one (`When_a_block_is_dropped.the_block_is_falling`) and make it pass, until finally you have written code which passes all tests in that class. Then open the next test class and keep on continuing in the same fashion.
 
-Reference implementations for the steps of this tutorial have been [tagged in its Git repository](https://github.com/orfjackal/tdd-tetris-tutorial/tags?after=take2%2Fpomodoro1). There are also [Let's Code screencasts](http://www.orfjackal.net/lets-code#tdd-tetris-tutorial) of implementing the [take3 branch](https://github.com/orfjackal/tdd-tetris-tutorial/tree/take3). Also the [beyond](https://github.com/orfjackal/tdd-tetris-tutorial/tree/beyond) and [take2](https://github.com/orfjackal/tdd-tetris-tutorial/tree/take2) branches have reference implementations. It might be helpful to have a look at them *after* you have yourself implemented this tutorial that far or you get stuck with your design.
+Reference implementations for the steps of this tutorial have been [tagged in its Git repository](https://github.com/luontola/tdd-tetris-tutorial/tags?after=take2%2Fpomodoro1). There are also [Let's Code screencasts](http://www.orfjackal.net/lets-code#tdd-tetris-tutorial) of implementing the [take3 branch](https://github.com/luontola/tdd-tetris-tutorial/tree/take3). Also the [beyond](https://github.com/luontola/tdd-tetris-tutorial/tree/beyond) and [take2](https://github.com/luontola/tdd-tetris-tutorial/tree/take2) branches have reference implementations. It might be helpful to have a look at them *after* you have yourself implemented this tutorial that far or you get stuck with your design.
 
 1. **FallingBlocksTest**
 
