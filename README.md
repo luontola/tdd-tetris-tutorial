@@ -4,6 +4,8 @@ TDD Tetris Tutorial
 
 In this tutorial you will be implementing a Tetris game using [Test-Driven Development](http://en.wikipedia.org/wiki/Test-driven_development) (TDD). Some 30 of the first tests have been provided, so that you just need to write code to pass them. The purpose of working with these pre-written test cases is to get accustomed to the TDD cycle, and to get some ideas on what kind of tests to write. After doing that for some while, it will be easier when it's time to begin writing your own tests towards the end of this tutorial.
 
+> **Update 2021**: There now exists a newer [JavaScript-based successor](https://github.com/luontola/tdd-mooc-tetris) of this tutorial. The course material has also been renewed: <https://tdd-mooc.luontola.fi>
+
 For information about Test-Driven Development, here are some links. It is recommendable to read them before doing this tutorial, so that you would know what TDD is about.
 
 General information about TDD:
